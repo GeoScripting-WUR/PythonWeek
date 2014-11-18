@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: the pointbuffer python script"
-author: "Jan Verbesselt, Aldo Bergsma"
+author: "Jan Verbesselt, Aldo Bergsma, Jorge Mendes de Jesus"
 date: "17 Nov 2014"
 output:
   html_document:
