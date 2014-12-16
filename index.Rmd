@@ -10,11 +10,30 @@ output:
 
 # Introduction
 
-### Launch osgeo live from vmware viewer, login.
-### How to start Python via the terminal.
-### Open the python script within the editor.
+## Getting started with Python within OS-GEO live linux
 
-# Run the pointbuffer.py script
+- Launch osgeo live from vmware viewer, login.
+- Open the terminal and type the following to start python and find out what the python version is:
+
+To start Python:
+```{r, engine='bash', eval=FALSE}
+python
+```
+
+An example script:
+```{r, engine='python'}
+import sys
+print sys.version #parentheses necessary in python 3. 
+```
+
+To exit python:
+```{r, engine='bash', eval=FALSE}
+exit()
+```
+
+- Open the python script within a Python editor
+
+## Python and points
 
 Below we will explain step by step what is done is the python script so that you
 can work on the script from home.

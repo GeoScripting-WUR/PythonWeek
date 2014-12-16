@@ -60,29 +60,36 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <div id="TOC">
 <ul>
 <li><a href="#introduction">Introduction</a><ul>
-<li><a href="#launch-osgeo-live-from-vmware-viewer-login.">Launch osgeo live from vmware viewer, login.</a></li>
-<li><a href="#how-to-start-python-via-the-terminal.">How to start Python via the terminal.</a></li>
-<li><a href="#open-the-python-script-within-the-editor.">Open the python script within the editor.</a></li>
+<li><a href="#getting-started-with-python-within-os-geo-live-linux">Getting started with Python within OS-GEO live linux</a></li>
+<li><a href="#python-and-points">Python and points</a></li>
 </ul></li>
-<li><a href="#run-the-pointbuffer.py-script">Run the pointbuffer.py script</a></li>
 <li><a href="#a-simple-example">A simple example</a></li>
 </ul>
 </div>
 
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<div id="launch-osgeo-live-from-vmware-viewer-login." class="section level3">
-<h3>Launch osgeo live from vmware viewer, login.</h3>
+<div id="getting-started-with-python-within-os-geo-live-linux" class="section level2">
+<h2>Getting started with Python within OS-GEO live linux</h2>
+<ul>
+<li>Launch osgeo live from vmware viewer, login.</li>
+<li>Open the terminal and type the following to start python and find out what the python version is:</li>
+</ul>
+<p>To start Python:</p>
+<pre class="bash"><code>python</code></pre>
+<p>An example script:</p>
+<pre class="python"><code>import sys
+print sys.version #parentheses necessary in python 3. </code></pre>
+<pre><code>## 2.7.5 (default, Mar  9 2014, 22:15:05) 
+## [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)]</code></pre>
+<p>To exit python:</p>
+<pre class="bash"><code>exit()</code></pre>
+<ul>
+<li>Open the python script within a Python editor</li>
+</ul>
 </div>
-<div id="how-to-start-python-via-the-terminal." class="section level3">
-<h3>How to start Python via the terminal.</h3>
-</div>
-<div id="open-the-python-script-within-the-editor." class="section level3">
-<h3>Open the python script within the editor.</h3>
-</div>
-</div>
-<div id="run-the-pointbuffer.py-script" class="section level1">
-<h1>Run the pointbuffer.py script</h1>
+<div id="python-and-points" class="section level2">
+<h2>Python and points</h2>
 <p>Below we will explain step by step what is done is the python script so that you can work on the script from home.</p>
 <pre class="python"><code>from osgeo import ogr
 from osgeo import osr
@@ -92,6 +99,7 @@ wkt = &quot;POINT (173914.00 441864.00)&quot;
 pt = ogr.CreateGeometryFromWkt(wkt)
 print(pt)</code></pre>
 <pre><code>## POINT (173914 441864)</code></pre>
+</div>
 </div>
 <div id="a-simple-example" class="section level1">
 <h1>A simple example</h1>
