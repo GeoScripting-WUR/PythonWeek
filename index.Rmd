@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: the pointbuffer python script"
+title: "Lesson 14 and 15: Python for geo-scripting"
 author: "Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Eliakim Hamunyela"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
