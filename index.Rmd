@@ -20,7 +20,7 @@ To start Python:
 python
 ```
 
-An example script:
+An example script to find out what the installed Python version is ([more info in question asked on stackoverflow](https://stackoverflow.com/questions/1093322/how-do-i-check-what-version-of-python-is-running-my-script))
 ```{r, engine='python'}
 import sys
 print sys.version #parentheses necessary in python 3. 
