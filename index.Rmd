@@ -1,0 +1,37 @@
+---
+title: "Tutorial: the pointbuffer python script"
+author: "Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Eliakim Hamunyela"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    toc: true
+    theme: united
+---
+
+# Introduction
+
+### Launch osgeo live from vmware viewer, login.
+### How to start Python via the terminal.
+### Open the python script within the editor.
+
+# Run the pointbuffer.py script
+
+Below we will explain step by step what is done is the python script so that you
+can work on the script from home.
+
+```{r, engine='python'}
+from osgeo import ogr
+from osgeo import osr
+
+# Create a point geometry
+wkt = "POINT (173914.00 441864.00)"
+pt = ogr.CreateGeometryFromWkt(wkt)
+print(pt)
+```
+
+# A simple example
+
+```{r, engine = 'python'}
+
+```
+
