@@ -54,7 +54,7 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <div id="header">
 <h1 class="title">Lesson 14 and 15: Python for geo-scripting</h1>
 <h4 class="author"><em>Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Eliakim Hamunyela</em></h4>
-<h4 class="date"><em>16 December, 2014</em></h4>
+<h4 class="date"><em>17 December, 2014</em></h4>
 </div>
 
 <div id="TOC">
@@ -75,6 +75,8 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <li>Launch osgeo live from vmware viewer, login.</li>
 <li>Open the terminal and type the following to start python and find out what the python version is:</li>
 </ul>
+<p>Check GDAL version installed by typing this in the terminal:</p>
+<pre class="r"><code>gdal-config --version</code></pre>
 <p>To start Python:</p>
 <pre class="bash"><code>python</code></pre>
 <p>An example script to find out what the installed Python version is (<a href="https://stackoverflow.com/questions/1093322/how-do-i-check-what-version-of-python-is-running-my-script">more info in question asked on stackoverflow</a>)</p>
@@ -92,7 +94,6 @@ print sys.version #parentheses necessary in python 3. </code></pre>
 <h2>Python and points</h2>
 <p>Below we will explain step by step what is done is the python script so that you can work on the script from home.</p>
 <pre class="python"><code>from osgeo import ogr
-from osgeo import osr
 
 # Create a point geometry
 wkt = &quot;POINT (173914.00 441864.00)&quot;

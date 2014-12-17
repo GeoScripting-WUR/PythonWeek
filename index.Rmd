@@ -15,6 +15,12 @@ output:
 - Launch osgeo live from vmware viewer, login.
 - Open the terminal and type the following to start python and find out what the python version is:
 
+Check GDAL version installed by typing this in the terminal:
+
+```{r, eval=FALSE}
+gdal-config --version
+```
+
 To start Python:
 ```{r, engine='bash', eval=FALSE}
 python
@@ -40,7 +46,6 @@ can work on the script from home.
 
 ```{r, engine='python'}
 from osgeo import ogr
-from osgeo import osr
 
 # Create a point geometry
 wkt = "POINT (173914.00 441864.00)"
