@@ -6,6 +6,8 @@ output:
   html_document:
     toc: true
     theme: united
+    toc_depth: 4
+    number_sections: true
 ---
 
 # Introduction
@@ -27,6 +29,7 @@ python
 ```
 
 An example script to find out what the installed Python version is ([more info in question asked on stackoverflow](https://stackoverflow.com/questions/1093322/how-do-i-check-what-version-of-python-is-running-my-script))
+
 ```{r, engine='python'}
 import sys
 print sys.version #parentheses necessary in python 3. 
@@ -39,23 +42,57 @@ exit()
 
 - Open the python script within a Python editor
 
-## Python and points
+## Handling Vector data
 
 Below we will explain step by step what is done is the python script so that you
 can work on the script from home.
 
+- define two points in Google Earth
+- set the projection and reproject to the Dutch projection
+- measure the distance between these points
+- draw a line between the points
+- create a buffer around the points
+- export the point to a kml or shape file to be imported in Google Earth or QGIS
+
+### Points
+
 ```{r, engine='python'}
 from osgeo import ogr
-
 # Create a point geometry
 wkt = "POINT (173914.00 441864.00)"
 pt = ogr.CreateGeometryFromWkt(wkt)
 print(pt)
 ```
 
-# A simple example
+### Define a spatial reference
+
+See http://spatialreference.org/ref/epsg/wgs-84/ 
+
+```{r, engine='python'}
+from osgeo import osr
+##  spatial reference
+spatialRef = osr.SpatialReference()
+spatialRef.ImportFromEPSG(4326)  # from EPSG - Lat/long
+```
+
+### Reproject a point
 
 ```{r, engine = 'python'}
+from osgeo import ogr
+from osgeo import osr
 
+## lat/long definition
+source = osr.SpatialReference()
+source.ImportFromEPSG(4326)
+
+# http://spatialreference.org/ref/sr-org/6781/
+# http://spatialreference.org/ref/epsg/28992/
+target = osr.SpatialReference()
+target.ImportFromEPSG(28992)
+
+transform = osr.CoordinateTransformation(source, target)
+point = ogr.CreateGeometryFromWkt("POINT (5.6660 -51.9872)")
+point.Transform(transform)
+print point.ExportToWkt()
 ```
 
