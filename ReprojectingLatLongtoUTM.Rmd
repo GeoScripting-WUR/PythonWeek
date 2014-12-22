@@ -1,0 +1,131 @@
+---
+title: "Reprojecting a raster from Lat/long to UTM"
+author: "Eliakim Hamunyela and Jan Verbesselt"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    toc: true
+    theme: united
+    toc_depth: 4
+    number_sections: true
+---
+
+# Introduction
+
+OSGEO Python approach - to clip a raster (lat/long) into UTM zones and reproject individual clipped raster to their UTM zone. 
+
+Once they are all in their UTM zone, they can be joined again (mozaic).
+
+# Python
+
+## Check your Python version
+
+```{r, engine='python'}
+import sys ## checking the Python version
+print sys.version #parentheses necessary in python 3. 
+```
+
+## Read in shape file and convert ESRI projection Wkt format to PROJ.4
+Doing the same via `Python`:
+
+```{r, engine='python'}
+import os
+from osgeo import ogr
+import osgeo.osr
+srs = osgeo.osr.SpatialReference()
+
+Llutm = r"TiffRastersAndVectorShapeData/VectorData/psUTMGridZonesWorld.shp"
+
+## open shape file
+driver = ogr.GetDriverByName('ESRI Shapefile')
+dataSource = driver.Open(Llutm, 0) # 0 means read-only. 1 means writeable.
+
+# Check to see if shapefile is found.
+if dataSource is None:
+    print 'Could not open %s' % (Llutm)
+else:
+    print 'Opened %s' % (Llutm)
+    layer = dataSource.GetLayer()
+    featureCount = layer.GetFeatureCount()
+    print "Number of features in %s: %d" % (os.path.basename(Llutm),featureCount)
+
+## extract the info of the UTMZonePro Layer and feed into the section below
+dataSource = ogr.Open(Llutm)
+daLayer = dataSource.GetLayer(0)
+layerDefinition = daLayer.GetLayerDefn()
+for i in range(layerDefinition.GetFieldCount()):
+    print layerDefinition.GetFieldDefn(i).GetName()
+
+print "print a specific layer"
+print layerDefinition.GetFieldDefn(6).GetName()
+
+## Feature
+feature = daLayer.GetFeature(0)
+id = feature.GetField('UTMZonePro')
+print("print id")
+print(id)
+#import from wkt
+srs.ImportFromWkt(id)
+ 
+#create proj4
+out = srs.ExportToProj4()
+print(out) 
+```
+
+**Here the PROJ.4 file is not complete**
+
+## Reprojecting - In progress
+
+```{r, engine='python'}
+import osgeo.osr
+srs = osgeo.osr.SpatialReference()
+ 
+#create coordinate string. 
+#The wkt from our example is not complete, so we use this wkt from here: http://www.gdal.org/osr_tutorial.html
+
+test  = 'PROJCS["UTM 18 (WGS84) in northern hemisphere.",GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG",7031]],TOWGS84[0,0,0,0,0,0,0],AUTHORITY["EPSG",6327]],PRIMEM["Greenwich",0,AUTHORITY["EPSG",8902]],UNIT["DMSH",0.0174532925199433,AUTHORITY["EPSG",9109]],AXIS["Lat",NORTH],AXIS["Long",EAST],AUTHORITY["EPSG",4327]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",-84],PARAMETER["scale_factor",0.9996],PARAMETER["false_easting",500000],PARAMETER["false_northing",0]]'
+print(test) 
+#import from wkt
+srs.ImportFromWkt (test)
+ 
+#create proj4
+out = srs.ExportToProj4()
+print(out) 
+```
+
+
+# R
+
+Reading in the shape file using `R`
+```{r, eval=FALSE}
+require(rgdal)
+dsn <- "TiffRastersAndVectorShapeData/VectorData/"
+ogrInfo(dsn, "psUTMGridZonesWorld")
+# read in shapefiles
+latlongutmgrid <- readOGR(dsn, "psUTMGridZonesWorld")
+# note that readOGR will read the .prj file if it exists
+print(proj4string(latlongutmgrid))
+# info about UTM zones
+latlongutmgrid$UTMZonePro[1]
+out <- latlongutmgrid$UTMZonePro[1]
+
+## export data for this zone and then read it in via Python
+write.table(out, "TiffRastersAndVectorShapeData/VectorData/ZoneInfo.csv", 
+            col.names = FALSE, row.names = FALSE, quote = FALSE)
+```
+
+# Summary - What have we learned
+
+# Acknowledgements and more info
+
+- http://www.gdal.org/osr_tutorial.html
+
+- http://spatialnotes.blogspot.nl/2010/11/converting-wkt-projection-info-to-proj4.html
+
+- https://pcjericks.github.io/py-gdalogr-cookbook/
+
+
+<!---
+### comments not processed by the kml file
+I've had many occasions where I've had WKT-style projection text (e.g., the contents of the *.prj files that normally accompany ESRI Shapefiles, or the srtext field in the spatial_ref_sys table in PostGIS), and I needed to get that to an equivalent Proj4-compatible projection string (and vice versa).  I've known for some time there had to be an automated way to do this...as the GDAL/OGR libraries have been doing this internally for some time.  I ran into the issue again today, so I decided to poke around a bit, and found the API functions that are available to do this...I wrote my first ever Python scripts that use the GDAL/OGR python bindings (specifically, OSR).  These scripts simply convert WKT projection text to Proj4 (wkt2proj.py) and back (proj2wkt.py).  Maybe there are some better examples elsewhere...but I didn't quite find what I was looking for.  Since my work is mostly in PHP right now, I'd love to see the GDAL/OGR PHP bindings maintained someday, but this will do for now:
+-->
