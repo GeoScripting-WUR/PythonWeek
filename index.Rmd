@@ -22,9 +22,9 @@ gdal-config --version
 ```
 
 - type the following to start python and find out what the python version is:
-To start Python:
+
 ```{r, eval=FALSE}
-python
+python # type this in the terminal to start the python interpreter
 ```
 
 An example script to find out what the installed Python version is ([more info in question asked on stackoverflow](https://stackoverflow.com/questions/1093322/how-do-i-check-what-version-of-python-is-running-my-script))
@@ -35,7 +35,7 @@ print sys.version #parentheses necessary in python 3.
 ```
 
 To exit python:
-```{r, engine='bash', eval=FALSE}
+```{r, eval=FALSE}
 exit()
 ```
 
@@ -68,7 +68,9 @@ buildingNumber = 101
 'Gaia' + 'is in Wageningen'
 ```
 
-There is no need to say or define the datatype, `python` has a loose type variable declaration. *Walk like a duck and swims like a duck and quacks like a duck I call it a duck*
+There is no need to say or define the datatype, `python` has a loose type variable declaration. 
+
+*Walk like a duck and swims like a duck and quacks like a duck I call it a duck*
 
 Python is basically a list of objects:
 List are organised with indexes. E.g. 
@@ -76,11 +78,12 @@ List are organised with indexes. E.g.
 ```{r setup, include=FALSE}
 library(knitr)
 opts_chunk$set(engine = 'python')
+render_markdown(TRUE)
 ```
 
 ## Lists
 
-```{r campus, cache=TRUE}
+```{r campus, engine='python'}
 campus = ['Gaia','Lumen', 'Radix', 'Forum']
 # how to can we print Forum?
 print(campus[3])
@@ -91,7 +94,7 @@ print(campus[0:3])
 ```
 
 Appending, inserting, extending and steps:
-```{r}
+```{r, engine='python'}
 campus = ['Gaia','Lumen', 'Radix', 'Forum']
 campus.append("Atlas")
 campus.insert(1,"SoilMuseum")
@@ -108,7 +111,7 @@ print campus[::2]
 
 Let there be Dictionaries... Dictionary is an unordered set of key:value pairs. Like in the dictionary, 'food':'voedsel'.
 
-```{r}
+```{r, engine='python'}
 campusDic = {101:'Gaia',
              100:'Lumen',
              107:'Radix',

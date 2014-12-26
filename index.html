@@ -85,16 +85,16 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 ## From the terminal:
 gdal-config --version</code></pre>
 <ul>
-<li>type the following to start python and find out what the python version is: To start Python:</li>
+<li>type the following to start python and find out what the python version is:</li>
 </ul>
-<pre class="r"><code>python</code></pre>
+<pre class="r"><code>python # type this in the terminal to start the python interpreter</code></pre>
 <p>An example script to find out what the installed Python version is (<a href="https://stackoverflow.com/questions/1093322/how-do-i-check-what-version-of-python-is-running-my-script">more info in question asked on stackoverflow</a>)</p>
 <pre class="python"><code>import sys
 print sys.version #parentheses necessary in python 3. </code></pre>
 <pre><code>## 2.7.5 (default, Mar  9 2014, 22:15:05) 
 ## [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)]</code></pre>
 <p>To exit python:</p>
-<pre class="bash"><code>exit()</code></pre>
+<pre class="r"><code>exit()</code></pre>
 <ul>
 <li>Open the python script within a Python editor</li>
 </ul>
@@ -112,43 +112,47 @@ buildingNumber = 101
 'Gaia'
 &quot;doesn't&quot;
 'Gaia' + 'is in Wageningen'</code></pre>
-<p>There is no need to say or define the datatype, <code>python</code> has a loose type variable declaration. <em>Walk like a duck and swims like a duck and quacks like a duck I call it a duck</em></p>
+<p>There is no need to say or define the datatype, <code>python</code> has a loose type variable declaration.</p>
+<p><em>Walk like a duck and swims like a duck and quacks like a duck I call it a duck</em></p>
 <p>Python is basically a list of objects: List are organised with indexes. E.g.</p>
 </div>
 <div id="lists" class="section level2">
 <h2><span class="header-section-number">2.2</span> Lists</h2>
-<pre class="python"><code>campus = ['Gaia','Lumen', 'Radix', 'Forum']
+<pre><code>campus = ['Gaia','Lumen', 'Radix', 'Forum']
 # how to can we print Forum?
 print(campus[3])
 # how to access the end of the list (while having no idea how big it is)
 print(campus[-1])
 # how to access the first 3 items
-print(campus[0:3])</code></pre>
-<pre><code>## Forum
+print(campus[0:3])
+
+## Forum
 ## Forum
 ## ['Gaia', 'Lumen', 'Radix']</code></pre>
 <p>Appending, inserting, extending and steps:</p>
-<pre class="python"><code>campus = ['Gaia','Lumen', 'Radix', 'Forum']
+<pre><code>campus = ['Gaia','Lumen', 'Radix', 'Forum']
 campus.append(&quot;Atlas&quot;)
 campus.insert(1,&quot;SoilMuseum&quot;)
 campus.extend([&quot;Action&quot;,&quot;Vitae&quot;, &quot;Zodiac&quot;])
 print campus
 print campus[::2]
-## list[start:end:step]</code></pre>
-<pre><code>## ['Gaia', 'SoilMuseum', 'Lumen', 'Radix', 'Forum', 'Atlas', 'Action', 'Vitae', 'Zodiac']
+## list[start:end:step]
+
+## ['Gaia', 'SoilMuseum', 'Lumen', 'Radix', 'Forum', 'Atlas', 'Action', 'Vitae', 'Zodiac']
 ## ['Gaia', 'Lumen', 'Forum', 'Action', 'Zodiac']</code></pre>
 <p><em>Question?</em>: What are the major differences between Append/Extend? <strong>Question:</strong> What building is campus[-2]?</p>
 </div>
 <div id="dictionaries" class="section level2">
 <h2><span class="header-section-number">2.3</span> Dictionaries</h2>
 <p>Let there be Dictionaries… Dictionary is an unordered set of key:value pairs. Like in the dictionary, ‘food’:‘voedsel’.</p>
-<pre class="python"><code>campusDic = {101:'Gaia',
+<pre><code>campusDic = {101:'Gaia',
              100:'Lumen',
              107:'Radix',
              102:'Forum',
              104:'Altas'}
-print campusDic[102]</code></pre>
-<pre><code>## Forum</code></pre>
+print campusDic[102]
+
+## Forum</code></pre>
 </div>
 </div>
 <div id="handling-vector-data-with-python" class="section level1">
@@ -164,24 +168,25 @@ print campusDic[102]</code></pre>
 </ul>
 <div id="points" class="section level2">
 <h2><span class="header-section-number">3.1</span> Points</h2>
-<pre class="python"><code>from osgeo import ogr
+<pre><code>from osgeo import ogr
 # Create a point geometry
 wkt = &quot;POINT (173914.00 441864.00)&quot;
 pt = ogr.CreateGeometryFromWkt(wkt)
-print(pt)</code></pre>
-<pre><code>## POINT (173914 441864)</code></pre>
+print(pt)
+
+## POINT (173914 441864)</code></pre>
 </div>
 <div id="define-a-spatial-reference" class="section level2">
 <h2><span class="header-section-number">3.2</span> Define a spatial reference</h2>
 <p>See <a href="http://spatialreference.org/ref/epsg/wgs-84/" class="uri">http://spatialreference.org/ref/epsg/wgs-84/</a></p>
-<pre class="python"><code>from osgeo import osr
+<pre><code>from osgeo import osr
 ##  spatial reference
 spatialRef = osr.SpatialReference()
 spatialRef.ImportFromEPSG(4326)  # from EPSG - Lat/long</code></pre>
 </div>
 <div id="reproject-a-point" class="section level2">
 <h2><span class="header-section-number">3.3</span> Reproject a point</h2>
-<pre class="python"><code>from osgeo import ogr
+<pre><code>from osgeo import ogr
 from osgeo import osr
 
 ## lat/long definition
@@ -196,8 +201,9 @@ target.ImportFromEPSG(28992)
 transform = osr.CoordinateTransformation(source, target)
 point = ogr.CreateGeometryFromWkt(&quot;POINT (5.6660 -51.9872)&quot;)
 point.Transform(transform)
-print point.ExportToWkt()</code></pre>
-<pre><code>## POINT (205654.247323391464306 -15819205.527011606842279)</code></pre>
+print point.ExportToWkt()
+
+## POINT (205654.247323391464306 -15819205.527011606842279)</code></pre>
 </div>
 </div>
 <div id="raster-data-with-python" class="section level1">
@@ -206,7 +212,7 @@ print point.ExportToWkt()</code></pre>
 <div id="r-from-python" class="section level1">
 <h1><span class="header-section-number">5</span> R from Python</h1>
 <p>A very simple example using the Python Rpy2 module:</p>
-<pre class="python"><code>import rpy2.robjects as robjects
+<pre><code>import rpy2.robjects as robjects
 pi = robjects.r['pi']
 print(pi[0])</code></pre>
 </div>
