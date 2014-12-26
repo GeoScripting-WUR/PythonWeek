@@ -4,15 +4,13 @@ author: "Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Eliakim Hamunyela"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   html_document:
-    toc: true
     theme: united
+    toc: true
     toc_depth: 4
     number_sections: true
 ---
 
-# Introduction
-
-## Getting started with Python within OS-GEO live linux
+# Getting started with Python within OS-GEO live linux
 
 - Launch osgeo live from vmware viewer, login.
 - Open the terminal and type the following to check the installed GDAL version:
@@ -43,7 +41,9 @@ exit()
 
 - Open the python script within a Python editor
 
-## A short Python refresher
+# A short Python refresher
+
+## Numbers and variables
 
 *Question*: What is the difference between 10 and 10.0 when dealing with datatypes in Python???
 
@@ -64,13 +64,60 @@ Variable is a storage location or symbolic name to a value e.g.
 building = 'Gaia'
 buildingNumber = 101
 'Gaia'
+"doesn't"
+'Gaia' + 'is in Wageningen'
 ```
 
 There is no need to say or define the datatype, `python` has a loose type variable declaration. *Walk like a duck and swims like a duck and quacks like a duck I call it a duck*
 
+Python is basically a list of objects:
+List are organised with indexes. E.g. 
 
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(engine = 'python')
+```
 
-## Handling Vector data with Python
+## Lists
+
+```{r campus, cache=TRUE}
+campus = ['Gaia','Lumen', 'Radix', 'Forum']
+# how to can we print Forum?
+print(campus[3])
+# how to access the end of the list (while having no idea how big it is)
+print(campus[-1])
+# how to access the first 3 items
+print(campus[0:3])
+```
+
+Appending, inserting, extending and steps:
+```{r}
+campus = ['Gaia','Lumen', 'Radix', 'Forum']
+campus.append("Atlas")
+campus.insert(1,"SoilMuseum")
+campus.extend(["Action","Vitae", "Zodiac"])
+print campus
+print campus[::2]
+## list[start:end:step]
+```
+
+*Question?*: What are the major differences between Append/Extend?
+**Question:** What building is campus[-2]?
+
+## Dictionaries
+
+Let there be Dictionaries... Dictionary is an unordered set of key:value pairs. Like in the dictionary, 'food':'voedsel'.
+
+```{r}
+campusDic = {101:'Gaia',
+             100:'Lumen',
+             107:'Radix',
+             102:'Forum',
+             104:'Altas'}
+print campusDic[102]
+```
+
+# Handling Vector data with Python
 
 Below we will explain step by step what is done is the python script so that you
 can work on the script from home.
@@ -82,7 +129,7 @@ can work on the script from home.
 - create a buffer around the points
 - export the point to a kml or shape file to be imported in Google Earth or QGIS
 
-### Points
+## Points
 
 ```{r, engine='python'}
 from osgeo import ogr
@@ -92,7 +139,7 @@ pt = ogr.CreateGeometryFromWkt(wkt)
 print(pt)
 ```
 
-### Define a spatial reference
+## Define a spatial reference
 
 See http://spatialreference.org/ref/epsg/wgs-84/ 
 
@@ -103,7 +150,7 @@ spatialRef = osr.SpatialReference()
 spatialRef.ImportFromEPSG(4326)  # from EPSG - Lat/long
 ```
 
-### Reproject a point
+## Reproject a point
 
 ```{r, engine = 'python'}
 from osgeo import ogr
@@ -124,12 +171,12 @@ point.Transform(transform)
 print point.ExportToWkt()
 ```
 
-## Raster data with Python
+# Raster data with Python
 
-## R from Python
+# R from Python
 
 A very simple example using the Python Rpy2 module:
-```{r, engine='python'}
+```{r, engine='python', eval =FALSE}
 import rpy2.robjects as robjects
 pi = robjects.r['pi']
 print(pi[0])
