@@ -8,6 +8,7 @@ output:
     toc: true
     toc_depth: 4
     number_sections: true
+    highlight: pygments
 ---
 
 # Getting started with Python within OS-GEO live linux
@@ -78,7 +79,6 @@ List are organised with indexes. E.g.
 ```{r setup, include=FALSE}
 library(knitr)
 opts_chunk$set(engine = 'python')
-render_markdown(TRUE)
 ```
 
 ## Lists
