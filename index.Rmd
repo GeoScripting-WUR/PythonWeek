@@ -15,16 +15,17 @@ output:
 ## Getting started with Python within OS-GEO live linux
 
 - Launch osgeo live from vmware viewer, login.
-- Open the terminal and type the following to start python and find out what the python version is:
+- Open the terminal and type the following to check the installed GDAL version:
 
-Check GDAL version installed by typing this in the terminal:
-
-```{r, eval=FALSE}
+```{r, eval = FALSE, engine='bash'}
+## from R: system("gdal-config --version")
+## From the terminal:
 gdal-config --version
 ```
 
+- type the following to start python and find out what the python version is:
 To start Python:
-```{r, engine='bash', eval=FALSE}
+```{r, eval=FALSE}
 python
 ```
 
@@ -42,7 +43,34 @@ exit()
 
 - Open the python script within a Python editor
 
-## Handling Vector data
+## A short Python refresher
+
+*Question*: What is the difference between 10 and 10.0 when dealing with datatypes in Python???
+
+```{r, eval=FALSE, message=FALSE, echo=FALSE}
+# 10 -> Integer -> Natural + negative numbers
+## Int
+# 10.0 -> Floating point -> Real number() -> "digits before and after the decimal point"
+## Float
+```
+
+```{r, engine='python'}
+print(int(10.6))
+```
+
+Variable is a storage location or symbolic name to a value e.g.
+
+```{r, engine='python'}
+building = 'Gaia'
+buildingNumber = 101
+'Gaia'
+```
+
+There is no need to say or define the datatype, `python` has a loose type variable declaration. *Walk like a duck and swims like a duck and quacks like a duck I call it a duck*
+
+
+
+## Handling Vector data with Python
 
 Below we will explain step by step what is done is the python script so that you
 can work on the script from home.
@@ -94,5 +122,16 @@ transform = osr.CoordinateTransformation(source, target)
 point = ogr.CreateGeometryFromWkt("POINT (5.6660 -51.9872)")
 point.Transform(transform)
 print point.ExportToWkt()
+```
+
+## Raster data with Python
+
+## R from Python
+
+A very simple example using the Python Rpy2 module:
+```{r, engine='python'}
+import rpy2.robjects as robjects
+pi = robjects.r['pi']
+print(pi[0])
 ```
 

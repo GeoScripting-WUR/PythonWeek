@@ -54,18 +54,21 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <div id="header">
 <h1 class="title">Lesson 14 and 15: Python for geo-scripting</h1>
 <h4 class="author"><em>Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Eliakim Hamunyela</em></h4>
-<h4 class="date"><em>18 December, 2014</em></h4>
+<h4 class="date"><em>26 December, 2014</em></h4>
 </div>
 
 <div id="TOC">
 <ul>
 <li><a href="#introduction"><span class="toc-section-number">1</span> Introduction</a><ul>
 <li><a href="#getting-started-with-python-within-os-geo-live-linux"><span class="toc-section-number">1.1</span> Getting started with Python within OS-GEO live linux</a></li>
-<li><a href="#handling-vector-data"><span class="toc-section-number">1.2</span> Handling Vector data</a><ul>
-<li><a href="#points"><span class="toc-section-number">1.2.1</span> Points</a></li>
-<li><a href="#define-a-spatial-reference"><span class="toc-section-number">1.2.2</span> Define a spatial reference</a></li>
-<li><a href="#reproject-a-point"><span class="toc-section-number">1.2.3</span> Reproject a point</a></li>
+<li><a href="#a-short-python-refresher"><span class="toc-section-number">1.2</span> A short Python refresher</a></li>
+<li><a href="#handling-vector-data-with-python"><span class="toc-section-number">1.3</span> Handling Vector data with Python</a><ul>
+<li><a href="#points"><span class="toc-section-number">1.3.1</span> Points</a></li>
+<li><a href="#define-a-spatial-reference"><span class="toc-section-number">1.3.2</span> Define a spatial reference</a></li>
+<li><a href="#reproject-a-point"><span class="toc-section-number">1.3.3</span> Reproject a point</a></li>
 </ul></li>
+<li><a href="#raster-data-with-python"><span class="toc-section-number">1.4</span> Raster data with Python</a></li>
+<li><a href="#r-from-python"><span class="toc-section-number">1.5</span> R from Python</a></li>
 </ul></li>
 </ul>
 </div>
@@ -76,12 +79,15 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <h2><span class="header-section-number">1.1</span> Getting started with Python within OS-GEO live linux</h2>
 <ul>
 <li>Launch osgeo live from vmware viewer, login.</li>
-<li>Open the terminal and type the following to start python and find out what the python version is:</li>
+<li>Open the terminal and type the following to check the installed GDAL version:</li>
 </ul>
-<p>Check GDAL version installed by typing this in the terminal:</p>
-<pre class="r"><code>gdal-config --version</code></pre>
-<p>To start Python:</p>
-<pre class="bash"><code>python</code></pre>
+<pre class="bash"><code>## from R: system(&quot;gdal-config --version&quot;)
+## From the terminal:
+gdal-config --version</code></pre>
+<ul>
+<li>type the following to start python and find out what the python version is: To start Python:</li>
+</ul>
+<pre class="r"><code>python</code></pre>
 <p>An example script to find out what the installed Python version is (<a href="https://stackoverflow.com/questions/1093322/how-do-i-check-what-version-of-python-is-running-my-script">more info in question asked on stackoverflow</a>)</p>
 <pre class="python"><code>import sys
 print sys.version #parentheses necessary in python 3. </code></pre>
@@ -93,8 +99,19 @@ print sys.version #parentheses necessary in python 3. </code></pre>
 <li>Open the python script within a Python editor</li>
 </ul>
 </div>
-<div id="handling-vector-data" class="section level2">
-<h2><span class="header-section-number">1.2</span> Handling Vector data</h2>
+<div id="a-short-python-refresher" class="section level2">
+<h2><span class="header-section-number">1.2</span> A short Python refresher</h2>
+<p><em>Question</em>: What is the difference between 10 and 10.0 when dealing with datatypes in Python???</p>
+<pre class="python"><code>print(int(10.6))</code></pre>
+<pre><code>## 10</code></pre>
+<p>Variable is a storage location or symbolic name to a value e.g.</p>
+<pre class="python"><code>building = 'Gaia'
+buildingNumber = 101
+'Gaia'</code></pre>
+<p>There is no need to say or define the datatype, <code>python</code> has a loose type variable declaration. <em>Walk like a duck and swims like a duck and quacks like a duck I call it a duck</em></p>
+</div>
+<div id="handling-vector-data-with-python" class="section level2">
+<h2><span class="header-section-number">1.3</span> Handling Vector data with Python</h2>
 <p>Below we will explain step by step what is done is the python script so that you can work on the script from home.</p>
 <ul>
 <li>define two points in Google Earth</li>
@@ -105,7 +122,7 @@ print sys.version #parentheses necessary in python 3. </code></pre>
 <li>export the point to a kml or shape file to be imported in Google Earth or QGIS</li>
 </ul>
 <div id="points" class="section level3">
-<h3><span class="header-section-number">1.2.1</span> Points</h3>
+<h3><span class="header-section-number">1.3.1</span> Points</h3>
 <pre class="python"><code>from osgeo import ogr
 # Create a point geometry
 wkt = &quot;POINT (173914.00 441864.00)&quot;
@@ -114,7 +131,7 @@ print(pt)</code></pre>
 <pre><code>## POINT (173914 441864)</code></pre>
 </div>
 <div id="define-a-spatial-reference" class="section level3">
-<h3><span class="header-section-number">1.2.2</span> Define a spatial reference</h3>
+<h3><span class="header-section-number">1.3.2</span> Define a spatial reference</h3>
 <p>See <a href="http://spatialreference.org/ref/epsg/wgs-84/" class="uri">http://spatialreference.org/ref/epsg/wgs-84/</a></p>
 <pre class="python"><code>from osgeo import osr
 ##  spatial reference
@@ -122,7 +139,7 @@ spatialRef = osr.SpatialReference()
 spatialRef.ImportFromEPSG(4326)  # from EPSG - Lat/long</code></pre>
 </div>
 <div id="reproject-a-point" class="section level3">
-<h3><span class="header-section-number">1.2.3</span> Reproject a point</h3>
+<h3><span class="header-section-number">1.3.3</span> Reproject a point</h3>
 <pre class="python"><code>from osgeo import ogr
 from osgeo import osr
 
@@ -141,6 +158,17 @@ point.Transform(transform)
 print point.ExportToWkt()</code></pre>
 <pre><code>## POINT (205654.247323391464306 -15819205.527011606842279)</code></pre>
 </div>
+</div>
+<div id="raster-data-with-python" class="section level2">
+<h2><span class="header-section-number">1.4</span> Raster data with Python</h2>
+</div>
+<div id="r-from-python" class="section level2">
+<h2><span class="header-section-number">1.5</span> R from Python</h2>
+<p>A very simple example using the Python Rpy2 module:</p>
+<pre class="python"><code>import rpy2.robjects as robjects
+pi = robjects.r['pi']
+print(pi[0])</code></pre>
+<pre><code>## 3.14159265359</code></pre>
 </div>
 </div>
 
