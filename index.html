@@ -76,11 +76,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li><a href="#lists"><span class="toc-section-number">2.2</span> Lists</a></li>
 <li><a href="#dictionaries-loops-ifelse"><span class="toc-section-number">2.3</span> Dictionaries, loops, if/else</a></li>
 </ul></li>
-<li><a href="#handling-vector-data-with-python"><span class="toc-section-number">3</span> Handling Vector data with Python</a><ul>
-<li><a href="#points"><span class="toc-section-number">3.1</span> Points</a></li>
-<li><a href="#define-a-spatial-reference"><span class="toc-section-number">3.2</span> Define a spatial reference</a></li>
-<li><a href="#reproject-a-point"><span class="toc-section-number">3.3</span> Reproject a point</a></li>
-</ul></li>
+<li><a href="#handling-vector-data-with-python"><span class="toc-section-number">3</span> Handling Vector data with Python</a></li>
 <li><a href="#raster-data-with-python"><span class="toc-section-number">4</span> Raster data with Python</a></li>
 <li><a href="#r-from-python"><span class="toc-section-number">5</span> R from Python</a></li>
 <li><a href="#more-info"><span class="toc-section-number">6</span> More info</a></li>
@@ -202,55 +198,11 @@ campusDic = {<span class="dv">101</span>:<span class="st">'Gaia'</span>,
 </div>
 <div id="handling-vector-data-with-python" class="section level1">
 <h1><span class="header-section-number">3</span> Handling Vector data with Python</h1>
-<p>Below we will explain step by step what is done is the python script so that you can work on the script from home.</p>
-<ul>
-<li>define two points in Google Earth</li>
-<li>set the projection and reproject to the Dutch projection</li>
-<li>measure the distance between these points</li>
-<li>draw a line between the points</li>
-<li>create a buffer around the points</li>
-<li>export the point to a kml or shape file to be imported in Google Earth or QGIS</li>
-</ul>
-<div id="points" class="section level2">
-<h2><span class="header-section-number">3.1</span> Points</h2>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="ch">from</span> osgeo <span class="ch">import</span> ogr
-<span class="co"># Create a point geometry</span>
-wkt = <span class="st">&quot;POINT (173914.00 441864.00)&quot;</span>
-pt = ogr.CreateGeometryFromWkt(wkt)
-<span class="dt">print</span>(pt)</code></pre>
-<pre><code>## POINT (173914 441864)</code></pre>
-</div>
-<div id="define-a-spatial-reference" class="section level2">
-<h2><span class="header-section-number">3.2</span> Define a spatial reference</h2>
-<p>See <a href="http://spatialreference.org/ref/epsg/wgs-84/" class="uri">http://spatialreference.org/ref/epsg/wgs-84/</a></p>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="ch">from</span> osgeo <span class="ch">import</span> osr
-<span class="co">##  spatial reference</span>
-spatialRef = osr.SpatialReference()
-spatialRef.ImportFromEPSG(<span class="dv">4326</span>)  <span class="co"># from EPSG - Lat/long</span></code></pre>
-</div>
-<div id="reproject-a-point" class="section level2">
-<h2><span class="header-section-number">3.3</span> Reproject a point</h2>
-<pre class="sourceCode python"><code class="sourceCode python"><span class="ch">from</span> osgeo <span class="ch">import</span> ogr
-<span class="ch">from</span> osgeo <span class="ch">import</span> osr
-
-<span class="co">## lat/long definition</span>
-source = osr.SpatialReference()
-source.ImportFromEPSG(<span class="dv">4326</span>)
-
-<span class="co"># http://spatialreference.org/ref/sr-org/6781/</span>
-<span class="co"># http://spatialreference.org/ref/epsg/28992/</span>
-target = osr.SpatialReference()
-target.ImportFromEPSG(<span class="dv">28992</span>)
-
-transform = osr.CoordinateTransformation(source, target)
-point = ogr.CreateGeometryFromWkt(<span class="st">&quot;POINT (5.6660 -51.9872)&quot;</span>)
-point.Transform(transform)
-<span class="dt">print</span> point.ExportToWkt()</code></pre>
-<pre><code>## POINT (205654.247323391464306 -15819205.527011606842279)</code></pre>
-</div>
+<p>Go to <a href="https://geoscripting-wur.github.io/PythonWeek/VectorPython.html">Vector Data handling in Python</a></p>
 </div>
 <div id="raster-data-with-python" class="section level1">
 <h1><span class="header-section-number">4</span> Raster data with Python</h1>
+<p>raster data</p>
 </div>
 <div id="r-from-python" class="section level1">
 <h1><span class="header-section-number">5</span> R from Python</h1>

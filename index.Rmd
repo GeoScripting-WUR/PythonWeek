@@ -166,6 +166,8 @@ else:
 
 # Handling Vector data with Python
 
+Go to [Vector Data handling in Python](https://geoscripting-wur.github.io/PythonWeek/VectorPython.html)
+
 # Raster data with Python
 
 raster data
