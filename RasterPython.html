@@ -95,7 +95,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </div>
 <div id="modules-and-drivers-for-raster-data" class="section level2">
 <h2><span class="header-section-number">1.3</span> Modules and drivers for raster data</h2>
-<p>GDAL</p>
+<p><code>GDAL</code>, the wonder for raster and! vector data (via <code>OGR</code>) handling</p>
 </div>
 <div id="reading-analysing-and-writing-raster-data" class="section level2">
 <h2><span class="header-section-number">1.4</span> Reading, analysing, and writing raster data</h2>
@@ -106,8 +106,10 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <span class="co"># First steps is to register the drivers</span>
 gdal.AllRegister()
 
-<span class="co"># set and get working directory</span>
-<span class="dt">print</span> os.getcwd()
+<span class="co"># get working directory to double check in which directory we are working</span>
+
+os.getcwd()
+
 <span class="co"># Opening Erdas Imagine Images (*.img)</span>
 driver = gdal.GetDriverByName(<span class="st">'HFA'</span>)
 filename = <span class="st">'data/ospy_data5/aster.img'</span>
@@ -118,7 +120,7 @@ dataSource = gdal.Open(filename, GA_ReadOnly)
 <span class="co"># dataSource?</span>
 dataSource.RasterXSize
 dataSource.RasterYSize
-<span class="dt">print</span> dataSource.RasterCount
+dataSource.RasterCount <span class="co"># number of layers</span>
 dataSource.GetProjection()
 
 <span class="co">## dataSource has several important properties (use dir to have a clue)</span>
@@ -155,11 +157,14 @@ band2Arr=band2Arr.astype(np.float32)
 band3Arr=band3Arr.astype(np.float32)
 
 <span class="co"># What is &quot;np&quot; in this specific numpy import?</span>
-<span class="co"># how do we avoid division by zero</span>
+
+<span class="co"># How do we avoid division by zero?</span>
+
 mask = np.greater(band3Arr+band2Arr,<span class="dv">0</span>)
 ndvi = np.choose(mask,(-<span class="dv">99</span>,(band3Arr-band2Arr)/(band3Arr+band2Arr)))
 ndvi.<span class="dt">min</span>()
 ndvi.<span class="dt">max</span>()
+
 <span class="co"># dir(ndvi)</span>
 <span class="co"># how do we get the real minimum value?</span>
 ndvi[ndvi&gt;-<span class="dv">99</span>].<span class="dt">min</span>()
@@ -178,9 +183,7 @@ outDataSet.FlushCache()
 <span class="co"># or</span>
 <span class="co"># outDataSet = None</span>
 <span class="co"># it is not easy to know to find out what the options are linked to a certain method approach</span></code></pre>
-<pre><code>## -c:59: RuntimeWarning: invalid value encountered in divide
-## /Users/verbe039/WORK/Teaching/GeoScripting_2015/GitHub_geoscripting/PythonWeek
-## 3</code></pre>
+<pre><code>## -c:63: RuntimeWarning: invalid value encountered in divide</code></pre>
 </div>
 <div id="using-qgis-and-python" class="section level2">
 <h2><span class="header-section-number">1.5</span> Using QGIS and Python</h2>

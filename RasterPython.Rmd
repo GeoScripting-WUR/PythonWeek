@@ -28,11 +28,11 @@ Data is also available from http://www.gis.usu.edu/~chrisg/python/2009/lectures/
 
 ## Modules and drivers for raster data
 
-GDAL
+`GDAL`, the wonder for raster and! vector data (via `OGR`) handling
 
 ## Reading, analysing, and writing raster data
 
-```{r, engine='python'}
+```{r, engine='python', en}
 import os
 from osgeo import gdal
 from osgeo.gdalconst import GA_ReadOnly, GDT_Float32
@@ -40,8 +40,10 @@ from osgeo.gdalconst import GA_ReadOnly, GDT_Float32
 # First steps is to register the drivers
 gdal.AllRegister()
 
-# set and get working directory
-print os.getcwd()
+# get working directory to double check in which directory we are working
+
+os.getcwd()
+
 # Opening Erdas Imagine Images (*.img)
 driver = gdal.GetDriverByName('HFA')
 filename = 'data/ospy_data5/aster.img'
@@ -52,7 +54,7 @@ dataSource = gdal.Open(filename, GA_ReadOnly)
 # dataSource?
 dataSource.RasterXSize
 dataSource.RasterYSize
-print dataSource.RasterCount
+dataSource.RasterCount # number of layers
 dataSource.GetProjection()
 
 ## dataSource has several important properties (use dir to have a clue)
@@ -89,11 +91,14 @@ band2Arr=band2Arr.astype(np.float32)
 band3Arr=band3Arr.astype(np.float32)
 
 # What is "np" in this specific numpy import?
-# how do we avoid division by zero
+
+# How do we avoid division by zero?
+
 mask = np.greater(band3Arr+band2Arr,0)
 ndvi = np.choose(mask,(-99,(band3Arr-band2Arr)/(band3Arr+band2Arr)))
 ndvi.min()
 ndvi.max()
+
 # dir(ndvi)
 # how do we get the real minimum value?
 ndvi[ndvi>-99].min()
