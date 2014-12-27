@@ -11,6 +11,23 @@ output:
     highlight: pygments
 ---
 
+## Intro
+
+Using Python without ArcPy?! Why?!
+
+- Free
+- Flexiblility
+- Open-source
+- Wide user community
+
+How?!
+- GDAL/OGR
+- GEOS
+
+Have a look at this question on GIS StackExchange:
+- https://gis.stackexchange.com/questions/34509/alternatives-to-using-arcpy
+- https://gis.stackexchange.com/questions/16657/clipping-raster-with-vector-layer-using-gdal
+
 # Getting started with Python within OS-GEO live linux
 
 - Launch osgeo live from vmware viewer, login.
@@ -164,13 +181,156 @@ else:
     print "above 3"
 ```
 
+## Functions
+
+A function is a section of code that does something specific that you want use multipletimes without having to type the full function again but just call the function by its name.
+
+```{r}
+def printPotato():
+    print "potato"
+printPotato()
+```
+
+Functions accept arguments and return variables e.g.:
+
+```{r}
+def printPotato(something):
+    print something
+printPotato("test")
+```
+
+`return` is used to indicate what you want to obtain from the function, and you can `return` multiple items.
+
+```{r}
+def times3(number):
+    tmp = number*3
+    return tmp, number
+print times3(4)
+```
+
+## Importing modules
+
+```{r}
+import math
+print dir(math)
+```
+
+- The best way is to check documentation: https://docs.python.org/2/.
+- Modules are Python's butter and bread. 
+- A module contains code that can be used or excuted.
+
+Basically 2 ways to load a module:
+```{r}
+import math
+print math.pi
+
+from math import pi
+print pi
+```
+
+Why is `import math` the best way to import modules?
+
+```{r, eval=FALSE, echo=FALSE}
+from numy import pi
+from math import pi
+```
+
+## Some important internal modules:
+
+- `os`: Access to operating system features
+- `os.path`: Manipulating of file names
+- `sys`: System specific configuration
+- `glob`: Filename pattern matching
+- `math`: Mathametical functions
+- `datetime`: Date/Time manipulation
+
+*Question*: What is the difference between `os` and `os.path`?
+
+Some examples:
+
+```{r, eval=FALSE}
+import glob
+glob.glob("*")
+```
+
+```{r}
+from datetime import timedelta,date
+delta = timedelta(days=7)
+print date.today()
+print date.today()+delta
+```
+
+## File access
+
+Very simple for 99% of the cases
+Write something to file:
+
+```{r, engine='python'}
+fileObj = open('test.txt','w')
+fileObj.write('some simple text')
+fileObj.close()
+```
+
+```{r}
+fileObj = open('test.txt','r')
+a = fileObj.read()
+print a
+fileObj.close()
+```
+
+**Question**: What does `r` and `w` mean?
+
+## Error handling
+
+Sometime problems occur... Errors detected during execution are called *exceptions*
+
+Good code deals with exceptions:
+
+```{r, eval=FALSE}
+>>> >>> open("/foo0")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IOError: [Errno 2] No such file or directory: '/foo0'
+```
+
+The file doesn't exist, so the script stops and outputs an ugly msg
+
+How to deal with this I/O error??? Good progamming!!!
+
+```{r, engine='python'}
+
+try:
+    open("foo")
+except IOError:
+    print "no file"
+
+## we can be more precise:
+try:
+    open("/foo")
+except IOError:
+    print "no file"
+```
+
+## Python statements
+
+- `if`
+- `for`
+- `while`
+- `try`
+- `class` which executes a block of code and attaches its local names to a `class`, for use in object oriented programming
+- `def` which defines a function or statement
+- `with` which encloses a code block within a context manager
+- `pass` statement, which serves as a `NOP` (no operation)
+- `assert`, used during debugging to check for conditions that ought to apply
+- `yield`
+- `import`
 # Handling Vector data with Python
 
 Go to [Vector Data handling in Python](https://geoscripting-wur.github.io/PythonWeek/VectorPython.html)
 
 # Raster data with Python
 
-raster data
+Go to [Raster Data handling in Python](https://geoscripting-wur.github.io/PythonWeek/RasterPython.html)
 
 # R from Python
 
@@ -183,3 +343,7 @@ print(pi[0])
 
 # More info
 - [The official python tutorial](https://docs.python.org/2/tutorial/)
+- [Python Tutorial](http://www.tutorialspoint.com/python/)
+- [Stack OverFlow Python](https://stackoverflow.com/questions/tagged/python)
+- [GIS Stack Exchange](https://gis.stackexchange.com/)
+

@@ -1,0 +1,131 @@
+---
+title: "Raster data handling with Python"
+author: "Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output:
+  html_document:
+    theme: united
+    toc: true
+    toc_depth: 4
+    number_sections: true
+    highlight: pygments
+---
+
+# Handling Raster data with Python
+
+## Intro
+
+Have a look at this question on GIS StackExchange:
+
+https://gis.stackexchange.com/questions/34509/alternatives-to-using-arcpy
+
+## Dataset
+
+The data set for the raster python session can be downloaded from:
+https://www.dropbox.com/s/rsc4lzkd3t2adq5/ospy_data5.zip?dl=0
+
+Data is also available from http://www.gis.usu.edu/~chrisg/python/2009/lectures/
+
+## Modules and drivers for raster data
+
+GDAL
+
+## Reading, analysing, and writing raster data
+
+```{r, engine='python'}
+import os
+from osgeo import gdal
+from osgeo.gdalconst import GA_ReadOnly, GDT_Float32
+# Remember: GDAL also works with file formats like OGR
+# First steps is to register the drivers
+gdal.AllRegister()
+
+# set and get working directory
+print os.getcwd()
+# Opening Erdas Imagine Images (*.img)
+driver = gdal.GetDriverByName('HFA')
+filename = 'data/ospy_data5/aster.img'
+dataSource = gdal.Open(filename, GA_ReadOnly)
+#GDAL also works with file formats like OGR
+
+# Question: how can we find out what the options are of the object 
+# dataSource?
+dataSource.RasterXSize
+dataSource.RasterYSize
+print dataSource.RasterCount
+dataSource.GetProjection()
+
+## dataSource has several important properties (use dir to have a clue)
+dir(dataSource)
+type(dataSource)
+str(dataSource)
+
+band1 = dataSource.GetRasterBand(1)
+# dir(band1)
+# help(band1.ReadAsArray)
+# help(gdal.Band.ReadAsArray)
+
+band1Arr = band1.ReadAsArray(0,0,dataSource.RasterXSize, dataSource.RasterYSize)
+# dir(band1Arr) finding out what the possibilities are
+band1Arr.min()
+band1Arr.max()
+band1Arr.mean()
+
+# help(band1Arr.view)
+band1Arr.view()
+
+# Let's get all bands
+band2Arr = dataSource.GetRasterBand(2).ReadAsArray(0,0,dataSource.RasterXSize, dataSource.RasterYSize)
+band3Arr = dataSource.GetRasterBand(3).ReadAsArray(0,0,dataSource.RasterXSize, dataSource.RasterYSize)
+# ndvi = (band3Arr-band2Arr)/(band3Arr+band2Arr)
+
+#Question: What is the result of the following division???
+#1/2
+#1.0/2.0
+
+import numpy as np
+band1Arr=band1Arr.astype(np.float32)
+band2Arr=band2Arr.astype(np.float32)
+band3Arr=band3Arr.astype(np.float32)
+
+# What is "np" in this specific numpy import?
+# how do we avoid division by zero
+mask = np.greater(band3Arr+band2Arr,0)
+ndvi = np.choose(mask,(-99,(band3Arr-band2Arr)/(band3Arr+band2Arr)))
+ndvi.min()
+ndvi.max()
+# dir(ndvi)
+# how do we get the real minimum value?
+ndvi[ndvi>-99].min()
+
+# outputs
+outDataSet=driver.Create('data/ndvi.img', dataSource.RasterXSize, dataSource.RasterYSize, 1, GDT_Float32)
+outBand = outDataSet.GetRasterBand(1)
+outBand.WriteArray(ndvi,0,0)
+outBand.SetNoDataValue(-99)
+## Questoin where do we get the image projection info from???
+outDataSet.SetProjection(dataSource.GetProjection())
+
+## Finally let's save it... or like in the OGR example flush it
+outBand.FlushCache()
+outDataSet.FlushCache()
+# or
+# outDataSet = None
+# it is not easy to know to find out what the options are linked to a certain method approach
+```
+
+## Using QGIS and Python
+
+- [QGIS and Python tutorial](http://www.qgisworkshop.org/html/workshop/python_in_qgis_tutorial2.html)
+
+# More Information
+
+- [Handling raster data with GDAL](http://www.gis.usu.edu/~chrisg/python/2009/)
+- [GDAL Python info and bindings](http://gdal.org/python/osgeo.gdal_array-module.html#BandReadAsArray)
+
+Editors:
+
+- https://stackoverflow.com/questions/8305809/is-there-something-like-rstudio-for-python
+(check out `Spyder` or `iPython`)
+
+- yet another example https://borealperspectives.wordpress.com/2014/01/16/data-type-mapping-when-using-pythongdal-to-write-numpy-arrays-to-geotiff/
