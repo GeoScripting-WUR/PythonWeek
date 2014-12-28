@@ -154,14 +154,20 @@ outBand.WriteArray(ndvi,0,0)
 outBand.SetNoDataValue(-99)
 ## Questoin where do we get the image projection info from???
 outDataSet.SetProjection(dataSource.GetProjection())
-
 ## Finally let's save it... or like in the OGR example flush it
 outBand.FlushCache()
 outDataSet.FlushCache()
 # or
 # outDataSet = None
-# it is not easy to know to find out what the options are linked to a certain method approach
+# it is not easy to know to find out what the options 
+# are linked to a certain method approach
 ```
+
+**Question**: How can we write a Geotif file?
+
+An interesting www to check out if something unexpected occurs:
+http://trac.osgeo.org/gdal/wiki/PythonGotchas
+
 
 We can quickly check what we have done with R:
 ```{r, engine='R', message=FALSE}
@@ -175,16 +181,17 @@ plotRGB(a, 3, 2, 1, stretch='hist')
 
 ## Using QGIS and Python
 
+Here is a nice clear example how to get started:
+- http://www.qgistutorials.com/nl/docs/getting_started_with_pyqgis.html
+
 - [QGIS and Python tutorial](http://www.qgisworkshop.org/html/workshop/python_in_qgis_tutorial2.html)
 
 # More Information
+- https://pcjericks.github.io/py-gdalogr-cookbook/raster_layers.html
 - Great basic tutorial: http://www.gdal.org/gdal_tutorial.html
 - [Handling raster data with GDAL](http://www.gis.usu.edu/~chrisg/python/2009/)
 - [GDAL Python info and bindings](http://gdal.org/python/osgeo.gdal_array-module.html#BandReadAsArray)
-
-Editors:
-
-- https://stackoverflow.com/questions/8305809/is-there-something-like-rstudio-for-python
-(check out `Spyder` or `iPython`)
-
 - yet another example https://borealperspectives.wordpress.com/2014/01/16/data-type-mapping-when-using-pythongdal-to-write-numpy-arrays-to-geotiff/
+
+# Info about Python editors:
+- https://stackoverflow.com/questions/8305809/is-there-something-like-rstudio-for-python (check out `Spyder` or `iPython`)
