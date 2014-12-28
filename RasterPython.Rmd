@@ -32,32 +32,60 @@ Data is also available from http://www.gis.usu.edu/~chrisg/python/2009/lectures/
 
 ## Reading, analysing, and writing raster data
 
+First, the `GDAL` module is imported together with gdalconst that contains serveral default values.
+Below we just import two but more can be imported by `from osgeo.gdalconst import *`
+
+Let's get started and see comments here within the script and the output at the end of the script:
+
 ```{r, engine='python', en}
-import os
+## we define a helper function do find out what the line number is in the code
+## it is not necessary to type in the following 4 lines below:
+import inspect
+def lineno():
+    """Returns the current line number in our program."""
+    return inspect.currentframe().f_back.f_lineno
+
+## The script starts here:
+import os  # for finding the working directory
 from osgeo import gdal
 from osgeo.gdalconst import GA_ReadOnly, GDT_Float32
-# Remember: GDAL also works with file formats like OGR
 # First steps is to register the drivers
+print "the GDAL version"
+print(gdal.__version__)
 gdal.AllRegister()
 
 # get working directory to double check in which directory we are working
-
 os.getcwd()
 
 # Opening Erdas Imagine Images (*.img)
 driver = gdal.GetDriverByName('HFA')
 filename = 'data/ospy_data5/aster.img'
 dataSource = gdal.Open(filename, GA_ReadOnly)
-#GDAL also works with file formats like OGR
+# GDAL also works with file formats like OGR
+# Question: Where does GA_ReadOnly comes from?
+# A. Is there a GA_Write?! Answer?
+# B. ow can we find out what the options are of the object "dataSource?""
 
-# Question: how can we find out what the options are of the object 
-# dataSource?
+# More info about the dataSource:
 dataSource.RasterXSize
 dataSource.RasterYSize
-dataSource.RasterCount # number of layers
+dataSource.RasterCount
 dataSource.GetProjection()
 
+# Printed Nicely:
+print "information about aster.img"
+print 'Driver: ', dataSource.GetDriver().ShortName,'/', \
+      dataSource.GetDriver().LongName
+print 'Size is ',dataSource.RasterXSize,'x',dataSource.RasterYSize, \
+      'x',dataSource.RasterCount
+print 'Projection is ', dataSource.GetProjection()
+geotransform = dataSource.GetGeoTransform()
+if not geotransform is None:
+    print 'Origin = (',geotransform[0], ',',geotransform[3],')'
+    print 'Pixel Size = (',geotransform[1], ',',geotransform[5],')'
+
 ## dataSource has several important properties (use dir to have a clue)
+## type the following in the terminal and run it line by line:
 dir(dataSource)
 type(dataSource)
 str(dataSource)
@@ -68,18 +96,36 @@ band1 = dataSource.GetRasterBand(1)
 # help(gdal.Band.ReadAsArray)
 
 band1Arr = band1.ReadAsArray(0,0,dataSource.RasterXSize, dataSource.RasterYSize)
-# dir(band1Arr) finding out what the possibilities are
+## 0,0 is the offset
+
+# Question: Why are the () missing from RasterXSize and from RasterYSize?
+# In object oriented programming, objects have methods (functions) and attributes
+# Give an example of an attribute and of a method?
+
+## so what is band1Arr???
+print "type band1Arr:"
+print type(band1Arr)
+
+## It is a Numpy array with all the numpy array functionalities
+
 band1Arr.min()
 band1Arr.max()
 band1Arr.mean()
 
 # help(band1Arr.view)
-band1Arr.view()
+print band1Arr.view()
 
 # Let's get all bands
 band2Arr = dataSource.GetRasterBand(2).ReadAsArray(0,0,dataSource.RasterXSize, dataSource.RasterYSize)
 band3Arr = dataSource.GetRasterBand(3).ReadAsArray(0,0,dataSource.RasterXSize, dataSource.RasterYSize)
-# ndvi = (band3Arr-band2Arr)/(band3Arr+band2Arr)
+
+## Comment:
+## We are reading 1 band per array. We could have used the ReadAsArray at the dataSource level, generating a multidimensional array
+## How?
+
+# First error message (see below)
+print "This is linenumber", lineno()
+ndvi = (band3Arr-band2Arr)/(band3Arr+band2Arr)
 
 #Question: What is the result of the following division???
 #1/2
@@ -93,17 +139,15 @@ band3Arr=band3Arr.astype(np.float32)
 # What is "np" in this specific numpy import?
 
 # How do we avoid division by zero?
-
+# Solution:
 mask = np.greater(band3Arr+band2Arr,0)
 ndvi = np.choose(mask,(-99,(band3Arr-band2Arr)/(band3Arr+band2Arr)))
-ndvi.min()
-ndvi.max()
+print "NDVI min and max values", ndvi.min(), ndvi.max()
 
-# dir(ndvi)
-# how do we get the real minimum value?
+# How do we get the real minimum value?
 ndvi[ndvi>-99].min()
 
-# outputs
+# Output an image
 outDataSet=driver.Create('data/ndvi.img', dataSource.RasterXSize, dataSource.RasterYSize, 1, GDT_Float32)
 outBand = outDataSet.GetRasterBand(1)
 outBand.WriteArray(ndvi,0,0)
@@ -119,12 +163,22 @@ outDataSet.FlushCache()
 # it is not easy to know to find out what the options are linked to a certain method approach
 ```
 
+We can quickly check what we have done with R:
+```{r, engine='R', message=FALSE}
+library(raster)
+b <- raster('data/ndvi.img')
+a <- brick('data/ospy_data5/aster.img')
+projection(b)
+hist(b, 1, maxpixels=1000, plot=TRUE)
+plotRGB(a, 3, 2, 1, stretch='hist')
+```
+
 ## Using QGIS and Python
 
 - [QGIS and Python tutorial](http://www.qgisworkshop.org/html/workshop/python_in_qgis_tutorial2.html)
 
 # More Information
-
+- Great basic tutorial: http://www.gdal.org/gdal_tutorial.html
 - [Handling raster data with GDAL](http://www.gis.usu.edu/~chrisg/python/2009/)
 - [GDAL Python info and bindings](http://gdal.org/python/osgeo.gdal_array-module.html#BandReadAsArray)
 
