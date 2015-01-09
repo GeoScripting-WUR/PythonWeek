@@ -4,7 +4,7 @@ author: "Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Eliakim Hamunyela"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   html_document:
-    theme: united
+    theme: cosmo
     toc: true
     toc_depth: 4
     number_sections: true
@@ -60,6 +60,22 @@ exit()
 - Open the python script within a Python editor
 
 # A short Python refresher
+
+## Finding help
+
+```{r, engine='python', eval=FALSE}
+import sys
+help(sys)
+help(1)
+```
+
+**Question**: What does this mean `___ ___` around words: e.g: `___doc___`
+
+Try out the following!!!
+
+```{r, engine='python'}
+help('hamster')
+```
 
 ## Numbers and variables
 
@@ -209,6 +225,18 @@ print times3(4)
 ```
 
 ## Importing modules
+
+Try this!
+
+```{r, engine='python', eval=FALSE}
+import this
+```
+
+```{r, engine='python', eval=FALSE}
+from __future__ import braces
+```
+
+
 
 ```{r}
 import math
