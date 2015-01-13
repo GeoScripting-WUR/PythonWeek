@@ -74,45 +74,58 @@ img {
 <div id="header">
 <h1 class="title">Lesson 14 and 15: Python for geo-scripting</h1>
 <h4 class="author"><em>Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Eliakim Hamunyela</em></h4>
-<h4 class="date"><em>09 January, 2015</em></h4>
+<h4 class="date"><em>13 January, 2015</em></h4>
 </div>
 
 <div id="TOC">
 <ul>
-<li><a href="#intro"><span class="toc-section-number">0.1</span> Intro</a></li>
-<li><a href="#getting-started-with-python-within-os-geo-live-linux"><span class="toc-section-number">1</span> Getting started with Python within OS-GEO live linux</a></li>
-<li><a href="#a-short-python-refresher"><span class="toc-section-number">2</span> A short Python refresher</a><ul>
-<li><a href="#finding-help"><span class="toc-section-number">2.1</span> Finding help</a></li>
-<li><a href="#numbers-and-variables"><span class="toc-section-number">2.2</span> Numbers and variables</a></li>
-<li><a href="#lists"><span class="toc-section-number">2.3</span> Lists</a></li>
-<li><a href="#dictionaries-loops-ifelse"><span class="toc-section-number">2.4</span> Dictionaries, loops, if/else</a></li>
-<li><a href="#functions"><span class="toc-section-number">2.5</span> Functions</a></li>
-<li><a href="#importing-modules"><span class="toc-section-number">2.6</span> Importing modules</a></li>
-<li><a href="#some-important-internal-modules"><span class="toc-section-number">2.7</span> Some important internal modules:</a></li>
-<li><a href="#file-access"><span class="toc-section-number">2.8</span> File access</a></li>
-<li><a href="#error-handling"><span class="toc-section-number">2.9</span> Error handling</a></li>
-<li><a href="#python-statements"><span class="toc-section-number">2.10</span> Python statements</a></li>
+<li><a href="#to-do-to-prepare-on-the-python-based-raster-and-vector-handling"><span class="toc-section-number">1</span> To do to prepare on the Python based raster and vector handling</a></li>
+<li><a href="#intro"><span class="toc-section-number">2</span> Intro</a></li>
+<li><a href="#getting-started-with-python-within-os-geo-live-linux"><span class="toc-section-number">3</span> Getting started with Python within OS-GEO live linux</a></li>
+<li><a href="#a-short-python-refresher"><span class="toc-section-number">4</span> A short Python refresher</a><ul>
+<li><a href="#finding-help"><span class="toc-section-number">4.1</span> Finding help</a></li>
+<li><a href="#numbers-and-variables"><span class="toc-section-number">4.2</span> Numbers and variables</a></li>
+<li><a href="#lists"><span class="toc-section-number">4.3</span> Lists</a></li>
+<li><a href="#dictionaries-loops-ifelse"><span class="toc-section-number">4.4</span> Dictionaries, loops, if/else</a></li>
+<li><a href="#functions"><span class="toc-section-number">4.5</span> Functions</a></li>
+<li><a href="#importing-modules"><span class="toc-section-number">4.6</span> Importing modules</a></li>
+<li><a href="#some-important-internal-modules"><span class="toc-section-number">4.7</span> Some important internal modules:</a></li>
+<li><a href="#file-access"><span class="toc-section-number">4.8</span> File access</a></li>
+<li><a href="#error-handling"><span class="toc-section-number">4.9</span> Error handling</a></li>
+<li><a href="#python-statements"><span class="toc-section-number">4.10</span> Python statements</a></li>
 </ul></li>
-<li><a href="#raster-data-with-python"><span class="toc-section-number">3</span> Raster data with Python</a></li>
-<li><a href="#r-from-python"><span class="toc-section-number">4</span> R from Python</a></li>
-<li><a href="#more-info"><span class="toc-section-number">5</span> More info</a></li>
+<li><a href="#handling-vector-data-with-python"><span class="toc-section-number">5</span> Handling Vector data with Python</a></li>
+<li><a href="#raster-data-with-python"><span class="toc-section-number">6</span> Raster data with Python</a></li>
+<li><a href="#r-from-python"><span class="toc-section-number">7</span> R from Python</a></li>
+<li><a href="#more-info"><span class="toc-section-number">8</span> More info</a></li>
 </ul>
 </div>
 
-<div id="intro" class="section level2">
-<h2><span class="header-section-number">0.1</span> Intro</h2>
+<div id="to-do-to-prepare-on-the-python-based-raster-and-vector-handling" class="section level1">
+<h1><span class="header-section-number">1</span> To do to prepare on the Python based raster and vector handling</h1>
+<ul>
+<li>Follow the Python Refresher via: <a href="http://www.codecademy.com/tracks/python" class="uri">http://www.codecademy.com/tracks/python</a> Complete the course and send a screenshot of the complete to me (Jan) by mail. If you are a confident and experienced Python programmer let me know and we can find a solution.</li>
+<li>Follow and complete the Python intro below and complete
+<ul>
+<li>On Thursday:</li>
+<li>On Friday:</li>
+</ul></li>
+</ul>
+</div>
+<div id="intro" class="section level1">
+<h1><span class="header-section-number">2</span> Intro</h1>
 <p>Using Python without ArcPy?! Why?!</p>
 <ul>
+<li>Wide user community and support</li>
 <li>Free</li>
 <li>Flexiblility</li>
 <li>Open-source</li>
-<li>Wide user community</li>
 </ul>
-<p>How?! - GDAL/OGR - GEOS</p>
+<p>How?! via: - GDAL/OGR - GEOS</p>
 <p>Have a look at this question on GIS StackExchange: - <a href="https://gis.stackexchange.com/questions/34509/alternatives-to-using-arcpy" class="uri">https://gis.stackexchange.com/questions/34509/alternatives-to-using-arcpy</a> - <a href="https://gis.stackexchange.com/questions/16657/clipping-raster-with-vector-layer-using-gdal" class="uri">https://gis.stackexchange.com/questions/16657/clipping-raster-with-vector-layer-using-gdal</a></p>
 </div>
 <div id="getting-started-with-python-within-os-geo-live-linux" class="section level1">
-<h1><span class="header-section-number">1</span> Getting started with Python within OS-GEO live linux</h1>
+<h1><span class="header-section-number">3</span> Getting started with Python within OS-GEO live linux</h1>
 <ul>
 <li>Launch osgeo live from vmware viewer, login.</li>
 <li>Open the terminal and type the following to check the installed GDAL version:</li>
@@ -136,9 +149,9 @@ img {
 </ul>
 </div>
 <div id="a-short-python-refresher" class="section level1">
-<h1><span class="header-section-number">2</span> A short Python refresher</h1>
+<h1><span class="header-section-number">4</span> A short Python refresher</h1>
 <div id="finding-help" class="section level2">
-<h2><span class="header-section-number">2.1</span> Finding help</h2>
+<h2><span class="header-section-number">4.1</span> Finding help</h2>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="ch">import</span> sys
 <span class="dt">help</span>(sys)
 <span class="dt">help</span>(<span class="dv">1</span>)</code></pre>
@@ -148,7 +161,7 @@ img {
 <pre><code>## no Python documentation found for 'hamster'</code></pre>
 </div>
 <div id="numbers-and-variables" class="section level2">
-<h2><span class="header-section-number">2.2</span> Numbers and variables</h2>
+<h2><span class="header-section-number">4.2</span> Numbers and variables</h2>
 <p><em>Question</em>: What is the difference between 10 and 10.0 when dealing with datatypes in Python???</p>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="dt">print</span>(<span class="dt">int</span>(<span class="fl">10.6</span>))</code></pre>
 <pre><code>## 10</code></pre>
@@ -163,7 +176,7 @@ buildingNumber = <span class="dv">101</span>
 <p>Python is basically a list of objects: List are organised with indexes. E.g.</p>
 </div>
 <div id="lists" class="section level2">
-<h2><span class="header-section-number">2.3</span> Lists</h2>
+<h2><span class="header-section-number">4.3</span> Lists</h2>
 <pre class="sourceCode python"><code class="sourceCode python">campus = [<span class="st">'Gaia'</span>,<span class="st">'Lumen'</span>, <span class="st">'Radix'</span>, <span class="st">'Forum'</span>]
 <span class="co"># how to can we print Forum?</span>
 <span class="dt">print</span>(campus[<span class="dv">3</span>])
@@ -187,7 +200,7 @@ campus.extend([<span class="st">&quot;Action&quot;</span>,<span class="st">&quot
 <p><em>Question?</em>: What are the major differences between Append/Extend? <strong>Question:</strong> What building is campus[-2]?</p>
 </div>
 <div id="dictionaries-loops-ifelse" class="section level2">
-<h2><span class="header-section-number">2.4</span> Dictionaries, loops, if/else</h2>
+<h2><span class="header-section-number">4.4</span> Dictionaries, loops, if/else</h2>
 <p>Let there be Dictionaries… Dictionary is an unordered set of key:value pairs. Like in the dictionary, ‘food’:‘voedsel’.</p>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="co"># dictionary</span>
 campusDic = {<span class="dv">101</span>:<span class="st">'Gaia'</span>,
@@ -234,7 +247,7 @@ campusDic = {<span class="dv">101</span>:<span class="st">'Gaia'</span>,
 <pre><code>## it is three</code></pre>
 </div>
 <div id="functions" class="section level2">
-<h2><span class="header-section-number">2.5</span> Functions</h2>
+<h2><span class="header-section-number">4.5</span> Functions</h2>
 <p>A function is a section of code that does something specific that you want use multipletimes without having to type the full function again but just call the function by its name.</p>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> printPotato():
     <span class="dt">print</span> <span class="st">&quot;potato&quot;</span>
@@ -253,7 +266,7 @@ printPotato(<span class="st">&quot;test&quot;</span>)</code></pre>
 <pre><code>## (12, 4)</code></pre>
 </div>
 <div id="importing-modules" class="section level2">
-<h2><span class="header-section-number">2.6</span> Importing modules</h2>
+<h2><span class="header-section-number">4.6</span> Importing modules</h2>
 <p>Try this!</p>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="ch">import</span> this</code></pre>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="ch">from</span> __future__ <span class="ch">import</span> braces</code></pre>
@@ -276,7 +289,7 @@ printPotato(<span class="st">&quot;test&quot;</span>)</code></pre>
 <p>Why is <code>import math</code> the best way to import modules?</p>
 </div>
 <div id="some-important-internal-modules" class="section level2">
-<h2><span class="header-section-number">2.7</span> Some important internal modules:</h2>
+<h2><span class="header-section-number">4.7</span> Some important internal modules:</h2>
 <ul>
 <li><code>os</code>: Access to operating system features</li>
 <li><code>os.path</code>: Manipulating of file names</li>
@@ -293,11 +306,11 @@ glob.glob(<span class="st">&quot;*&quot;</span>)</code></pre>
 delta = timedelta(days=<span class="dv">7</span>)
 <span class="dt">print</span> date.today()
 <span class="dt">print</span> date.today()+delta</code></pre>
-<pre><code>## 2015-01-09
-## 2015-01-16</code></pre>
+<pre><code>## 2015-01-13
+## 2015-01-20</code></pre>
 </div>
 <div id="file-access" class="section level2">
-<h2><span class="header-section-number">2.8</span> File access</h2>
+<h2><span class="header-section-number">4.8</span> File access</h2>
 <p>Very simple for 99% of the cases Write something to file:</p>
 <pre class="sourceCode python"><code class="sourceCode python">fileObj = <span class="dt">open</span>(<span class="st">'test.txt'</span>,<span class="st">'w'</span>)
 fileObj.write(<span class="st">'some simple text'</span>)
@@ -310,7 +323,7 @@ fileObj.close()</code></pre>
 <p><strong>Question</strong>: What does <code>r</code> and <code>w</code> mean?</p>
 </div>
 <div id="error-handling" class="section level2">
-<h2><span class="header-section-number">2.9</span> Error handling</h2>
+<h2><span class="header-section-number">4.9</span> Error handling</h2>
 <p>Sometime problems occur… Errors detected during execution are called <em>exceptions</em></p>
 <p>Good code deals with exceptions:</p>
 <pre class="sourceCode python"><code class="sourceCode python">&gt;&gt;&gt; &gt;&gt;&gt; <span class="dt">open</span>(<span class="st">&quot;/foo0&quot;</span>)
@@ -334,7 +347,7 @@ Traceback (most recent call last):
 ## no file</code></pre>
 </div>
 <div id="python-statements" class="section level2">
-<h2><span class="header-section-number">2.10</span> Python statements</h2>
+<h2><span class="header-section-number">4.10</span> Python statements</h2>
 <ul>
 <li><code>if</code></li>
 <li><code>for</code></li>
@@ -346,25 +359,29 @@ Traceback (most recent call last):
 <li><code>pass</code> statement, which serves as a <code>NOP</code> (no operation)</li>
 <li><code>assert</code>, used during debugging to check for conditions that ought to apply</li>
 <li><code>yield</code></li>
-<li><code>import</code> # Handling Vector data with Python</li>
+<li><code>import</code></li>
 </ul>
+</div>
+</div>
+<div id="handling-vector-data-with-python" class="section level1">
+<h1><span class="header-section-number">5</span> Handling Vector data with Python</h1>
 <p>Go to <a href="https://geoscripting-wur.github.io/PythonWeek/VectorPython.html">Vector Data handling in Python</a></p>
 </div>
-</div>
 <div id="raster-data-with-python" class="section level1">
-<h1><span class="header-section-number">3</span> Raster data with Python</h1>
+<h1><span class="header-section-number">6</span> Raster data with Python</h1>
 <p>Go to <a href="https://geoscripting-wur.github.io/PythonWeek/RasterPython.html">Raster Data handling in Python</a></p>
 </div>
 <div id="r-from-python" class="section level1">
-<h1><span class="header-section-number">4</span> R from Python</h1>
-<p>A very simple example using the Python Rpy2 module:</p>
+<h1><span class="header-section-number">7</span> R from Python</h1>
+<p>A very simple example using the Python Rpy2 module (only possible on Mac/Linux):</p>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="ch">import</span> rpy2.robjects <span class="ch">as</span> robjects
 pi = robjects.r[<span class="st">'pi'</span>]
 <span class="dt">print</span>(pi[<span class="dv">0</span>])</code></pre>
 </div>
 <div id="more-info" class="section level1">
-<h1><span class="header-section-number">5</span> More info</h1>
+<h1><span class="header-section-number">8</span> More info</h1>
 <ul>
+<li>A great book: <a href="http://www.amazon.com/Python-Geospatial-Development-Second-Edition/dp/178216152X">Python Geospatial Development</a></li>
 <li><a href="https://docs.python.org/2/tutorial/">The official python tutorial</a></li>
 <li><a href="http://www.tutorialspoint.com/python/">Python Tutorial</a></li>
 <li><a href="https://stackoverflow.com/questions/tagged/python">Stack OverFlow Python</a></li>

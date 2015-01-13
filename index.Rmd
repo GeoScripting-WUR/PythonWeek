@@ -11,16 +11,24 @@ output:
     highlight: pygments
 ---
 
-## Intro
+# To do to prepare on the Python based raster and vector handling
+
+- Follow the Python Refresher via: http://www.codecademy.com/tracks/python
+Complete the course and send a screenshot of the complete to me (Jan) by mail. If you are a confident and experienced Python programmer let me know and we can find a solution.
+- Follow and complete the Python intro below and complete 
+    - On Thursday:
+    - On Friday: 
+
+# Intro
 
 Using Python without ArcPy?! Why?!
 
+- Wide user community and support
 - Free
 - Flexiblility
 - Open-source
-- Wide user community
 
-How?!
+How?! via:
 - GDAL/OGR
 - GEOS
 
@@ -352,6 +360,8 @@ except IOError:
 - `assert`, used during debugging to check for conditions that ought to apply
 - `yield`
 - `import`
+
+
 # Handling Vector data with Python
 
 Go to [Vector Data handling in Python](https://geoscripting-wur.github.io/PythonWeek/VectorPython.html)
@@ -362,7 +372,7 @@ Go to [Raster Data handling in Python](https://geoscripting-wur.github.io/Python
 
 # R from Python
 
-A very simple example using the Python Rpy2 module:
+A very simple example using the Python Rpy2 module (only possible on Mac/Linux):
 ```{r, engine='python', eval =FALSE}
 import rpy2.robjects as robjects
 pi = robjects.r['pi']
@@ -370,6 +380,7 @@ print(pi[0])
 ```
 
 # More info
+- A great book: [Python Geospatial Development](http://www.amazon.com/Python-Geospatial-Development-Second-Edition/dp/178216152X)
 - [The official python tutorial](https://docs.python.org/2/tutorial/)
 - [Python Tutorial](http://www.tutorialspoint.com/python/)
 - [Stack OverFlow Python](https://stackoverflow.com/questions/tagged/python)
