@@ -15,9 +15,11 @@ output:
 
 - Follow the Python Refresher via: http://www.codecademy.com/tracks/python
 Complete the course and send a screenshot of the complete to me (Jan) by mail. If you are a confident and experienced Python programmer let me know and we can find a solution.
+
 - Follow and complete the Python intro below and complete 
-    - On Thursday:
-    - On Friday: 
+    - On Monday: Introduction to Python below.
+    - On Thursday: https://geoscripting-wur.github.io/PythonWeek/VectorPython.html
+    - On Friday: https://geoscripting-wur.github.io/PythonWeek/RasterPython.html
 
 # Intro
 
