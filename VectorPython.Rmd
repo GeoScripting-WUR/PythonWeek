@@ -13,6 +13,42 @@ output:
 
 # Handling Vector data with Python
 
+## GDAL/OGR using Python
+
+By now you should now what the following abbreviation stand for (what can you do with it??).
+Osgeo Python module groups 3 submodules:
+
+* GDAL
+* OGR
+
+New: 
+* OSR: spatial reference (projections!)
+
+Documentation: 
+
+* http://gdal.org/python/
+* http://www.gdal.org/gdal_tutorial.html
+
+## OGR
+
+OGR supports many different vector formats:
+
+* ESRI formats such as shapefiles, personal geodatabases and ArcSDE
+* Other software such as MapInfo, GRASS, Microstation
+* Open formats such TIGER/Line, SDTS, GML, KML
+* Databases such as MySQL, PostgreSQL, Oracle Spatial, etc.
+
+### OGR data drivers
+
+A driver is an object that knows how to interact with a certain data type (e.g. a shape file)
+You know the right driver to read or write data. Some drivers might only read content but the majority can read and write.
+
+```{r, engine='python'}
+try:
+  from osgeo import ogr
+except:
+  import ogr
+```
 
 ## Points
 

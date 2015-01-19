@@ -80,18 +80,54 @@ img {
 <div id="TOC">
 <ul>
 <li><a href="#handling-vector-data-with-python"><span class="toc-section-number">1</span> Handling Vector data with Python</a><ul>
-<li><a href="#points"><span class="toc-section-number">1.1</span> Points</a></li>
-<li><a href="#define-a-spatial-reference"><span class="toc-section-number">1.2</span> Define a spatial reference</a></li>
-<li><a href="#reproject-a-point"><span class="toc-section-number">1.3</span> Reproject a point</a></li>
-<li><a href="#assignment"><span class="toc-section-number">1.4</span> Assignment</a></li>
+<li><a href="#gdalogr-using-python"><span class="toc-section-number">1.1</span> GDAL/OGR using Python</a></li>
+<li><a href="#ogr"><span class="toc-section-number">1.2</span> OGR</a><ul>
+<li><a href="#ogr-data-drivers"><span class="toc-section-number">1.2.1</span> OGR data drivers</a></li>
+</ul></li>
+<li><a href="#points"><span class="toc-section-number">1.3</span> Points</a></li>
+<li><a href="#define-a-spatial-reference"><span class="toc-section-number">1.4</span> Define a spatial reference</a></li>
+<li><a href="#reproject-a-point"><span class="toc-section-number">1.5</span> Reproject a point</a></li>
+<li><a href="#assignment"><span class="toc-section-number">1.6</span> Assignment</a></li>
 </ul></li>
 </ul>
 </div>
 
 <div id="handling-vector-data-with-python" class="section level1">
 <h1><span class="header-section-number">1</span> Handling Vector data with Python</h1>
+<div id="gdalogr-using-python" class="section level2">
+<h2><span class="header-section-number">1.1</span> GDAL/OGR using Python</h2>
+<p>By now you should now what the following abbreviation stand for (what can you do with it??). Osgeo Python module groups 3 submodules:</p>
+<ul>
+<li>GDAL</li>
+<li>OGR</li>
+</ul>
+<p>New: * OSR: spatial reference (projections!)</p>
+<p>Documentation:</p>
+<ul>
+<li><a href="http://gdal.org/python/" class="uri">http://gdal.org/python/</a></li>
+<li><a href="http://www.gdal.org/gdal_tutorial.html" class="uri">http://www.gdal.org/gdal_tutorial.html</a></li>
+</ul>
+</div>
+<div id="ogr" class="section level2">
+<h2><span class="header-section-number">1.2</span> OGR</h2>
+<p>OGR supports many different vector formats:</p>
+<ul>
+<li>ESRI formats such as shapefiles, personal geodatabases and ArcSDE</li>
+<li>Other software such as MapInfo, GRASS, Microstation</li>
+<li>Open formats such TIGER/Line, SDTS, GML, KML</li>
+<li>Databases such as MySQL, PostgreSQL, Oracle Spatial, etc.</li>
+</ul>
+<div id="ogr-data-drivers" class="section level3">
+<h3><span class="header-section-number">1.2.1</span> OGR data drivers</h3>
+<p>A driver is an object that knows how to interact with a certain data type (e.g. a shape file) You know the right driver to read or write data. Some drivers might only read content but the majority can read and write.</p>
+<pre class="sourceCode python"><code class="sourceCode python"><span class="kw">try</span>:
+  <span class="ch">from</span> osgeo <span class="ch">import</span> ogr
+<span class="kw">except</span>:
+  <span class="ch">import</span> ogr</code></pre>
+</div>
+</div>
 <div id="points" class="section level2">
-<h2><span class="header-section-number">1.1</span> Points</h2>
+<h2><span class="header-section-number">1.3</span> Points</h2>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="ch">from</span> osgeo <span class="ch">import</span> ogr
 <span class="co"># Create a point geometry</span>
 wkt = <span class="st">&quot;POINT (173914.00 441864.00)&quot;</span>
@@ -100,7 +136,7 @@ pt = ogr.CreateGeometryFromWkt(wkt)
 <pre><code>## POINT (173914 441864)</code></pre>
 </div>
 <div id="define-a-spatial-reference" class="section level2">
-<h2><span class="header-section-number">1.2</span> Define a spatial reference</h2>
+<h2><span class="header-section-number">1.4</span> Define a spatial reference</h2>
 <p>See <a href="http://spatialreference.org/ref/epsg/wgs-84/" class="uri">http://spatialreference.org/ref/epsg/wgs-84/</a></p>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="ch">from</span> osgeo <span class="ch">import</span> osr
 <span class="co">##  spatial reference</span>
@@ -108,7 +144,7 @@ spatialRef = osr.SpatialReference()
 spatialRef.ImportFromEPSG(<span class="dv">4326</span>)  <span class="co"># from EPSG - Lat/long</span></code></pre>
 </div>
 <div id="reproject-a-point" class="section level2">
-<h2><span class="header-section-number">1.3</span> Reproject a point</h2>
+<h2><span class="header-section-number">1.5</span> Reproject a point</h2>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="ch">from</span> osgeo <span class="ch">import</span> ogr
 <span class="ch">from</span> osgeo <span class="ch">import</span> osr
 
@@ -128,7 +164,7 @@ point.Transform(transform)
 <pre><code>## POINT (205654.247323391464306 -15819205.527011606842279)</code></pre>
 </div>
 <div id="assignment" class="section level2">
-<h2><span class="header-section-number">1.4</span> Assignment</h2>
+<h2><span class="header-section-number">1.6</span> Assignment</h2>
 <p>Upload your Python script to Github (as a .py file) uploaded within the <code>Python</code> folder part of your repository for the Python week: Create a script that:</p>
 <ul>
 <li>defines two points in Google Earth or use the two points from the R vector excercise.</li>
