@@ -74,14 +74,14 @@ img {
 <div id="header">
 <h1 class="title">Lesson 14 and 15: Python for geo-scripting</h1>
 <h4 class="author"><em>Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Eliakim Hamunyela</em></h4>
-<h4 class="date"><em>13 January, 2015</em></h4>
+<h4 class="date"><em>19 January, 2015</em></h4>
 </div>
 
 <div id="TOC">
 <ul>
-<li><a href="#to-do-to-prepare-on-the-python-based-raster-and-vector-handling"><span class="toc-section-number">1</span> To do to prepare on the Python based raster and vector handling</a></li>
+<li><a href="#to-do-in-the-morning-self-study"><span class="toc-section-number">1</span> To do in the morning: Self-study</a></li>
 <li><a href="#intro"><span class="toc-section-number">2</span> Intro</a></li>
-<li><a href="#getting-started-with-python-within-os-geo-live-linux"><span class="toc-section-number">3</span> Getting started with Python within OS-GEO live linux</a></li>
+<li><a href="#getting-started-with-python-within-a-linux-os"><span class="toc-section-number">3</span> Getting started with Python within a Linux OS</a></li>
 <li><a href="#a-short-python-refresher"><span class="toc-section-number">4</span> A short Python refresher</a><ul>
 <li><a href="#finding-help"><span class="toc-section-number">4.1</span> Finding help</a></li>
 <li><a href="#numbers-and-variables"><span class="toc-section-number">4.2</span> Numbers and variables</a></li>
@@ -101,15 +101,15 @@ img {
 </ul>
 </div>
 
-<div id="to-do-to-prepare-on-the-python-based-raster-and-vector-handling" class="section level1">
-<h1><span class="header-section-number">1</span> To do to prepare on the Python based raster and vector handling</h1>
+<div id="to-do-in-the-morning-self-study" class="section level1">
+<h1><span class="header-section-number">1</span> To do in the morning: Self-study</h1>
+<p>Reminder: Self-study is critical for the completion of the excercises at the end of the tutorial!</p>
 <ul>
 <li><p>Follow the Python Refresher via: <a href="http://www.codecademy.com/tracks/python" class="uri">http://www.codecademy.com/tracks/python</a> Complete the course and send a screenshot of the complete to me (Jan) by mail. If you are a confident and experienced Python programmer let me know and we can find a solution.</p></li>
-<li>Follow and complete the Python intro below and complete
+<li><p>Follow and complete:</p>
 <ul>
-<li>On Monday: Introduction to Python below.</li>
-<li>On Thursday: <a href="https://geoscripting-wur.github.io/PythonWeek/VectorPython.html" class="uri">https://geoscripting-wur.github.io/PythonWeek/VectorPython.html</a></li>
-<li>On Friday: <a href="https://geoscripting-wur.github.io/PythonWeek/RasterPython.html" class="uri">https://geoscripting-wur.github.io/PythonWeek/RasterPython.html</a></li>
+<li>Thursday: the Python intro below and <a href="https://geoscripting-wur.github.io/PythonWeek/VectorPython.html" class="uri">https://geoscripting-wur.github.io/PythonWeek/VectorPython.html</a></li>
+<li>Friday: <a href="https://geoscripting-wur.github.io/PythonWeek/RasterPython.html" class="uri">https://geoscripting-wur.github.io/PythonWeek/RasterPython.html</a></li>
 </ul></li>
 </ul>
 </div>
@@ -123,13 +123,17 @@ img {
 <li>Open-source</li>
 </ul>
 <p>How?! via: - GDAL/OGR - GEOS</p>
-<p>Have a look at this question on GIS StackExchange: - <a href="https://gis.stackexchange.com/questions/34509/alternatives-to-using-arcpy" class="uri">https://gis.stackexchange.com/questions/34509/alternatives-to-using-arcpy</a> - <a href="https://gis.stackexchange.com/questions/16657/clipping-raster-with-vector-layer-using-gdal" class="uri">https://gis.stackexchange.com/questions/16657/clipping-raster-with-vector-layer-using-gdal</a></p>
-</div>
-<div id="getting-started-with-python-within-os-geo-live-linux" class="section level1">
-<h1><span class="header-section-number">3</span> Getting started with Python within OS-GEO live linux</h1>
+<p>Have a look at this question on GIS StackExchange:</p>
 <ul>
-<li>Launch osgeo live from vmware viewer, login.</li>
-<li>Open the terminal and type the following to check the installed GDAL version:</li>
+<li><a href="https://gis.stackexchange.com/questions/34509/alternatives-to-using-arcpy" class="uri">https://gis.stackexchange.com/questions/34509/alternatives-to-using-arcpy</a></li>
+<li><a href="https://gis.stackexchange.com/questions/16657/clipping-raster-with-vector-layer-using-gdal" class="uri">https://gis.stackexchange.com/questions/16657/clipping-raster-with-vector-layer-using-gdal</a></li>
+</ul>
+</div>
+<div id="getting-started-with-python-within-a-linux-os" class="section level1">
+<h1><span class="header-section-number">3</span> Getting started with Python within a Linux OS</h1>
+<ul>
+<li>Launch <a href="http://live.osgeo.org/en/index.html">OS-GEO live</a> from the VMware player and login.</li>
+<li>Open the Terminal and type the following to check the installed GDAL version:</li>
 </ul>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">## from R: system(&quot;gdal-config --version&quot;)</span>
 <span class="co">## From the terminal:</span>
@@ -307,8 +311,8 @@ glob.glob(<span class="st">&quot;*&quot;</span>)</code></pre>
 delta = timedelta(days=<span class="dv">7</span>)
 <span class="dt">print</span> date.today()
 <span class="dt">print</span> date.today()+delta</code></pre>
-<pre><code>## 2015-01-13
-## 2015-01-20</code></pre>
+<pre><code>## 2015-01-19
+## 2015-01-26</code></pre>
 </div>
 <div id="file-access" class="section level2">
 <h2><span class="header-section-number">4.8</span> File access</h2>
