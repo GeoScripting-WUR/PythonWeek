@@ -4,7 +4,7 @@ author: "Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   html_document:
-    theme: united
+    theme: cosmo
     toc: true
     toc_depth: 4
     number_sections: true
