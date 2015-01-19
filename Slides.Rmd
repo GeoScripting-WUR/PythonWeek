@@ -1,0 +1,34 @@
+---
+title: "Using Python within Linux"
+author: "Jan Verbesselt"
+date: "19 Jan 2015"
+output: slidy_presentation
+---
+
+## Intro
+
+* Who knows what OS-GEO is?
+* What is OS-GEO live? 
+* Which Linux distribution is used within OS-GEO live?
+
+## A nice meeting
+
+FOSDEM is a free and non-commercial event organised by the community for
+the community. The goal is to provide open source software developers
+and communities a place to meet. Participation and attendance is totally
+free, though the organisers gratefully accept donations and sponsorship.
+https://fosdem.org/
+
+http://www.osgeo.org/node/1464
+
+## Python
+
+```{r, engine='python'}
+import this
+```
+
+
+<!---
+framework: shower
+highlighter: tomorrow
+-->
