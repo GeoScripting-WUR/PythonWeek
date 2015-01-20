@@ -248,17 +248,62 @@ print aLayer.name()
 ![Open Shape File in QGIS](figs/Viewing_shape_QGIS.png)
 
 
-## Modify and reproject a shape file
+## Modify a shape file
+
+Now let's try to add an extra point to the shape file:
+
+```{r, engine='python', eval=FALSE}
+ds = driver.Open(shp_file, 1)
+## check layers and get the first layer
+layernr = ds.GetLayerCount()
+print layernr
+layer = ds.GetLayerByIndex(0)
+print layer
+
+## get number of features in shapefile layer
+features_number = layer.GetFeatureCount()
+print "number of features for this layer:", features_number
+
+## get the feature definition:
+featureDefn = layer.GetLayerDefn()
+
+## create a point
+point = ogr.Geometry(ogr.wkbPoint)
+point.SetPoint(0,2.0,1.0)
+print point
+## similarly 
+## point.AddPoint(2,1)
+
+## create a new feature
+feature = ogr.Feature(featureDefn)
+feature.SetGeometry(point)
+# Lets store the feature in file
+layer.CreateFeature(feature)
+layer.GetExtent()
+ds.Destroy()
+```
+
 
 ## How to visualise a shape file? 
 
 Open in QGIS
+
+# Summary
+
+Remember:
+
+1. Get or create a writeable layer 2. Add fields if necessary
+3. Create a feature
+4. Populate the feature
+5. Add the feature to the layer 6. Close the layer
 
 # Assignment
 
 Now create your own shape file containing one location (e.g. a location of the GAIA building in Wageningen). Go to Google Earth, extra the coordinates and redo the above excercise and export to KML. See here for the R version of creating a spatial point: https://geoscripting-wur.github.io/IntroToVector/. You can also use these points.
 
 # More information
+
+If you have time left you can start the following tutorial made by Prof. P. Lewis:
 http://www2.geog.ucl.ac.uk/~plewis/geogg122/_build/html/Chapter4_GDAL/OGR_Python.html
 
 <!---
