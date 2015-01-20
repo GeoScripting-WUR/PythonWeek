@@ -29,6 +29,9 @@ Documentation:
 * http://gdal.org/python/
 * http://www.gdal.org/gdal_tutorial.html
 
+Check out these relevant books:
+* http://geospatialpython.com/
+
 ## OGR
 
 OGR supports many different vector formats:
@@ -50,7 +53,7 @@ except:
   import ogr
 ```
 
-## Points
+### Points
 
 ```{r, engine='python'}
 from osgeo import ogr
@@ -58,9 +61,10 @@ from osgeo import ogr
 wkt = "POINT (173914.00 441864.00)"
 pt = ogr.CreateGeometryFromWkt(wkt)
 print(pt)
+# print help(osgeo.ogr)
 ```
 
-## Define a spatial reference
+### Define a spatial reference
 
 See http://spatialreference.org/ref/epsg/wgs-84/ 
 
@@ -71,7 +75,7 @@ spatialRef = osr.SpatialReference()
 spatialRef.ImportFromEPSG(4326)  # from EPSG - Lat/long
 ```
 
-## Reproject a point
+### Reproject a point
 
 ```{r, engine = 'python'}
 from osgeo import ogr
@@ -91,6 +95,131 @@ point = ogr.CreateGeometryFromWkt("POINT (5.6660 -51.9872)")
 point.Transform(transform)
 print point.ExportToWkt()
 ```
+
+### Create a shape file
+
+Start a new Python script within the `Python` console of QGIS:
+
+You can set the working directory using:
+```{r, eval=FALSE}
+import os
+os.chdir('pathtoyourworkingdirectory')
+print os.getcwd()
+```
+
+Now you can continue (you do not need to repead the `import os` if you have already done so!). More info about the different OGR formats (http://www.gdal.org/ogr_formats.html)
+
+```{r, engine = 'python'}
+## Loading the modules
+import os
+os.chdir('data')
+
+try:
+  from osgeo import ogr
+  print 'Import of ogr from osgeo worked.  Hurray!\n'
+except:
+  print 'Import of ogr from osgeo failed\n\n'
+
+## Shapefile available?
+driverName = "ESRI Shapefile"
+
+drv = ogr.GetDriverByName( driverName )
+if drv is None:
+    print "%s driver not available.\n" % driverName
+else:
+    print  "%s driver IS available.\n" % driverName
+
+## choose your own name
+## make sure this layer does not exist in your 'data' folder
+fn = "testing.shp"
+layername = "anewlayer"
+
+ds = drv.CreateDataSource(fn)
+print ds.GetRefCount()
+
+layer=ds.CreateLayer(layername, None, ogr.wkbPoint)
+## Now check your data folder and you will see that the file has been created!
+## From now on it is not possible anymore to CreateDataSource with the same name
+## in your workdirectory untill your remove the name.shp name.shx and name.dbf file.
+print(layer.GetExtent())
+
+## What is the geometry type???
+## What does wkb mean??
+
+## ok lets leave the pyramid top and start building the bottom,
+## let's do points
+point1 = ogr.Geometry(ogr.wkbPoint)
+point2 = ogr.Geometry(ogr.wkbPoint)
+
+## SetPoint(self, int point, double x, double y, double z = 0)
+point1.SetPoint(0,1.0,1.0) 
+point2.SetPoint(0,2.0,2.0)
+
+## Actually we can do lots of things with points: 
+## Export to other formats/representations:
+print "KML file export"
+print point2.ExportToKML()
+
+## Buffering
+buffer = point2.Buffer(4,4)
+print buffer.Intersects(point1)
+
+## More exports:
+buffer.ExportToGML()
+
+## Back to the pyramid, we still have no Feature
+## Feature is defined from properties of the layer:e.g:
+
+layerDefinition = layer.GetLayerDefn()
+feature1 = ogr.Feature(layerDefinition)
+feature2 = ogr.Feature(layerDefinition)
+
+## Lets add the points to the feature
+feature1.SetGeometry(point1)
+feature2.SetGeometry(point2)
+
+## Lets store the feature in file
+layer.CreateFeature(feature1)
+layer.CreateFeature(feature2)
+print "The new extent"
+print layer.GetExtent()
+
+## So what is missing ????
+## Saving the file, but OGR doesn't have a Save() option
+## The shapefile is updated with all object structure 
+## when the script finished of when it is destroyed, 
+# if necessay SyncToDisk() maybe used
+
+ds.Destroy()
+## below the output is shown of the above Python script that is run in the terminal
+```
+
+From the terminal you can remove the created "testing.shp" and related files using:
+
+```{r, engine='bash'}
+echo "in the terminal you can use the following bash commands to easily remove files"
+echo "list all the files starting with testing*"
+ls data/testing*
+echo "remove all the files starting with testing*"
+rm -v data/testing*
+```
+
+Now, we can open the created shape file in QGIS using the following `python` code from the terminal:
+
+```{r, engine='python', eval=FALSE}
+## add a vector layer to the QGIS interface
+qgis.utils.iface.addVectorLayer(fn, layername, "ogr") 
+aLayer = qgis.utils.iface.activeLayer()
+print aLayer.name()
+```
+
+![Open Shape File in QGIS](figs/Viewing_shape_QGIS.png)
+
+### Modify and reproject a shape file
+
+### How to visualise a shape file? 
+
+Open in QGIS
 
 ## Assignment
 
