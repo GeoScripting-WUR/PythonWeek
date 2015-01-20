@@ -32,7 +32,7 @@ Documentation:
 Check out these relevant books:
 * http://geospatialpython.com/
 
-## OGR
+## OGR and the data drivers
 
 OGR supports many different vector formats:
 
@@ -41,9 +41,7 @@ OGR supports many different vector formats:
 * Open formats such TIGER/Line, SDTS, GML, KML
 * Databases such as MySQL, PostgreSQL, Oracle Spatial, etc.
 
-### OGR data drivers
-
-A driver is an object that knows how to interact with a certain data type (e.g. a shape file)
+**OGR Data drivers:** A driver is an object that knows how to interact with a certain data type (e.g. a shape file)
 You know the right driver to read or write data. Some drivers might only read content but the majority can read and write.
 
 ```{r, engine='python'}
@@ -53,7 +51,7 @@ except:
   import ogr
 ```
 
-### Points
+## Points
 
 ```{r, engine='python'}
 from osgeo import ogr
@@ -64,7 +62,7 @@ print(pt)
 # print help(osgeo.ogr)
 ```
 
-### Define a spatial reference
+## Define a spatial reference
 
 See http://spatialreference.org/ref/epsg/wgs-84/ 
 
@@ -75,7 +73,7 @@ spatialRef = osr.SpatialReference()
 spatialRef.ImportFromEPSG(4326)  # from EPSG - Lat/long
 ```
 
-### Reproject a point
+## Reproject a point
 
 ```{r, engine = 'python'}
 from osgeo import ogr
@@ -96,7 +94,7 @@ point.Transform(transform)
 print point.ExportToWkt()
 ```
 
-### Create a shape file
+## Create a shape file
 
 **Concept:**
 
@@ -249,18 +247,23 @@ print aLayer.name()
 
 ![Open Shape File in QGIS](figs/Viewing_shape_QGIS.png)
 
-#### Excercise:
 
-Now create your own shape file containing one location (e.g. a location of the GAIA building in Wageningen). Go to Google Earth, extra the coordinates and redo the above excercise and export to KML.
+## Modify and reproject a shape file
 
-
-### Modify and reproject a shape file
-
-### How to visualise a shape file? 
+## How to visualise a shape file? 
 
 Open in QGIS
 
-## Assignment
+# Assignment
+
+Now create your own shape file containing one location (e.g. a location of the GAIA building in Wageningen). Go to Google Earth, extra the coordinates and redo the above excercise and export to KML. See here for the R version of creating a spatial point: https://geoscripting-wur.github.io/IntroToVector/. You can also use these points.
+
+# More information
+http://www2.geog.ucl.ac.uk/~plewis/geogg122/_build/html/Chapter4_GDAL/OGR_Python.html
+
+<!---
+
+# Assignment
 
 Upload your Python script to Github (as a .py file) uploaded within the `Python` folder part of your repository for the Python week:
 Create a script that:
@@ -272,3 +275,4 @@ Create a script that:
 - measure the distance between these points (i.e. the distance of that line) and print it out.
 - export the two point to shape file (that can be imported in QGIS)
 
+-->
