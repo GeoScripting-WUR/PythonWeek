@@ -23,6 +23,8 @@ http://www.osgeo.org/node/1464
 
 ## Python
 
+Who has done the `Python` refresher?
+
 ```{r, engine='python'}
 import this
 ```

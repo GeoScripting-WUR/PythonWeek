@@ -98,6 +98,22 @@ print point.ExportToWkt()
 
 ### Create a shape file
 
+**Concept:**
+
+* A point is a type of geometry stored as a feature.
+* A layer can have many features.
+* A datasource can have many layers.
+* [The driver saves the datasource in a specific format](http://gdal.org/ogr/ogr_formats.html).
+
+```{r, eval=FALSE}
+Driver
+    Datasource
+        Layer
+            Feature
+                Geometry
+                    Point
+```
+
 Start a new Python script within the `Python` console of QGIS:
 
 You can set the working directory using:
@@ -107,22 +123,30 @@ os.chdir('pathtoyourworkingdirectory')
 print os.getcwd()
 ```
 
-Now you can continue (you do not need to repead the `import os` if you have already done so!). More info about the different OGR formats (http://www.gdal.org/ogr_formats.html)
+Now you can continue (you do not need to repead the `import os` if you have already done so!). More info about the different OGR formats (http://www.gdal.org/ogr_formats.html):
+
+* Set spatial reference
+* create shape file
+* create layer
+* create point
+* Put point as a geometr inside a feature
+* Put feature in a layer
+* Flush
 
 ```{r, engine = 'python'}
 ## Loading the modules
 import os
 os.chdir('data')
 
+## Loading osgeo
 try:
-  from osgeo import ogr
-  print 'Import of ogr from osgeo worked.  Hurray!\n'
+  from osgeo import ogr, osr
+  print 'Import of ogr and osr from osgeo worked.  Hurray!\n'
 except:
-  print 'Import of ogr from osgeo failed\n\n'
+  print 'Import of ogr and osr from osgeo failed\n\n'
 
-## Shapefile available?
+## Is the ESRI Shapefile driver available?
 driverName = "ESRI Shapefile"
-
 drv = ogr.GetDriverByName( driverName )
 if drv is None:
     print "%s driver not available.\n" % driverName
@@ -134,10 +158,19 @@ else:
 fn = "testing.shp"
 layername = "anewlayer"
 
+## Create shape file
 ds = drv.CreateDataSource(fn)
 print ds.GetRefCount()
 
-layer=ds.CreateLayer(layername, None, ogr.wkbPoint)
+# Set spatial reference
+spatialReference = osr.SpatialReference()
+spatialReference.ImportFromProj4('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')
+
+# you can also do the following
+# spatialReference.ImportFromEPSG(4326)
+
+## Create Layer
+layer=ds.CreateLayer(layername, spatialReference, ogr.wkbPoint)
 ## Now check your data folder and you will see that the file has been created!
 ## From now on it is not possible anymore to CreateDataSource with the same name
 ## in your workdirectory untill your remove the name.shp name.shx and name.dbf file.
@@ -148,6 +181,7 @@ print(layer.GetExtent())
 
 ## ok lets leave the pyramid top and start building the bottom,
 ## let's do points
+## Create a point
 point1 = ogr.Geometry(ogr.wkbPoint)
 point2 = ogr.Geometry(ogr.wkbPoint)
 
@@ -178,7 +212,7 @@ feature2 = ogr.Feature(layerDefinition)
 feature1.SetGeometry(point1)
 feature2.SetGeometry(point2)
 
-## Lets store the feature in file
+## Lets store the feature in a layer
 layer.CreateFeature(feature1)
 layer.CreateFeature(feature2)
 print "The new extent"
@@ -214,6 +248,11 @@ print aLayer.name()
 ```
 
 ![Open Shape File in QGIS](figs/Viewing_shape_QGIS.png)
+
+#### Excercise:
+
+Now create your own shape file containing one location (e.g. a location of the GAIA building in Wageningen). Go to Google Earth, extra the coordinates and redo the above excercise and export to KML.
+
 
 ### Modify and reproject a shape file
 
