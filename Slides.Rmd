@@ -5,12 +5,6 @@ date: "19 Jan 2015"
 output: slidy_presentation
 ---
 
-## Intro
-
-* Who knows what OS-GEO is?
-* What is OS-GEO live? 
-* Which Linux distribution is used within OS-GEO live?
-
 ## A nice meeting
 
 FOSDEM is a free and non-commercial event organised by the community for
