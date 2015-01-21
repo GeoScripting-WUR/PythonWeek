@@ -306,37 +306,62 @@ ds.Destroy()
 
 ## How to visualise a shape file? 
 
-MapNik?
+
+Mapnik is a Free Toolkit for developing mapping applications. It’s written in C++ and there are Python bindings to facilitate fast-paced agile development. It can comfortably be used for both desktop and web development. Mapnik is about making beautiful maps. It takes geospatial data from a PostGIS database, shapefile, or any other format supported by GDAL/OGR, and turns it into clearly-rendered, good-looking images. Among other things, it is used to render the five main Map layers on the [OpenStreetMap website](http://www.openstreetmap.org/).
+
 http://mapnik.org/maps/
+
+Before starting download the" "
 http://www.mappinghacks.com/data/
 
 ```{r, engine='python'}
-import os.path
+import os,os.path
 import mapnik
-import os
 
-symbolizer = mapnik.PolygonSymbolizer(mapnik.Color("darkred"))
+#First we create a map
+map = mapnik.Map(600, 300) #This is the image final image size
 
+#Lets put some sort of background color in the map
+map.background = mapnik.Color("steelblue") # steelblue == #4682B4 
+
+#To style the map we need to define a set or rules
+#        Map
+#  Style      Style
+# Rule   Rule   Rule  Rule
+
+# we normally start from the bottom creating an empty rule
 rule = mapnik.Rule()
+
+#1) rule that the polygon should be dark red
+symbolizer = mapnik.PolygonSymbolizer(mapnik.Color("darkred"))
 rule.symbols.append(symbolizer)
 
+#2) The rule is added to the style
 style = mapnik.Style()
 style.rules.append(rule)
 
+#3) Adding style to map, "mapStyle" is a simple name for our style
+#Later we will define that our layer uses this style that is stored on the maps object
+map.append_style("mapStyle", style)
+
+#4) Adding the data first step is creating a layer, a map has mutiple layers
 layer = mapnik.Layer("mapLayer")
 layer.datasource = mapnik.Shapefile(file=os.path.join("data",
                                         "world_borders.shp"))
 layer.styles.append("mapStyle")
 
-map = mapnik.Map(800, 400)
-map.background = mapnik.Color("steelblue")
-map.append_style("mapStyle", style)
+#map.append_style("mapStyle", style)
+
+#5) The current layer is not yet associated to the map 
 map.layers.append(layer)
 
+#6) Zoom to full extend of layers and dump content
 map.zoom_all()
 mapnik.render_to_file(map, os.path.join("figs",
                                         "map.png"), "png")
+print "All done - check content"
 ```
+
 
 ![A mapnik map](figs/map.png)
 
@@ -348,10 +373,74 @@ mapnik.render_to_file(map, os.path.join("figs",
 4. Populate the feature
 5. Add the feature to the layer 
 6. Close the layer
+7. Modify a Shape file
+8. Visualise a vector object using Python
 
 # Assignment
 
-Now create your own shape file containing one location (e.g. a location of the GAIA building in Wageningen). Go to Google Earth, extra the coordinates and redo the above excercise and export to KML. See here for the R version of creating a spatial point: https://geoscripting-wur.github.io/IntroToVector/. You can also use these points.
+Now create your own shape file containing two locations (e.g. a location of the GAIA building in Wageningen). E.g. go to Google Earth, an extract the coordinates and redo the above excercise (a bonus if you use a `for` loop) and export to KML. 
+You can also use the points defined here: https://geoscripting-wur.github.io/IntroToVector/. 
+
+Extra you can create a map with MapNik using the following code (you can download you own location icon from: https://sites.google.com/site/gmapicons/home).
+
+Upload your documented and well structured Python script to a GitHub repository and send the link before 1030 on Friday 23/01.
+
+```{r, engine='python', eval=FALSE}
+# Inthis case we will just render the 2 points from the twoPoints.shp
+import os,os.path
+import  mapnik
+
+#file with symbol for point
+file_symbol=os.path.join("figs","google_icon.png")
+
+#First we create a map
+map = mapnik.Map(800, 400) #This is the image final image size
+
+#Lets put some sort of background color in the map
+map.background = mapnik.Color("steelblue") # steelblue == #4682B4 
+
+#Create the rule and style obj
+r = mapnik.Rule()
+s = mapnik.Style()
+
+polyStyle= mapnik.PolygonSymbolizer(mapnik.Color("darkred"))
+pointStyle = mapnik.PointSymbolizer(mapnik.PathExpression(file_symbol))
+r.symbols.append(polyStyle)
+r.symbols.append(pointStyle)
+
+s.rules.append(r)
+
+map.append_style("mapStyle", s)
+
+# Adding point layer
+layerPoint = mapnik.Layer("pointLayer")
+## extracting data from the shape file that you just created above
+layerPoint.datasource = mapnik.Shapefile(file=os.path.join("data",
+                                        "twoLoopPoints.shp"))
+layerPoint.styles.append("mapStyle")
+
+#adding polygon
+layerPoly = mapnik.Layer("polyLayer")
+layerPoly.datasource = mapnik.Shapefile(file=os.path.join("data",
+                                        "world_borders.shp"))
+layerPoly.styles.append("mapStyle")
+
+
+#Add layers to map
+map.layers.append(layerPoly)
+map.layers.append(layerPoint)
+
+#Set boundaries
+## double check the below boundaries depending on your extent
+## adjust to your own needs
+boundsLL = (1.3,49.979, 8.306,52.162) #(minx, miny, maxx,maxy)
+map.zoom_to_box(mapnik.Box2d(*boundsLL)) # zoom to bbox
+
+mapnik.render_to_file(map, os.path.join("figs",
+                                        "map2.png"), "png")
+print "All done - check content"
+```
+
 
 # More information
 

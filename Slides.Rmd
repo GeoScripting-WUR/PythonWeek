@@ -20,6 +20,9 @@ Look for:
 *  http://tmux.sourceforge.net/
 *  [powerline](http://computers.tutsplus.com/tutorials/getting-spiffy-with-powerline--cms-20740)
 
+## Today's presentation
+
+https://docs.google.com/presentation/d/1IkeUUArTIjQNuKLP43p-vXdazqtMaVEzlFCd2nLnrdY/edit?usp=sharing
 
 ## A nice meeting
 
