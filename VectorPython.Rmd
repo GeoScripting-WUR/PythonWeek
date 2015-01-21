@@ -309,10 +309,8 @@ ds.Destroy()
 
 Mapnik is a Free Toolkit for developing mapping applications. It’s written in C++ and there are Python bindings to facilitate fast-paced agile development. It can comfortably be used for both desktop and web development. Mapnik is about making beautiful maps. It takes geospatial data from a PostGIS database, shapefile, or any other format supported by GDAL/OGR, and turns it into clearly-rendered, good-looking images. Among other things, it is used to render the five main Map layers on the [OpenStreetMap website](http://www.openstreetmap.org/).
 
-http://mapnik.org/maps/
-
-Before starting download the" "
-http://www.mappinghacks.com/data/
+Start by downloading the World Borders Dataset from:
+http://thematicmapping.org/downloads/world_borders.php
 
 ```{r, engine='python'}
 import os,os.path
