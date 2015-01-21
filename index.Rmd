@@ -109,6 +109,11 @@ Try out the following!!!
 help('hamster')
 ```
 
+see also: 
+
+* http://www.rafekettler.com/magicmethods.html
+* https://stackoverflow.com/questions/1090620/special-magic-methods-in-python
+
 ## Finding information via Pydoc
 
 Go to: https://docs.python.org/2/library/pydoc.html

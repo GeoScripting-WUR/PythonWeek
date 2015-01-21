@@ -5,6 +5,22 @@ date: "19 Jan 2015"
 output: slidy_presentation
 ---
 
+## Session of yesterday
+
+* http://divisionblue.github.io/wur-python/#1
+* Github page is forked to the GitHub Geo-scriptin @ WUR group
+    * https://github.com/divisionblue/wur-python
+
+## Tuning the terminal
+
+http://www.drbunsen.org/the-text-triumvirate/
+
+Look for:
+
+*  http://tmux.sourceforge.net/
+*  [powerline](http://computers.tutsplus.com/tutorials/getting-spiffy-with-powerline--cms-20740)
+
+
 ## A nice meeting
 
 FOSDEM is a free and non-commercial event organised by the community for

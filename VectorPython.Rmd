@@ -307,7 +307,7 @@ ds.Destroy()
 ## How to visualise a shape file? 
 
 MapNik?
-
+http://mapnik.org/maps/
 http://www.mappinghacks.com/data/
 
 ```{r, engine='python'}
