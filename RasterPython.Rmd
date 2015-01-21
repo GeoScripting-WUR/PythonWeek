@@ -182,11 +182,14 @@ plotRGB(a, 3, 2, 1, stretch='hist')
 ## Using QGIS and Python
 
 Here is a nice clear example how to get started:
-- http://www.qgistutorials.com/nl/docs/getting_started_with_pyqgis.html
 
-- [QGIS and Python tutorial](http://www.qgisworkshop.org/html/workshop/python_in_qgis_tutorial2.html)
+* http://www.qgistutorials.com/nl/docs/getting_started_with_pyqgis.html
+* [QGIS and Python tutorial](http://www.qgisworkshop.org/html/workshop/python_in_qgis_tutorial2.html)
+
+# Assignment
 
 # More Information
+
 - https://pcjericks.github.io/py-gdalogr-cookbook/raster_layers.html
 - Great basic tutorial: http://www.gdal.org/gdal_tutorial.html
 - [Handling raster data with GDAL](http://www.gis.usu.edu/~chrisg/python/2009/)

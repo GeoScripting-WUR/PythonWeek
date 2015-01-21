@@ -30,6 +30,7 @@ Documentation:
 * http://www.gdal.org/gdal_tutorial.html
 
 Check out these relevant books:
+
 * http://geospatialpython.com/
 
 ## OGR and the data drivers
@@ -51,7 +52,15 @@ except:
   import ogr
 ```
 
+From the terminal you can also type the following to obtain an overview of supported formats: 
+```{r, eval=FALSE}
+echo "Terminal command to obtain an overview of supported formats"
+ogrinfo --formats
+```
+
 ## Points
+
+What does Wkt mean? 
 
 ```{r, engine='python'}
 from osgeo import ogr
@@ -236,7 +245,7 @@ echo "remove all the files starting with testing*"
 rm -v data/testing*
 ```
 
-Now, we can open the created shape file in QGIS using the following `python` code from the terminal:
+Now, we can open the created shape file in QGIS using the `Python Console`.
 
 ```{r, engine='python', eval=FALSE}
 ## add a vector layer to the QGIS interface
@@ -244,6 +253,17 @@ qgis.utils.iface.addVectorLayer(fn, layername, "ogr")
 aLayer = qgis.utils.iface.activeLayer()
 print aLayer.name()
 ```
+
+The method `addVectorLayer` takes three arguments:
+
+* the first argument is the path to the data source – the shapefile in our case
+* the second argument is the basename – the name that the layer takes in the table of contents
+* the third argument is the provider key. Basically, the function wants to know what driver will be used to read this data. 
+For our purposes, “ogr” will be used most of the time with vector data.
+
+Another example of how we can use this method:
+
+`qgis.utils.iface.addVectorLayer('/home/user/Git/Python/data/testing.shp', 'anewlayer', "ogr")`
 
 ![Open Shape File in QGIS](figs/Viewing_shape_QGIS.png)
 
@@ -286,16 +306,48 @@ ds.Destroy()
 
 ## How to visualise a shape file? 
 
-Open in QGIS
+MapNik?
 
-# Summary
+http://www.mappinghacks.com/data/
 
-Remember:
+```{r, engine='python'}
+import os.path
+import mapnik
+import os
 
-1. Get or create a writeable layer 2. Add fields if necessary
+symbolizer = mapnik.PolygonSymbolizer(mapnik.Color("darkred"))
+
+rule = mapnik.Rule()
+rule.symbols.append(symbolizer)
+
+style = mapnik.Style()
+style.rules.append(rule)
+
+layer = mapnik.Layer("mapLayer")
+layer.datasource = mapnik.Shapefile(file=os.path.join("data",
+                                        "world_borders.shp"))
+layer.styles.append("mapStyle")
+
+map = mapnik.Map(800, 400)
+map.background = mapnik.Color("steelblue")
+map.append_style("mapStyle", style)
+map.layers.append(layer)
+
+map.zoom_all()
+mapnik.render_to_file(map, os.path.join("figs",
+                                        "map.png"), "png")
+```
+
+![A mapnik map](figs/map.png)
+
+# What have we learned?
+
+1. Get or create a writeable layer 
+2. Add fields if necessary
 3. Create a feature
 4. Populate the feature
-5. Add the feature to the layer 6. Close the layer
+5. Add the feature to the layer 
+6. Close the layer
 
 # Assignment
 
