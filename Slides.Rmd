@@ -1,28 +1,42 @@
 ---
 title: "Using Python within Linux"
 author: "Jan Verbesselt"
-date: "19 Jan 2015"
+date: "22 Jan 2015"
 output: slidy_presentation
 ---
 
 ## Session of yesterday
 
-* http://divisionblue.github.io/wur-python/#1
+
 * Github page is forked to the GitHub Geo-scriptin @ WUR group
     * https://github.com/divisionblue/wur-python
+    * Presentation is available here: http://divisionblue.github.io/wur-python/
 
 ## Tuning the terminal
 
 http://www.drbunsen.org/the-text-triumvirate/
 
-Look for:
+Look for the following plugins to tune your `terminal`:
 
-*  http://tmux.sourceforge.net/
-*  [powerline](http://computers.tutsplus.com/tutorials/getting-spiffy-with-powerline--cms-20740)
+*  TMUX: http://tmux.sourceforge.net/
+*  [Powerline](http://computers.tutsplus.com/tutorials/getting-spiffy-with-powerline--cms-20740)
+
+## Some questions
+
+* What do you remember from yesterday?
+* Can you answer the questions that have been asked in the questionnaire this morning?
+
+Fill in the following sheet per team:
+
+* http://goo.gl/forms/xv7Chgkq97
+
 
 ## Today's presentation
 
-https://docs.google.com/presentation/d/1IkeUUArTIjQNuKLP43p-vXdazqtMaVEzlFCd2nLnrdY/edit?usp=sharing
+By [Jorge Mendes de Jesus](http://www.isric.org/users/jorge-mendes-de-jesus) from ISRIC:
+
+* Jorge is a scientifical programmer with a background in open source GIS and python development.
+* [Presentation about Why Python geo-spatial things?](https://docs.google.com/presentation/d/1IkeUUArTIjQNuKLP43p-vXdazqtMaVEzlFCd2nLnrdY/edit?usp=sharing)
 
 ## A nice meeting
 

@@ -303,9 +303,17 @@ layer.GetExtent()
 ds.Destroy()
 ```
 
+## Convert a shapefile to JSON format
+
+See here for an example:
+
+* http://geospatialpython.com/2013/07/shapefile-to-geojson.html
+
+If you want to learn more about GEOJSON:
+
+* https://github.com/frewsxcv/python-geojson
 
 ## How to visualise a shape file? 
-
 
 Mapnik is a Free Toolkit for developing mapping applications. It’s written in C++ and there are Python bindings to facilitate fast-paced agile development. It can comfortably be used for both desktop and web development. Mapnik is about making beautiful maps. It takes geospatial data from a PostGIS database, shapefile, or any other format supported by GDAL/OGR, and turns it into clearly-rendered, good-looking images. Among other things, it is used to render the five main Map layers on the [OpenStreetMap website](http://www.openstreetmap.org/).
 
@@ -380,9 +388,18 @@ Now create your own shape file containing two locations (e.g. a location of the 
 
 You can also use the points defined here: https://geoscripting-wur.github.io/IntroToVector/. 
 
-Bonus: you can create a map with MapNik using the code below. 
-You can download you own location icon from: https://sites.google.com/site/gmapicons/home).
+Bonus: you can create a map with MapNik using the code below.
+
+You can download:
+
+* your own `location icon` from: https://sites.google.com/site/gmapicons/home
+* the data set from http://www.naturalearthdata.com/downloads/110m-physical-vectors/
+
+## Deadline
+
 Upload your documented and well structured Python script to a GitHub repository and send the link before 1030 on Friday 23/01.
+
+## Demoscript
 
 ```{r, engine='python', eval=FALSE}
 import os,os.path
