@@ -411,7 +411,8 @@ Go to [Raster Data handling in Python](https://geoscripting-wur.github.io/Python
 
 # R from Python
 
-A very simple example using the Python Rpy2 module (only possible on Mac/Linux):
+A very simple example using the Python Rpy2 module (only possible on Mac/Linux). This is working with your OS-GEO live linux virtual machine. Try it out! :bowtie:
+
 ```{r, engine='python', eval =FALSE}
 import rpy2.robjects as robjects
 pi = robjects.r['pi']
