@@ -188,6 +188,17 @@ Here is a nice clear example how to get started:
 
 # Assignment
 
+Use the raster data set from [above](https://www.dropbox.com/s/rsc4lzkd3t2adq5/ospy_data5.zip?dl=0).
+Now, write a well-structured and documented script where you define a function to derive the NDWI and derive it from the landsat image and reproject the image to Lat/Long WGS84 (`x.ImportFromEPSG(4326)`).
+
+`NDWI = band 4 - band 5 / band 4 + band 5` ([more info about](http://nsidc.org/data/docs/daac/nsidc0332_smex03_srs_ndvi_ndwi_ok.gd.html) `NDWI`)
+
+A clean and well structured script is critical here.
+
+## Deadline
+
+Upload your documented and well structured Python script to a GitHub repository and send the link before 1030 on Monday 26/01.
+
 # More Information
 
 - https://pcjericks.github.io/py-gdalogr-cookbook/raster_layers.html
