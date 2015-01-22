@@ -11,6 +11,7 @@ output: slidy_presentation
 * Github page is forked to the GitHub Geo-scriptin @ WUR group
     * https://github.com/divisionblue/wur-python
     * Presentation is available here: http://divisionblue.github.io/wur-python/
+    * http://geojson.org/geojson-spec.html
 
 ## Tuning the terminal
 
