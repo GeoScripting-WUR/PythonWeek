@@ -1,6 +1,6 @@
 ---
 title: "Vector data handling with Python"
-author: "Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Eliakim Hamunyela"
+author: "Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   html_document:
