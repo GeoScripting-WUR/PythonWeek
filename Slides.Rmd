@@ -77,8 +77,24 @@ https://fosdem.org/
 
 http://www.osgeo.org/node/1464
 
+## Vector Excercise Lessons learned
 
+What have you learned? Show your script!
 
+* Team Jennifer
+* Team Raspberries
+* Scripties - show script
+* Team Zeven
+
+## Linux updates
+
+* Working with Git within Linux
+    * solutions
+        - do it the same way as learned (via Rstudio)
+        - BUT! have a look at the error message
+        - git -config set username and e-mail
+* File exchange from Linux to windows
+    * how
 <!---
 framework: shower
 highlighter: tomorrow
