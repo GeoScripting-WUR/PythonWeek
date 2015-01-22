@@ -15,12 +15,17 @@ output: slidy_presentation
 
 ## Tuning the terminal
 
-http://www.drbunsen.org/the-text-triumvirate/
+* More info: http://www.drbunsen.org/the-text-triumvirate/
 
-Look for the following plugins to tune your `terminal`:
+* Look for the following plugins to tune your `terminal`:
 
-*  TMUX: http://tmux.sourceforge.net/
-*  [Powerline](http://computers.tutsplus.com/tutorials/getting-spiffy-with-powerline--cms-20740)
+    *  TMUX: http://tmux.sourceforge.net/
+    *  [Powerline](http://computers.tutsplus.com/tutorials/getting-spiffy-with-powerline--cms-20740)
+
+## Shell scripting
+
+A nice and complete example (works on linux):
+* https://github.com/astridbos/Exercise9
 
 ## Some questions
 
@@ -31,6 +36,13 @@ Fill in the following sheet per team:
 
 * http://goo.gl/forms/xv7Chgkq97
 
+## Python
+
+Who has done the `Python` refresher?
+
+```{r, engine='python'}
+import this
+```
 
 ## Today's presentation
 
@@ -49,13 +61,6 @@ https://fosdem.org/
 
 http://www.osgeo.org/node/1464
 
-## Python
-
-Who has done the `Python` refresher?
-
-```{r, engine='python'}
-import this
-```
 
 
 <!---
