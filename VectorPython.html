@@ -74,7 +74,7 @@ img {
 <div id="header">
 <h1 class="title">Vector data handling with Python</h1>
 <h4 class="author"><em>Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Eliakim Hamunyela</em></h4>
-<h4 class="date"><em>21 January, 2015</em></h4>
+<h4 class="date"><em>22 January, 2015</em></h4>
 </div>
 
 <div id="TOC">
@@ -187,7 +187,7 @@ point.Transform(transform)
             Feature
                 Geometry
                     Point</code></pre>
-<p>Start a new Python script within the <code>Python</code> console of QGIS:</p>
+<p>Start a new Python script within the <code>Python</code> console of QGIS (recommended for today!):</p>
 <p>You can set the working directory using:</p>
 <pre class="sourceCode r"><code class="sourceCode r">import os
 <span class="kw">os.chdir</span>(<span class="st">'pathtoyourworkingdirectory'</span>)
@@ -198,7 +198,7 @@ print <span class="kw">os.getcwd</span>()</code></pre>
 <li>create shape file</li>
 <li>create layer</li>
 <li>create point</li>
-<li>Put point as a geometr inside a feature</li>
+<li>Put point as a geometry inside a feature</li>
 <li>Put feature in a layer</li>
 <li>Flush</li>
 </ul>
@@ -437,9 +437,9 @@ mapnik.render_to_file(<span class="dt">map</span>, os.path.join(<span class="st"
 </div>
 <div id="assignment" class="section level1">
 <h1><span class="header-section-number">3</span> Assignment</h1>
-<p>Now create your own shape file containing two locations (e.g. a location of the GAIA building in Wageningen). E.g. go to Google Earth, an extract the coordinates and redo the above excercise (a bonus if you use a <code>for</code> loop) and export to KML. You can also use the points defined here: <a href="https://geoscripting-wur.github.io/IntroToVector/" class="uri">https://geoscripting-wur.github.io/IntroToVector/</a>.</p>
-<p>Extra you can create a map with MapNik using the following code (you can download you own location icon from: <a href="https://sites.google.com/site/gmapicons/home" class="uri">https://sites.google.com/site/gmapicons/home</a>).</p>
-<p>Upload your documented and well structured Python script to a GitHub repository and send the link before 1030 on Friday 23/01.</p>
+<p>Now create your own shape file containing two locations (e.g. a location of the GAIA building in Wageningen). E.g. go to Google Earth, an extract the coordinates and redo the above excercise (BONUS: if you use a <code>for</code> loop) and export to a KML file.</p>
+<p>You can also use the points defined here: <a href="https://geoscripting-wur.github.io/IntroToVector/" class="uri">https://geoscripting-wur.github.io/IntroToVector/</a>.</p>
+<p>Bonus: you can create a map with MapNik using the code below. You can download you own location icon from: <a href="https://sites.google.com/site/gmapicons/home" class="uri">https://sites.google.com/site/gmapicons/home</a>). Upload your documented and well structured Python script to a GitHub repository and send the link before 1030 on Friday 23/01.</p>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="co"># Inthis case we will just render the 2 points from the twoPoints.shp</span>
 <span class="ch">import</span> os,os.path
 <span class="ch">import</span>  mapnik

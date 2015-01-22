@@ -121,7 +121,7 @@ Driver
                     Point
 ```
 
-Start a new Python script within the `Python` console of QGIS:
+Start a new Python script within the `Python` console of QGIS (recommended for today!):
 
 You can set the working directory using:
 ```{r, eval=FALSE}
@@ -136,7 +136,7 @@ Now you can continue (you do not need to repead the `import os` if you have alre
 * create shape file
 * create layer
 * create point
-* Put point as a geometr inside a feature
+* Put point as a geometry inside a feature
 * Put feature in a layer
 * Flush
 
@@ -376,11 +376,12 @@ print "All done - check content"
 
 # Assignment
 
-Now create your own shape file containing two locations (e.g. a location of the GAIA building in Wageningen). E.g. go to Google Earth, an extract the coordinates and redo the above excercise (a bonus if you use a `for` loop) and export to KML. 
+Now create your own shape file containing two locations (e.g. a location of the GAIA building in Wageningen). E.g. go to Google Earth, an extract the coordinates and redo the above excercise (BONUS: if you use a `for` loop) and export to a KML file.
+
 You can also use the points defined here: https://geoscripting-wur.github.io/IntroToVector/. 
 
-Extra you can create a map with MapNik using the following code (you can download you own location icon from: https://sites.google.com/site/gmapicons/home).
-
+Bonus: you can create a map with MapNik using the code below. 
+You can download you own location icon from: https://sites.google.com/site/gmapicons/home).
 Upload your documented and well structured Python script to a GitHub repository and send the link before 1030 on Friday 23/01.
 
 ```{r, engine='python', eval=FALSE}
