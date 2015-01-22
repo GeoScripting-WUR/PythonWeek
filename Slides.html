@@ -63,6 +63,19 @@ Jan Verbesselt
 </div>
 <div id="shell-scripting" class="slide section level2">
 <h1>Shell scripting</h1>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="co">#!/bin/bash</span>
+<span class="kw">cd</span> ../data
+<span class="ot">fnin=</span><span class="st">&quot;ndvi.tif&quot;</span>
+<span class="ot">fnout=</span><span class="st">&quot;ndvi_latlong_60.tif&quot;</span>
+<span class="ot">fntemp=</span><span class="st">&quot;temp.tif&quot;</span>
+<span class="ot">fnpng=</span><span class="st">&quot;ndvilatlong.png&quot;</span>
+<span class="kw">echo</span> <span class="st">&quot;resample the inputfile: </span><span class="ot">$fnin</span><span class="st">&quot;</span>
+<span class="kw">gdalwarp</span> -tr 60 60 -r cubic <span class="ot">$fnin</span> <span class="ot">$fntemp</span>
+<span class="kw">echo</span> <span class="st">&quot;reproject to lat/long: </span><span class="ot">$fnout</span><span class="st">&quot;</span>
+<span class="kw">gdalwarp</span> -t_srs EPSG:4326 <span class="ot">$fntemp</span> <span class="ot">$fnout</span>
+<span class="kw">rm</span> <span class="ot">$fntemp</span>
+<span class="kw">gdal_translate</span> -of png <span class="ot">$fnout</span> <span class="ot">$fnpng</span>
+<span class="kw">echo</span> <span class="st">&quot;The output file: </span><span class="ot">$fnout</span><span class="st">&quot;</span></code></pre>
 <p>A nice and complete example (works on linux): * <a href="https://github.com/astridbos/Exercise9" class="uri">https://github.com/astridbos/Exercise9</a></p>
 </div>
 <div id="some-questions" class="slide section level2">

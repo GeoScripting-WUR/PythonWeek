@@ -24,6 +24,22 @@ output: slidy_presentation
 
 ## Shell scripting
 
+```{r, engine='bash', eval=FALSE}
+#!/bin/bash
+cd ../data
+fnin="ndvi.tif"
+fnout="ndvi_latlong_60.tif"
+fntemp="temp.tif"
+fnpng="ndvilatlong.png"
+echo "resample the inputfile: $fnin"
+gdalwarp -tr 60 60 -r cubic $fnin $fntemp
+echo "reproject to lat/long: $fnout"
+gdalwarp -t_srs EPSG:4326 $fntemp $fnout
+rm $fntemp
+gdal_translate -of png $fnout $fnpng
+echo "The output file: $fnout"
+```
+
 A nice and complete example (works on linux):
 * https://github.com/astridbos/Exercise9
 
