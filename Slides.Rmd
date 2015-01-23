@@ -94,6 +94,12 @@ What have you learned? Show your script!
         - git -config set username and e-mail
 * File exchange from Linux to windows
     * how
+    
+## A book about programming
+
+A book chock-full of general programming advice where the term "tracer bullets" is used (tip no. 15). ["The Pragmatic Programmer: From Journeyman to Master"](http://www.amazon.com/Pragmatic-Programmer-Journeyman-Master/dp/020161622X/ref=sr_1_1?ie=UTF8&qid=1422010953&sr=8-1&keywords=the+pragmatic+programmer)
+
+
 <!---
 framework: shower
 highlighter: tomorrow

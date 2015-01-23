@@ -188,7 +188,8 @@ Here is a nice clear example how to get started:
 
 # Assignment
 
-Use the raster data set from [above](https://www.dropbox.com/s/rsc4lzkd3t2adq5/ospy_data5.zip?dl=0).
+For this scripting challenge I have downloaded a Landsat image with all bands process to surface reflectance (Level 1T). You can download it from [here](https://www.dropbox.com/s/zb7nrla6fqi1mq4/LC81980242014260-SC20150123044700.tar.gz?dl=0). Unzip the file and you will see that it contains all the invidual bands. 
+
 Now, write a well-structured and documented script where you define a function to derive the NDWI and derive it from the landsat image and reproject the image to Lat/Long WGS84 (`x.ImportFromEPSG(4326)`).
 
 `NDWI = band 4 - band 5 / band 4 + band 5` ([more info about](http://nsidc.org/data/docs/daac/nsidc0332_smex03_srs_ndvi_ndwi_ok.gd.html) `NDWI`)
@@ -198,6 +199,16 @@ A clean and well structured script is critical here.
 ## Deadline
 
 Upload your documented and well structured Python script to a GitHub repository and send the link before 1030 on Monday 26/01.
+
+## Landsat data
+
+You can easily order landsat data via:
+
+  * https://earthexplorer.usgs.gov/
+  
+Once the have the Landsat ID you can order further processed data (e.g. resampled, or as geotif, etc.) via:
+
+  * http://espa.cr.usgs.gov/index/
 
 # More Information
 
