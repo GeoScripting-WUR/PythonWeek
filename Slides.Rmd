@@ -81,10 +81,9 @@ http://www.osgeo.org/node/1464
 
 What have you learned? Show your script!
 
-* Team Jennifer
-* Team Raspberries
-* Scripties - show script
-* Team Zeven
+* [Team Jennifer](https://github.com/Bart92/Day14_TeamLopez)
+* [Team Raspberries](https://github.com/jiles001/ExerciseLesson14.git)
+* [Scripties]
 
 ## Linux updates
 
