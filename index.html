@@ -74,7 +74,7 @@ img {
 <div id="header">
 <h1 class="title">Lesson 14 and 15: Python for geo-scripting</h1>
 <h4 class="author"><em>Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Eliakim Hamunyela</em></h4>
-<h4 class="date"><em>22 January, 2015</em></h4>
+<h4 class="date"><em>26 January, 2015</em></h4>
 </div>
 
 <div id="TOC">
@@ -87,17 +87,18 @@ img {
 <li><a href="#intro"><span class="toc-section-number">3</span> Intro</a></li>
 <li><a href="#getting-started-with-python-within-a-linux-os"><span class="toc-section-number">4</span> Getting started with Python within a Linux OS</a></li>
 <li><a href="#a-short-python-refresher"><span class="toc-section-number">5</span> A short Python refresher</a><ul>
-<li><a href="#finding-help"><span class="toc-section-number">5.1</span> Finding help</a></li>
-<li><a href="#finding-information-via-pydoc"><span class="toc-section-number">5.2</span> Finding information via Pydoc</a></li>
-<li><a href="#numbers-and-variables"><span class="toc-section-number">5.3</span> Numbers and variables</a></li>
-<li><a href="#lists"><span class="toc-section-number">5.4</span> Lists</a></li>
-<li><a href="#dictionaries-loops-ifelse"><span class="toc-section-number">5.5</span> Dictionaries, loops, if/else</a></li>
-<li><a href="#functions"><span class="toc-section-number">5.6</span> Functions</a></li>
-<li><a href="#importing-modules"><span class="toc-section-number">5.7</span> Importing modules</a></li>
-<li><a href="#some-important-internal-modules"><span class="toc-section-number">5.8</span> Some important internal modules:</a></li>
-<li><a href="#file-access"><span class="toc-section-number">5.9</span> File access</a></li>
-<li><a href="#error-handling"><span class="toc-section-number">5.10</span> Error handling</a></li>
-<li><a href="#python-statements"><span class="toc-section-number">5.11</span> Python statements</a></li>
+<li><a href="#ipython-and-ipython-notebook"><span class="toc-section-number">5.1</span> IPython and IPython notebook</a></li>
+<li><a href="#finding-help"><span class="toc-section-number">5.2</span> Finding help</a></li>
+<li><a href="#finding-information-via-pydoc"><span class="toc-section-number">5.3</span> Finding information via Pydoc</a></li>
+<li><a href="#numbers-and-variables"><span class="toc-section-number">5.4</span> Numbers and variables</a></li>
+<li><a href="#lists"><span class="toc-section-number">5.5</span> Lists</a></li>
+<li><a href="#dictionaries-loops-ifelse"><span class="toc-section-number">5.6</span> Dictionaries, loops, if/else</a></li>
+<li><a href="#functions"><span class="toc-section-number">5.7</span> Functions</a></li>
+<li><a href="#importing-modules"><span class="toc-section-number">5.8</span> Importing modules</a></li>
+<li><a href="#some-important-internal-modules"><span class="toc-section-number">5.9</span> Some important internal modules:</a></li>
+<li><a href="#file-access"><span class="toc-section-number">5.10</span> File access</a></li>
+<li><a href="#error-handling"><span class="toc-section-number">5.11</span> Error handling</a></li>
+<li><a href="#python-statements"><span class="toc-section-number">5.12</span> Python statements</a></li>
 </ul></li>
 <li><a href="#handling-vector-data-with-python"><span class="toc-section-number">6</span> Handling Vector data with Python</a></li>
 <li><a href="#raster-data-with-python"><span class="toc-section-number">7</span> Raster data with Python</a></li>
@@ -145,7 +146,7 @@ img {
 </div>
 <div id="intro" class="section level1">
 <h1><span class="header-section-number">3</span> Intro</h1>
-<p>Using Python without ArcPy?! Why?!</p>
+<p>Using Python within OSGEO Linux</p>
 <ul>
 <li>Wide user community and support</li>
 <li>Free</li>
@@ -188,8 +189,13 @@ img {
 </div>
 <div id="a-short-python-refresher" class="section level1">
 <h1><span class="header-section-number">5</span> A short Python refresher</h1>
+<div id="ipython-and-ipython-notebook" class="section level2">
+<h2><span class="header-section-number">5.1</span> IPython and IPython notebook</h2>
+<p>See here for a simple IPython notebook example:</p>
+<p><a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb">http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb</a></p>
+</div>
 <div id="finding-help" class="section level2">
-<h2><span class="header-section-number">5.1</span> Finding help</h2>
+<h2><span class="header-section-number">5.2</span> Finding help</h2>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="ch">import</span> sys
 <span class="dt">help</span>(sys)
 <span class="dt">help</span>(<span class="dv">1</span>)</code></pre>
@@ -204,14 +210,14 @@ img {
 </ul>
 </div>
 <div id="finding-information-via-pydoc" class="section level2">
-<h2><span class="header-section-number">5.2</span> Finding information via Pydoc</h2>
+<h2><span class="header-section-number">5.3</span> Finding information via Pydoc</h2>
 <p>Go to: <a href="https://docs.python.org/2/library/pydoc.html" class="uri">https://docs.python.org/2/library/pydoc.html</a></p>
 <pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">pydoc</span> -p 1234
 <span class="kw">echo</span> <span class="st">&quot;pydoc server ready at http://localhost:1234/&quot;</span></code></pre>
 <p>Then go to <code>http://localhost:1234/</code> via your preferred browser.</p>
 </div>
 <div id="numbers-and-variables" class="section level2">
-<h2><span class="header-section-number">5.3</span> Numbers and variables</h2>
+<h2><span class="header-section-number">5.4</span> Numbers and variables</h2>
 <p><em>Question</em>: What is the difference between 10 and 10.0 when dealing with datatypes in Python???</p>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="dt">print</span>(<span class="dt">int</span>(<span class="fl">10.6</span>))</code></pre>
 <pre><code>## 10</code></pre>
@@ -226,7 +232,7 @@ buildingNumber = <span class="dv">101</span>
 <p>Python is basically a list of objects: List are organised with indexes. E.g.</p>
 </div>
 <div id="lists" class="section level2">
-<h2><span class="header-section-number">5.4</span> Lists</h2>
+<h2><span class="header-section-number">5.5</span> Lists</h2>
 <pre class="sourceCode python"><code class="sourceCode python">campus = [<span class="st">'Gaia'</span>,<span class="st">'Lumen'</span>, <span class="st">'Radix'</span>, <span class="st">'Forum'</span>]
 <span class="co"># how to can we print Forum?</span>
 <span class="dt">print</span>(campus[<span class="dv">3</span>])
@@ -250,7 +256,7 @@ campus.extend([<span class="st">&quot;Action&quot;</span>,<span class="st">&quot
 <p><em>Question?</em>: What are the major differences between Append/Extend? <strong>Question:</strong> What building is campus[-2]?</p>
 </div>
 <div id="dictionaries-loops-ifelse" class="section level2">
-<h2><span class="header-section-number">5.5</span> Dictionaries, loops, if/else</h2>
+<h2><span class="header-section-number">5.6</span> Dictionaries, loops, if/else</h2>
 <p>Let there be Dictionaries… Dictionary is an unordered set of key:value pairs. Like in the dictionary, ‘food’:‘voedsel’.</p>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="co"># dictionary</span>
 campusDic = {<span class="dv">101</span>:<span class="st">'Gaia'</span>,
@@ -297,7 +303,7 @@ campusDic = {<span class="dv">101</span>:<span class="st">'Gaia'</span>,
 <pre><code>## it is three</code></pre>
 </div>
 <div id="functions" class="section level2">
-<h2><span class="header-section-number">5.6</span> Functions</h2>
+<h2><span class="header-section-number">5.7</span> Functions</h2>
 <p>A function is a section of code that does something specific that you want use multipletimes without having to type the full function again but just call the function by its name.</p>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> printPotato():
     <span class="dt">print</span> <span class="st">&quot;potato&quot;</span>
@@ -316,7 +322,7 @@ printPotato(<span class="st">&quot;test&quot;</span>)</code></pre>
 <pre><code>## (12, 4)</code></pre>
 </div>
 <div id="importing-modules" class="section level2">
-<h2><span class="header-section-number">5.7</span> Importing modules</h2>
+<h2><span class="header-section-number">5.8</span> Importing modules</h2>
 <p>Try this!</p>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="ch">import</span> this</code></pre>
 <pre class="sourceCode python"><code class="sourceCode python"><span class="ch">from</span> __future__ <span class="ch">import</span> braces</code></pre>
@@ -339,7 +345,7 @@ printPotato(<span class="st">&quot;test&quot;</span>)</code></pre>
 <p>Why is <code>import math</code> the best way to import modules?</p>
 </div>
 <div id="some-important-internal-modules" class="section level2">
-<h2><span class="header-section-number">5.8</span> Some important internal modules:</h2>
+<h2><span class="header-section-number">5.9</span> Some important internal modules:</h2>
 <ul>
 <li><code>os</code>: Access to operating system features</li>
 <li><code>os.path</code>: Manipulating of file names</li>
@@ -356,11 +362,11 @@ glob.glob(<span class="st">&quot;*&quot;</span>)</code></pre>
 delta = timedelta(days=<span class="dv">7</span>)
 <span class="dt">print</span> date.today()
 <span class="dt">print</span> date.today()+delta</code></pre>
-<pre><code>## 2015-01-22
-## 2015-01-29</code></pre>
+<pre><code>## 2015-01-26
+## 2015-02-02</code></pre>
 </div>
 <div id="file-access" class="section level2">
-<h2><span class="header-section-number">5.9</span> File access</h2>
+<h2><span class="header-section-number">5.10</span> File access</h2>
 <p>Very simple for 99% of the cases Write something to file:</p>
 <pre class="sourceCode python"><code class="sourceCode python">fileObj = <span class="dt">open</span>(<span class="st">'test.txt'</span>,<span class="st">'w'</span>)
 fileObj.write(<span class="st">'some simple text'</span>)
@@ -373,7 +379,7 @@ fileObj.close()</code></pre>
 <p><strong>Question</strong>: What does <code>r</code> and <code>w</code> mean?</p>
 </div>
 <div id="error-handling" class="section level2">
-<h2><span class="header-section-number">5.10</span> Error handling</h2>
+<h2><span class="header-section-number">5.11</span> Error handling</h2>
 <p>Sometime problems occur… Errors detected during execution are called <em>exceptions</em></p>
 <p>Good code deals with exceptions:</p>
 <pre class="sourceCode python"><code class="sourceCode python">&gt;&gt;&gt; &gt;&gt;&gt; <span class="dt">open</span>(<span class="st">&quot;/foo0&quot;</span>)
@@ -397,7 +403,7 @@ Traceback (most recent call last):
 ## no file</code></pre>
 </div>
 <div id="python-statements" class="section level2">
-<h2><span class="header-section-number">5.11</span> Python statements</h2>
+<h2><span class="header-section-number">5.12</span> Python statements</h2>
 <ul>
 <li><code>if</code></li>
 <li><code>for</code></li>

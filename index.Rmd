@@ -41,7 +41,7 @@ https://geoscripting-wur.github.io/PythonWeek/Slides.html
 
 # Intro
 
-Using Python without ArcPy?! Why?!
+Using Python within OSGEO Linux
 
 - Wide user community and support
 - Free
@@ -92,6 +92,12 @@ exit()
 - Open the python script within a Python editor
 
 # A short Python refresher
+
+## IPython and IPython notebook
+
+See here for a simple IPython notebook example:
+
+http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb
 
 ## Finding help
 

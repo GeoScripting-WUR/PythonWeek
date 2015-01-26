@@ -7,7 +7,6 @@ output: slidy_presentation
 
 ## Session of yesterday
 
-
 * Github page is forked to the GitHub Geo-scriptin @ WUR group
     * https://github.com/divisionblue/wur-python
     * Presentation is available here: http://divisionblue.github.io/wur-python/
