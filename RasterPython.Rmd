@@ -37,7 +37,7 @@ Below we just import two but more can be imported by `from osgeo.gdalconst impor
 
 Let's get started and see comments here within the script and the output at the end of the script:
 
-```{r, engine='python', en}
+```{r, engine='python'}
 ## we define a helper function do find out what the line number is in the code
 ## it is not necessary to type in the following 4 lines below:
 import inspect
@@ -58,7 +58,6 @@ gdal.AllRegister()
 os.getcwd()
 
 # Opening Erdas Imagine Images (*.img)
-driver = gdal.GetDriverByName('HFA')
 filename = 'data/ospy_data5/aster.img'
 dataSource = gdal.Open(filename, GA_ReadOnly)
 # GDAL also works with file formats like OGR
@@ -85,10 +84,8 @@ if not geotransform is None:
     print 'Pixel Size = (',geotransform[1], ',',geotransform[5],')'
 
 ## dataSource has several important properties (use dir to have a clue)
-## type the following in the terminal and run it line by line:
-dir(dataSource)
-type(dataSource)
-str(dataSource)
+# dir(dataSource)
+
 
 band1 = dataSource.GetRasterBand(1)
 # dir(band1)
@@ -123,19 +120,17 @@ band3Arr = dataSource.GetRasterBand(3).ReadAsArray(0,0,dataSource.RasterXSize, d
 ## We are reading 1 band per array. We could have used the ReadAsArray at the dataSource level, generating a multidimensional array
 ## How?
 
-# First error message (see below)
-print "This is linenumber", lineno()
-ndvi = (band3Arr-band2Arr)/(band3Arr+band2Arr)
+# # First error message (see below)
+# print "This is linenumber", lineno()
+# ndvi = (band3Arr-band2Arr)/(band3Arr+band2Arr)
 
 #Question: What is the result of the following division???
 #1/2
 #1.0/2.0
 
 import numpy as np
-band1Arr=band1Arr.astype(np.float32)
 band2Arr=band2Arr.astype(np.float32)
 band3Arr=band3Arr.astype(np.float32)
-
 # What is "np" in this specific numpy import?
 
 # How do we avoid division by zero?
@@ -148,12 +143,14 @@ print "NDVI min and max values", ndvi.min(), ndvi.max()
 ndvi[ndvi>-99].min()
 
 # Output an image
-outDataSet=driver.Create('data/ndvi.img', dataSource.RasterXSize, dataSource.RasterYSize, 1, GDT_Float32)
+driver = gdal.GetDriverByName('GTiff')
+outDataSet=driver.Create('data/ndvi.tif', dataSource.RasterXSize, dataSource.RasterYSize, 1, GDT_Float32)
 outBand = outDataSet.GetRasterBand(1)
 outBand.WriteArray(ndvi,0,0)
 outBand.SetNoDataValue(-99)
 ## Questoin where do we get the image projection info from???
 outDataSet.SetProjection(dataSource.GetProjection())
+outDataSet.SetGeoTransform(dataSource.GetGeoTransform())
 ## Finally let's save it... or like in the OGR example flush it
 outBand.FlushCache()
 outDataSet.FlushCache()
@@ -172,11 +169,15 @@ http://trac.osgeo.org/gdal/wiki/PythonGotchas
 We can quickly check what we have done with R:
 ```{r, engine='R', message=FALSE}
 library(raster)
-b <- raster('data/ndvi.img')
 a <- brick('data/ospy_data5/aster.img')
-projection(b)
-hist(b, 1, maxpixels=1000, plot=TRUE)
 plotRGB(a, 3, 2, 1, stretch='hist')
+```
+
+```{r}
+b <- raster('data/ndvi.tif')
+extent(b)
+projection(b)
+hist(b, 1, maxpixels=500, plot=TRUE)
 ```
 
 ## Using QGIS and Python
