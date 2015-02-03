@@ -17,10 +17,8 @@ output:
 
 Key modules in Python for Raster data handling:
 
-* 
 * Developped for high-level spatial analysis:
 `PySAL`: https://pypi.python.org/pypi/PySAL
-
 
 Have a look at this question on GIS StackExchange:
 https://gis.stackexchange.com/questions/34509/alternatives-to-using-arcpy
