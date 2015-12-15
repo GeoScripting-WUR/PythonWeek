@@ -140,7 +140,7 @@ Now you can continue (you do not need to repead the `import os` if you have alre
 * Put feature in a layer
 * Flush
 
-```{r, engine = 'python'}
+```{r, engine = 'python', eval=TRUE}
 ## Loading the modules
 import os
 os.chdir('data')
@@ -237,7 +237,7 @@ ds.Destroy()
 
 From the terminal you can remove the created "testing.shp" and related files using:
 
-```{r, engine='bash'}
+```{r, engine='bash', eval=TRUE}
 echo "in the terminal you can use the following bash commands to easily remove files"
 echo "list all the files starting with testing*"
 ls data/testing*
@@ -320,7 +320,7 @@ Mapnik is a Free Toolkit for developing mapping applications. It’s written in 
 Start by downloading the World Borders Dataset from:
 http://thematicmapping.org/downloads/world_borders.php
 
-```{r, engine='python'}
+```{r, engine='python', eval=FALSE}
 import os,os.path
 import mapnik
 

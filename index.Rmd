@@ -23,11 +23,15 @@ Reminder: Self-study is critical for the completion of the excercises at the end
 
     * Monday morning: the Python intro below and https://geoscripting-wur.github.io/PythonWeek/VectorPython.html
     * Tuesday morning:
-        * check out the following IPython Notebooks created by Aldo:
+        * check out the following IPython Notebooks created by Aldo Bergsma:
             * [A simple Iphython Notebook](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb)
             * [Buffer Example](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Buffer%20example.ipynb)
-            * 
-        
+            * Examples of different spatial visualisation packages in python
+                * [Matplotlib](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Matplotlib_basemap.ipynb)
+                * [Cartopy](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Plot%20Map.ipynb)
+            * Example of reading geometries and format conversion in python
+                * [OGR](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/OGR%20examples.ipynb)
+      
     * Wednesday morning: https://geoscripting-wur.github.io/PythonWeek/RasterPython.html
 
 ## Afternoon: Feedback and discussion
