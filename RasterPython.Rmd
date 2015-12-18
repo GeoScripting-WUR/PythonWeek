@@ -1,14 +1,15 @@
 ---
-title: "Raster data handling with Python"
+title: "[WUR GRS-51806 Geoscripting](https://geoscripting-wur.github.io/)"
+subtitle: "Week 3: Raster data handling with Python"
 author: "Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   html_document:
-    theme: cosmo
-    toc: true
-    toc_depth: 4
-    number_sections: true
-    highlight: pygments
+    number_sections: yes
+    css: custom.css
+    highlight: tango
+    toc: yes
+    toc_depth: 2
 ---
 
 # Handling Raster data with Python
