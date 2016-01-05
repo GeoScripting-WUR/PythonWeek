@@ -1,20 +1,18 @@
 ---
-title: "[WUR GRS-51806 Geoscripting](https://geoscripting-wur.github.io/)"
-subtitle: "Week 3: Python for geo-scripting"
+
 author: "Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
-  html_document:
-    number_sections: yes
-    css: custom.css
-    highlight: tango
-    toc: yes
-    toc_depth: 2
+  knitrBootstrap::bootstrap_document:
+    title: "Week 3: Python for geo-scripting"
+    theme: cosmo
+    menu: FALSE
 ---
 
-# To do 
+# [WUR Geoscripting](https://geoscripting-wur.github.io/) ![WUR logo](http://www.wageningenur.nl/upload/f9a0b5f2-15c5-4b84-9e14-20ef02f5e265_wur-logo.png)
+# "Week 3: Python for geo-scripting"
 
-## Morning: Self-study
+## This week:
 
 Reminder: Self-study is critical for the completion of the excercises at the end of the tutorial!
 
@@ -33,14 +31,14 @@ Reminder: Self-study is critical for the completion of the excercises at the end
             * Example of reading geometries and format conversion in python
                 * [OGR](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/OGR%20examples.ipynb)
       
-    * Wednesday morning: https://geoscripting-wur.github.io/PythonWeek/RasterPython.html
+    * Wednesday morning: [Raster](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb)
 
-## Afternoon: Feedback and discussion
+### Afternoon: Feedback and discussion
 
 Slides for during the lesson:
 https://geoscripting-wur.github.io/PythonWeek/Slides.html
 
-# Learning outcomes
+### Learning outcomes
 
 * knowing how to handle spatial data using Python
     * vector data handling
@@ -50,7 +48,7 @@ https://geoscripting-wur.github.io/PythonWeek/Slides.html
         * calculating indices
         * projection raster data
 
-# Intro
+## Intro
 
 Using Python within OSGEO Linux
 
@@ -68,7 +66,7 @@ Have a look at this question on GIS StackExchange:
 - https://gis.stackexchange.com/questions/34509/alternatives-to-using-arcpy
 - https://gis.stackexchange.com/questions/16657/clipping-raster-with-vector-layer-using-gdal
 
-# Getting started with Python within a Linux OS
+## Getting started with Python within a Linux OS
 
 - Launch [OS-GEO live](http://live.osgeo.org/en/index.html) from the VMware player and login.
 
@@ -102,15 +100,15 @@ exit()
 
 - Open the python script within a Python editor
 
-# A short Python refresher
+## A short Python refresher
 
-## IPython and IPython notebook
+### IPython and IPython notebook
 
 See here for a simple IPython notebook example:
 
 http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb
 
-## Finding help
+### Finding help
 
 ```{r, engine='python', eval=FALSE}
 import sys
@@ -131,7 +129,7 @@ see also:
 * http://www.rafekettler.com/magicmethods.html
 * https://stackoverflow.com/questions/1090620/special-magic-methods-in-python
 
-## Finding information via Pydoc
+### Finding information via Pydoc
 
 Go to: https://docs.python.org/2/library/pydoc.html
 
@@ -142,7 +140,7 @@ echo "pydoc server ready at http://localhost:1234/"
 
 Then go to  `http://localhost:1234/` via your preferred browser.
 
-## Numbers and variables
+### Numbers and variables
 
 *Question*: What is the difference between 10 and 10.0 when dealing with datatypes in Python???
 
@@ -179,7 +177,7 @@ library(knitr)
 opts_chunk$set(engine = 'python')
 ```
 
-## Lists
+### Lists
 
 ```{r campus, engine='python'}
 campus = ['Gaia','Lumen', 'Radix', 'Forum']
@@ -205,7 +203,7 @@ print campus[::2]
 *Question?*: What are the major differences between Append/Extend?
 **Question:** What building is campus[-2]?
 
-## Dictionaries, loops, if/else
+### Dictionaries, loops, if/else
 
 Let there be Dictionaries... Dictionary is an unordered set of key:value pairs. Like in the dictionary, 'food':'voedsel'.
 
@@ -262,7 +260,7 @@ else:
     print "above 3"
 ```
 
-## Functions
+### Functions
 
 A function is a section of code that does something specific that you want use multipletimes without having to type the full function again but just call the function by its name.
 
@@ -289,7 +287,7 @@ def times3(number):
 print times3(4)
 ```
 
-## Importing modules
+### Importing modules
 
 Try this!
 
@@ -328,7 +326,7 @@ from numy import pi
 from math import pi
 ```
 
-## Some important internal modules:
+### Some important internal modules:
 
 - `os`: Access to operating system features
 - `os.path`: Manipulating of file names
@@ -353,7 +351,7 @@ print date.today()
 print date.today()+delta
 ```
 
-## File access
+### File access
 
 Very simple for 99% of the cases
 Write something to file:
@@ -373,7 +371,7 @@ fileObj.close()
 
 **Question**: What does `r` and `w` mean?
 
-## Error handling
+### Error handling
 
 Sometime problems occur... Errors detected during execution are called *exceptions*
 
@@ -404,7 +402,7 @@ except IOError:
     print "no file"
 ```
 
-## Python statements
+### Python statements
 
 - `if`
 - `for`
@@ -424,7 +422,7 @@ Go to [Vector Data handling in Python](https://geoscripting-wur.github.io/Python
 
 # Raster data with Python
 
-Go to [Raster Data handling in Python](https://geoscripting-wur.github.io/PythonWeek/RasterPython.html)
+Go to teh ipython notebook [Raster Data handling in Python](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb)
 
 # R from Python
 
