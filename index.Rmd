@@ -1,6 +1,5 @@
 ---
-
-author: "Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma"
+author: "Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Johannes Eberenz"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   knitrBootstrap::bootstrap_document:
@@ -14,24 +13,23 @@ output:
 
 ## This week:
 
-Reminder: Self-study is critical for the completion of the excercises at the end of the tutorial!
-
-- Optional (!!!): if you have not followed the "Python course", it is highly recommended to follow the Python Refresher via: http://www.codecademy.com/tracks/python
-
+### Mornings:
 - Follow and complete:
-
-    * Monday morning: the Python intro below and https://geoscripting-wur.github.io/PythonWeek/VectorPython.html
-    * Tuesday morning:
-        * check out the following IPython Notebooks created by Aldo Bergsma:
-            * [A simple Iphython Notebook](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb)
-            * [Buffer Example](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Buffer%20example.ipynb)
-            * Examples of different spatial visualisation packages in python
+    - (Optional): if you have not followed the "Python course", it is highly recommended to follow the Python Refresher via: http://www.codecademy.com/tracks/python
+    - Monday morning: the Python intro below and https://geoscripting-wur.github.io/PythonWeek/VectorPython.html
+    - Tuesday morning:
+        - check out the following IPython Notebooks created by Aldo Bergsma:
+            - [A simple Iphython Notebook](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb)
+            - [Buffer Example](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Buffer%20example.ipynb)
+            - Examples of different spatial visualisation packages in python
                 * [Matplotlib](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Matplotlib_basemap.ipynb)
                 * [Cartopy](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Plot%20Map.ipynb)
-            * Example of reading geometries and format conversion in python
+            - Example of reading geometries and format conversion in python
                 * [OGR](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/OGR%20examples.ipynb)
       
-    * Wednesday morning: [Raster](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb)
+    - Wednesday morning: [Raster](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb)
+
+***Reminder: Self-study is critical for the completion of the excercises at the end of the tutorial!***
 
 ### Afternoon: Feedback and discussion
 
@@ -70,8 +68,6 @@ Have a look at this question on GIS StackExchange:
 
 - Launch [OS-GEO live](http://live.osgeo.org/en/index.html) from the VMware player and login.
 
-** Question: Do you know wat OS-GEO is?
-
 - Open the Terminal and type the following to check the installed GDAL version:
 
 ```{r, eval = FALSE, engine='bash'}
@@ -82,7 +78,7 @@ gdal-config --version
 
 - type the following to start python and find out what the python version is:
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, engine='bash'}
 python # type this in the terminal to start the python interpreter
 ```
 
@@ -94,7 +90,7 @@ print sys.version #parentheses necessary in python 3.
 ```
 
 To exit python:
-```{r, eval=FALSE}
+```{r, eval=FALSE, engine='python'}
 exit()
 ```
 
@@ -300,7 +296,6 @@ from __future__ import braces
 ```
 
 
-
 ```{r}
 import math
 print dir(math)
@@ -416,15 +411,7 @@ except IOError:
 - `yield`
 - `import`
 
-# Handling Vector data with Python
-
-Go to [Vector Data handling in Python](https://geoscripting-wur.github.io/PythonWeek/VectorPython.html)
-
-# Raster data with Python
-
-Go to teh ipython notebook [Raster Data handling in Python](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb)
-
-# R from Python
+## R from Python
 
 A very simple example using the Python Rpy2 module (only possible on Mac/Linux). This is working with your OS-GEO live linux virtual machine. Try it out! :smile:
 
@@ -433,6 +420,24 @@ import rpy2.robjects as robjects
 pi = robjects.r['pi']
 print(pi[0])
 ```
+By the way, as you may have noticed, this document is created from an RMarkdown source, which can also include Python code blocks (have a look at the [source](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/index.Rmd) on github). Similary, the newest version of IPython notebook, now can also use R and other languages!
+
+## Python package management
+For python, a set of tools co-exist for installing and managing packages. 
+
+*   ***pip*** is a python package installer, that is pretty much standard nowadays.
+*   With python, often the dependencies and and versions can differ from project to project. ***Virtual environments*** can be used to keep seperate sets of packages. See an intro to pip and virtualenv [here](http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/)
+*   A different solution is [conda](http://conda.pydata.org/docs/) which makes it very easy to install and maintain different external dependencies such as gdal and even R accross different operating systems.
+
+
+# Handling Vector data with Python
+
+Go to [Vector Data handling in Python](https://geoscripting-wur.github.io/PythonWeek/VectorPython.html)
+
+# Raster data with Python
+
+Go to teh ipython notebook [Raster Data handling in Python](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb)
+
 
 # More info
 - A great book: [Python Geospatial Development](http://www.amazon.com/Python-Geospatial-Development-Second-Edition/dp/178216152X)
