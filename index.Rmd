@@ -11,11 +11,13 @@ output:
 # [WUR Geoscripting](https://geoscripting-wur.github.io/) ![WUR logo](http://www.wageningenur.nl/upload/f9a0b5f2-15c5-4b84-9e14-20ef02f5e265_wur-logo.png)
 # "Week 3: Python for geo-scripting"
 
-## This week:
+## Python week Friday to Tuesday:
 
 ### Mornings:
+
+
 - Follow and complete:
-    - (Optional): if you have not followed the "Python course", it is highly recommended to follow the Python Refresher via: http://www.codecademy.com/tracks/python
+    - Friday: This intro tutorial! _(Optional): if you have not followed the "Python course", it is highly recommended to follow the [Python Refresher](http://www.codecademy.com/tracks/python)_
     - Monday morning: the Python intro below and https://geoscripting-wur.github.io/PythonWeek/VectorPython.html
     - Tuesday morning:
         - check out the following IPython Notebooks created by Aldo Bergsma:
@@ -33,8 +35,9 @@ output:
 
 ### Afternoon: Feedback and discussion
 
-Slides for during the lesson:
-https://geoscripting-wur.github.io/PythonWeek/Slides.html
+* Friday: Johanens
+* Monday: Aldo
+* Tuesday: Jan & Johannes
 
 ### Learning outcomes
 
@@ -96,13 +99,12 @@ exit()
 
 - Open the python script within a Python editor
 
+### Python editors and IDEs
+* Most modern text editors do nice pyhton highlighting, e.g. Sublime Text can be set up nicely for python
+* IPython notebook is a good choice for short scripts, e.g. the the execises here. It gives you a nice option with source code results and comments in one document ! See here for a simple IPython [notebook example](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb)
+* There are a number of propper IDE,s for python. Personnaly I made good experience with [PyCharm](https://www.jetbrains.com/pycharm/). 
+
 ## A short Python refresher
-
-### IPython and IPython notebook
-
-See here for a simple IPython notebook example:
-
-http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb
 
 ### Finding help
 
@@ -260,7 +262,7 @@ else:
 
 A function is a section of code that does something specific that you want use multipletimes without having to type the full function again but just call the function by its name.
 
-```{r}
+```{r, engine='python'}
 def printPotato():
     print "potato"
 printPotato()
@@ -268,7 +270,7 @@ printPotato()
 
 Functions accept arguments and return variables e.g.:
 
-```{r}
+```{r, engine='python'}
 def printPotato(something):
     print something
 printPotato("test")
@@ -276,7 +278,7 @@ printPotato("test")
 
 `return` is used to indicate what you want to obtain from the function, and you can `return` multiple items.
 
-```{r}
+```{r, engine='python'}
 def times3(number):
     tmp = number*3
     return tmp, number
@@ -296,7 +298,7 @@ from __future__ import braces
 ```
 
 
-```{r}
+```{r, engine='python'}
 import math
 print dir(math)
 ```
@@ -306,7 +308,7 @@ print dir(math)
 - A module contains code that can be used or excuted.
 
 Basically 2 ways to load a module:
-```{r}
+```{r, engine='python'}
 import math
 print math.pi
 
@@ -334,12 +336,12 @@ from math import pi
 
 Some examples:
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, engine='python'}
 import glob
 glob.glob("*")
 ```
 
-```{r}
+```{r,engine='python'}
 from datetime import timedelta,date
 delta = timedelta(days=7)
 print date.today()
@@ -351,13 +353,13 @@ print date.today()+delta
 Very simple for 99% of the cases
 Write something to file:
 
-```{r, engine='python'}
+```{r, engine='python', engine='python'}
 fileObj = open('test.txt','w')
 fileObj.write('some simple text')
 fileObj.close()
 ```
 
-```{r}
+```{r, engine='python'}
 fileObj = open('test.txt','r')
 a = fileObj.read()
 print a
@@ -372,7 +374,7 @@ Sometime problems occur... Errors detected during execution are called *exceptio
 
 Good code deals with exceptions:
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, engine='python'}
 >>> >>> open("/foo0")
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
@@ -436,7 +438,7 @@ Go to [Vector Data handling in Python](https://geoscripting-wur.github.io/Python
 
 # Raster data with Python
 
-Go to teh ipython notebook [Raster Data handling in Python](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb)
+Go to [Raster Data handling in Python](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb)
 
 
 # More info
