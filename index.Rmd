@@ -11,16 +11,18 @@ output:
 # [WUR Geoscripting](https://geoscripting-wur.github.io/) ![WUR logo](http://www.wageningenur.nl/upload/f9a0b5f2-15c5-4b84-9e14-20ef02f5e265_wur-logo.png)
 # "Week 3: Python for geo-scripting"
 
-## Python week Friday to Tuesday:
+## Python week Friday to Wednesday:
 
-### Mornings:
+### Mornings: Selfstudy
 
+***Reminder: Self-study is critical for the completion of the excercises at the end of the tutorial!***
 
 - Follow and complete:
     - Friday: 
-        - This intro tutorial! 
-        - _(Optional)_: if you have not followed the "Python course", it is highly recommended to follow the [Python Refresher](http://www.codecademy.com/tracks/python)
-    - Monday morning: [Vector](https://geoscripting-wur.github.io/PythonWeek/VectorPython.html). _This also contains an exercise!_
+        - Follow DataCamp Intro to Python course. 
+        - See blackboard: course description section
+    - Monday: [Vector](https://geoscripting-wur.github.io/PythonWeek/VectorPython.html). _This also contains an exercise!_
+    - Tuesday:    
         - check out the following IPython Notebooks created by Aldo Bergsma:
             - [A simple Iphython Notebook](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb)
             - [Buffer Example](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Buffer%20example.ipynb)
@@ -30,16 +32,16 @@ output:
             - Example of reading geometries and format conversion in python
                 * [OGR](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/OGR%20examples.ipynb)
       
-    - Tuesday: ArcPy tutorial ?
-    - Wednesday morning: [Raster](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb). _This also contains an exercise!_
+    - Wednesday: [Raster](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb). _This also contains an exercise!_
 
-***Reminder: Self-study is critical for the completion of the excercises at the end of the tutorial!***
 
-### Afternoon: Feedback and discussion
 
-* Friday: Johanens
-* Monday: Aldo
-* Tuesday: Jan & Johannes
+### Afternoon: Feedback and discussion session at 1330u
+
+* Friday: Johannes
+* Monday: Jorge and Johannes
+* Tuesday: Aldo & Johannes
+* Wednesday: Jan, Johannes, and Jorge
 
 ### Learning outcomes
 
