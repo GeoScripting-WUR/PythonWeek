@@ -13,35 +13,30 @@ output:
 
 ## Python week Friday to Wednesday:
 
-### Mornings: Selfstudy
+### Schedule Overview
+
+  - ***Friday:*** 
+      - Follow DataCamp Intro to Python course. 
+      - See blackboard: course description section
+  - ***Monday:*** 
+      - Morning: [Vector](https://geoscripting-wur.github.io/PythonWeek/VectorPython.html). _This also contains an assignment!_
+      - Afternoon: Lecture by Jorge on python
+  - ***Tuesday: ***
+      - In the afternoon you will get an intro to ArcPy by Aldo. On Blackboard you can find examples and  _a small assignment_! 
+      - In the morning check out the following IPython Notebooks created by Aldo Bergsma, to compare the open source implementation with ArcPy:
+        - [A simple Iphython Notebook](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb)
+        - [Buffer Example](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Buffer%20example.ipynb)
+        - Examples of different spatial visualisation packages in python
+            - [Matplotlib](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Matplotlib_basemap.ipynb)
+            - [Cartopy](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Plot%20Map.ipynb)
+        - Example of reading geometries and format conversion in python
+            - [OGR](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/OGR%20examples.ipynb)
+      
+  - ***Wednesday:*** 
+    - Turorial: [Raster](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb). _This also contains an assignment!_
+    - Afternoon: recap by jan & Johannes
 
 ***Reminder: Self-study is critical for the completion of the excercises at the end of the tutorial!***
-
-- Follow and complete:
-    - Friday: 
-        - Follow DataCamp Intro to Python course. 
-        - See blackboard: course description section
-    - Monday: [Vector](https://geoscripting-wur.github.io/PythonWeek/VectorPython.html). _This also contains an exercise!_
-    - Tuesday:    
-        - check out the following IPython Notebooks created by Aldo Bergsma:
-            - [A simple Iphython Notebook](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb)
-            - [Buffer Example](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Buffer%20example.ipynb)
-            - Examples of different spatial visualisation packages in python
-                * [Matplotlib](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Matplotlib_basemap.ipynb)
-                * [Cartopy](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Plot%20Map.ipynb)
-            - Example of reading geometries and format conversion in python
-                * [OGR](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/OGR%20examples.ipynb)
-      
-    - Wednesday: [Raster](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb). _This also contains an exercise!_
-
-
-
-### Afternoon: Feedback and discussion session at 1330u
-
-* Friday: Johannes
-* Monday: Jorge and Johannes
-* Tuesday: Aldo & Johannes
-* Wednesday: Jan, Johannes, and Jorge
 
 ### Learning outcomes
 
@@ -421,7 +416,7 @@ except IOError:
 
 A very simple example using the Python Rpy2 module (only possible on Mac/Linux). This is working with your OS-GEO live linux virtual machine. Try it out! :smile:
 
-```{r, engine='python', eval=TRUE}
+```{r, engine='python', eval=FALSE}
 import rpy2.robjects as robjects
 pi = robjects.r['pi']
 print(pi[0])
