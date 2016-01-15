@@ -1,18 +1,18 @@
 ---
-title: "[WUR GRS-51806 Geoscripting](https://geoscripting-wur.github.io/)"
-subtitle: "Week 3: Vector data handling with Python"
 author: "Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
-  html_document:
-    number_sections: yes
-    css: custom.css
-    highlight: tango
-    toc: yes
-    toc_depth: 2
+  knitrBootstrap::bootstrap_document:
+    title: "Week 3: Python for geo-scripting"
+    theme: cosmo
+    menu: FALSE
 ---
 
-# Handling Vector data with Python
+# [WUR Geoscripting](https://geoscripting-wur.github.io/) ![WUR logo](http://www.wageningenur.nl/upload/f9a0b5f2-15c5-4b84-9e14-20ef02f5e265_wur-logo.png)
+
+# Vector data handling with Python
+
+_Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma_ - `r format(Sys.time(), '%d %B, %Y')`
 
 ## GDAL/OGR using Python
 
@@ -27,8 +27,8 @@ New:
 
 Documentation: 
 
-* http://gdal.org/python/
-* http://www.gdal.org/gdal_tutorial.html
+* [http://gdal.org/python/](http://gdal.org/python/)
+* [http://www.gdal.org/gdal_tutorial.html](http://www.gdal.org/gdal_tutorial.html)
 
 Check out these relevant books:
 
@@ -398,7 +398,7 @@ You can download:
 
 ## Deadline
 
-Upload your documented and well structured Python script to a GitHub repository and send the link before 1030 on Friday 23/01.
+Upload your documented and well structured Python script to a GitHub repository and send the link before 1030 on Friday 22/01.
 
 ## Demoscript
 
