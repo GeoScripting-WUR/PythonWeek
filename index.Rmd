@@ -13,6 +13,7 @@ output:
 
 ## Python week Friday to Wednesday:
 
+
 ### Schedule Overview
 
   - ***Friday:*** 
