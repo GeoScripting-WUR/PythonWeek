@@ -22,7 +22,7 @@ output:
         - Follow DataCamp Intro to Python course. 
         - See blackboard: course description section
     - Monday: [Vector](https://geoscripting-wur.github.io/PythonWeek/VectorPython.html). _This also contains an exercise!_
-    - Tuesday:    
+    - Tuesday: _Aldo will provide an excercise via Blackboard!_   
         - check out the following IPython Notebooks created by Aldo Bergsma:
             - [A simple Iphython Notebook](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb)
             - [Buffer Example](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Buffer%20example.ipynb)
@@ -34,7 +34,7 @@ output:
       
     - Wednesday: [Raster](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb). _This also contains an exercise!_
 
-
+    - Thursday: Twitter python challenge by Arend Ligtenberg
 
 ### Afternoon: Feedback and discussion session at 1330u
 
