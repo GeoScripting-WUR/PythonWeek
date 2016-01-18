@@ -441,7 +441,7 @@ Go to [Vector Data handling in Python](https://geoscripting-wur.github.io/Python
 
 Go to [Raster Data handling in Python](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb)
 
-> Note: this is an Ipython notebook (now called Jupyter!)
+> Note: this is an Ipython notebook (now called Jupyter Notebook!)
 
 # More info
 - A great book: [Python Geospatial Development](http://www.amazon.com/Python-Geospatial-Development-Second-Edition/dp/178216152X)
