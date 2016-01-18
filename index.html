@@ -971,7 +971,8 @@ print sys.version #parentheses necessary in python 3. </code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## 2.7.10 |Continuum Analytics, Inc.| (default, May 28 2015, 16:44:52) [MSC v.1500 64 bit (AMD64)]
+<pre style=""><code class="output python">## 2.7.5 (default, Mar  9 2014, 22:15:05) 
+## [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)]
 </code></pre>
 </div>
 To exit python:
@@ -1252,7 +1253,7 @@ print dir(math)</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## ['__doc__', '__name__', '__package__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'hypot', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']
+<pre style=""><code class="output python">## ['__doc__', '__file__', '__name__', '__package__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'hypot', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']
 </code></pre>
 </div>
 <ul>
@@ -1307,8 +1308,8 @@ print date.today()+delta</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## 2016-01-15
-## 2016-01-22
+<pre style=""><code class="output python">## 2016-01-18
+## 2016-01-25
 </code></pre>
 </div>
 <h3>File access</h3>
@@ -1387,7 +1388,7 @@ except IOError:
 <li><code>import</code></li>
 </ul>
 <h2>R from Python</h2>
-<p>A very simple example using the Python Rpy2 module (only possible on Mac/Linux). This is working with your OS-GEO live linux virtual machine. Try it out! :smile:</p>
+<p>A very simple example using the Python Rpy2 module (only possible on Mac/Linux). This is working with your OS-GEO live linux virtual machine. Try it out!</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1395,6 +1396,11 @@ except IOError:
 <pre style=""><code class="source python">import rpy2.robjects as robjects
 pi = robjects.r['pi']
 print(pi[0])</code></pre>
+<button class="output python toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> python output
+</button>
+<pre style=""><code class="output python">## 3.14159265359
+</code></pre>
 </div>
 <p>By the way, as you may have noticed, this document is created from an RMarkdown source, which can also include Python code blocks (have a look at the <a href="https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/index.Rmd">source</a> on github). Similary, the newest version of IPython notebook, now can also use R and other languages!</p>
 <h2>Python package management</h2>
@@ -1408,6 +1414,9 @@ print(pi[0])</code></pre>
 <p>Go to <a href="https://geoscripting-wur.github.io/PythonWeek/VectorPython.html">Vector Data handling in Python</a></p>
 <h1>Raster data with Python</h1>
 <p>Go to <a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb">Raster Data handling in Python</a></p>
+<blockquote>
+<p>Note: this is an Ipython notebook (now called Jupyter!)</p>
+</blockquote>
 <h1>More info</h1>
 <ul>
 <li>A great book: <a href="http://www.amazon.com/Python-Geospatial-Development-Second-Edition/dp/178216152X">Python Geospatial Development</a></li>

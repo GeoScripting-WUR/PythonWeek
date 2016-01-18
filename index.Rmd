@@ -415,13 +415,14 @@ except IOError:
 
 ## R from Python
 
-A very simple example using the Python Rpy2 module (only possible on Mac/Linux). This is working with your OS-GEO live linux virtual machine. Try it out! :smile:
+A very simple example using the Python Rpy2 module (only possible on Mac/Linux). This is working with your OS-GEO live linux virtual machine. Try it out!
 
-```{r, engine='python', eval=FALSE}
+```{r, engine='python', eval=TRUE}
 import rpy2.robjects as robjects
 pi = robjects.r['pi']
 print(pi[0])
 ```
+
 By the way, as you may have noticed, this document is created from an RMarkdown source, which can also include Python code blocks (have a look at the [source](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/index.Rmd) on github). Similary, the newest version of IPython notebook, now can also use R and other languages!
 
 ## Python package management
@@ -440,6 +441,7 @@ Go to [Vector Data handling in Python](https://geoscripting-wur.github.io/Python
 
 Go to [Raster Data handling in Python](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb)
 
+> Note: this is an Ipython notebook (now called Jupyter!)
 
 # More info
 - A great book: [Python Geospatial Development](http://www.amazon.com/Python-Geospatial-Development-Second-Edition/dp/178216152X)
