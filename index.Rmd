@@ -101,7 +101,7 @@ exit()
 
 ### Python editors and IDEs
 * Most modern text editors do nice pyhton highlighting, e.g. Sublime Text can be set up nicely for python
-* IPython notebook is a good choice for short scripts, e.g. the the execises here. It gives you a nice option with source code results and comments in one document ! See here for a simple IPython [notebook example](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb)
+* IPython notebook is a good choice for short scripts, e.g. the the execises here. It gives you a nice option with source code results and comments in one document ! See here for a simple IPython [notebook example](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb). This is now called ** Jupyter Notebook **; [More info](http://jupyter.org/)
 * There are a number of propper IDE,s for python. Personnaly I made good experience with [PyCharm](https://www.jetbrains.com/pycharm/). For running on a server, [rodeo](https://github.com/yhat/rodeo/) gives a similar interface as RStudio server.
 
 ## A short Python refresher
