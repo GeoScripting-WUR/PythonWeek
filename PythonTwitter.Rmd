@@ -29,11 +29,13 @@ output:
 
 # Assignments
 
-lakjsd;laksjd;la
+Create a twitter harvesting application that harvest tweets (either real-time or stored), and create a spatial dataset en map from it. The application should be able to: collect tweets based on a thematic and/or spatial query. Suggestions:
+* Feed a spatial database with information tweeted real time from a certain location and plot it on a map.
+* Create a map indicating where traffic jams, disruptions in the public transport or ... took place last week.
+* Go out with your smartphone (what else should you do during lunch), collect spatial information (for examples POIs on the campus) by tweeting from various locations using a specific hashtag (make sure location is enabled in your twitter account), harvest these tweets with an application, and create a map from it.
+* .... think of something else.
 
-
-
-
+Send in your application as an Ipython Notebook as well as a screenshot of the map you produced (through the script review centre: lesson 14)
 
 
 
