@@ -42,15 +42,35 @@ See here for a full [reproducible Python outline](http://nbviewer.ipython.org/gi
 An interesting www to check out if something unexpected occurs:
 http://trac.osgeo.org/gdal/wiki/PythonGotchas
 
+### Via Python
+
+```{r, engine = 'python', eval=TRUE}
+# import modules
+from osgeo import gdal
+from osgeo.gdalconst import GA_ReadOnly, GDT_Float32
+import numpy as np
+
+# open file and print info about the file
+# the ¨../¨ refers to the parent directory of my working directory
+filename = 'data/ospy_data5/aster.img'
+dataSource = gdal.Open(filename, GA_ReadOnly)
+
+print "\nInformation about " + filename 
+print "Driver: ", dataSource.GetDriver().ShortName,"/", \
+      dataSource.GetDriver().LongName
+
+```
+
+### Via R
 
 We can quickly check what we have done with R:
-```{r, engine='R', message=FALSE}
+```{r, engine='R', message=FALSE, eval=FALSE}
 library(raster)
 a <- brick('data/ospy_data5/aster.img')
 plotRGB(a, 3, 2, 1, stretch='hist')
 ```
 
-```{r}
+```{r, eval = FALSE}
 b <- raster('data/ndvi.tif')
 extent(b)
 projection(b)
