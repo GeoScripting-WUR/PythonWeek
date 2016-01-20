@@ -5,6 +5,12 @@ date: "22 Jan 2015"
 output: slidy_presentation
 ---
 
+## IDE
+
+[RODEO]
+(http://blog.yhat.com/posts/rodeo-native.html)
+
+
 ## Session of yesterday
 
 * Github page is forked to the GitHub Geo-scriptin @ WUR group
