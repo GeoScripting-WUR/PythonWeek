@@ -871,7 +871,7 @@ Week 3: Python for geo-scripting
 <div class="contents col-xs-12 col-md-10">
 <h1><a href="https://geoscripting-wur.github.io/">WUR Geoscripting</a> <img src="http://www.wageningenur.nl/upload/f9a0b5f2-15c5-4b84-9e14-20ef02f5e265_wur-logo.png" alt="WUR logo" /></h1>
 <h1>Vector data handling with Python</h1>
-<p><em>Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma</em> - 15 January, 2016</p>
+<p><em>Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma</em> - 20 January, 2016</p>
 <h2>GDAL/OGR using Python</h2>
 <p>By now you should now what the following abbreviation stand for (what can you do with it??). Osgeo Python module groups 3 submodules:</p>
 <ul>
@@ -967,7 +967,7 @@ print point.ExportToWkt()</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## POINT (205654.247323391202372 -15819205.52701161056757)
+<pre style=""><code class="output python">## POINT (205654.247323391464306 -15819205.527011606842279)
 </code></pre>
 </div>
 <h2>Create a shape file</h2>
@@ -1141,10 +1141,10 @@ rm -v data/testing*</code></pre>
 ## data/testing.shp
 ## data/testing.shx
 ## remove all the files starting with testing*
-## removed ‘data/testing.dbf’
-## removed ‘data/testing.prj’
-## removed ‘data/testing.shp’
-## removed ‘data/testing.shx’
+## data/testing.dbf
+## data/testing.prj
+## data/testing.shp
+## data/testing.shx
 </code></pre>
 </div>
 <p>Now, we can open the created shape file in QGIS using the <code>Python Console</code>.</p>
@@ -1278,71 +1278,13 @@ print "All done - check content"</code></pre>
 <h1>Assignment</h1>
 <p>Now create your own shape file containing two locations (e.g. a location of the GAIA building in Wageningen). E.g. go to Google Earth, an extract the coordinates and redo the above excercise (BONUS: if you use a <code>for</code> loop) and export to a KML file.</p>
 <p>You can also use the points defined here: https://geoscripting-wur.github.io/IntroToVector/.</p>
-<p>Bonus: you can create a map with MapNik using the code below.</p>
-<p>You can download:</p>
-<ul>
-<li>your own <code>location icon</code> from: https://sites.google.com/site/gmapicons/home</li>
-<li>the data set from http://www.naturalearthdata.com/downloads/110m-physical-vectors/</li>
-</ul>
+<p>Bonus: you can create a map using Python code.</p>
+<p>For making nice maps see the following <a href="https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Plot%20Map.ipynb">python notebooks</a></p>
 <h2>Deadline</h2>
-<p>Upload your documented and well structured Python script to a GitHub repository and send the link before 1030 on Friday 22/01.</p>
-<h2>Demoscript</h2>
-<div class="row">
-<button class="source python toggle btn btn-xs btn-primary">
-<span class="glyphicon glyphicon-chevron-down"></span> python source
-</button>
-<pre style=""><code class="source python">import os,os.path
-import mapnik
-
-#file with symbol for point
-file_symbol=os.path.join("figs","google_icon.png")
-
-#First we create a map
-map = mapnik.Map(800, 400) #This is the image final image size
-
-#Lets put some sort of background color in the map
-map.background = mapnik.Color("steelblue") # steelblue == #4682B4 
-
-#Create the rule and style obj
-r = mapnik.Rule()
-s = mapnik.Style()
-
-polyStyle= mapnik.PolygonSymbolizer(mapnik.Color("darkred"))
-pointStyle = mapnik.PointSymbolizer(mapnik.PathExpression(file_symbol))
-r.symbols.append(polyStyle)
-r.symbols.append(pointStyle)
-
-s.rules.append(r)
-map.append_style("mapStyle", s)
-
-# Adding point layer
-layerPoint = mapnik.Layer("pointLayer")
-layerPoint.datasource = mapnik.Shapefile(file=os.path.join("data",
-                                        "twoLoopPoints.shp"))
-
-layerPoint.styles.append("mapStyle")
-
-#adding polygon
-layerPoly = mapnik.Layer("polyLayer")
-layerPoly.datasource = mapnik.Shapefile(file=os.path.join("data",
-                                        "ne_110m_land.shp"))
-layerPoly.styles.append("mapStyle")
-
-#Add layers to map
-map.layers.append(layerPoly)
-map.layers.append(layerPoint)
-
-#Set boundaries 
-boundsLL = (1.3,51.979, 8.306,53.162  ) #(minx, miny, maxx,maxy)
-map.zoom_to_box(mapnik.Box2d(*boundsLL)) # zoom to bbox
-
-mapnik.render_to_file(map, os.path.join("figs",
-                                        "map3.png"), "png")
-print "All done - check content"</code></pre>
-</div>
-<p><img src="figs/map3.png" alt="A mapnik map" /></p>
+<p>Upload your documented and well structured Ipython Notebook to a GitHub repository and send the link before 1030 on Friday 22/01.</p>
+<p>A demo map: <img src="figs/map3.png" alt="A mapnik map" /></p>
 <h1>More information</h1>
-<p>If you have time left you can start the following tutorial made by Prof. P. Lewis: http://www2.geog.ucl.ac.uk/~plewis/geogg122/_build/html/Chapter4_GDAL/OGR_Python.html</p>
+<p>If you have time left you can start the following tutorial made by <a href="http://www2.geog.ucl.ac.uk/~plewis/geogg122/_build/html/Chapter4_GDAL/OGR_Python.html">Prof. P. Lewis</a>.</p>
 <!---
 
 # Assignment
