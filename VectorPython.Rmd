@@ -389,20 +389,16 @@ Now create your own shape file containing two locations (e.g. a location of the 
 
 You can also use the points defined here: https://geoscripting-wur.github.io/IntroToVector/. 
 
-Bonus: you can create a map with MapNik using the code below.
+Bonus: you can create a map using Python code. 
 
-You can download:
-
-* your own `location icon` from: https://sites.google.com/site/gmapicons/home
-* the data set from http://www.naturalearthdata.com/downloads/110m-physical-vectors/
+For making nice maps see the following [python notebooks](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Plot%20Map.ipynb)
 
 ## Deadline
 
-Upload your documented and well structured Python script to a GitHub repository and send the link before 1030 on Friday 22/01.
+Upload your documented and well structured Ipython Notebook to a GitHub repository and send the link before 1030 on Friday 22/01.
 
-## Demoscript
 
-```{r, engine='python', eval=FALSE}
+```{r, engine='python', eval=FALSE, echo=FALSE, message=FALSE}
 import os,os.path
 import mapnik
 
@@ -453,12 +449,12 @@ mapnik.render_to_file(map, os.path.join("figs",
 print "All done - check content"
 ```
 
+A demo map:
 ![A mapnik map](figs/map3.png)
 
 # More information
 
-If you have time left you can start the following tutorial made by Prof. P. Lewis:
-http://www2.geog.ucl.ac.uk/~plewis/geogg122/_build/html/Chapter4_GDAL/OGR_Python.html
+If you have time left you can start the following tutorial made by [Prof. P. Lewis](http://www2.geog.ucl.ac.uk/~plewis/geogg122/_build/html/Chapter4_GDAL/OGR_Python.html).
 
 <!---
 
