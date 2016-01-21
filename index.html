@@ -939,6 +939,13 @@ Week 3: Python for geo-scripting
 <li>https://gis.stackexchange.com/questions/34509/alternatives-to-using-arcpy</li>
 <li>https://gis.stackexchange.com/questions/16657/clipping-raster-with-vector-layer-using-gdal</li>
 </ul>
+<h2>Python editors and IDEs</h2>
+<ul>
+<li>Most modern text editors do nice pyhton highlighting, e.g. Sublime Text can be set up nicely for python</li>
+<li>IPython notebook is a good choice for short scripts, e.g. the the execises here. It gives you a nice option with source code results and comments in one document ! See here for a simple IPython <a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb">notebook example</a>. This is now called ** Jupyter Notebook **; <a href="http://jupyter.org/">More info</a></li>
+<li>There are a number of propper IDE,s for python. Personnaly I made good experience with <a href="https://www.jetbrains.com/pycharm/">PyCharm</a>. For running on a server, <a href="https://github.com/yhat/rodeo/">rodeo</a> gives a similar interface as RStudio server.</li>
+<li>Spyder is nice a lightweigth and can be installed from the terminal (<code>sudo apt-get install spyder</code>)</li>
+</ul>
 <h2>Getting started with Python within a Linux OS</h2>
 <ul>
 <li><p>Launch <a href="http://live.osgeo.org/en/index.html">OS-GEO live</a> from the VMware player and login.</p></li>
@@ -950,7 +957,14 @@ Week 3: Python for geo-scripting
 </button>
 <pre style=""><code class="source bash">## from R: system("gdal-config --version")
 ## From the terminal:
+which python
 gdal-config --version</code></pre>
+<button class="output bash toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> bash output
+</button>
+<pre style=""><code class="output bash">## /usr/bin/python
+## 1.11.1
+</code></pre>
 </div>
 <ul>
 <li>type the following to start python and find out what the python version is:</li>
@@ -984,12 +998,6 @@ To exit python:
 </div>
 <ul>
 <li>Open the python script within a Python editor</li>
-</ul>
-<h3>Python editors and IDEs</h3>
-<ul>
-<li>Most modern text editors do nice pyhton highlighting, e.g. Sublime Text can be set up nicely for python</li>
-<li>IPython notebook is a good choice for short scripts, e.g. the the execises here. It gives you a nice option with source code results and comments in one document ! See here for a simple IPython <a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb">notebook example</a>. This is now called ** Jupyter Notebook **; <a href="http://jupyter.org/">More info</a></li>
-<li>There are a number of propper IDE,s for python. Personnaly I made good experience with <a href="https://www.jetbrains.com/pycharm/">PyCharm</a>. For running on a server, <a href="https://github.com/yhat/rodeo/">rodeo</a> gives a similar interface as RStudio server.</li>
 </ul>
 <h2>A short Python refresher</h2>
 <h3>Finding help</h3>
@@ -1308,8 +1316,8 @@ print date.today()+delta</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## 2016-01-18
-## 2016-01-25
+<pre style=""><code class="output python">## 2016-01-21
+## 2016-01-28
 </code></pre>
 </div>
 <h3>File access</h3>
