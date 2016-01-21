@@ -14,11 +14,11 @@ output:
 
 # Today: Thursday 21/01/2016
 
-* 8:30-12.15: Self-study
+* 8:30-12.15: Self-study by working on the two notebooks below.
 * 13:30-14:15: Feedback and presentation about social media as a source of spatial data
 * 14:15-17:00 Assignment
 
-# Python notebooks
+# Python notebooks for the self-study
 
 [Connecting and harvesting Real-time tweets](http://nbviewer.jupyter.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/ConnectingandharvestingtweetswithPython.ipynb)
 
