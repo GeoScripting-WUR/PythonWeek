@@ -871,22 +871,26 @@ Week 3: Python for geo-scripting
 <div class="contents col-xs-12 col-md-10">
 <h1><a href="https://geoscripting-wur.github.io/">WUR Geoscripting</a> <img src="http://www.wageningenur.nl/upload/f9a0b5f2-15c5-4b84-9e14-20ef02f5e265_wur-logo.png" alt="WUR logo" /></h1>
 <h1>Vector data handling with Python</h1>
-<p><em>Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma</em> - 20 January, 2016</p>
+<p><em>Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma</em> - 05 januari, 2017</p>
 <h2>GDAL/OGR using Python</h2>
 <p>By now you should now what the following abbreviation stand for (what can you do with it??). Osgeo Python module groups 3 submodules:</p>
 <ul>
 <li>GDAL</li>
 <li>OGR</li>
 </ul>
-<p>New: * OSR: spatial reference (projections!)</p>
+<p>New:</p>
+<ul>
+<li>OSR: spatial reference (projections!)</li>
+</ul>
 <p>Documentation:</p>
 <ul>
 <li><a href="http://gdal.org/python/" class="uri">http://gdal.org/python/</a></li>
 <li><a href="http://www.gdal.org/gdal_tutorial.html" class="uri">http://www.gdal.org/gdal_tutorial.html</a></li>
 </ul>
-<p>Check out these relevant books:</p>
+<p>Check out these relevant (cook)books:</p>
 <ul>
-<li>http://geospatialpython.com/</li>
+<li><a href="http://geospatialpython.com/" class="uri">http://geospatialpython.com/</a></li>
+<li><a href="https://pcjericks.github.io/py-gdalogr-cookbook/">Python GDAL/OGR Cookbook!</a></li>
 </ul>
 <h2>OGR and the data drivers</h2>
 <p>OGR supports many different vector formats:</p>
@@ -895,6 +899,7 @@ Week 3: Python for geo-scripting
 <li>Other software such as MapInfo, GRASS, Microstation</li>
 <li>Open formats such TIGER/Line, SDTS, GML, KML</li>
 <li>Databases such as MySQL, PostgreSQL, Oracle Spatial, etc.</li>
+<li>Webservices such as Web Feature Service 1.0,1.1,2.0 (WFS output as GML)</li>
 </ul>
 <p><strong>OGR Data drivers:</strong> A driver is an object that knows how to interact with a certain data type (e.g. a shape file) You know the right driver to read or write data. Some drivers might only read content but the majority can read and write.</p>
 <div class="row">
@@ -908,10 +913,10 @@ except:
 </div>
 From the terminal you can also type the following to obtain an overview of supported formats:
 <div class="row">
-<button class="source R toggle btn btn-xs btn-primary">
-<span class="glyphicon glyphicon-chevron-down"></span> R source
+<button class="source bash toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> bash source
 </button>
-<pre style=""><code class="source r">echo "Terminal command to obtain an overview of supported formats"
+<pre style=""><code class="source bash">echo "Terminal command to obtain an overview of supported formats"
 ogrinfo --formats</code></pre>
 </div>
 <h2>Points</h2>
@@ -932,8 +937,12 @@ print(pt)
 <pre style=""><code class="output python">## POINT (173914 441864)
 </code></pre>
 </div>
+<p>WKT (Well Known Text) is a sort of markup language that describes spatial information in a clean text format, there is an equivalent in binary format (easier for computers to process and more efficient for data transfer).</p>
+<p>Explanation of WKT: <a href="https://en.wikipedia.org/wiki/Well-known_text">Wikipedia</a></p>
 <h2>Define a spatial reference</h2>
-<p>See http://spatialreference.org/ref/epsg/wgs-84/</p>
+<p>A special reference defines: An ellipsoid, a datum using that ellipsoid, and either a geocentric, geographic or projection coordinate system.</p>
+<p>Therefore spacial references come in multiple forms according to our data needs. There is even a search engine for it: <a href="http://spatialreference.org/ref/epsg/wgs-84/">http://spatialreference.org</a></p>
+<p>The following example is based on WGS84, see:<a href="http://spatialreference.org/ref/epsg/wgs-84/" class="uri">http://spatialreference.org/ref/epsg/wgs-84/</a></p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -960,16 +969,18 @@ source.ImportFromEPSG(4326)
 target = osr.SpatialReference()
 target.ImportFromEPSG(28992)
 
+#transform from lat/long to Dutch coord. system
 transform = osr.CoordinateTransformation(source, target)
-point = ogr.CreateGeometryFromWkt("POINT (5.6660 -51.9872)")
+point = ogr.CreateGeometryFromWkt("POINT (5.6660 51.9872)")
 point.Transform(transform)
 print point.ExportToWkt()</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## POINT (205654.247323391464306 -15819205.527011606842279)
+<pre style=""><code class="output python">## POINT (174150.990093441156205 444348.392612311581615)
 </code></pre>
 </div>
+<p>Question: On the previous example where WKT is printed out, in which coordinate system is the WKT represented??</p>
 <h2>Create a shape file</h2>
 <p><strong>Concept:</strong></p>
 <ul>
@@ -992,10 +1003,10 @@ print point.ExportToWkt()</code></pre>
 <p>Start a new Python script within the <code>Python</code> console of QGIS (recommended for today!):</p>
 You can set the working directory using:
 <div class="row">
-<button class="source R toggle btn btn-xs btn-primary">
-<span class="glyphicon glyphicon-chevron-down"></span> R source
+<button class="source python toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
-<pre style=""><code class="source r">import os
+<pre style=""><code class="source python">import os
 os.chdir('pathtoyourworkingdirectory')
 print os.getcwd()</code></pre>
 </div>
@@ -1014,16 +1025,9 @@ print os.getcwd()</code></pre>
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
 <pre style=""><code class="source python">## Loading the modules
+from osgeo import ogr,osr
 import os
-os.chdir('data')
-
-## Loading osgeo
-try:
-  from osgeo import ogr, osr
-  print 'Import of ogr and osr from osgeo worked.  Hurray!\n'
-except:
-  print 'Import of ogr and osr from osgeo failed\n\n'
-
+os.chdir('./data')
 ## Is the ESRI Shapefile driver available?
 driverName = "ESRI Shapefile"
 drv = ogr.GetDriverByName( driverName )
@@ -1065,8 +1069,8 @@ point1 = ogr.Geometry(ogr.wkbPoint)
 point2 = ogr.Geometry(ogr.wkbPoint)
 
 ## SetPoint(self, int point, double x, double y, double z = 0)
-point1.SetPoint(0,1.0,1.0) 
-point2.SetPoint(0,2.0,2.0)
+point1.SetPoint(0,4.897070,52.377956) 
+point2.SetPoint(0,5.104480,52.092876)
 
 ## Actually we can do lots of things with points: 
 ## Export to other formats/representations:
@@ -1074,7 +1078,7 @@ print "KML file export"
 print point2.ExportToKML()
 
 ## Buffering
-buffer = point2.Buffer(4,4)
+buffer = point2.Buffer(1,1)
 print buffer.Intersects(point1)
 
 ## More exports:
@@ -1108,17 +1112,15 @@ ds.Destroy()
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## Import of ogr and osr from osgeo worked.  Hurray!
-## 
-## ESRI Shapefile driver IS available.
+<pre style=""><code class="output python">## ESRI Shapefile driver IS available.
 ## 
 ## 0
 ## (0.0, 0.0, 0.0, 0.0)
 ## KML file export
-## <Point><coordinates>2,2,0</coordinates></Point>
+## <Point><coordinates>5.10448,52.092876,0</coordinates></Point>
 ## True
 ## The new extent
-## (1.0, 2.0, 1.0, 2.0)
+## (4.89707, 5.10448, 52.092876, 52.377956)
 </code></pre>
 </div>
 <p>From the terminal you can remove the created &quot;testing.shp&quot; and related files using:</p>
@@ -1141,10 +1143,10 @@ rm -v data/testing*</code></pre>
 ## data/testing.shp
 ## data/testing.shx
 ## remove all the files starting with testing*
-## data/testing.dbf
-## data/testing.prj
-## data/testing.shp
-## data/testing.shx
+## removed 'data/testing.dbf'
+## removed 'data/testing.prj'
+## removed 'data/testing.shp'
+## removed 'data/testing.shx'
 </code></pre>
 </div>
 <p>Now, we can open the created shape file in QGIS using the <code>Python Console</code>.</p>
@@ -1172,7 +1174,8 @@ print aLayer.name()</code></pre>
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
-<pre style=""><code class="source python">ds = driver.Open(shp_file, 1)
+<pre style=""><code class="source python">#drv is the ESRI shapefile driver from above and fn the filename
+ds = drv.Open(fn, 1)
 ## check layers and get the first layer
 layernr = ds.GetLayerCount()
 print layernr
@@ -1188,7 +1191,7 @@ featureDefn = layer.GetLayerDefn()
 
 ## create a point
 point = ogr.Geometry(ogr.wkbPoint)
-point.SetPoint(0,2.0,1.0)
+point.SetPoint(0,5.6909725,50.8513682)
 print point
 ## similarly 
 ## point.AddPoint(2,1)
@@ -1202,68 +1205,67 @@ layer.GetExtent()
 ds.Destroy()</code></pre>
 </div>
 <h2>Convert a shapefile to JSON format</h2>
-<p>See here for an example:</p>
+<p>Conversion of file formats is easier using the bash command line or even online:</p>
+<p>See here for an web conversion example</p>
 <ul>
-<li>http://geospatialpython.com/2013/07/shapefile-to-geojson.html</li>
+<li>(https://ogre.adc4gis.com/)[https://ogre.adc4gis.com/]</li>
 </ul>
+Using the command line
+<div class="row">
+<button class="source bash toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> bash source
+</button>
+<pre style=""><code class="source bash">
+ogr2ogr -f GeoJSON -t_srs crs:84 testing.geojson testing.shp</code></pre>
+</div>
+<p>ogr2ogr is a command version of ogr and is manly used for file conversion and/or processing. The syntax is in reverve with new file first and orginal file last</p>
 <p>If you want to learn more about GEOJSON:</p>
 <ul>
-<li>https://github.com/frewsxcv/python-geojson</li>
+<li>(https://github.com/frewsxcv/python-geojson)[https://github.com/frewsxcv/python-geojson]</li>
 </ul>
-<h2>How to visualise a shape file?</h2>
-<p>Mapnik is a Free Toolkit for developing mapping applications. It’s written in C++ and there are Python bindings to facilitate fast-paced agile development. It can comfortably be used for both desktop and web development. Mapnik is about making beautiful maps. It takes geospatial data from a PostGIS database, shapefile, or any other format supported by GDAL/OGR, and turns it into clearly-rendered, good-looking images. Among other things, it is used to render the five main Map layers on the <a href="http://www.openstreetmap.org/">OpenStreetMap website</a>.</p>
-<p>Start by downloading the World Borders Dataset from: http://thematicmapping.org/downloads/world_borders.php</p>
+<h2>How to visualise a spatial file?</h2>
+<p>There are multiple solutions, GIS software (QGIS), web platforms (leaflet), PNG (mapnik)</p>
+<p>With leaflet a geoJSON can be easly vizualized inside a webpage. Example simple webgis:</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
-<pre style=""><code class="source python">import os,os.path
-import mapnik
-
-#First we create a map
-map = mapnik.Map(600, 300) #This is the image final image size
-
-#Lets put some sort of background color in the map
-map.background = mapnik.Color("steelblue") # steelblue == #4682B4 
-
-#To style the map we need to define a set or rules
-#        Map
-#  Style      Style
-# Rule   Rule   Rule  Rule
-
-# we normally start from the bottom creating an empty rule
-rule = mapnik.Rule()
-
-#1) rule that the polygon should be dark red
-symbolizer = mapnik.PolygonSymbolizer(mapnik.Color("darkred"))
-rule.symbols.append(symbolizer)
-
-#2) The rule is added to the style
-style = mapnik.Style()
-style.rules.append(rule)
-
-#3) Adding style to map, "mapStyle" is a simple name for our style
-#Later we will define that our layer uses this style that is stored on the maps object
-map.append_style("mapStyle", style)
-
-#4) Adding the data first step is creating a layer, a map has mutiple layers
-layer = mapnik.Layer("mapLayer")
-layer.datasource = mapnik.Shapefile(file=os.path.join("data",
-                                        "world_borders.shp"))
-layer.styles.append("mapStyle")
-
-#map.append_style("mapStyle", style)
-
-#5) The current layer is not yet associated to the map 
-map.layers.append(layer)
-
-#6) Zoom to full extend of layers and dump content
-map.zoom_all()
-mapnik.render_to_file(map, os.path.join("figs",
-                                        "map.png"), "png")
-print "All done - check content"</code></pre>
+<pre style=""><code class="source python">import folium
+map_osm = folium.Map(location=[45.5236, -122.6750])
+map_osm.save('osm.html')</code></pre>
 </div>
-<p><img src="figs/map.png" alt="A mapnik map" /></p>
+<p>
+ 
+</p>
+<div class="img-responsive center-block" align="center">
+<iframe src="osm.html" width="500" height="300" style="border: 0">
+</iframe>
+</div>
+<p>
+ 
+</p>
+<div class="row">
+<button class="source python toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> python source
+</button>
+<pre style=""><code class="source python">import folium
+import os
+pointsGeo=os.path.join("points.geojson")
+map_points = folium.Map(location=[52,5.7],tiles='Mapbox Bright', zoom_start=6)
+map_points.choropleth(geo_path=pointsGeo)
+map_points.save('points.html')</code></pre>
+</div>
+<p>
+ 
+</p>
+<div class="img-responsive center-block" align="center">
+<iframe src="points.html" width="500" height="300" style="border: 0">
+</iframe>
+</div>
+<p>
+ 
+</p>
+<p>Webtutorial about folium: <a href="http://pythonhow.com/web-mapping-with-python-and-folium">web-mapping-with-python-and-folium</a></p>
 <h1>What have we learned?</h1>
 <ol style="list-style-type: decimal">
 <li>Get or create a writeable layer</li>
@@ -1273,7 +1275,7 @@ print "All done - check content"</code></pre>
 <li>Add the feature to the layer</li>
 <li>Close the layer</li>
 <li>Modify a Shape file</li>
-<li>Visualise a vector object using Python</li>
+<li>Visualise a vector object using Python/Leaflet</li>
 </ol>
 <h1>Assignment</h1>
 <p>Now create your own shape file containing two locations (e.g. a location of the GAIA building in Wageningen). E.g. go to Google Earth, an extract the coordinates and redo the above excercise (BONUS: if you use a <code>for</code> loop) and export to a KML file.</p>
@@ -1282,7 +1284,6 @@ print "All done - check content"</code></pre>
 <p>For making nice maps see the following <a href="https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Plot%20Map.ipynb">python notebooks</a></p>
 <h2>Deadline</h2>
 <p>Upload your documented and well structured Ipython Notebook to a GitHub repository and send the link before 1030 on Friday 22/01.</p>
-<p>A demo map: <img src="figs/map3.png" alt="A mapnik map" /></p>
 <h1>More information</h1>
 <p>If you have time left you can start the following tutorial made by <a href="http://www2.geog.ucl.ac.uk/~plewis/geogg122/_build/html/Chapter4_GDAL/OGR_Python.html">Prof. P. Lewis</a>.</p>
 <!---
