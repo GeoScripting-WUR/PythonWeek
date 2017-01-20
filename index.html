@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Johannes Eberenz" />
+  <meta name="author" content="Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Johannes Eberenz, Dainius Masiliunas" />
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -869,10 +869,10 @@ Week 3: Python for geo-scripting
 <div class="container">
 <div class="row row-offcanvas row-offcanvas-right">
 <div class="contents col-xs-12 col-md-10">
-<h1><a href="https://geoscripting-wur.github.io/">WUR Geoscripting</a> <img src="http://www.wageningenur.nl/upload/f9a0b5f2-15c5-4b84-9e14-20ef02f5e265_wur-logo.png" alt="WUR logo" /></h1>
-<h1>&quot;Week 3: Python for geo-scripting&quot;</h1>
-<h2>Python week Friday to Wednesday:</h2>
-<h3>Schedule Overview</h3>
+<h1 id="wur-geoscripting-wur-logo"><a href="https://geoscripting-wur.github.io/">WUR Geoscripting</a> <img src="http://www.wageningenur.nl/upload/f9a0b5f2-15c5-4b84-9e14-20ef02f5e265_wur-logo.png" alt="WUR logo" /></h1>
+<h1 id="week-3-python-for-geo-scripting">&quot;Week 3: Python for geo-scripting&quot;</h1>
+<h2 id="python-week-friday-to-wednesday">Python week Friday to Wednesday:</h2>
+<h3 id="schedule-overview">Schedule Overview</h3>
 <ul>
 <li><strong><em>Friday:</em></strong>
 <ul>
@@ -882,9 +882,14 @@ Week 3: Python for geo-scripting
 <li><strong><em>Monday:</em></strong>
 <ul>
 <li>Morning: <a href="https://geoscripting-wur.github.io/PythonWeek/VectorPython.html">Vector</a>. <em>This also contains an assignment!</em></li>
-<li>Afternoon: Lecture by Jorge on python</li>
+<li>Afternoon: Lecture by Jorge on Python</li>
 </ul></li>
-<li><strong><em>Tuesday: </em></strong>
+<li><strong><em>Tuesday:</em></strong>
+<ul>
+<li>Tutorial: <a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb">Raster</a>. <em>This also contains an assignment!</em></li>
+<li>Afternoon: Presentation by Erik van Schaik about cloud computing</li>
+</ul></li>
+<li><strong><em>Wednesday: </em></strong>
 <ul>
 <li>In the afternoon you will get an intro to ArcPy by Aldo. On Blackboard you can find examples and <em>a small assignment</em>!</li>
 <li>In the morning check out the following IPython Notebooks created by Aldo Bergsma, to compare the open source implementation with ArcPy:
@@ -902,16 +907,11 @@ Week 3: Python for geo-scripting
 </ul></li>
 </ul></li>
 </ul></li>
-<li><strong><em>Wednesday:</em></strong>
-<ul>
-<li>Turorial: <a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb">Raster</a>. <em>This also contains an assignment!</em></li>
-<li>Afternoon: recap by jan &amp; Johannes</li>
-</ul></li>
 </ul>
 <p><strong><em>Reminder: Self-study is critical for the completion of the excercises at the end of the tutorial!</em></strong></p>
-<h3>Learning outcomes</h3>
+<h3 id="learning-outcomes">Learning outcomes</h3>
 <ul>
-<li>knowing how to handle spatial data using Python
+<li>Knowing how to handle spatial data using Python:
 <ul>
 <li>vector data handling
 <ul>
@@ -925,8 +925,8 @@ Week 3: Python for geo-scripting
 </ul></li>
 </ul></li>
 </ul>
-<h2>Intro</h2>
-<p>Using Python within OSGEO Linux</p>
+<h2 id="intro">Intro</h2>
+<p>Using Python within Linux:</p>
 <ul>
 <li>Wide user community and support</li>
 <li>Free</li>
@@ -939,16 +939,16 @@ Week 3: Python for geo-scripting
 <li>https://gis.stackexchange.com/questions/34509/alternatives-to-using-arcpy</li>
 <li>https://gis.stackexchange.com/questions/16657/clipping-raster-with-vector-layer-using-gdal</li>
 </ul>
-<h2>Python editors and IDEs</h2>
+<h2 id="python-editors-and-ides">Python editors and IDEs</h2>
 <ul>
 <li>Most modern text editors do nice pyhton highlighting, e.g. Sublime Text can be set up nicely for python</li>
-<li>IPython notebook is a good choice for short scripts, e.g. the the execises here. It gives you a nice option with source code results and comments in one document ! See here for a simple IPython <a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb">notebook example</a>. This is now called ** Jupyter Notebook **; <a href="http://jupyter.org/">More info</a></li>
+<li>Jupyter notebook is a good choice for short scripts, e.g. the the execises here. It gives you a nice option with source code results and comments in one document ! See here for a simple Jupyter <a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb">notebook example</a>. <a href="http://jupyter.org/">More info</a></li>
 <li>There are a number of propper IDE,s for python. Personnaly I made good experience with <a href="https://www.jetbrains.com/pycharm/">PyCharm</a>. For running on a server, <a href="https://github.com/yhat/rodeo/">rodeo</a> gives a similar interface as RStudio server.</li>
 <li>Spyder is nice a lightweigth and can be installed from the terminal (<code>sudo apt-get install spyder</code>)</li>
 </ul>
-<h2>Getting started with Python within a Linux OS</h2>
+<h2 id="getting-started-with-python-within-a-linux-os">Getting started with Python within a Linux OS</h2>
 <ul>
-<li><p>Launch <a href="http://live.osgeo.org/en/index.html">OS-GEO live</a> from the VMware player and login.</p></li>
+<li><p>Launch a Linux virtual machine and login.</p></li>
 <li><p>Open the Terminal and type the following to check the installed GDAL version:</p></li>
 </ul>
 <div class="row">
@@ -963,7 +963,7 @@ gdal-config --version</code></pre>
 <span class="glyphicon glyphicon-chevron-down"></span> bash output
 </button>
 <pre style=""><code class="output bash">## /usr/bin/python
-## 1.11.1
+## 2.1.0
 </code></pre>
 </div>
 <ul>
@@ -985,8 +985,8 @@ print sys.version #parentheses necessary in python 3. </code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## 2.7.5 (default, Mar  9 2014, 22:15:05) 
-## [GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)]
+<pre style=""><code class="output python">## 2.7.12 (default, Nov 19 2016, 06:48:10) 
+## [GCC 5.4.0 20160609]
 </code></pre>
 </div>
 To exit python:
@@ -999,8 +999,8 @@ To exit python:
 <ul>
 <li>Open the python script within a Python editor</li>
 </ul>
-<h2>A short Python refresher</h2>
-<h3>Finding help</h3>
+<h2 id="a-short-python-refresher">A short Python refresher</h2>
+<h3 id="finding-help">Finding help</h3>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1024,11 +1024,11 @@ help(1)</code></pre>
 </div>
 <p>see also:</p>
 <ul>
-<li>http://www.rafekettler.com/magicmethods.html</li>
-<li>https://stackoverflow.com/questions/1090620/special-magic-methods-in-python</li>
+<li><a href="http://www.rafekettler.com/magicmethods.html" class="uri">http://www.rafekettler.com/magicmethods.html</a></li>
+<li><a href="https://stackoverflow.com/questions/1090620/special-magic-methods-in-python" class="uri">https://stackoverflow.com/questions/1090620/special-magic-methods-in-python</a></li>
 </ul>
-<h3>Finding information via Pydoc</h3>
-<p>Go to: https://docs.python.org/2/library/pydoc.html</p>
+<h3 id="finding-information-via-pydoc">Finding information via Pydoc</h3>
+<p>Go to: <a href="https://docs.python.org/2/library/pydoc.html" class="uri">https://docs.python.org/2/library/pydoc.html</a></p>
 <div class="row">
 <button class="source bash toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
@@ -1037,8 +1037,13 @@ help(1)</code></pre>
 echo "pydoc server ready at http://localhost:1234/"</code></pre>
 </div>
 <p>Then go to <code>http://localhost:1234/</code> via your preferred browser.</p>
-<h3>Numbers and variables</h3>
-<p><em>Question</em>: What is the difference between 10 and 10.0 when dealing with datatypes in Python???</p>
+<h3 id="numbers-and-variables">Numbers and variables</h3>
+<blockquote>
+<p><strong>Question 1</strong>: What is the difference between 10 and 10.0 when dealing with datatypes in Python?</p>
+</blockquote>
+<div class="row">
+
+</div>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1062,9 +1067,9 @@ buildingNumber = 101
 'Gaia' + 'is in Wageningen'</code></pre>
 </div>
 <p>There is no need to say or define the datatype, <code>python</code> has a loose type variable declaration.</p>
-<p><em>Walk like a duck and swims like a duck and quacks like a duck I call it a duck</em></p>
+<p><em>If it walks like a duck, swims like a duck and quacks like a duck I call it a duck</em></p>
 <p>Python is basically a list of objects: List are organised with indexes. E.g.</p>
-<h3>Lists</h3>
+<h3 id="lists">Lists</h3>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1103,8 +1108,13 @@ print campus[::2]
 ## ['Gaia', 'Lumen', 'Forum', 'Action', 'Zodiac']
 </code></pre>
 </div>
-<p><em>Question?</em>: What are the major differences between Append/Extend? <strong>Question:</strong> What building is campus[-2]?</p>
-<h3>Dictionaries, loops, if/else</h3>
+<blockquote>
+<p><strong>Question 2:</strong> What are the major differences between Append/Extend?</p>
+</blockquote>
+<blockquote>
+<p><strong>Question 3:</strong> What building is <code>campus[-2]</code>?</p>
+</blockquote>
+<h3 id="dictionaries-loops-ifelse">Dictionaries, loops, if/else</h3>
 <p>Let there be Dictionaries... Dictionary is an unordered set of key:value pairs. Like in the dictionary, 'food':'voedsel'.</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
@@ -1123,7 +1133,7 @@ print campusDic[102]</code></pre>
 <pre style=""><code class="output python">## Forum
 </code></pre>
 </div>
-<p>Loops: watch out here with code intendation. Python uses Intendation to define code block and not <code>{}</code> like other languages. Print building has to be <em>intended</em> normally 1 tab or 4 spaces (recommended).</p>
+<p>Loops: watch out here with code indentation. Python uses indentation to define code blocks and not <code>{}</code> like other languages. <code>print building</code> has to be <em>indented</em> by 1 tab or 4 spaces (recommended).</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1141,7 +1151,7 @@ for building in campus:
 </code></pre>
 </div>
 <p>Here, <code>building</code> is a variable that will contain any item in the campus list.</p>
-<p>Generic loops in python have to interact over a sequence of objects e.g.</p>
+<p>Generic loops in Python have to interact over a sequence of objects e.g.</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1159,7 +1169,7 @@ for number in range(5):
 ## 4
 </code></pre>
 </div>
-<p>Object interaction and functional programming is an important part of python programming and its tools are extensive. If/else:</p>
+<p>Object interaction and functional programming is an important part of Python programming and its tools are extensive. <code>if</code>/<code>else</code>:</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1194,8 +1204,8 @@ else:
 <pre style=""><code class="output python">## it is three
 </code></pre>
 </div>
-<h3>Functions</h3>
-<p>A function is a section of code that does something specific that you want use multipletimes without having to type the full function again but just call the function by its name.</p>
+<h3 id="functions">Functions</h3>
+<p>A function is a section of code that does something specific that you want to use multiple times without having to type the full function again but just call the function by its name.</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1238,7 +1248,7 @@ print times3(4)</code></pre>
 <pre style=""><code class="output python">## (12, 4)
 </code></pre>
 </div>
-<h3>Importing modules</h3>
+<h3 id="importing-modules">Importing modules</h3>
 <p>Try this!</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
@@ -1261,7 +1271,7 @@ print dir(math)</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## ['__doc__', '__file__', '__name__', '__package__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'hypot', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']
+<pre style=""><code class="output python">## ['__doc__', '__name__', '__package__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'hypot', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']
 </code></pre>
 </div>
 <ul>
@@ -1286,8 +1296,13 @@ print pi</code></pre>
 ## 3.14159265359
 </code></pre>
 </div>
-<p>Why is <code>import math</code> the best way to import modules?</p>
-<h3>Some important internal modules:</h3>
+<blockquote>
+<p><strong>Question 4</strong>: Which is the best way to import modules?</p>
+</blockquote>
+<div class="row">
+
+</div>
+<h3 id="some-important-internal-modules">Some important internal modules:</h3>
 <ul>
 <li><code>os</code>: Access to operating system features</li>
 <li><code>os.path</code>: Manipulating of file names</li>
@@ -1296,7 +1311,9 @@ print pi</code></pre>
 <li><code>math</code>: Mathametical functions</li>
 <li><code>datetime</code>: Date/Time manipulation</li>
 </ul>
-<p><em>Question</em>: What is the difference between <code>os</code> and <code>os.path</code>?</p>
+<blockquote>
+<p><strong>Question 5</strong>: What is the difference between <code>os</code> and <code>os.path</code>?</p>
+</blockquote>
 <p>Some examples:</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
@@ -1316,12 +1333,13 @@ print date.today()+delta</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## 2016-01-21
-## 2016-01-28
+<pre style=""><code class="output python">## 2017-01-20
+## 2017-01-27
 </code></pre>
 </div>
-<h3>File access</h3>
-<p>Very simple for 99% of the cases Write something to file:</p>
+<h3 id="file-access">File access</h3>
+<p>File access is very simple for 99% of the cases.</p>
+<p>Write something to file:</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1344,21 +1362,27 @@ fileObj.close()</code></pre>
 <pre style=""><code class="output python">## some simple text
 </code></pre>
 </div>
-<p><strong>Question</strong>: What does <code>r</code> and <code>w</code> mean?</p>
-<h3>Error handling</h3>
-<p>Sometime problems occur... Errors detected during execution are called <em>exceptions</em></p>
+<blockquote>
+<p><strong>Question 6</strong>: What does <code>r</code> and <code>w</code> mean?</p>
+</blockquote>
+<h3 id="error-handling">Error handling</h3>
+<p>Sometime problems occur... Errors detected during execution are called <em>exceptions</em>.</p>
 <p>Good code deals with exceptions:</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
-<pre style=""><code class="source python">>>> >>> open("/foo0")
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-IOError: [Errno 2] No such file or directory: '/foo0'</code></pre>
+<pre style=""><code class="source python">open("/foo0")</code></pre>
+<button class="output python toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> python output
+</button>
+<pre style=""><code class="output python">## Traceback (most recent call last):
+##   File "<string>", line 1, in <module>
+## IOError: [Errno 2] No such file or directory: '/foo0'
+</code></pre>
 </div>
-<p>The file doesn't exist, so the script stops and outputs an ugly msg</p>
-<p>How to deal with this I/O error??? Good progamming!!!</p>
+<p>The file doesn't exist, so the script stops and outputs an ugly message.</p>
+<p>How to deal with this I/O error? Good progamming!</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1381,7 +1405,7 @@ except IOError:
 ## no file
 </code></pre>
 </div>
-<h3>Python statements</h3>
+<h3 id="python-statements">Python statements</h3>
 <ul>
 <li><code>if</code></li>
 <li><code>for</code></li>
@@ -1395,7 +1419,7 @@ except IOError:
 <li><code>yield</code></li>
 <li><code>import</code></li>
 </ul>
-<h2>R from Python</h2>
+<h2 id="r-from-python">R from Python</h2>
 <p>A very simple example using the Python Rpy2 module (only possible on Mac/Linux). This is working with your OS-GEO live linux virtual machine. Try it out!</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
@@ -1411,21 +1435,20 @@ print(pi[0])</code></pre>
 </code></pre>
 </div>
 <p>By the way, as you may have noticed, this document is created from an RMarkdown source, which can also include Python code blocks (have a look at the <a href="https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/index.Rmd">source</a> on github). Similary, the newest version of IPython notebook, now can also use R and other languages!</p>
-<h2>Python package management</h2>
-<p>For python, a set of tools co-exist for installing and managing packages.</p>
+<h2 id="python-package-management">Python package management</h2>
+<p>For Python, a set of tools co-exist for installing and managing packages. From most to least desirable, you should try to install packages:</p>
 <ul>
-<li><strong><em>pip</em></strong> is a python package installer, that is pretty much standard nowadays.</li>
-<li>With python, often the dependencies and and versions can differ from project to project. <strong><em>Virtual environments</em></strong> can be used to keep seperate sets of packages. See an intro to pip and virtualenv <a href="http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/">here</a></li>
-<li>A different solution is <a href="http://conda.pydata.org/docs/">conda</a> which makes it very easy to install and maintain different external dependencies such as gdal and even R accross different operating systems.</li>
+<li>Using the distribution's package manager (on Ubuntu, that's <code>sudo apt-get install python-*</code>). This is the easiest and guaranteed to work right, although the package version might be older than you expect.</li>
+<li>With Python, often the dependencies and and versions can differ from project to project. Also, installing packages not via the distribution package manager can cause conflicts between packages. <strong><em>Virtual environments</em></strong> can be used to keep seperate sets of packages in its own directory tree. See an intro to <code>pip</code> and <code>virtualenv</code> <a href="http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/">here</a></li>
+<li><em>pip</em> is a python package installer, that is pretty much standard nowadays. It is recommended to run it in a virtualenv to prevent conflicts, however, virtualenvs can be problematic when it comes to package dependencies.</li>
+<li>A different solution is <a href="http://conda.pydata.org/docs/">conda</a> which makes it very easy to install and maintain different external dependencies such as <em>gdal</em> and even R accross different operating systems. However, same caveats as for <em>pip</em> apply, and it is not available as a package in Ubuntu.</li>
 </ul>
-<h1>Handling Vector data with Python</h1>
+<h1 id="handling-vector-data-with-python">Handling Vector data with Python</h1>
 <p>Go to <a href="https://geoscripting-wur.github.io/PythonWeek/VectorPython.html">Vector Data handling in Python</a></p>
-<h1>Raster data with Python</h1>
+<h1 id="raster-data-with-python">Raster data with Python</h1>
 <p>Go to <a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb">Raster Data handling in Python</a></p>
-<blockquote>
-<p>Note: this is an Ipython notebook (now called Jupyter Notebook!)</p>
-</blockquote>
-<h1>More info</h1>
+<p><strong>Note</strong>: this is an Ipython notebook (now called Jupyter Notebook!)</p>
+<h1 id="more-info">More info</h1>
 <ul>
 <li>A great book: <a href="http://www.amazon.com/Python-Geospatial-Development-Second-Edition/dp/178216152X">Python Geospatial Development</a></li>
 <li><a href="https://docs.python.org/2/tutorial/">The official python tutorial</a></li>
