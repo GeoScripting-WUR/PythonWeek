@@ -16,13 +16,12 @@ _Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma_ - `r format(Sys.time(), '%
 
 ## GDAL/OGR using Python
 
-By now you should now what the following abbreviation stand for (what can you do with it??).
-Osgeo Python module groups 3 submodules:
+By now you should know what the following abbreviations stand for, and what can you do with the software:
 
 * GDAL
 * OGR
 
-New: 
+Whereas the following may be new to you: 
 
 * OSR: spatial reference (projections!)
 
@@ -47,8 +46,8 @@ OGR supports many different vector formats:
 * Databases such as MySQL, PostgreSQL, Oracle Spatial, etc.
 * Webservices such as Web Feature Service 1.0,1.1,2.0 (WFS output as GML) 
 
-**OGR Data drivers:** A driver is an object that knows how to interact with a certain data type (e.g. a shape file)
-You know the right driver to read or write data. Some drivers might only read content but the majority can read and write.
+**OGR Data drivers:** A driver is an object that knows how to interact with a certain data type (e.g. a shape file).
+You need to know the right driver to read or write data. Some drivers might only be able to read content, but the majority can read and write.
 
 ```{r, engine='python'}
 try:
@@ -63,9 +62,11 @@ echo "Terminal command to obtain an overview of supported formats"
 ogrinfo --formats
 ```
 
+[More info about the different OGR formats](http://www.gdal.org/ogr_formats.html).
+
 ## Points
 
-What does Wkt mean? 
+What does "WKT" mean? 
 
 ```{r, engine='python'}
 from osgeo import ogr
@@ -118,7 +119,7 @@ point.Transform(transform)
 print point.ExportToWkt()
 ```
 
-Question: On the previous example where WKT is printed out, in which coordinate system is the WKT represented?? 
+> **Question 1**: On the previous example where WKT is printed out, in which coordinate system is the WKT represented?
 
 ## Create a shape file
 
@@ -147,7 +148,7 @@ os.chdir('pathtoyourworkingdirectory')
 print os.getcwd()
 ```
 
-Now you can continue (you do not need to repead the `import os` if you have already done so!). More info about the different OGR formats (http://www.gdal.org/ogr_formats.html):
+Now you can continue (you do not need to repead the `import os` if you have already done so!):
 
 * Set spatial reference
 * create shape file
@@ -172,7 +173,7 @@ else:
 
 ## choose your own name
 ## make sure this layer does not exist in your 'data' folder
-fn = "testing.shp"
+fn = "points.shp"
 layername = "anewlayer"
 
 ## Create shape file
@@ -245,14 +246,14 @@ ds.Destroy()
 ## below the output is shown of the above Python script that is run in the terminal
 ```
 
-From the terminal you can remove the created "testing.shp" and related files using:
+From the terminal you can remove the created "points.shp" and related files using:
 
 ```{r, engine='bash', eval=TRUE}
 echo "in the terminal you can use the following bash commands to easily remove files"
-echo "list all the files starting with testing*"
-ls data/testing*
-echo "remove all the files starting with testing*"
-rm -v data/testing*
+echo "list all the files starting with points*"
+ls data/points*
+echo "remove all the files starting with points*"
+rm -v data/points*
 ```
 
 Now, we can open the created shape file in QGIS using the `Python Console`.
@@ -273,7 +274,7 @@ For our purposes, “ogr” will be used most of the time with vector data.
 
 Another example of how we can use this method:
 
-`qgis.utils.iface.addVectorLayer('/home/user/Git/Python/data/testing.shp', 'anewlayer', "ogr")`
+`qgis.utils.iface.addVectorLayer('/home/user/Git/Python/data/points.shp', 'anewlayer', "ogr")`
 
 ![Open Shape File in QGIS](figs/Viewing_shape_QGIS.png)
 
@@ -320,25 +321,25 @@ Conversion of file formats is easier using the bash command line or even online:
 
 See here for an web conversion example
 
-* (https://ogre.adc4gis.com/)[https://ogre.adc4gis.com/]
+* [https://ogre.adc4gis.com/](https://ogre.adc4gis.com/)
 
 Using the command line
 ```{r, engine='bash',eval=FALSE}
 
-ogr2ogr -f GeoJSON -t_srs crs:84 testing.geojson testing.shp
+ogr2ogr -f GeoJSON -t_srs crs:84 points.geojson points.shp
 ```
 
-ogr2ogr is a command version of ogr and is manly used for file conversion and/or processing. The syntax is in reverve with new file first and orginal file last 
+`ogr2ogr` is a command-line version of ogr and is mainly used for file conversion and/or processing. The syntax is in reverse, with new filename first and orginal filename last.
 
 If you want to learn more about GEOJSON:
 
-* (https://github.com/frewsxcv/python-geojson)[https://github.com/frewsxcv/python-geojson]
+* [https://github.com/frewsxcv/python-geojson](https://github.com/frewsxcv/python-geojson)
 
 ## How to visualise a spatial file? 
 
 There are multiple solutions, GIS software (QGIS), web platforms (leaflet), PNG (mapnik)
 
-With leaflet a geoJSON can be easly vizualized inside a webpage. Example simple webgis: 
+With leaflet a GeoJSON can be easly vizualized inside a webpage. Example simple webgis: 
 
 ```{r, engine='python'}
 import folium
@@ -376,17 +377,17 @@ Webtutorial about folium: [web-mapping-with-python-and-folium](http://pythonhow.
 
 # Assignment
 
-Now create your own shape file containing two locations (e.g. a location of the GAIA building in Wageningen). E.g. go to Google Earth, an extract the coordinates and redo the above excercise (BONUS: if you use a `for` loop) and export to a KML file.
+Now create your own shapefile containing two locations (e.g. a location of the GAIA building in Wageningen). E.g. go to Google Earth, extract the coordinates and redo the above excercise (BONUS: if you use a `for` loop) and export to a KML file.
 
 You can also use the points defined here: https://geoscripting-wur.github.io/IntroToVector/. 
 
 Bonus: you can create a map using Python code. 
 
-For making nice maps see the following [python notebooks](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Plot%20Map.ipynb)
+For making nice maps see the following [python notebooks](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Plot%20Map.ipynb).
 
 ## Deadline
 
-Upload your documented and well structured Ipython Notebook to a GitHub repository and send the link before 1030 on Friday 22/01.
+Upload your documented and well structured Ipython Notebook to a GitHub repository and send the link before 10:30 on Friday 27/01.
 
 
 
