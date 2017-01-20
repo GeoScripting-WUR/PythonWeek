@@ -1,5 +1,5 @@
 ---
-author: "Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Johannes Eberenz"
+author: "Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Johannes Eberenz, Dainius Masiliunas"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   knitrBootstrap::bootstrap_document:
@@ -21,8 +21,11 @@ output:
       - See blackboard: course description section
   - ***Monday:*** 
       - Morning: [Vector](https://geoscripting-wur.github.io/PythonWeek/VectorPython.html). _This also contains an assignment!_
-      - Afternoon: Lecture by Jorge on python
-  - ***Tuesday: ***
+      - Afternoon: Lecture by Jorge on Python
+  - ***Tuesday:*** 
+      - Tutorial: [Raster](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb). _This also contains an assignment!_
+      - Afternoon: Presentation by Erik van Schaik about cloud computing
+  - ***Wednesday: ***
       - In the afternoon you will get an intro to ArcPy by Aldo. On Blackboard you can find examples and  _a small assignment_! 
       - In the morning check out the following IPython Notebooks created by Aldo Bergsma, to compare the open source implementation with ArcPy:
         - [A simple Iphython Notebook](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb)
@@ -33,15 +36,12 @@ output:
         - Example of reading geometries and format conversion in python
             - [OGR](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/OGR%20examples.ipynb)
       
-  - ***Wednesday:*** 
-    - Turorial: [Raster](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb). _This also contains an assignment!_
-    - Afternoon: recap by jan & Johannes
 
 ***Reminder: Self-study is critical for the completion of the excercises at the end of the tutorial!***
 
 ### Learning outcomes
 
-* knowing how to handle spatial data using Python
+* Knowing how to handle spatial data using Python:
     * vector data handling
         * creating a point, writing and modifying a shape file
     * raster data handling
@@ -51,7 +51,7 @@ output:
 
 ## Intro
 
-Using Python within OSGEO Linux
+Using Python within Linux:
 
 - Wide user community and support
 - Free
@@ -69,13 +69,13 @@ Have a look at this question on GIS StackExchange:
 
 ## Python editors and IDEs
 * Most modern text editors do nice pyhton highlighting, e.g. Sublime Text can be set up nicely for python
-* IPython notebook is a good choice for short scripts, e.g. the the execises here. It gives you a nice option with source code results and comments in one document ! See here for a simple IPython [notebook example](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb). This is now called ** Jupyter Notebook **; [More info](http://jupyter.org/)
+* Jupyter notebook is a good choice for short scripts, e.g. the the execises here. It gives you a nice option with source code results and comments in one document ! See here for a simple Jupyter [notebook example](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb). [More info](http://jupyter.org/)
 * There are a number of propper IDE,s for python. Personnaly I made good experience with [PyCharm](https://www.jetbrains.com/pycharm/). For running on a server, [rodeo](https://github.com/yhat/rodeo/) gives a similar interface as RStudio server.
 * Spyder is nice a lightweigth and can be installed from the terminal (`sudo apt-get install spyder`)
 
 ## Getting started with Python within a Linux OS
 
-- Launch [OS-GEO live](http://live.osgeo.org/en/index.html) from the VMware player and login.
+- Launch a Linux virtual machine and login.
 
 - Open the Terminal and type the following to check the installed GDAL version:
 
@@ -126,12 +126,12 @@ help('hamster')
 
 see also: 
 
-* http://www.rafekettler.com/magicmethods.html
-* https://stackoverflow.com/questions/1090620/special-magic-methods-in-python
+* [http://www.rafekettler.com/magicmethods.html](http://www.rafekettler.com/magicmethods.html)
+* [https://stackoverflow.com/questions/1090620/special-magic-methods-in-python](https://stackoverflow.com/questions/1090620/special-magic-methods-in-python)
 
 ### Finding information via Pydoc
 
-Go to: https://docs.python.org/2/library/pydoc.html
+Go to: [https://docs.python.org/2/library/pydoc.html](https://docs.python.org/2/library/pydoc.html)
 
 ```{r, engine='bash', eval=FALSE}
 pydoc -p 1234
@@ -142,7 +142,7 @@ Then go to  `http://localhost:1234/` via your preferred browser.
 
 ### Numbers and variables
 
-*Question*: What is the difference between 10 and 10.0 when dealing with datatypes in Python???
+> **Question 1**: What is the difference between 10 and 10.0 when dealing with datatypes in Python?
 
 ```{r, eval=FALSE, message=FALSE, echo=FALSE}
 # 10 -> Integer -> Natural + negative numbers
@@ -167,7 +167,7 @@ buildingNumber = 101
 
 There is no need to say or define the datatype, `python` has a loose type variable declaration. 
 
-*Walk like a duck and swims like a duck and quacks like a duck I call it a duck*
+*If it walks like a duck, swims like a duck and quacks like a duck I call it a duck*
 
 Python is basically a list of objects:
 List are organised with indexes. E.g. 
@@ -200,8 +200,9 @@ print campus[::2]
 ## list[start:end:step]
 ```
 
-*Question?*: What are the major differences between Append/Extend?
-**Question:** What building is campus[-2]?
+> **Question 2:** What are the major differences between Append/Extend?
+
+> **Question 3:** What building is `campus[-2]`?
 
 ### Dictionaries, loops, if/else
 
@@ -217,8 +218,8 @@ campusDic = {101:'Gaia',
 print campusDic[102]
 ```
 
-Loops: watch out here with code intendation. Python uses Intendation to define code block and not `{}` like other languages.
-Print building has to be *intended* normally 1 tab or 4 spaces (recommended).
+Loops: watch out here with code indentation. Python uses indentation to define code blocks and not `{}` like other languages.
+`print building` has to be *indented* by 1 tab or 4 spaces (recommended).
 
 ```{r, engine='python'}
 campus = ['Gaia','Lumen', 'Radix', 'Forum']
@@ -229,7 +230,7 @@ for building in campus:
 
 Here, `building` is a variable that will contain any item in the campus list.
 
-Generic loops in python have to interact over a sequence of objects e.g.
+Generic loops in Python have to interact over a sequence of objects e.g.
 
 ```{r, engine='python'}
 range(5)
@@ -237,8 +238,8 @@ for number in range(5):
     print number
 ```
 
-Object interaction and functional programming is an important part of python programming and its tools are extensive.
-If/else:
+Object interaction and functional programming is an important part of Python programming and its tools are extensive.
+`if`/`else`:
 
 ```{r, engine='python'}
 x = 3
@@ -262,7 +263,7 @@ else:
 
 ### Functions
 
-A function is a section of code that does something specific that you want use multipletimes without having to type the full function again but just call the function by its name.
+A function is a section of code that does something specific that you want to use multiple times without having to type the full function again but just call the function by its name.
 
 ```{r, engine='python'}
 def printPotato():
@@ -318,7 +319,7 @@ from math import pi
 print pi
 ```
 
-Why is `import math` the best way to import modules?
+> **Question 4**: Which is the best way to import modules?
 
 ```{r, eval=FALSE, echo=FALSE}
 from numy import pi
@@ -334,7 +335,7 @@ from math import pi
 - `math`: Mathametical functions
 - `datetime`: Date/Time manipulation
 
-*Question*: What is the difference between `os` and `os.path`?
+> **Question 5**: What is the difference between `os` and `os.path`?
 
 Some examples:
 
@@ -352,7 +353,8 @@ print date.today()+delta
 
 ### File access
 
-Very simple for 99% of the cases
+File access is very simple for 99% of the cases.
+
 Write something to file:
 
 ```{r, engine='python', engine='python'}
@@ -368,24 +370,21 @@ print a
 fileObj.close()
 ```
 
-**Question**: What does `r` and `w` mean?
+> **Question 6**: What does `r` and `w` mean?
 
 ### Error handling
 
-Sometime problems occur... Errors detected during execution are called *exceptions*
+Sometime problems occur... Errors detected during execution are called *exceptions*.
 
 Good code deals with exceptions:
 
-```{r, eval=FALSE, engine='python'}
->>> >>> open("/foo0")
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-IOError: [Errno 2] No such file or directory: '/foo0'
+```{r, engine='python'}
+open("/foo0")
 ```
 
-The file doesn't exist, so the script stops and outputs an ugly msg
+The file doesn't exist, so the script stops and outputs an ugly message.
 
-How to deal with this I/O error??? Good progamming!!!
+How to deal with this I/O error? Good progamming!
 
 ```{r, engine='python'}
 
@@ -428,11 +427,12 @@ print(pi[0])
 By the way, as you may have noticed, this document is created from an RMarkdown source, which can also include Python code blocks (have a look at the [source](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/index.Rmd) on github). Similary, the newest version of IPython notebook, now can also use R and other languages!
 
 ## Python package management
-For python, a set of tools co-exist for installing and managing packages. 
+For Python, a set of tools co-exist for installing and managing packages. From most to least desirable, you should try to install packages:
 
-*   ***pip*** is a python package installer, that is pretty much standard nowadays.
-*   With python, often the dependencies and and versions can differ from project to project. ***Virtual environments*** can be used to keep seperate sets of packages. See an intro to pip and virtualenv [here](http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/)
-*   A different solution is [conda](http://conda.pydata.org/docs/) which makes it very easy to install and maintain different external dependencies such as gdal and even R accross different operating systems.
+* Using the distribution's package manager (on Ubuntu, that's `sudo apt-get install python-*`). This is the easiest and guaranteed to work right, although the package version might be older than you expect.
+* With Python, often the dependencies and and versions can differ from project to project. Also, installing packages not via the distribution package manager can cause conflicts between packages. ***Virtual environments*** can be used to keep seperate sets of packages in its own directory tree. See an intro to `pip` and `virtualenv` [here](http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/)
+* *pip* is a python package installer, that is pretty much standard nowadays. It is recommended to run it in a virtualenv to prevent conflicts, however, virtualenvs can be problematic when it comes to package dependencies.
+* A different solution is [conda](http://conda.pydata.org/docs/) which makes it very easy to install and maintain different external dependencies such as *gdal* and even R accross different operating systems. However, same caveats as for *pip* apply, and it is not available as a package in Ubuntu.
 
 
 # Handling Vector data with Python
@@ -443,7 +443,7 @@ Go to [Vector Data handling in Python](https://geoscripting-wur.github.io/Python
 
 Go to [Raster Data handling in Python](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb)
 
-> Note: this is an Ipython notebook (now called Jupyter Notebook!)
+**Note**: this is an Ipython notebook (now called Jupyter Notebook!)
 
 # More info
 - A great book: [Python Geospatial Development](http://www.amazon.com/Python-Geospatial-Development-Second-Edition/dp/178216152X)
