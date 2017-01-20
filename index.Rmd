@@ -378,7 +378,7 @@ Sometime problems occur... Errors detected during execution are called *exceptio
 
 Good code deals with exceptions:
 
-```{r, engine='python'}
+```{r, error=TRUE, engine='python'}
 open("/foo0")
 ```
 
