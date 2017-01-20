@@ -869,16 +869,16 @@ Week 3: Python for geo-scripting
 <div class="container">
 <div class="row row-offcanvas row-offcanvas-right">
 <div class="contents col-xs-12 col-md-10">
-<h1><a href="https://geoscripting-wur.github.io/">WUR Geoscripting</a> <img src="http://www.wageningenur.nl/upload/f9a0b5f2-15c5-4b84-9e14-20ef02f5e265_wur-logo.png" alt="WUR logo" /></h1>
-<h1>Vector data handling with Python</h1>
-<p><em>Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma</em> - 05 januari, 2017</p>
-<h2>GDAL/OGR using Python</h2>
-<p>By now you should now what the following abbreviation stand for (what can you do with it??). Osgeo Python module groups 3 submodules:</p>
+<h1 id="wur-geoscripting-wur-logo"><a href="https://geoscripting-wur.github.io/">WUR Geoscripting</a> <img src="http://www.wageningenur.nl/upload/f9a0b5f2-15c5-4b84-9e14-20ef02f5e265_wur-logo.png" alt="WUR logo" /></h1>
+<h1 id="vector-data-handling-with-python">Vector data handling with Python</h1>
+<p><em>Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma</em> - 20 January, 2017</p>
+<h2 id="gdalogr-using-python">GDAL/OGR using Python</h2>
+<p>By now you should know what the following abbreviations stand for, and what can you do with the software:</p>
 <ul>
 <li>GDAL</li>
 <li>OGR</li>
 </ul>
-<p>New:</p>
+<p>Whereas the following may be new to you:</p>
 <ul>
 <li>OSR: spatial reference (projections!)</li>
 </ul>
@@ -892,7 +892,7 @@ Week 3: Python for geo-scripting
 <li><a href="http://geospatialpython.com/" class="uri">http://geospatialpython.com/</a></li>
 <li><a href="https://pcjericks.github.io/py-gdalogr-cookbook/">Python GDAL/OGR Cookbook!</a></li>
 </ul>
-<h2>OGR and the data drivers</h2>
+<h2 id="ogr-and-the-data-drivers">OGR and the data drivers</h2>
 <p>OGR supports many different vector formats:</p>
 <ul>
 <li>ESRI formats such as shapefiles, personal geodatabases and ArcSDE</li>
@@ -901,7 +901,7 @@ Week 3: Python for geo-scripting
 <li>Databases such as MySQL, PostgreSQL, Oracle Spatial, etc.</li>
 <li>Webservices such as Web Feature Service 1.0,1.1,2.0 (WFS output as GML)</li>
 </ul>
-<p><strong>OGR Data drivers:</strong> A driver is an object that knows how to interact with a certain data type (e.g. a shape file) You know the right driver to read or write data. Some drivers might only read content but the majority can read and write.</p>
+<p><strong>OGR Data drivers:</strong> A driver is an object that knows how to interact with a certain data type (e.g. a shape file). You need to know the right driver to read or write data. Some drivers might only be able to read content, but the majority can read and write.</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -919,8 +919,9 @@ From the terminal you can also type the following to obtain an overview of suppo
 <pre style=""><code class="source bash">echo "Terminal command to obtain an overview of supported formats"
 ogrinfo --formats</code></pre>
 </div>
-<h2>Points</h2>
-<p>What does Wkt mean?</p>
+<p><a href="http://www.gdal.org/ogr_formats.html">More info about the different OGR formats</a>.</p>
+<h2 id="points">Points</h2>
+<p>What does &quot;WKT&quot; mean?</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -939,7 +940,7 @@ print(pt)
 </div>
 <p>WKT (Well Known Text) is a sort of markup language that describes spatial information in a clean text format, there is an equivalent in binary format (easier for computers to process and more efficient for data transfer).</p>
 <p>Explanation of WKT: <a href="https://en.wikipedia.org/wiki/Well-known_text">Wikipedia</a></p>
-<h2>Define a spatial reference</h2>
+<h2 id="define-a-spatial-reference">Define a spatial reference</h2>
 <p>A special reference defines: An ellipsoid, a datum using that ellipsoid, and either a geocentric, geographic or projection coordinate system.</p>
 <p>Therefore spacial references come in multiple forms according to our data needs. There is even a search engine for it: <a href="http://spatialreference.org/ref/epsg/wgs-84/">http://spatialreference.org</a></p>
 <p>The following example is based on WGS84, see:<a href="http://spatialreference.org/ref/epsg/wgs-84/" class="uri">http://spatialreference.org/ref/epsg/wgs-84/</a></p>
@@ -952,7 +953,7 @@ print(pt)
 spatialRef = osr.SpatialReference()
 spatialRef.ImportFromEPSG(4326)  # from EPSG - Lat/long</code></pre>
 </div>
-<h2>Reproject a point</h2>
+<h2 id="reproject-a-point">Reproject a point</h2>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -977,11 +978,13 @@ print point.ExportToWkt()</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## POINT (174150.990093441156205 444348.392612311581615)
+<pre style=""><code class="output python">## POINT (174150.990103958 444348.392444438)
 </code></pre>
 </div>
-<p>Question: On the previous example where WKT is printed out, in which coordinate system is the WKT represented??</p>
-<h2>Create a shape file</h2>
+<blockquote>
+<p><strong>Question 1</strong>: On the previous example where WKT is printed out, in which coordinate system is the WKT represented?</p>
+</blockquote>
+<h2 id="create-a-shape-file">Create a shape file</h2>
 <p><strong>Concept:</strong></p>
 <ul>
 <li>A point is a type of geometry stored as a feature.</li>
@@ -1010,7 +1013,7 @@ You can set the working directory using:
 os.chdir('pathtoyourworkingdirectory')
 print os.getcwd()</code></pre>
 </div>
-<p>Now you can continue (you do not need to repead the <code>import os</code> if you have already done so!). More info about the different OGR formats (http://www.gdal.org/ogr_formats.html):</p>
+<p>Now you can continue (you do not need to repead the <code>import os</code> if you have already done so!):</p>
 <ul>
 <li>Set spatial reference</li>
 <li>create shape file</li>
@@ -1038,7 +1041,7 @@ else:
 
 ## choose your own name
 ## make sure this layer does not exist in your 'data' folder
-fn = "testing.shp"
+fn = "points.shp"
 layername = "anewlayer"
 
 ## Create shape file
@@ -1114,7 +1117,7 @@ ds.Destroy()
 </button>
 <pre style=""><code class="output python">## ESRI Shapefile driver IS available.
 ## 
-## 0
+## 1
 ## (0.0, 0.0, 0.0, 0.0)
 ## KML file export
 ## <Point><coordinates>5.10448,52.092876,0</coordinates></Point>
@@ -1123,30 +1126,30 @@ ds.Destroy()
 ## (4.89707, 5.10448, 52.092876, 52.377956)
 </code></pre>
 </div>
-<p>From the terminal you can remove the created &quot;testing.shp&quot; and related files using:</p>
+<p>From the terminal you can remove the created &quot;points.shp&quot; and related files using:</p>
 <div class="row">
 <button class="source bash toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
 </button>
 <pre style=""><code class="source bash">echo "in the terminal you can use the following bash commands to easily remove files"
-echo "list all the files starting with testing*"
-ls data/testing*
-echo "remove all the files starting with testing*"
-rm -v data/testing*</code></pre>
+echo "list all the files starting with points*"
+ls data/points*
+echo "remove all the files starting with points*"
+rm -v data/points*</code></pre>
 <button class="output bash toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> bash output
 </button>
 <pre style=""><code class="output bash">## in the terminal you can use the following bash commands to easily remove files
-## list all the files starting with testing*
-## data/testing.dbf
-## data/testing.prj
-## data/testing.shp
-## data/testing.shx
-## remove all the files starting with testing*
-## removed 'data/testing.dbf'
-## removed 'data/testing.prj'
-## removed 'data/testing.shp'
-## removed 'data/testing.shx'
+## list all the files starting with points*
+## data/points.dbf
+## data/points.prj
+## data/points.shp
+## data/points.shx
+## remove all the files starting with points*
+## removed 'data/points.dbf'
+## removed 'data/points.prj'
+## removed 'data/points.shp'
+## removed 'data/points.shx'
 </code></pre>
 </div>
 <p>Now, we can open the created shape file in QGIS using the <code>Python Console</code>.</p>
@@ -1166,9 +1169,9 @@ print aLayer.name()</code></pre>
 <li>the third argument is the provider key. Basically, the function wants to know what driver will be used to read this data. For our purposes, “ogr” will be used most of the time with vector data.</li>
 </ul>
 <p>Another example of how we can use this method:</p>
-<p><code>qgis.utils.iface.addVectorLayer('/home/user/Git/Python/data/testing.shp', 'anewlayer', &quot;ogr&quot;)</code></p>
+<p><code>qgis.utils.iface.addVectorLayer('/home/user/Git/Python/data/points.shp', 'anewlayer', &quot;ogr&quot;)</code></p>
 <p><img src="figs/Viewing_shape_QGIS.png" alt="Open Shape File in QGIS" /></p>
-<h2>Modify a shape file</h2>
+<h2 id="modify-a-shape-file">Modify a shape file</h2>
 <p>Now let's try to add an extra point to the shape file:</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
@@ -1204,11 +1207,11 @@ layer.CreateFeature(feature)
 layer.GetExtent()
 ds.Destroy()</code></pre>
 </div>
-<h2>Convert a shapefile to JSON format</h2>
+<h2 id="convert-a-shapefile-to-json-format">Convert a shapefile to JSON format</h2>
 <p>Conversion of file formats is easier using the bash command line or even online:</p>
 <p>See here for an web conversion example</p>
 <ul>
-<li>(https://ogre.adc4gis.com/)[https://ogre.adc4gis.com/]</li>
+<li><a href="https://ogre.adc4gis.com/" class="uri">https://ogre.adc4gis.com/</a></li>
 </ul>
 Using the command line
 <div class="row">
@@ -1216,16 +1219,16 @@ Using the command line
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
 </button>
 <pre style=""><code class="source bash">
-ogr2ogr -f GeoJSON -t_srs crs:84 testing.geojson testing.shp</code></pre>
+ogr2ogr -f GeoJSON -t_srs crs:84 points.geojson points.shp</code></pre>
 </div>
-<p>ogr2ogr is a command version of ogr and is manly used for file conversion and/or processing. The syntax is in reverve with new file first and orginal file last</p>
+<p><code>ogr2ogr</code> is a command-line version of ogr and is mainly used for file conversion and/or processing. The syntax is in reverse, with new filename first and orginal filename last.</p>
 <p>If you want to learn more about GEOJSON:</p>
 <ul>
-<li>(https://github.com/frewsxcv/python-geojson)[https://github.com/frewsxcv/python-geojson]</li>
+<li><a href="https://github.com/frewsxcv/python-geojson" class="uri">https://github.com/frewsxcv/python-geojson</a></li>
 </ul>
-<h2>How to visualise a spatial file?</h2>
+<h2 id="how-to-visualise-a-spatial-file">How to visualise a spatial file?</h2>
 <p>There are multiple solutions, GIS software (QGIS), web platforms (leaflet), PNG (mapnik)</p>
-<p>With leaflet a geoJSON can be easly vizualized inside a webpage. Example simple webgis:</p>
+<p>With leaflet a GeoJSON can be easly vizualized inside a webpage. Example simple webgis:</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1266,7 +1269,7 @@ map_points.save('points.html')</code></pre>
  
 </p>
 <p>Webtutorial about folium: <a href="http://pythonhow.com/web-mapping-with-python-and-folium">web-mapping-with-python-and-folium</a></p>
-<h1>What have we learned?</h1>
+<h1 id="what-have-we-learned">What have we learned?</h1>
 <ol style="list-style-type: decimal">
 <li>Get or create a writeable layer</li>
 <li>Add fields if necessary</li>
@@ -1277,14 +1280,14 @@ map_points.save('points.html')</code></pre>
 <li>Modify a Shape file</li>
 <li>Visualise a vector object using Python/Leaflet</li>
 </ol>
-<h1>Assignment</h1>
-<p>Now create your own shape file containing two locations (e.g. a location of the GAIA building in Wageningen). E.g. go to Google Earth, an extract the coordinates and redo the above excercise (BONUS: if you use a <code>for</code> loop) and export to a KML file.</p>
+<h1 id="assignment">Assignment</h1>
+<p>Now create your own shapefile containing two locations (e.g. a location of the GAIA building in Wageningen). E.g. go to Google Earth, extract the coordinates and redo the above excercise (BONUS: if you use a <code>for</code> loop) and export to a KML file.</p>
 <p>You can also use the points defined here: https://geoscripting-wur.github.io/IntroToVector/.</p>
 <p>Bonus: you can create a map using Python code.</p>
-<p>For making nice maps see the following <a href="https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Plot%20Map.ipynb">python notebooks</a></p>
-<h2>Deadline</h2>
-<p>Upload your documented and well structured Ipython Notebook to a GitHub repository and send the link before 1030 on Friday 22/01.</p>
-<h1>More information</h1>
+<p>For making nice maps see the following <a href="https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Plot%20Map.ipynb">python notebooks</a>.</p>
+<h2 id="deadline">Deadline</h2>
+<p>Upload your documented and well structured Ipython Notebook to a GitHub repository and send the link before 10:30 on Friday 27/01.</p>
+<h1 id="more-information">More information</h1>
 <p>If you have time left you can start the following tutorial made by <a href="http://www2.geog.ucl.ac.uk/~plewis/geogg122/_build/html/Chapter4_GDAL/OGR_Python.html">Prof. P. Lewis</a>.</p>
 <!---
 
