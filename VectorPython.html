@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <meta name="author" content="Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma" />
+  <meta name="author" content="Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Dainius Masiliunas" />
   <title></title>
   <style type="text/css">code{white-space: pre;}</style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -871,7 +871,7 @@ Week 3: Python for geo-scripting
 <div class="contents col-xs-12 col-md-10">
 <h1 id="wur-geoscripting-wur-logo"><a href="https://geoscripting-wur.github.io/">WUR Geoscripting</a> <img src="http://www.wageningenur.nl/upload/f9a0b5f2-15c5-4b84-9e14-20ef02f5e265_wur-logo.png" alt="WUR logo" /></h1>
 <h1 id="vector-data-handling-with-python">Vector data handling with Python</h1>
-<p><em>Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma</em> - 20 January, 2017</p>
+<p><em>Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Dainius Masiliunas</em> - 22 January, 2017</p>
 <h2 id="gdalogr-using-python">GDAL/OGR using Python</h2>
 <p>By now you should know what the following abbreviations stand for, and what can you do with the software:</p>
 <ul>
@@ -992,6 +992,7 @@ print point.ExportToWkt()</code></pre>
 <li>A datasource can have many layers.</li>
 <li><a href="http://gdal.org/ogr/ogr_formats.html">The driver saves the datasource in a specific format</a>.</li>
 </ul>
+<p>This can be visualised as a kind of a pyramid of elements:</p>
 <div class="row">
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
@@ -1030,7 +1031,7 @@ print os.getcwd()</code></pre>
 <pre style=""><code class="source python">## Loading the modules
 from osgeo import ogr,osr
 import os
-os.chdir('./data')
+#os.chdir('./data')
 ## Is the ESRI Shapefile driver available?
 driverName = "ESRI Shapefile"
 drv = ogr.GetDriverByName( driverName )
@@ -1124,32 +1125,6 @@ ds.Destroy()
 ## True
 ## The new extent
 ## (4.89707, 5.10448, 52.092876, 52.377956)
-</code></pre>
-</div>
-<p>From the terminal you can remove the created &quot;points.shp&quot; and related files using:</p>
-<div class="row">
-<button class="source bash toggle btn btn-xs btn-primary">
-<span class="glyphicon glyphicon-chevron-down"></span> bash source
-</button>
-<pre style=""><code class="source bash">echo "in the terminal you can use the following bash commands to easily remove files"
-echo "list all the files starting with points*"
-ls data/points*
-echo "remove all the files starting with points*"
-rm -v data/points*</code></pre>
-<button class="output bash toggle btn btn-xs btn-success">
-<span class="glyphicon glyphicon-chevron-down"></span> bash output
-</button>
-<pre style=""><code class="output bash">## in the terminal you can use the following bash commands to easily remove files
-## list all the files starting with points*
-## data/points.dbf
-## data/points.prj
-## data/points.shp
-## data/points.shx
-## remove all the files starting with points*
-## removed 'data/points.dbf'
-## removed 'data/points.prj'
-## removed 'data/points.shp'
-## removed 'data/points.shx'
 </code></pre>
 </div>
 <p>Now, we can open the created shape file in QGIS using the <code>Python Console</code>.</p>
@@ -1269,6 +1244,37 @@ map_points.save('points.html')</code></pre>
  
 </p>
 <p>Webtutorial about folium: <a href="http://pythonhow.com/web-mapping-with-python-and-folium">web-mapping-with-python-and-folium</a></p>
+<h2 id="clean-up">Clean up</h2>
+<p>From the terminal you can remove the created &quot;points.shp&quot; and related files using:</p>
+<div class="row">
+<button class="source bash toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> bash source
+</button>
+<pre style=""><code class="source bash">echo "in the terminal you can use the following bash commands to easily remove files"
+echo "list all the files starting with points*"
+ls points*
+echo "remove all the files starting with points*"
+rm -v points*</code></pre>
+<button class="output bash toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> bash output
+</button>
+<pre style=""><code class="output bash">## in the terminal you can use the following bash commands to easily remove files
+## list all the files starting with points*
+## points.dbf
+## points.geojson
+## points.html
+## points.prj
+## points.shp
+## points.shx
+## remove all the files starting with points*
+## removed 'points.dbf'
+## removed 'points.geojson'
+## removed 'points.html'
+## removed 'points.prj'
+## removed 'points.shp'
+## removed 'points.shx'
+</code></pre>
+</div>
 <h1 id="what-have-we-learned">What have we learned?</h1>
 <ol style="list-style-type: decimal">
 <li>Get or create a writeable layer</li>
@@ -1286,7 +1292,7 @@ map_points.save('points.html')</code></pre>
 <p>Bonus: you can create a map using Python code.</p>
 <p>For making nice maps see the following <a href="https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Plot%20Map.ipynb">python notebooks</a>.</p>
 <h2 id="deadline">Deadline</h2>
-<p>Upload your documented and well structured Ipython Notebook to a GitHub repository and send the link before 10:30 on Friday 27/01.</p>
+<p>Upload your documented and well structured Ipython Notebook to a GitHub repository and send the link before 10:00.</p>
 <h1 id="more-information">More information</h1>
 <p>If you have time left you can start the following tutorial made by <a href="http://www2.geog.ucl.ac.uk/~plewis/geogg122/_build/html/Chapter4_GDAL/OGR_Python.html">Prof. P. Lewis</a>.</p>
 <!---
