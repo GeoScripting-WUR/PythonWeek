@@ -1,5 +1,5 @@
 ---
-author: "Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma"
+author: "Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Dainius Masiliunas"
 date: "`r format(Sys.time(), '%d %B, %Y')`"
 output:
   knitrBootstrap::bootstrap_document:
@@ -12,7 +12,7 @@ output:
 
 # Vector data handling with Python
 
-_Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma_ - `r format(Sys.time(), '%d %B, %Y')`
+_Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Dainius Masiliunas_ - `r format(Sys.time(), '%d %B, %Y')`
 
 ## GDAL/OGR using Python
 
@@ -130,6 +130,8 @@ print point.ExportToWkt()
 * A datasource can have many layers.
 * [The driver saves the datasource in a specific format](http://gdal.org/ogr/ogr_formats.html).
 
+This can be visualised as a kind of a pyramid of elements:
+
 ```{r, eval=FALSE}
 Driver
     Datasource
@@ -162,7 +164,7 @@ Now you can continue (you do not need to repead the `import os` if you have alre
 ## Loading the modules
 from osgeo import ogr,osr
 import os
-os.chdir('./data')
+#os.chdir('./data')
 ## Is the ESRI Shapefile driver available?
 driverName = "ESRI Shapefile"
 drv = ogr.GetDriverByName( driverName )
@@ -244,16 +246,6 @@ print layer.GetExtent()
 
 ds.Destroy()
 ## below the output is shown of the above Python script that is run in the terminal
-```
-
-From the terminal you can remove the created "points.shp" and related files using:
-
-```{r, engine='bash', eval=TRUE}
-echo "in the terminal you can use the following bash commands to easily remove files"
-echo "list all the files starting with points*"
-ls data/points*
-echo "remove all the files starting with points*"
-rm -v data/points*
 ```
 
 Now, we can open the created shape file in QGIS using the `Python Console`.
@@ -364,6 +356,18 @@ map_points.save('points.html')
 
 Webtutorial about folium: [web-mapping-with-python-and-folium](http://pythonhow.com/web-mapping-with-python-and-folium)
 
+## Clean up
+
+From the terminal you can remove the created "points.shp" and related files using:
+
+```{r, engine='bash', eval=TRUE}
+echo "in the terminal you can use the following bash commands to easily remove files"
+echo "list all the files starting with points*"
+ls points*
+echo "remove all the files starting with points*"
+rm -v points*
+```
+
 # What have we learned?
 
 1. Get or create a writeable layer 
@@ -387,7 +391,7 @@ For making nice maps see the following [python notebooks](https://github.com/Geo
 
 ## Deadline
 
-Upload your documented and well structured Ipython Notebook to a GitHub repository and send the link before 10:30 on Friday 27/01.
+Upload your documented and well structured Ipython Notebook to a GitHub repository and send the link before 10:00.
 
 
 
