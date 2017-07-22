@@ -14,7 +14,7 @@ output:
 
 # Today: Thursday 25/01/2016
 
-As background knowledge it is assumed that you know what JSON is. If not have a look at (http://http://www.w3schools.com/js/js_json_intro.asp). Also aquaint yourself yourself with the datastructure of tweets. You can find it on (https://dev.twitter.com/overview/api/tweets). Try to find out for example where spatial references are made in a tweet . During the self-study also ask yourself question like 
+As background knowledge it is assumed that you know what JSON is. If not, have a look at [JSON Intro](http://http://www.w3schools.com/js/js_json_intro.asp). Also acquaint yourself yourself with the datastructure of tweets. You can find it on [API Tweets](https://dev.twitter.com/overview/api/tweets). Try to find out for example where spatial references are made in a tweet.
 
 * 8:30-12.15: Self-study by working on the two notebooks below. If you want to go beyond, have a look at: [Mining-the-Social-Web](https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/blob/master/ipynb/Chapter%201%20-%20Mining%20Twitter.ipynb) and/or the [Twitter Cookbook](http://nbviewer.jupyter.org/github/ptwobrussell/Mining-the-Social-Web-2nd-Edition/blob/master/ipynb/Chapter%209%20-%20Twitter%20Cookbook.ipynb)
 * 13:30-14:15: Feedback and presentation about social media as a source of spatial data
@@ -29,18 +29,18 @@ As background knowledge it is assumed that you know what JSON is. If not have a 
 
 # Assignments
 
-Create a twitter harvesting application that harvest tweets (either real-time or stored), and create a spatial dataset en map from it. 
+Create a twitter harvesting application that harvests tweets (either real-time or stored), and create a spatial dataset and map from it. 
 The application should be able to: collect tweets based on a thematic and/or spatial query. 
 
 Suggestions:
 
 * Feed a spatial database with information tweeted real time from a certain location and plot it on a map.
 * Create a map indicating where traffic jams, disruptions in the public transport or ... took place last week.
-* Create a map indication the home countries of international tourist visiting Amsterdam (or Wageningen if you like)
-* Go out with your smartphone (what else should you do during lunch), collect spatial information (for examples POIs on the campus) by tweeting from various locations using a specific hashtag (make sure location is enabled in your twitter account), harvest these tweets with an application, and create a map from it.
+* Create a map indicating the home countries of international tourists visiting Amsterdam (or Wageningen if you like)
+* Go out with your smartphone (what else should you do during lunch), collect spatial information (for examples POIs on the campus) by tweeting from various locations using a specific hashtag (make sure location is enabled on your twitter account), harvest these tweets with an application, and create a map from it.
 * .... think of something else.
 
-Send in your application as a python script as well as a screenshot of the map you produced (through the script review centre: lesson 14)
+Send in your application as a python script as well as a screenshot of the map you produced (through the script review centre: lesson 14).
 
 
 
