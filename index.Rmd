@@ -68,10 +68,10 @@ Have a look at this question on GIS StackExchange:
 - https://gis.stackexchange.com/questions/16657/clipping-raster-with-vector-layer-using-gdal
 
 ## Python editors and IDEs
-* Most modern text editors do nice pyhton highlighting, e.g. Sublime Text can be set up nicely for python
-* Jupyter notebook is a good choice for short scripts, e.g. the the execises here. It gives you a nice option with source code results and comments in one document ! See here for a simple Jupyter [notebook example](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb). [More info](http://jupyter.org/)
-* There are a number of propper IDE,s for python. Personnaly I made good experience with [PyCharm](https://www.jetbrains.com/pycharm/). For running on a server, [rodeo](https://github.com/yhat/rodeo/) gives a similar interface as RStudio server.
-* Spyder is nice a lightweigth and can be installed from the terminal (`sudo apt-get install spyder`)
+* Most modern text editors do nice python highlighting, e.g. Sublime Text can be set up nicely for python
+* Jupyter notebook is a good choice for short scripts, e.g. the the exercises here. It gives you a nice option with source code results and comments in one document ! See here for a simple Jupyter [notebook example](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb). [More info](http://jupyter.org/)
+* There are a number of proper IDE's for python. Personally I have good experience with [PyCharm](https://www.jetbrains.com/pycharm/). For running on a server, [rodeo](https://github.com/yhat/rodeo/) gives a similar interface as RStudio server.
+* Spyder is nice a lightweight and can be installed from the terminal (`sudo apt-get install spyder`)
 
 ## Getting started with Python within a Linux OS
 
@@ -116,7 +116,7 @@ help(sys)
 help(1)
 ```
 
-**Question**: What does this mean `___ ___` around words: e.g: `___doc___`
+> **Question** 1: What does this mean `___ ___` around words: e.g: `___doc___`?
 
 Try out the following!!!
 
@@ -142,7 +142,7 @@ Then go to  `http://localhost:1234/` via your preferred browser.
 
 ### Numbers and variables
 
-> **Question 1**: What is the difference between 10 and 10.0 when dealing with datatypes in Python?
+> **Question 2**: What is the difference between 10 and 10.0 when dealing with datatypes in Python?
 
 ```{r, eval=FALSE, message=FALSE, echo=FALSE}
 # 10 -> Integer -> Natural + negative numbers
@@ -200,9 +200,9 @@ print campus[::2]
 ## list[start:end:step]
 ```
 
-> **Question 2:** What are the major differences between Append/Extend?
+> **Question 3:** What are the major differences between Append/Extend?
 
-> **Question 3:** What building is `campus[-2]`?
+> **Question 4:** What building is `campus[-2]`?
 
 ### Dictionaries, loops, if/else
 
@@ -319,7 +319,7 @@ from math import pi
 print pi
 ```
 
-> **Question 4**: Which is the best way to import modules?
+> **Question 5**: Which is the best way to import modules?
 
 ```{r, eval=FALSE, echo=FALSE}
 from numy import pi
@@ -335,7 +335,7 @@ from math import pi
 - `math`: Mathametical functions
 - `datetime`: Date/Time manipulation
 
-> **Question 5**: What is the difference between `os` and `os.path`?
+> **Question 6**: What is the difference between `os` and `os.path`?
 
 Some examples:
 
@@ -370,7 +370,7 @@ print a
 fileObj.close()
 ```
 
-> **Question 6**: What does `r` and `w` mean?
+> **Question 7**: What does `r` and `w` mean?
 
 ### Error handling
 
@@ -434,16 +434,8 @@ For Python, a set of tools co-exist for installing and managing packages. From m
 * *pip* is a python package installer, that is pretty much standard nowadays. It is recommended to run it in a virtualenv to prevent conflicts, however, virtualenvs can be problematic when it comes to package dependencies.
 * A different solution is [conda](http://conda.pydata.org/docs/) which makes it very easy to install and maintain different external dependencies such as *gdal* and even R accross different operating systems. However, same caveats as for *pip* apply, and it is not available as a package in Ubuntu.
 
-
-# Handling Vector data with Python
-
-Go to [Vector Data handling in Python](https://geoscripting-wur.github.io/PythonWeek/VectorPython.html)
-
-# Raster data with Python
-
-Go to [Raster Data handling in Python](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb)
-
-**Note**: this is an Ipython notebook (now called Jupyter Notebook!)
+# Assignment
+The assignment for today is to finish the datacamp course: Intro to Python for Data Science. If you finished early and still want to write more scripts, then you can follow one of the fun tutorials below.
 
 # More info
 - A great book: [Python Geospatial Development](http://www.amazon.com/Python-Geospatial-Development-Second-Edition/dp/178216152X)
