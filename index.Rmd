@@ -64,14 +64,14 @@ How?! via:
 
 Have a look at this question on GIS StackExchange:
 
-- https://gis.stackexchange.com/questions/34509/alternatives-to-using-arcpy
-- https://gis.stackexchange.com/questions/16657/clipping-raster-with-vector-layer-using-gdal
+- [Alternatives to using arcpy](https://gis.stackexchange.com/questions/34509/alternatives-to-using-arcpy)
+- [Clipping raster with vector layer using gdal](https://gis.stackexchange.com/questions/16657/clipping-raster-with-vector-layer-using-gdal)
 
 ## Python editors and IDEs
 * Most modern text editors do nice python highlighting, e.g. Sublime Text can be set up nicely for python
 * Jupyter notebook is a good choice for short scripts, e.g. the the exercises here. It gives you a nice option with source code results and comments in one document ! See here for a simple Jupyter [notebook example](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb). [More info](http://jupyter.org/)
 * There are a number of proper IDE's for python. Personally I have good experience with [PyCharm](https://www.jetbrains.com/pycharm/). For running on a server, [rodeo](https://github.com/yhat/rodeo/) gives a similar interface as RStudio server.
-* Spyder is nice a lightweight and can be installed from the terminal (`sudo apt-get install spyder`)
+* Spyder is nice a lightweight IDE and can be installed from the terminal (`sudo apt-get install spyder`)
 
 ## Getting started with Python within a Linux OS
 
@@ -82,11 +82,12 @@ Have a look at this question on GIS StackExchange:
 ```{r, eval = TRUE, engine='bash'}
 ## from R: system("gdal-config --version")
 ## From the terminal:
-which python
+python --version
+python3 --version
 gdal-config --version
 ```
 
-- type the following to start python and find out what the python version is:
+- type the following to start python 2.7
 
 ```{r, eval=FALSE, engine='bash'}
 python # type this in the terminal to start the python interpreter
@@ -102,6 +103,8 @@ print sys.version #parentheses necessary in python 3.
 To exit python:
 ```{r, eval=FALSE, engine='python'}
 exit()
+or 
+quit()
 ```
 
 - Open the python script within a Python editor
@@ -114,9 +117,11 @@ exit()
 import sys
 help(sys)
 help(1)
+
+# if you want the exit the menu press q
 ```
 
-> **Question** 1: What does this mean `___ ___` around words: e.g: `___doc___`?
+> **Question** 1: What does this mean `__ __` around words: e.g: `__doc__`?
 
 Try out the following!!!
 
@@ -142,14 +147,7 @@ Then go to  `http://localhost:1234/` via your preferred browser.
 
 ### Numbers and variables
 
-> **Question 2**: What is the difference between 10 and 10.0 when dealing with datatypes in Python?
-
-```{r, eval=FALSE, message=FALSE, echo=FALSE}
-# 10 -> Integer -> Natural + negative numbers
-## Int
-# 10.0 -> Floating point -> Real number() -> "digits before and after the decimal point"
-## Float
-```
+> **Question 2**: What is the difference between 10 and 10.0 when dealing with data types in Python?
 
 ```{r, engine='python'}
 print(int(10.6))
@@ -180,7 +178,7 @@ opts_chunk$set(engine = 'python')
 ### Lists
 
 ```{r campus, engine='python'}
-campus = ['Gaia','Lumen', 'Radix', 'Forum']
+campus = ['Gaia', 'Lumen', 'Radix', 'Forum']
 # how to can we print Forum?
 print(campus[3])
 # how to access the end of the list (while having no idea how big it is)
@@ -191,10 +189,10 @@ print(campus[0:3])
 
 Appending, inserting, extending and steps:
 ```{r, engine='python'}
-campus = ['Gaia','Lumen', 'Radix', 'Forum']
+campus = ['Gaia', 'Lumen', 'Radix', 'Forum']
 campus.append("Atlas")
 campus.insert(1,"SoilMuseum")
-campus.extend(["Action","Vitae", "Zodiac"])
+campus.extend(["Action", "Vitae", "Zodiac"])
 print campus
 print campus[::2]
 ## list[start:end:step]
@@ -206,7 +204,7 @@ print campus[::2]
 
 ### Dictionaries, loops, if/else
 
-Let there be Dictionaries... Dictionary is an unordered set of key:value pairs. Like in the dictionary, 'food':'voedsel'.
+Let there be dictionaries... A dictionary is an unordered set of key:value pairs. Like in the dictionary, 'food':'voedsel'.
 
 ```{r, engine='python'}
 # dictionary
@@ -219,7 +217,7 @@ print campusDic[102]
 ```
 
 Loops: watch out here with code indentation. Python uses indentation to define code blocks and not `{}` like other languages.
-`print building` has to be *indented* by 1 tab or 4 spaces (recommended).
+`print building` has to be *indented* by 1 tab or 4 spaces ( [recommended](https://stackoverflow.com/questions/119562/tabs-versus-spaces-in-python-programming) ).
 
 ```{r, engine='python'}
 campus = ['Gaia','Lumen', 'Radix', 'Forum']
@@ -322,7 +320,7 @@ print pi
 > **Question 5**: Which is the best way to import modules?
 
 ```{r, eval=FALSE, echo=FALSE}
-from numy import pi
+from numpy import pi
 from math import pi
 ```
 
@@ -384,7 +382,7 @@ open("/foo0")
 
 The file doesn't exist, so the script stops and outputs an ugly message.
 
-How to deal with this I/O error? Good progamming!
+How to deal with this I/O error? Good programming!
 
 ```{r, engine='python'}
 
@@ -406,6 +404,7 @@ except IOError:
 - `for`
 - `while`
 - `try`
+- `type` shows type (e.g. int, float, str) of object
 - `class` which executes a block of code and attaches its local names to a `class`, for use in object oriented programming
 - `def` which defines a function or statement
 - `with` which encloses a code block within a context manager
@@ -414,15 +413,7 @@ except IOError:
 - `yield`
 - `import`
 
-## R from Python
-
-A very simple example using the Python Rpy2 module (only possible on Mac/Linux). This is working with your OS-GEO live linux virtual machine. Try it out!
-
-```{r, engine='python', eval=TRUE}
-import rpy2.robjects as robjects
-pi = robjects.r['pi']
-print(pi[0])
-```
+## Python from R
 
 By the way, as you may have noticed, this document is created from an RMarkdown source, which can also include Python code blocks (have a look at the [source](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/index.Rmd) on github). Similary, the newest version of IPython notebook, now can also use R and other languages!
 
@@ -430,9 +421,9 @@ By the way, as you may have noticed, this document is created from an RMarkdown 
 For Python, a set of tools co-exist for installing and managing packages. From most to least desirable, you should try to install packages:
 
 * Using the distribution's package manager (on Ubuntu, that's `sudo apt-get install python-*`). This is the easiest and guaranteed to work right, although the package version might be older than you expect.
-* With Python, often the dependencies and and versions can differ from project to project. Also, installing packages not via the distribution package manager can cause conflicts between packages. ***Virtual environments*** can be used to keep seperate sets of packages in its own directory tree. See an intro to `pip` and `virtualenv` [here](http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/)
+* With Python, often the dependencies and versions can differ from project to project. Also, packages not installed via the distribution package manager can cause conflicts between packages. ***Virtual environments*** can be used to keep seperate sets of packages in its own directory tree. See an intro to `pip` and `virtualenv` [here](http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/)
 * *pip* is a python package installer, that is pretty much standard nowadays. It is recommended to run it in a virtualenv to prevent conflicts, however, virtualenvs can be problematic when it comes to package dependencies.
-* A different solution is [conda](http://conda.pydata.org/docs/) which makes it very easy to install and maintain different external dependencies such as *gdal* and even R accross different operating systems. However, same caveats as for *pip* apply, and it is not available as a package in Ubuntu.
+* A different solution is [conda](https://conda.io/docs/) which makes it very easy to install and maintain different external dependencies such as *gdal* and even R accross different operating systems. It is available for Windows, macOS and Linux. Feel free to [install](https://conda.io/docs/user-guide/install/index.html) it and have a try at conda.
 
 # Assignment
 The assignment for today is to finish the datacamp course: Intro to Python for Data Science. If you finished early and still want to write more scripts, then you can follow one of the fun tutorials below.
@@ -441,6 +432,7 @@ The assignment for today is to finish the datacamp course: Intro to Python for D
 - A great book: [Python Geospatial Development](http://www.amazon.com/Python-Geospatial-Development-Second-Edition/dp/178216152X)
 - [The official python tutorial](https://docs.python.org/2/tutorial/)
 - [Python Tutorial](http://www.tutorialspoint.com/python/)
+- [Best of the best practices in Python - Style guide ](https://gist.github.com/sloria/7001839)
 - [Stack OverFlow Python](https://stackoverflow.com/questions/tagged/python)
 - [GIS Stack Exchange](https://gis.stackexchange.com/)
 - [QGIS can be scripted in python](http://www.qgistutorials.com/en/docs/getting_started_with_pyqgis.html)

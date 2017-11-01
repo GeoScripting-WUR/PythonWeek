@@ -936,15 +936,15 @@ Week 3: Python for geo-scripting
 <p>How?! via: - GDAL/OGR - GEOS</p>
 <p>Have a look at this question on GIS StackExchange:</p>
 <ul>
-<li>https://gis.stackexchange.com/questions/34509/alternatives-to-using-arcpy</li>
-<li>https://gis.stackexchange.com/questions/16657/clipping-raster-with-vector-layer-using-gdal</li>
+<li><a href="https://gis.stackexchange.com/questions/34509/alternatives-to-using-arcpy">Alternatives to using arcpy</a></li>
+<li><a href="https://gis.stackexchange.com/questions/16657/clipping-raster-with-vector-layer-using-gdal">Clipping raster with vector layer using gdal</a></li>
 </ul>
 <h2 id="python-editors-and-ides">Python editors and IDEs</h2>
 <ul>
-<li>Most modern text editors do nice pyhton highlighting, e.g. Sublime Text can be set up nicely for python</li>
-<li>Jupyter notebook is a good choice for short scripts, e.g. the the execises here. It gives you a nice option with source code results and comments in one document ! See here for a simple Jupyter <a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb">notebook example</a>. <a href="http://jupyter.org/">More info</a></li>
-<li>There are a number of propper IDE,s for python. Personnaly I made good experience with <a href="https://www.jetbrains.com/pycharm/">PyCharm</a>. For running on a server, <a href="https://github.com/yhat/rodeo/">rodeo</a> gives a similar interface as RStudio server.</li>
-<li>Spyder is nice a lightweigth and can be installed from the terminal (<code>sudo apt-get install spyder</code>)</li>
+<li>Most modern text editors do nice python highlighting, e.g. Sublime Text can be set up nicely for python</li>
+<li>Jupyter notebook is a good choice for short scripts, e.g. the the exercises here. It gives you a nice option with source code results and comments in one document ! See here for a simple Jupyter <a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb">notebook example</a>. <a href="http://jupyter.org/">More info</a></li>
+<li>There are a number of proper IDE's for python. Personally I have good experience with <a href="https://www.jetbrains.com/pycharm/">PyCharm</a>. For running on a server, <a href="https://github.com/yhat/rodeo/">rodeo</a> gives a similar interface as RStudio server.</li>
+<li>Spyder is nice a lightweight IDE and can be installed from the terminal (<code>sudo apt-get install spyder</code>)</li>
 </ul>
 <h2 id="getting-started-with-python-within-a-linux-os">Getting started with Python within a Linux OS</h2>
 <ul>
@@ -957,17 +957,19 @@ Week 3: Python for geo-scripting
 </button>
 <pre style=""><code class="source bash">## from R: system("gdal-config --version")
 ## From the terminal:
-which python
+python --version
+python3 --version
 gdal-config --version</code></pre>
 <button class="output bash toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> bash output
 </button>
-<pre style=""><code class="output bash">## /usr/bin/python
-## 2.1.0
+<pre style=""><code class="output bash">## Python 2.7.12
+## Python 3.5.2
+## 2.2.1
 </code></pre>
 </div>
 <ul>
-<li>type the following to start python and find out what the python version is:</li>
+<li>type the following to start python 2.7</li>
 </ul>
 <div class="row">
 <button class="source bash toggle btn btn-xs btn-primary">
@@ -994,7 +996,9 @@ To exit python:
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
-<pre style=""><code class="source python">exit()</code></pre>
+<pre style=""><code class="source python">exit()
+or 
+quit()</code></pre>
 </div>
 <ul>
 <li>Open the python script within a Python editor</li>
@@ -1007,9 +1011,13 @@ To exit python:
 </button>
 <pre style=""><code class="source python">import sys
 help(sys)
-help(1)</code></pre>
+help(1)
+
+# if you want the exit the menu press q</code></pre>
 </div>
-<p><strong>Question</strong>: What does this mean <code>___ ___</code> around words: e.g: <code>___doc___</code></p>
+<blockquote>
+<p><strong>Question</strong> 1: What does this mean <code>__ __</code> around words: e.g: <code>__doc__</code>?</p>
+</blockquote>
 <p>Try out the following!!!</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
@@ -1039,11 +1047,8 @@ echo "pydoc server ready at http://localhost:1234/"</code></pre>
 <p>Then go to <code>http://localhost:1234/</code> via your preferred browser.</p>
 <h3 id="numbers-and-variables">Numbers and variables</h3>
 <blockquote>
-<p><strong>Question 1</strong>: What is the difference between 10 and 10.0 when dealing with datatypes in Python?</p>
+<p><strong>Question 2</strong>: What is the difference between 10 and 10.0 when dealing with data types in Python?</p>
 </blockquote>
-<div class="row">
-
-</div>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1074,7 +1079,7 @@ buildingNumber = 101
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
-<pre style=""><code class="source python">campus = ['Gaia','Lumen', 'Radix', 'Forum']
+<pre style=""><code class="source python">campus = ['Gaia', 'Lumen', 'Radix', 'Forum']
 # how to can we print Forum?
 print(campus[3])
 # how to access the end of the list (while having no idea how big it is)
@@ -1094,10 +1099,10 @@ Appending, inserting, extending and steps:
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
-<pre style=""><code class="source python">campus = ['Gaia','Lumen', 'Radix', 'Forum']
+<pre style=""><code class="source python">campus = ['Gaia', 'Lumen', 'Radix', 'Forum']
 campus.append("Atlas")
 campus.insert(1,"SoilMuseum")
-campus.extend(["Action","Vitae", "Zodiac"])
+campus.extend(["Action", "Vitae", "Zodiac"])
 print campus
 print campus[::2]
 ## list[start:end:step]</code></pre>
@@ -1109,13 +1114,13 @@ print campus[::2]
 </code></pre>
 </div>
 <blockquote>
-<p><strong>Question 2:</strong> What are the major differences between Append/Extend?</p>
+<p><strong>Question 3:</strong> What are the major differences between Append/Extend?</p>
 </blockquote>
 <blockquote>
-<p><strong>Question 3:</strong> What building is <code>campus[-2]</code>?</p>
+<p><strong>Question 4:</strong> What building is <code>campus[-2]</code>?</p>
 </blockquote>
 <h3 id="dictionaries-loops-ifelse">Dictionaries, loops, if/else</h3>
-<p>Let there be Dictionaries... Dictionary is an unordered set of key:value pairs. Like in the dictionary, 'food':'voedsel'.</p>
+<p>Let there be dictionaries... A dictionary is an unordered set of key:value pairs. Like in the dictionary, 'food':'voedsel'.</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1133,7 +1138,7 @@ print campusDic[102]</code></pre>
 <pre style=""><code class="output python">## Forum
 </code></pre>
 </div>
-<p>Loops: watch out here with code indentation. Python uses indentation to define code blocks and not <code>{}</code> like other languages. <code>print building</code> has to be <em>indented</em> by 1 tab or 4 spaces (recommended).</p>
+<p>Loops: watch out here with code indentation. Python uses indentation to define code blocks and not <code>{}</code> like other languages. <code>print building</code> has to be <em>indented</em> by 1 tab or 4 spaces ( <a href="https://stackoverflow.com/questions/119562/tabs-versus-spaces-in-python-programming">recommended</a> ).</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1297,7 +1302,7 @@ print pi</code></pre>
 </code></pre>
 </div>
 <blockquote>
-<p><strong>Question 4</strong>: Which is the best way to import modules?</p>
+<p><strong>Question 5</strong>: Which is the best way to import modules?</p>
 </blockquote>
 <div class="row">
 
@@ -1312,7 +1317,7 @@ print pi</code></pre>
 <li><code>datetime</code>: Date/Time manipulation</li>
 </ul>
 <blockquote>
-<p><strong>Question 5</strong>: What is the difference between <code>os</code> and <code>os.path</code>?</p>
+<p><strong>Question 6</strong>: What is the difference between <code>os</code> and <code>os.path</code>?</p>
 </blockquote>
 <p>Some examples:</p>
 <div class="row">
@@ -1333,8 +1338,8 @@ print date.today()+delta</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## 2017-01-20
-## 2017-01-27
+<pre style=""><code class="output python">## 2017-11-01
+## 2017-11-08
 </code></pre>
 </div>
 <h3 id="file-access">File access</h3>
@@ -1363,7 +1368,7 @@ fileObj.close()</code></pre>
 </code></pre>
 </div>
 <blockquote>
-<p><strong>Question 6</strong>: What does <code>r</code> and <code>w</code> mean?</p>
+<p><strong>Question 7</strong>: What does <code>r</code> and <code>w</code> mean?</p>
 </blockquote>
 <h3 id="error-handling">Error handling</h3>
 <p>Sometime problems occur... Errors detected during execution are called <em>exceptions</em>.</p>
@@ -1382,7 +1387,7 @@ fileObj.close()</code></pre>
 </code></pre>
 </div>
 <p>The file doesn't exist, so the script stops and outputs an ugly message.</p>
-<p>How to deal with this I/O error? Good progamming!</p>
+<p>How to deal with this I/O error? Good programming!</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1411,6 +1416,7 @@ except IOError:
 <li><code>for</code></li>
 <li><code>while</code></li>
 <li><code>try</code></li>
+<li><code>type</code> shows type (e.g. int, float, str) of object</li>
 <li><code>class</code> which executes a block of code and attaches its local names to a <code>class</code>, for use in object oriented programming</li>
 <li><code>def</code> which defines a function or statement</li>
 <li><code>with</code> which encloses a code block within a context manager</li>
@@ -1419,40 +1425,24 @@ except IOError:
 <li><code>yield</code></li>
 <li><code>import</code></li>
 </ul>
-<h2 id="r-from-python">R from Python</h2>
-<p>A very simple example using the Python Rpy2 module (only possible on Mac/Linux). This is working with your OS-GEO live linux virtual machine. Try it out!</p>
-<div class="row">
-<button class="source python toggle btn btn-xs btn-primary">
-<span class="glyphicon glyphicon-chevron-down"></span> python source
-</button>
-<pre style=""><code class="source python">import rpy2.robjects as robjects
-pi = robjects.r['pi']
-print(pi[0])</code></pre>
-<button class="output python toggle btn btn-xs btn-success">
-<span class="glyphicon glyphicon-chevron-down"></span> python output
-</button>
-<pre style=""><code class="output python">## 3.14159265359
-</code></pre>
-</div>
+<h2 id="python-from-r">Python from R</h2>
 <p>By the way, as you may have noticed, this document is created from an RMarkdown source, which can also include Python code blocks (have a look at the <a href="https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/index.Rmd">source</a> on github). Similary, the newest version of IPython notebook, now can also use R and other languages!</p>
 <h2 id="python-package-management">Python package management</h2>
 <p>For Python, a set of tools co-exist for installing and managing packages. From most to least desirable, you should try to install packages:</p>
 <ul>
 <li>Using the distribution's package manager (on Ubuntu, that's <code>sudo apt-get install python-*</code>). This is the easiest and guaranteed to work right, although the package version might be older than you expect.</li>
-<li>With Python, often the dependencies and and versions can differ from project to project. Also, installing packages not via the distribution package manager can cause conflicts between packages. <strong><em>Virtual environments</em></strong> can be used to keep seperate sets of packages in its own directory tree. See an intro to <code>pip</code> and <code>virtualenv</code> <a href="http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/">here</a></li>
+<li>With Python, often the dependencies and versions can differ from project to project. Also, packages not installed via the distribution package manager can cause conflicts between packages. <strong><em>Virtual environments</em></strong> can be used to keep seperate sets of packages in its own directory tree. See an intro to <code>pip</code> and <code>virtualenv</code> <a href="http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/">here</a></li>
 <li><em>pip</em> is a python package installer, that is pretty much standard nowadays. It is recommended to run it in a virtualenv to prevent conflicts, however, virtualenvs can be problematic when it comes to package dependencies.</li>
-<li>A different solution is <a href="http://conda.pydata.org/docs/">conda</a> which makes it very easy to install and maintain different external dependencies such as <em>gdal</em> and even R accross different operating systems. However, same caveats as for <em>pip</em> apply, and it is not available as a package in Ubuntu.</li>
+<li>A different solution is <a href="https://conda.io/docs/">conda</a> which makes it very easy to install and maintain different external dependencies such as <em>gdal</em> and even R accross different operating systems. It is available for Windows, macOS and Linux. Feel free to <a href="https://conda.io/docs/user-guide/install/index.html">install</a> it and have a try at conda.</li>
 </ul>
-<h1 id="handling-vector-data-with-python">Handling Vector data with Python</h1>
-<p>Go to <a href="https://geoscripting-wur.github.io/PythonWeek/VectorPython.html">Vector Data handling in Python</a></p>
-<h1 id="raster-data-with-python">Raster data with Python</h1>
-<p>Go to <a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb">Raster Data handling in Python</a></p>
-<p><strong>Note</strong>: this is an Ipython notebook (now called Jupyter Notebook!)</p>
+<h1 id="assignment">Assignment</h1>
+<p>The assignment for today is to finish the datacamp course: Intro to Python for Data Science. If you finished early and still want to write more scripts, then you can follow one of the fun tutorials below.</p>
 <h1 id="more-info">More info</h1>
 <ul>
 <li>A great book: <a href="http://www.amazon.com/Python-Geospatial-Development-Second-Edition/dp/178216152X">Python Geospatial Development</a></li>
 <li><a href="https://docs.python.org/2/tutorial/">The official python tutorial</a></li>
 <li><a href="http://www.tutorialspoint.com/python/">Python Tutorial</a></li>
+<li><a href="https://gist.github.com/sloria/7001839">Best of the best practices in Python - Style guide</a></li>
 <li><a href="https://stackoverflow.com/questions/tagged/python">Stack OverFlow Python</a></li>
 <li><a href="https://gis.stackexchange.com/">GIS Stack Exchange</a></li>
 <li><a href="http://www.qgistutorials.com/en/docs/getting_started_with_pyqgis.html">QGIS can be scripted in python</a></li>
