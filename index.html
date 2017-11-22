@@ -963,9 +963,9 @@ gdal-config --version</code></pre>
 <button class="output bash toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> bash output
 </button>
-<pre style=""><code class="output bash">## Python 2.7.12
-## Python 3.5.2
-## 2.2.1
+<pre style=""><code class="output bash">## Python 2.7.10
+## Python 3.6.3
+## 1.11.5
 </code></pre>
 </div>
 <ul>
@@ -987,8 +987,8 @@ print sys.version #parentheses necessary in python 3. </code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## 2.7.12 (default, Nov 19 2016, 06:48:10) 
-## [GCC 5.4.0 20160609]
+<pre style=""><code class="output python">## 2.7.10 (default, Jul 15 2017, 17:16:57) 
+## [GCC 4.2.1 Compatible Apple LLVM 9.0.0 (clang-900.0.31)]
 </code></pre>
 </div>
 To exit python:
@@ -1276,7 +1276,7 @@ print dir(math)</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## ['__doc__', '__name__', '__package__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'hypot', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']
+<pre style=""><code class="output python">## ['__doc__', '__file__', '__name__', '__package__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'hypot', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']
 </code></pre>
 </div>
 <ul>
@@ -1338,8 +1338,8 @@ print date.today()+delta</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## 2017-11-01
-## 2017-11-08
+<pre style=""><code class="output python">## 2017-11-22
+## 2017-11-29
 </code></pre>
 </div>
 <h3 id="file-access">File access</h3>
@@ -1427,13 +1427,37 @@ except IOError:
 </ul>
 <h2 id="python-from-r">Python from R</h2>
 <p>By the way, as you may have noticed, this document is created from an RMarkdown source, which can also include Python code blocks (have a look at the <a href="https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/index.Rmd">source</a> on github). Similary, the newest version of IPython notebook, now can also use R and other languages!</p>
+<h3 id="ipython-notebooks">IPython notebooks</h3>
+<p>To install IPython notebooks, just run:</p>
+<p><code>pip install ipython</code></p>
+<p>After that you can start the notebook by running:</p>
+<p><code>ipython [options] files</code></p>
+<p>Get help on options with:</p>
+<p><code>ipython --help</code></p>
 <h2 id="python-package-management">Python package management</h2>
 <p>For Python, a set of tools co-exist for installing and managing packages. From most to least desirable, you should try to install packages:</p>
 <ul>
 <li>Using the distribution's package manager (on Ubuntu, that's <code>sudo apt-get install python-*</code>). This is the easiest and guaranteed to work right, although the package version might be older than you expect.</li>
-<li>With Python, often the dependencies and versions can differ from project to project. Also, packages not installed via the distribution package manager can cause conflicts between packages. <strong><em>Virtual environments</em></strong> can be used to keep seperate sets of packages in its own directory tree. See an intro to <code>pip</code> and <code>virtualenv</code> <a href="http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/">here</a></li>
+<li>With Python, often the dependencies and versions can differ from project to project. Also, packages not installed via the distribution package manager can cause conflicts between packages. *<strong>Virtual environments</strong> can be used to keep seperate sets of packages in its own directory tree. See an intro to <code>pip</code> and <code>virtualenv</code> <a href="http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/">here</a></li>
 <li><em>pip</em> is a python package installer, that is pretty much standard nowadays. It is recommended to run it in a virtualenv to prevent conflicts, however, virtualenvs can be problematic when it comes to package dependencies.</li>
 <li>A different solution is <a href="https://conda.io/docs/">conda</a> which makes it very easy to install and maintain different external dependencies such as <em>gdal</em> and even R accross different operating systems. It is available for Windows, macOS and Linux. Feel free to <a href="https://conda.io/docs/user-guide/install/index.html">install</a> it and have a try at conda.</li>
+</ul>
+<h3 id="conda-or-miniconda">Conda or MiniConda</h3>
+<p>Using Anaconda is very usefull in projects since most of the times package version and dependancies are an issue, as referenced before. Anaconda, when installed comes already with a lot of packages such as <em>numpy</em> and <em>gdal</em>. You can also use MiniConda wich has the same features but only installs the base packages, which means all the required packages need to be installed manually.</p>
+<p>The basic usage of Conda or MiniConda, after installed, is as follows:</p>
+<ul>
+<li><code>conda install numpy</code> to install packages. Beware that you will still have to include this packages in the created environments;</li>
+<li><code>conda create --name astrolab python=2.7 numpy</code> to create a new environment called <code>astrolab</code> with Python 2.7 and including <em>numpy</em>;</li>
+<li><code>conda info --envs</code> to list the available environments. Conda puts an asterisk (*) in front of the active environment;</li>
+<li><code>source activate astrolab</code> (Linux, macOS) or <code>activate astrolab</code> (Windows) to activate an environment. After this, the current environment is shown in (parentheses) or [brackets] in front of your prompt (<code>(astrolab)$</code>);</li>
+<li><code>source deactivate</code> (Linux, macOS) or <code>deactivate</code> (Windows) to deactivate the environmnet and go back to root;</li>
+<li><code>conda remove --name astrolab --all</code> to remove the environmnet <code>astrolab</code>.</li>
+</ul>
+<p>You should beware that the activated environment is only valid for the shell in which you activated. For instance, if you close the shell window and open a new one you will have to activate it again. Additionaly, if you use <code>sudo</code> commands in an conda environment, it will return it to the root python and not the active environment.</p>
+<p>Some helpfull utilities are:</p>
+<ul>
+<li><code>conda list</code> to check which packages are installed in <code>root</code> or in the active environment;</li>
+<li><code>which python</code> or <code>python --version</code> to check which python verison is used in the environment.</li>
 </ul>
 <h1 id="assignment">Assignment</h1>
 <p>The assignment for today is to finish the datacamp course: Intro to Python for Data Science. If you finished early and still want to write more scripts, then you can follow one of the fun tutorials below.</p>

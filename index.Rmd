@@ -420,21 +420,21 @@ By the way, as you may have noticed, this document is created from an RMarkdown 
 ### IPython notebooks
 To install IPython notebooks, just run:
 
-*pip install ipython*
+`pip install ipython`
 
 After that you can start the notebook by running:
 
-*$ ipython [options] files*
+`ipython [options] files`
 
 Get help on options with:
 
-*ipython --help*
+`ipython --help`
 
 ## Python package management
 For Python, a set of tools co-exist for installing and managing packages. From most to least desirable, you should try to install packages:
 
 * Using the distribution's package manager (on Ubuntu, that's `sudo apt-get install python-*`). This is the easiest and guaranteed to work right, although the package version might be older than you expect.
-* With Python, often the dependencies and versions can differ from project to project. Also, packages not installed via the distribution package manager can cause conflicts between packages. ***Virtual environments*** can be used to keep seperate sets of packages in its own directory tree. See an intro to `pip` and `virtualenv` [here](http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/)
+* With Python, often the dependencies and versions can differ from project to project. Also, packages not installed via the distribution package manager can cause conflicts between packages. ***Virtual environments** can be used to keep seperate sets of packages in its own directory tree. See an intro to `pip` and `virtualenv` [here](http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/)
 * *pip* is a python package installer, that is pretty much standard nowadays. It is recommended to run it in a virtualenv to prevent conflicts, however, virtualenvs can be problematic when it comes to package dependencies.
 * A different solution is [conda](https://conda.io/docs/) which makes it very easy to install and maintain different external dependencies such as *gdal* and even R accross different operating systems. It is available for Windows, macOS and Linux. Feel free to [install](https://conda.io/docs/user-guide/install/index.html) it and have a try at conda.
 
@@ -442,18 +442,20 @@ For Python, a set of tools co-exist for installing and managing packages. From m
 Using Anaconda is very usefull in projects since most of the times package version and dependancies are an issue, as referenced before. Anaconda, when installed comes already with a lot of packages such as *numpy* and *gdal*. You can also use MiniConda wich has the same features but only installs the base packages, which means all the required packages need to be installed manually.
 
 The basic usage of Conda or MiniConda, after installed, is as follows:
-* *conda install numpy* to install packages. Beware that you will still have to include this packages in the created environments;
-* *conda create --name astrolab python=2.7 numpy* to create a new environment called *astrolab* with Python 2.7 and including *numpy*;
-* *conda info --envs* to list the available environments. Conda puts an asterisk (*) in front of the active environment;
-* *source activate astrolab* (Linux, macOS) or *activate astrolab* (Windows) to activate an environment. After this, the current environment is shown in (parentheses) or [brackets] in front of your prompt (*(astrolab)$*);
-* *source deactivate* (Linux, macOS) or *deactivate* (Windows) to deactivate the environmnet and go back to root;
-* *conda remove --name astrolab --all* to remove the environmnet *astrolab*.
 
-You should beware that the activated environment is only valid for the shell in which you activated. For instance, if you close the shell window and open a new one you will have to activate it again. Additionaly, if you use *sudo* commands in an conda environment, it will return it to the root python and not the active environment.
+* `conda install numpy` to install packages. Beware that you will still have to include this packages in the created environments;
+* `conda create --name astrolab python=2.7 numpy` to create a new environment called `astrolab` with Python 2.7 and including *numpy*;
+* `conda info --envs` to list the available environments. Conda puts an asterisk (*) in front of the active environment;
+* `source activate astrolab` (Linux, macOS) or `activate astrolab` (Windows) to activate an environment. After this, the current environment is shown in (parentheses) or [brackets] in front of your prompt (`(astrolab)$`);
+* `source deactivate` (Linux, macOS) or `deactivate` (Windows) to deactivate the environmnet and go back to root;
+* `conda remove --name astrolab --all` to remove the environmnet `astrolab`.
+
+You should beware that the activated environment is only valid for the shell in which you activated. For instance, if you close the shell window and open a new one you will have to activate it again. Additionaly, if you use `sudo` commands in an conda environment, it will return it to the root python and not the active environment.
 
 Some helpfull utilities are:
-* *conda list* to check which packages are installed in *root* or in the active environment;
-* *which python* or *python --version* to check which python verison is used in the environment.
+
+* `conda list` to check which packages are installed in `root` or in the active environment;
+* `which python` or `python --version` to check which python verison is used in the environment.
 
 # Assignment
 The assignment for today is to finish the datacamp course: Intro to Python for Data Science. If you finished early and still want to write more scripts, then you can follow one of the fun tutorials below.
