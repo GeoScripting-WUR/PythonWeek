@@ -869,63 +869,16 @@ Week 3: Python for geo-scripting
 <div class="container">
 <div class="row row-offcanvas row-offcanvas-right">
 <div class="contents col-xs-12 col-md-10">
-<h1 id="wur-geoscripting-wur-logo"><a href="https://geoscripting-wur.github.io/">WUR Geoscripting</a> <img src="http://www.wageningenur.nl/upload/f9a0b5f2-15c5-4b84-9e14-20ef02f5e265_wur-logo.png" alt="WUR logo" /></h1>
+<h1 id="wur-geoscripting"><a href="https://geoscripting-wur.github.io/">WUR Geoscripting</a> <img src="http://www.wur.nl/upload/b43b7095-e452-482a-8969-fed9a50393a8_WUR_RGB_standard.png" alt="WUR logo" style="height: 35px;"/></h1>
 <h1 id="week-3-python-for-geo-scripting">&quot;Week 3: Python for geo-scripting&quot;</h1>
-<h2 id="python-week-friday-to-wednesday">Python week Friday to Wednesday:</h2>
-<h3 id="schedule-overview">Schedule Overview</h3>
+<p>Good morning! Today we will start working with Python and do a refresher of functions in Python. First complete the Intro to Python course in Datacamp and then go through today's tutorial.</p>
+<h3 id="todays-schedule">Today's schedule</h3>
 <ul>
-<li><strong><em>Friday:</em></strong>
-<ul>
-<li>Follow DataCamp Intro to Python course.</li>
-<li>See blackboard: course description section</li>
-</ul></li>
-<li><strong><em>Monday:</em></strong>
-<ul>
-<li>Morning: <a href="https://geoscripting-wur.github.io/PythonWeek/VectorPython.html">Vector</a>. <em>This also contains an assignment!</em></li>
-<li>Afternoon: Lecture by Jorge on Python</li>
-</ul></li>
-<li><strong><em>Tuesday:</em></strong>
-<ul>
-<li>Tutorial: <a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Raster%20data%20handling.ipynb">Raster</a>. <em>This also contains an assignment!</em></li>
-<li>Afternoon: Presentation by Erik van Schaik about cloud computing</li>
-</ul></li>
-<li><strong><em>Wednesday: </em></strong>
-<ul>
-<li>In the afternoon you will get an intro to ArcPy by Aldo. On Blackboard you can find examples and <em>a small assignment</em>!</li>
-<li>In the morning check out the following IPython Notebooks created by Aldo Bergsma, to compare the open source implementation with ArcPy:
-<ul>
-<li><a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb">A simple Iphython Notebook</a></li>
-<li><a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Buffer%20example.ipynb">Buffer Example</a></li>
-<li>Examples of different spatial visualisation packages in python
-<ul>
-<li><a href="https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Matplotlib_basemap.ipynb">Matplotlib</a></li>
-<li><a href="https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Plot%20Map.ipynb">Cartopy</a></li>
-</ul></li>
-<li>Example of reading geometries and format conversion in python
-<ul>
-<li><a href="https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/OGR%20examples.ipynb">OGR</a></li>
-</ul></li>
-</ul></li>
-</ul></li>
+<li>Follow DataCamp Intro to Python course</li>
+<li>Learn how to work with virtual environments: Conda</li>
+<li>Learn how to create Jupyter Notebook</li>
+<li>Refresher for python</li>
 </ul>
-<p><strong><em>Reminder: Self-study is critical for the completion of the excercises at the end of the tutorial!</em></strong></p>
-<h3 id="learning-outcomes">Learning outcomes</h3>
-<ul>
-<li>Knowing how to handle spatial data using Python:
-<ul>
-<li>vector data handling
-<ul>
-<li>creating a point, writing and modifying a shape file</li>
-</ul></li>
-<li>raster data handling
-<ul>
-<li>reading and writing raster data</li>
-<li>calculating indices</li>
-<li>projection raster data</li>
-</ul></li>
-</ul></li>
-</ul>
-<h2 id="intro">Intro</h2>
 <p>Using Python within Linux:</p>
 <ul>
 <li>Wide user community and support</li>
@@ -933,7 +886,18 @@ Week 3: Python for geo-scripting
 <li>Flexiblility</li>
 <li>Open-source</li>
 </ul>
-<p>How?! via: - GDAL/OGR - GEOS</p>
+<p>How?! via:</p>
+<ul>
+<li>GDAL/OGR</li>
+<li>GEOS</li>
+<li>Rasterio</li>
+<li>Shapely</li>
+<li>Mapplotlib</li>
+<li>Folium</li>
+<li>Fiona</li>
+<li>GeoPandas</li>
+<li>ArcPy (requires ArcMap license)</li>
+</ul>
 <p>Have a look at this question on GIS StackExchange:</p>
 <ul>
 <li><a href="https://gis.stackexchange.com/questions/34509/alternatives-to-using-arcpy">Alternatives to using arcpy</a></li>
@@ -941,10 +905,35 @@ Week 3: Python for geo-scripting
 </ul>
 <h2 id="python-editors-and-ides">Python editors and IDEs</h2>
 <ul>
-<li>Most modern text editors do nice python highlighting, e.g. Sublime Text can be set up nicely for python</li>
-<li>Jupyter notebook is a good choice for short scripts, e.g. the the exercises here. It gives you a nice option with source code results and comments in one document ! See here for a simple Jupyter <a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb">notebook example</a>. <a href="http://jupyter.org/">More info</a></li>
-<li>There are a number of proper IDE's for python. Personally I have good experience with <a href="https://www.jetbrains.com/pycharm/">PyCharm</a>. For running on a server, <a href="https://github.com/yhat/rodeo/">rodeo</a> gives a similar interface as RStudio server.</li>
+<li>Most modern text editors do nice python highlighting, e.g. Sublime Text can be set up nicely for Python</li>
+<li>Jupyter notebook or Ipython Notebook are good choices for short scripts. Jupyter Notebook is a continuation of Ipython Notebook. The name “Jupyter” was inspired by the leading open languages for science (that is, Julia, Python, and R) <a href="https://www.datacamp.com/community/blog/ipython-jupyter">blog about history of Jupyter Notebook</a>. The notebooks allows you to have your source code, results and comments in one document ! See here for a simple Jupyter <a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb">notebook example</a>. <a href="http://jupyter.org/">More info</a>.</li>
+<li>There are a number of proper Integrated Development Environments [IDE] for Python. An IDE is a software application that provides facilities for software development. Personally I have good experience with <a href="https://www.jetbrains.com/pycharm/">PyCharm</a>. For running on a server, <a href="https://github.com/yhat/rodeo/">rodeo</a> gives a similar interface as RStudio server.</li>
 <li>Spyder is nice a lightweight IDE and can be installed from the terminal (<code>sudo apt-get install spyder</code>)</li>
+</ul>
+<h2 id="python-package-management">Python package management</h2>
+<p>For Python, a set of tools co-exist for installing and managing packages. From most to least desirable, you should try to install packages by:</p>
+<ul>
+<li>Using the distribution's package manager (on Ubuntu, that's <code>sudo apt-get install python-*</code>). This is the easiest and guaranteed to work right, although the package version might be older than you expect.</li>
+<li>Using <a href="https://conda.io/docs/user-guide/tasks/manage-pkgs.html">conda</a> to install packages and to keep separate sets of packages. With Python, often the dependencies and versions can differ from project to project. If you want to specifally use a combination of packages with certain versions and keep that package set saved in an environment, then conda has conda environments to save this set of packages. A conda environment is similar to a virtual environment, but different from a virtual machine. Conda is available for Windows, macOS and Linux.</li>
+<li>Using <code>pip</code> to manage packages and <code>virtualenv</code> to manage your environment. <em>pip</em> is a python package installer, that is pretty much standard nowadays. It is recommended to run it in a virtualenv to prevent conflicts, however, virtualenvs can be problematic when it comes to package dependencies. <code>virtualenv</code> can be used to keep separate sets of packages in its own directory tree. A demonstration of <code>pip</code> and <code>virtualenv</code> can be found here <a href="http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/">here</a></li>
+</ul>
+<h3 id="conda-or-miniconda">Conda or MiniConda</h3>
+<p>Using Anaconda is very useful in projects since most of the times package version and dependencies are an issue. Anaconda, when installed comes already with a lot of packages such as <em>numpy</em> and <em>gdal</em>. Instead of the large version of Anaconda you can use the base version called MiniConda. MiniConda has the same features, but only installs the base package and requires manual installation for extra packages.</p>
+<p>The basic usage of Conda or MiniConda, after installed, is as follows:</p>
+<ul>
+<li><code>conda install numpy</code> to install packages. Beware that you will still have to include this packages in the created environments;</li>
+<li><code>conda create --name astrolab python=2.7 numpy</code> to create a new environment called <code>astrolab</code> with Python 2.7 and including <em>numpy</em>;</li>
+<li><code>conda info --envs</code> to list the available environments. Conda puts an asterisk (*) in front of the active environment;</li>
+<li><code>source activate astrolab</code> (Linux, macOS) or <code>activate astrolab</code> (Windows) to activate an environment. After this, the current environment is shown in (parentheses) or [brackets] in front of your prompt (<code>(astrolab)$</code>);</li>
+<li><code>source deactivate</code> (Linux, macOS) or <code>deactivate</code> (Windows) to deactivate the environmnet and go back to root;</li>
+<li><code>conda remove --name astrolab --all</code> to remove the environment <code>astrolab</code>.</li>
+</ul>
+<p>You should beware that the activated environment is only valid for the shell in which you activated. For instance, if you close the shell window and open a new one you will have to activate it again. Additionaly, if you use <code>sudo</code> commands in a conda environment, it will return it to the root python and not the active environment.</p>
+<p>Some helpful utilities are:</p>
+<ul>
+<li><code>conda list</code> to check which packages are installed in <code>root</code> or in the active environment;</li>
+<li><code>which python</code> or <code>python --version</code> to check which python verison is used in the environment.</li>
+<li><code>conda install --name my_python matplotlib</code> to install extra modules in your (running) conda environment</li>
 </ul>
 <h2 id="getting-started-with-python-within-a-linux-os">Getting started with Python within a Linux OS</h2>
 <ul>
@@ -957,25 +946,25 @@ Week 3: Python for geo-scripting
 </button>
 <pre style=""><code class="source bash">## from R: system("gdal-config --version")
 ## From the terminal:
-python --version
+python2 --version
 python3 --version
 gdal-config --version</code></pre>
 <button class="output bash toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> bash output
 </button>
-<pre style=""><code class="output bash">## Python 2.7.10
-## Python 3.6.3
-## 1.11.5
+<pre style=""><code class="output bash">## Python 2.7.12
+## Python 3.5.2
+## 2.2.1
 </code></pre>
 </div>
 <ul>
-<li>type the following to start python 2.7</li>
+<li>Type the following to start Python 2.7:</li>
 </ul>
 <div class="row">
 <button class="source bash toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
 </button>
-<pre style=""><code class="source bash">python # type this in the terminal to start the python interpreter</code></pre>
+<pre style=""><code class="source bash">python2 # type this in the terminal to start the python interpreter</code></pre>
 </div>
 <p>An example script to find out what the installed Python version is (<a href="https://stackoverflow.com/questions/1093322/how-do-i-check-what-version-of-python-is-running-my-script">more info in question asked on stackoverflow</a>)</p>
 <div class="row">
@@ -987,11 +976,11 @@ print sys.version #parentheses necessary in python 3. </code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## 2.7.10 (default, Jul 15 2017, 17:16:57) 
-## [GCC 4.2.1 Compatible Apple LLVM 9.0.0 (clang-900.0.31)]
+<pre style=""><code class="output python">## 2.7.12 (default, Nov 19 2016, 06:48:10) 
+## [GCC 5.4.0 20160609]
 </code></pre>
 </div>
-To exit python:
+To exit Python in the terminal:
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1000,21 +989,45 @@ To exit python:
 or 
 quit()</code></pre>
 </div>
-<ul>
-<li>Open the python script within a Python editor</li>
-</ul>
+<h2 id="running-python-in-jupyter-notebooks">Running Python in Jupyter Notebooks</h2>
+<p>You can program Python in your terminal, but more facilities are available to make coding and documenting in Python easier through notebooks or Python IDEs. Today we will have a go with Jupyter Notebooks. In other lessons you can use the Python IDE Spyder. For now try the following commands in your terminal:</p>
+<div class="row">
+<button class="source bash toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> bash source
+</button>
+<pre style=""><code class="source bash"># Set directory at home
+cd
+
+# Create conda environment
+conda create -n my_python python=2.7 numpy ipython-notebook # my_python is name of your conda environment
+
+# Activate conda environment
+source activate my_python</code></pre>
+</div>
+<p>By creating your conda environment, you created a set of packages and a Python version to be used only in that specific conda environment. In your terminal you can see the name of your conda environment at the start of the command line before your user information. Now that we are working in our conda environment with all the necessary packages with correct versions, we can start with setting up our notebook.</p>
+<div class="row">
+<button class="source bash toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> bash source
+</button>
+<pre style=""><code class="source bash"># Start a Jupyter Notebook from terminal
+jupyter notebook</code></pre>
+</div>
+<p>If everything goes according to plan, Jupyter will pop up in your browser. You will see a menu with all files. Browse to your workspace, where you want to store your Python script. In the right top click on new folder (if you dont have folder/project structure yet) and/or click on python2 to create a Jupyter Notebook. Click on help and have a go at the <code>User Interface Tour</code>. Give your notebook a name.</p>
+<p>These are the basic functions you will need today: - <code>Save and checkpoint</code> - <code>Insert cell below</code> - <code>Run</code> - <code>Code/Markdown/Heading</code></p>
+<p>Similar to RMarkdown, Jupyter Notebooks has code cells (called code) and text cells (called markdowns). Insert some extra cells and change the first cell from code to markdown. Enter some docmentation for your code (e.g. your teamname, exercise and date). Leave the other cells on code.</p>
 <h2 id="a-short-python-refresher">A short Python refresher</h2>
 <h3 id="finding-help">Finding help</h3>
+<p>Now we can try some coding. First we learn how to look for help while coding in Python. In the second cell type the code below and run it (ctrl + enter is shortcut for run).</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
 <pre style=""><code class="source python">import sys
 help(sys)
-help(1)
-
-# if you want the exit the menu press q</code></pre>
+print "-------------------------------------"
+help(1)</code></pre>
 </div>
+<p>See how the functions in the <code>sys</code> module got listed and how we got information how to work with integers. Sometimes you also need to use the internet to find information.</p>
 <blockquote>
 <p><strong>Question</strong> 1: What does this mean <code>__ __</code> around words: e.g: <code>__doc__</code>?</p>
 </blockquote>
@@ -1030,13 +1043,13 @@ help(1)
 <pre style=""><code class="output python">## no Python documentation found for 'hamster'
 </code></pre>
 </div>
-<p>see also:</p>
+<p>See also:</p>
 <ul>
 <li><a href="http://www.rafekettler.com/magicmethods.html" class="uri">http://www.rafekettler.com/magicmethods.html</a></li>
 <li><a href="https://stackoverflow.com/questions/1090620/special-magic-methods-in-python" class="uri">https://stackoverflow.com/questions/1090620/special-magic-methods-in-python</a></li>
 </ul>
 <h3 id="finding-information-via-pydoc">Finding information via Pydoc</h3>
-<p>Go to: <a href="https://docs.python.org/2/library/pydoc.html" class="uri">https://docs.python.org/2/library/pydoc.html</a></p>
+<p>Go to: <a href="https://docs.python.org/2/library/pydoc.html" class="uri">https://docs.python.org/2/library/pydoc.html</a> or run the script below in your terminal to create a HTTP server with information from pydoc.</p>
 <div class="row">
 <button class="source bash toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
@@ -1044,8 +1057,9 @@ help(1)
 <pre style=""><code class="source bash">pydoc -p 1234
 echo "pydoc server ready at http://localhost:1234/"</code></pre>
 </div>
-<p>Then go to <code>http://localhost:1234/</code> via your preferred browser.</p>
+<p>Then go to <code>http://localhost:1234/</code> via your preferred browser. You can see a list of built-in modules and available modules.</p>
 <h3 id="numbers-and-variables">Numbers and variables</h3>
+<p>We continue working in Python.</p>
 <blockquote>
 <p><strong>Question 2</strong>: What is the difference between 10 and 10.0 when dealing with data types in Python?</p>
 </blockquote>
@@ -1060,7 +1074,7 @@ echo "pydoc server ready at http://localhost:1234/"</code></pre>
 <pre style=""><code class="output python">## 10
 </code></pre>
 </div>
-<p>Variable is a storage location or symbolic name to a value e.g.</p>
+<p>Variable is a storage location or symbolic name to a value e.g.:</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1069,12 +1083,15 @@ echo "pydoc server ready at http://localhost:1234/"</code></pre>
 buildingNumber = 101
 'Gaia'
 "doesn't"
-'Gaia' + 'is in Wageningen'</code></pre>
+'Gaia' + ' is in Wageningen'</code></pre>
 </div>
 <p>There is no need to say or define the datatype, <code>python</code> has a loose type variable declaration.</p>
 <p><em>If it walks like a duck, swims like a duck and quacks like a duck I call it a duck</em></p>
 <p>Python is basically a list of objects: List are organised with indexes. E.g.</p>
 <h3 id="lists">Lists</h3>
+<p>Now we will have a go with lists.</p>
+<p>Tip!: Variables, functions and methods that you define in one of your Jupyter Notebook cells can be used in other cells too.</p>
+Run this code in one cell:
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1094,25 +1111,19 @@ print(campus[0:3])</code></pre>
 ## ['Gaia', 'Lumen', 'Radix']
 </code></pre>
 </div>
-Appending, inserting, extending and steps:
+Run this code in another cell. We will do some appending, inserting, extending and steps:
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
-<pre style=""><code class="source python">campus = ['Gaia', 'Lumen', 'Radix', 'Forum']
-campus.append("Atlas")
+<pre style=""><code class="source python">campus.append("Atlas")
 campus.insert(1,"SoilMuseum")
 campus.extend(["Action", "Vitae", "Zodiac"])
 print campus
 print campus[::2]
 ## list[start:end:step]</code></pre>
-<button class="output python toggle btn btn-xs btn-success">
-<span class="glyphicon glyphicon-chevron-down"></span> python output
-</button>
-<pre style=""><code class="output python">## ['Gaia', 'SoilMuseum', 'Lumen', 'Radix', 'Forum', 'Atlas', 'Action', 'Vitae', 'Zodiac']
-## ['Gaia', 'Lumen', 'Forum', 'Action', 'Zodiac']
-</code></pre>
 </div>
+<p>See how the notebook remembered how you set the variable <code>campus</code>.</p>
 <blockquote>
 <p><strong>Question 3:</strong> What are the major differences between Append/Extend?</p>
 </blockquote>
@@ -1217,6 +1228,7 @@ else:
 </button>
 <pre style=""><code class="source python">def printPotato():
     print "potato"
+
 printPotato()</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
@@ -1229,16 +1241,17 @@ printPotato()</code></pre>
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
-<pre style=""><code class="source python">def printPotato(something):
-    print something
-printPotato("test")</code></pre>
+<pre style=""><code class="source python">def printHelloName(name):
+    print "Good morning " + name
+
+printHelloName("Jan")</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## test
+<pre style=""><code class="output python">## Good morning Jan
 </code></pre>
 </div>
-<p><code>return</code> is used to indicate what you want to obtain from the function, and you can <code>return</code> multiple items.</p>
+<p><code>return</code> is used to indicate what you want to obtain from the function, you can <code>return</code> multiple items and return can be used to assign output to variables outside of the function.</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1246,11 +1259,18 @@ printPotato("test")</code></pre>
 <pre style=""><code class="source python">def times3(number):
     tmp = number*3
     return tmp, number
-print times3(4)</code></pre>
+    
+print times3(4)
+
+output, input = times3(4)
+print(output)
+print(input)</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
 <pre style=""><code class="output python">## (12, 4)
+## 12
+## 4
 </code></pre>
 </div>
 <h3 id="importing-modules">Importing modules</h3>
@@ -1261,30 +1281,32 @@ print times3(4)</code></pre>
 </button>
 <pre style=""><code class="source python">import this</code></pre>
 </div>
+<p>This poem is called the Zen of Python and describes how Python should be used. It is an inside joke, but has some good practices to it. There are more best practice guides for Python <a href="https://gist.github.com/sloria/7001839">best of best practices guide in Python</a>.</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
 <pre style=""><code class="source python">from __future__ import braces</code></pre>
 </div>
+<p>Another inside joke ... where your Python says that it will never delimit coding blocks by braces instead of indentation. Let's continue with more serious programming.</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
 <pre style=""><code class="source python">import math
-print dir(math)</code></pre>
+print dir(math) #show names in math module</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## ['__doc__', '__file__', '__name__', '__package__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'hypot', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']
+<pre style=""><code class="output python">## ['__doc__', '__name__', '__package__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'hypot', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']
 </code></pre>
 </div>
 <ul>
-<li>The best way is to check documentation: https://docs.python.org/2/.</li>
+<li>The best way to learn a module is by checking <a href="https://docs.python.org/2/">documentation</a>.</li>
 <li>Modules are Python's butter and bread.</li>
 <li>A module contains code that can be used or excuted.</li>
 </ul>
-Basically 2 ways to load a module:
+Basically there are three ways to load a module:
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1293,20 +1315,21 @@ Basically 2 ways to load a module:
 print math.pi
 
 from math import pi
-print pi</code></pre>
+print pi
+
+import numpy as np
+print np.pi</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
 <pre style=""><code class="output python">## 3.14159265359
+## 3.14159265359
 ## 3.14159265359
 </code></pre>
 </div>
 <blockquote>
 <p><strong>Question 5</strong>: Which is the best way to import modules?</p>
 </blockquote>
-<div class="row">
-
-</div>
 <h3 id="some-important-internal-modules">Some important internal modules:</h3>
 <ul>
 <li><code>os</code>: Access to operating system features</li>
@@ -1331,15 +1354,15 @@ glob.glob("*")</code></pre>
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
-<pre style=""><code class="source python">from datetime import timedelta,date
+<pre style=""><code class="source python">from datetime import timedelta, date
 delta = timedelta(days=7)
 print date.today()
 print date.today()+delta</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## 2017-11-22
-## 2017-11-29
+<pre style=""><code class="output python">## 2017-11-26
+## 2017-12-03
 </code></pre>
 </div>
 <h3 id="file-access">File access</h3>
@@ -1353,6 +1376,7 @@ print date.today()+delta</code></pre>
 fileObj.write('some simple text')
 fileObj.close()</code></pre>
 </div>
+<p>And read something from a file:</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1368,7 +1392,7 @@ fileObj.close()</code></pre>
 </code></pre>
 </div>
 <blockquote>
-<p><strong>Question 7</strong>: What does <code>r</code> and <code>w</code> mean?</p>
+<p><strong>Question 7</strong>: What does <code>w</code> and <code>r</code> mean?</p>
 </blockquote>
 <h3 id="error-handling">Error handling</h3>
 <p>Sometime problems occur... Errors detected during execution are called <em>exceptions</em>.</p>
@@ -1410,6 +1434,54 @@ except IOError:
 ## no file
 </code></pre>
 </div>
+<h3 id="visualization">Visualization</h3>
+<p>Jupyter Notebooks can display output of your code, such as graphs, images and maps in the notebook. A lot of cool visualizations including code in Python are available from the <a href="https://python-graph-gallery.com/">Python Graph Gallery</a>. Before we can do the visualizations, we want to add some Python modules via the terminal.</p>
+<div class="row">
+<button class="source bash toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> bash source
+</button>
+<pre style=""><code class="source bash">## Add Matplotlib and seaborn modules
+conda install --name astrolab matplotlib seaborn
+# as conda install --name env_name pythonmodule pythonmodule</code></pre>
+</div>
+<p>We will make a graph with the <code>Seaborn</code> module and plot it with <code>Matplotlib</code>. Give it a try!</p>
+<div class="row">
+<button class="source python toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> python source
+</button>
+<pre style=""><code class="source python"># Load library
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load dataset
+df = sns.load_dataset('iris')
+ 
+# Create plot
+sns.pairplot(df, kind = "reg", hue = "species")
+plt.show()</code></pre>
+</div>
+<p>Nice visualization huh! Good job.</p>
+Now make a map with <code>Folium</code>.
+<div class="row">
+<button class="source python toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> python source
+</button>
+<pre style=""><code class="source python">import folium
+
+SF_COORDINATES = (51.9871868, 5.6593948)
+
+map = folium.Map(location=SF_COORDINATES, tiles='Mapbox Control Room', zoom_start=5)
+display(map)</code></pre>
+</div>
+<h3 id="exiting-the-jupyter-notebook">Exiting the Jupyter Notebook</h3>
+<p>Your Jupyter Notebook is automatically saved as a .ipynb (ipython notebook extension) on your computer, but you can also download it as a python script, pdf or html.</p>
+<p>By pressing ctrl + c in the terminal where the notebook is running, you cancel the running process. The terminal goes back to command line and you can exit the virtual environment by typing source deactivate.</p>
+<div class="row">
+<button class="source bash toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> bash source
+</button>
+<pre style=""><code class="source bash">source deactivate</code></pre>
+</div>
 <h3 id="python-statements">Python statements</h3>
 <ul>
 <li><code>if</code></li>
@@ -1426,39 +1498,7 @@ except IOError:
 <li><code>import</code></li>
 </ul>
 <h2 id="python-from-r">Python from R</h2>
-<p>By the way, as you may have noticed, this document is created from an RMarkdown source, which can also include Python code blocks (have a look at the <a href="https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/index.Rmd">source</a> on github). Similary, the newest version of IPython notebook, now can also use R and other languages!</p>
-<h3 id="ipython-notebooks">IPython notebooks</h3>
-<p>To install IPython notebooks, just run:</p>
-<p><code>pip install ipython</code></p>
-<p>After that you can start the notebook by running:</p>
-<p><code>ipython [options] files</code></p>
-<p>Get help on options with:</p>
-<p><code>ipython --help</code></p>
-<h2 id="python-package-management">Python package management</h2>
-<p>For Python, a set of tools co-exist for installing and managing packages. From most to least desirable, you should try to install packages:</p>
-<ul>
-<li>Using the distribution's package manager (on Ubuntu, that's <code>sudo apt-get install python-*</code>). This is the easiest and guaranteed to work right, although the package version might be older than you expect.</li>
-<li>With Python, often the dependencies and versions can differ from project to project. Also, packages not installed via the distribution package manager can cause conflicts between packages. *<strong>Virtual environments</strong> can be used to keep seperate sets of packages in its own directory tree. See an intro to <code>pip</code> and <code>virtualenv</code> <a href="http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/">here</a></li>
-<li><em>pip</em> is a python package installer, that is pretty much standard nowadays. It is recommended to run it in a virtualenv to prevent conflicts, however, virtualenvs can be problematic when it comes to package dependencies.</li>
-<li>A different solution is <a href="https://conda.io/docs/">conda</a> which makes it very easy to install and maintain different external dependencies such as <em>gdal</em> and even R accross different operating systems. It is available for Windows, macOS and Linux. Feel free to <a href="https://conda.io/docs/user-guide/install/index.html">install</a> it and have a try at conda.</li>
-</ul>
-<h3 id="conda-or-miniconda">Conda or MiniConda</h3>
-<p>Using Anaconda is very usefull in projects since most of the times package version and dependancies are an issue, as referenced before. Anaconda, when installed comes already with a lot of packages such as <em>numpy</em> and <em>gdal</em>. You can also use MiniConda wich has the same features but only installs the base packages, which means all the required packages need to be installed manually.</p>
-<p>The basic usage of Conda or MiniConda, after installed, is as follows:</p>
-<ul>
-<li><code>conda install numpy</code> to install packages. Beware that you will still have to include this packages in the created environments;</li>
-<li><code>conda create --name astrolab python=2.7 numpy</code> to create a new environment called <code>astrolab</code> with Python 2.7 and including <em>numpy</em>;</li>
-<li><code>conda info --envs</code> to list the available environments. Conda puts an asterisk (*) in front of the active environment;</li>
-<li><code>source activate astrolab</code> (Linux, macOS) or <code>activate astrolab</code> (Windows) to activate an environment. After this, the current environment is shown in (parentheses) or [brackets] in front of your prompt (<code>(astrolab)$</code>);</li>
-<li><code>source deactivate</code> (Linux, macOS) or <code>deactivate</code> (Windows) to deactivate the environmnet and go back to root;</li>
-<li><code>conda remove --name astrolab --all</code> to remove the environmnet <code>astrolab</code>.</li>
-</ul>
-<p>You should beware that the activated environment is only valid for the shell in which you activated. For instance, if you close the shell window and open a new one you will have to activate it again. Additionaly, if you use <code>sudo</code> commands in an conda environment, it will return it to the root python and not the active environment.</p>
-<p>Some helpfull utilities are:</p>
-<ul>
-<li><code>conda list</code> to check which packages are installed in <code>root</code> or in the active environment;</li>
-<li><code>which python</code> or <code>python --version</code> to check which python verison is used in the environment.</li>
-</ul>
+<p>By the way, as you may have noticed, this document is created from an RMarkdown source, which can also include Python code blocks (have a look at the <a href="https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/index.Rmd">source</a> on github). Similarly Jupyter Notebooks can also use R and other languages!</p>
 <h1 id="assignment">Assignment</h1>
 <p>The assignment for today is to finish the datacamp course: Intro to Python for Data Science. If you finished early and still want to write more scripts, then you can follow one of the fun tutorials below.</p>
 <h1 id="more-info">More info</h1>
@@ -1470,6 +1510,11 @@ except IOError:
 <li><a href="https://stackoverflow.com/questions/tagged/python">Stack OverFlow Python</a></li>
 <li><a href="https://gis.stackexchange.com/">GIS Stack Exchange</a></li>
 <li><a href="http://www.qgistutorials.com/en/docs/getting_started_with_pyqgis.html">QGIS can be scripted in python</a></li>
+<li><a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb">A simple Iphython Notebook</a></li>
+<li><a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/Buffer%20example.ipynb">Buffer Example</a></li>
+<li><a href="https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Matplotlib_basemap.ipynb">Spatial visualization with Matplotlib</a></li>
+<li><a href="https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Plot%20Map.ipynb">Spatial visualization with Cartopy</a></li>
+<li><a href="https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/OGR%20examples.ipynb">Reading and formatting geometries with OGR</a></li>
 </ul>
 </div>
 </div>
@@ -1484,7 +1529,7 @@ Styled with <a href="https://github.com/jimhester/knitrBootstrap">knitrBootstrap
 </p>
 </div>
 </div>
-<link rel="stylesheet" id="theme" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/cosmo/bootstrap.min.css" media="screen"></link><link rel="stylesheet" id="highlight" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/default.min.css" media="screen"></link>
+<link rel="stylesheet" id="theme" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/simplex/bootstrap.min.css" media="screen"></link><link rel="stylesheet" id="highlight" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/tomorrow-night-bright.min.css" media="screen"></link>
 </div>
 </body>
 </html>
