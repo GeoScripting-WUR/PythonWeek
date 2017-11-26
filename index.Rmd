@@ -125,10 +125,10 @@ You can program Python in your terminal, but more facilities are available to ma
 cd
 
 # Create conda environment
-conda create -n my_python python=2.7 numpy ipython-notebook # my_python is name of your conda environment
+conda create -n astrolab python=2.7 numpy ipython-notebook # my_python is name of your conda environment
 
 # Activate conda environment
-source activate my_python
+source activate astrolab
 ```
 
 By creating your conda environment, you created a set of packages and a Python version to be used only in that specific conda environment. In your terminal you can see the name of your conda environment at the start of the command line before your user information. Now that we are working in our conda environment with all the necessary packages with correct versions, we can start with setting up our notebook.
