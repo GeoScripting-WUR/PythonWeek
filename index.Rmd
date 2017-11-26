@@ -80,7 +80,7 @@ Some helpful utilities are:
 
 * `conda list` to check which packages are installed in `root` or in the active environment;
 * `which python` or `python --version` to check which python verison is used in the environment.
-* `conda install --name my_python matplotlib` to install extra modules in your (running) conda environment
+* `conda install --name astrolab matplotlib` to install extra modules in your (running) conda environment
 
 ## Getting started with Python within a Linux OS
 
@@ -125,7 +125,7 @@ You can program Python in your terminal, but more facilities are available to ma
 cd
 
 # Create conda environment
-conda create -n astrolab python=2.7 numpy ipython-notebook # my_python is name of your conda environment
+conda create -n astrolab python=2.7 numpy ipython-notebook # astrolab is name of your conda environment
 
 # Activate conda environment
 source activate astrolab
