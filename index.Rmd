@@ -66,13 +66,36 @@ For Python, a set of tools co-exist for installing and managing packages. From m
 Using Anaconda is very useful in projects since most of the times package version and dependencies are an issue. Anaconda, when installed comes already with a lot of packages such as *numpy* and *gdal*. Instead of the large version of Anaconda you can use the base version called MiniConda. MiniConda has the same features, but only installs the base package and requires manual installation for extra packages.
 
 The basic usage of Conda or MiniConda, after installed, is as follows:
-
-* `conda install numpy` to install packages. Beware that you will still have to include this packages in the created environments;
-* `conda create --name astrolab python=2.7 numpy` to create a new environment called `astrolab` with Python 2.7 and including *numpy*;
-* `conda info --envs` to list the available environments. Conda puts an asterisk (*) in front of the active environment;
-* `source activate astrolab` (Linux, macOS) or `activate astrolab` (Windows) to activate an environment. After this, the current environment is shown in (parentheses) or [brackets] in front of your prompt (`(astrolab)$`);
-* `source deactivate` (Linux, macOS) or `deactivate` (Windows) to deactivate the environmnet and go back to root;
-* `conda remove --name astrolab --all` to remove the environment `astrolab`.
+```{r, eval=FALSE, engine='bash'}
+conda install numpy
+```
+To install packages. Beware that you will still have to include this packages in the created environments.
+```{r, eval=FALSE, engine='bash'}
+conda create --name astrolab python=2.7 numpy
+```
+To create a new environment called `astrolab` with Python 2.7 and including *numpy*.
+```{r, eval=FALSE, engine='bash'}
+conda info --envs
+```
+To list the available environments. Conda puts an asterisk (*) in front of the active environment.
+```{r, eval=FALSE, engine='bash'}
+% Linux, macOS
+source activate astrolab
+% Windows
+activate astrolab
+```
+To activate an environment. After this, the current environment is shown in (parentheses) or [brackets] in front of your prompt (`(astrolab)$`).
+```{r, eval=FALSE, engine='bash'}
+% Linux, macOS
+source deactivate
+% Windows
+deactivate
+```
+To deactivate the environmnet and go back to root.
+```{r, eval=FALSE, engine='bash'}
+conda remove --name astrolab --all
+```
+To remove the environment `astrolab`.
 
 You should beware that the activated environment is only valid for the shell in which you activated. For instance, if you close the shell window and open a new one you will have to activate it again. Additionaly, if you use `sudo` commands in a conda environment, it will return it to the root python and not the active environment.
 
