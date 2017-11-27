@@ -15,7 +15,7 @@ output:
 
 # "Week 3: Python for geo-scripting"
 
-Good morning! Today we will start working with Python and do a refresher of functions in Python. First complete the Intro to Python course in Datacamp and then go through today's tutorial.
+Good morning! Today we will start working with Python for geo-scripting and do a refresher of functions in Python. First complete the Intro to Python course in Datacamp and then go through today's tutorial.
 
 ### Today's schedule
 
@@ -50,7 +50,7 @@ Have a look at this question on GIS StackExchange:
 
 ## Python editors and IDEs
 * Most modern text editors do nice python highlighting, e.g. Sublime Text can be set up nicely for Python
-* Jupyter notebook or Ipython Notebook are good choices for short scripts. Jupyter Notebook is a continuation of Ipython Notebook. The name “Jupyter” was inspired by the leading open languages for science (that is, Julia, Python, and R) [blog about history of Jupyter Notebook](https://www.datacamp.com/community/blog/ipython-jupyter). The notebooks allows you to have your source code, results and comments in one document ! See here for a simple Jupyter [notebook example](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb). [More info](http://jupyter.org/).
+* Jupyter notebook or Ipython Notebook are good choices for short scripts. The notebooks allows you to have your source code, results and comments in one document! Jupyter Notebook is a continuation of Ipython Notebook. The name “Jupyter” was inspired by the leading open languages for science (that is, Julia, Python, and R) ([blog about history of Jupyter Notebook](https://www.datacamp.com/community/blog/ipython-jupyter)). See here for a simple Jupyter [notebook example](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb). [More info](http://jupyter.org/).
 * There are a number of proper Integrated Development Environments [IDE] for Python. An IDE is a software application that provides facilities for software development. Personally I have good experience with [PyCharm](https://www.jetbrains.com/pycharm/). For running on a server, [rodeo](https://github.com/yhat/rodeo/) gives a similar interface as RStudio server.
 * Spyder is nice a lightweight IDE and can be installed from the terminal (`sudo apt-get install spyder`)
 
@@ -63,13 +63,13 @@ For Python, a set of tools co-exist for installing and managing packages. From m
 
 
 ### Conda or MiniConda
-Using Anaconda is very useful in projects since most of the times package version and dependencies are an issue. Anaconda, when installed comes already with a lot of packages such as *numpy* and *gdal*. Instead of the large version of Anaconda you can use the base version called MiniConda. MiniConda has the same features, but only installs the base package and requires manual installation for extra packages.
+Using Anaconda is very useful in projects since most of the times package version and dependencies are an issue. Anaconda, when installed comes already with a lot of packages such as `numpy` and `gdal`. Instead of the large version of Anaconda you can use the base version called MiniConda. MiniConda has the same features, but only installs the base package and requires manual installation for extra packages.
 
 The basic usage of Conda or MiniConda, after installed, is as follows:
 ```{r, eval=FALSE, engine='bash'}
 conda install numpy
 ```
-To install packages. Beware that you will still have to include this packages in the created environments.
+To install packages. Beware that you still have to include the packages in the created environments.
 ```{r, eval=FALSE, engine='bash'}
 conda create --name astrolab python=2.7 numpy
 ```
@@ -91,7 +91,7 @@ source deactivate
 % Windows
 deactivate
 ```
-To deactivate the environmnet and go back to root.
+To deactivate the environment and go back to root.
 ```{r, eval=FALSE, engine='bash'}
 conda remove --name astrolab --all
 ```
@@ -102,8 +102,8 @@ You should beware that the activated environment is only valid for the shell in 
 Some helpful utilities are:
 
 * `conda list` to check which packages are installed in `root` or in the active environment;
-* `which python` or `python --version` to check which python verison is used in the environment.
-* `conda install --name astrolab matplotlib` to install extra modules in your (running) conda environment
+* `which python` or `python --version` to check which python verison is used in the environment;
+* `conda install --name astrolab matplotlib` to install extra modules in your (running) conda environment.
 
 ## Getting started with Python within a Linux OS
 
@@ -164,6 +164,7 @@ jupyter notebook
 If everything goes according to plan, Jupyter will pop up in your browser. You will see a menu with all files. Browse to your workspace, where you want to store your Python script. In the right top click on new folder (if you dont have folder/project structure yet) and/or click on python2 to create a Jupyter Notebook. Click on help and have a go at the `User Interface Tour`. Give your notebook a name.
 
 These are the basic functions you will need today:
+
 - `Save and checkpoint`
 - `Insert cell below`
 - `Run`
@@ -174,7 +175,7 @@ Similar to RMarkdown, Jupyter Notebooks has code cells (called code) and text ce
 ## A short Python refresher
 
 ### Finding help
-Now we can try some coding. First we learn how to look for help while coding in Python. In the second cell type the code below and run it (ctrl + enter is shortcut for run).
+Now we can try some coding. First we learn how to look for help while coding in Python. In the second cell type the code below and run it (ctrl + enter is shortcut for run cell).
 
 
 ```{r, engine='python', eval=FALSE}
@@ -202,7 +203,7 @@ See also:
 
 ### Finding information via Pydoc
 
-Go to: [https://docs.python.org/2/library/pydoc.html](https://docs.python.org/2/library/pydoc.html) or run the script below in your terminal to create a HTTP server with information from pydoc.
+Type the script below in your terminal to start a HTTP server with information from pydoc or go to [https://docs.python.org/2/library/pydoc.html](https://docs.python.org/2/library/pydoc.html).
 
 ```{r, engine='bash', eval=FALSE}
 pydoc -p 1234
