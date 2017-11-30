@@ -337,7 +337,7 @@ See here for a web conversion example
 * [https://ogre.adc4gis.com/](https://ogre.adc4gis.com/)
 
 Using the command line
-```{r, engine='bash'}
+```{r, engine='bash', eval = FALSE}
 ogr2ogr -f GeoJSON -t_srs crs:84 points.geojson points.shp
 ```
 
