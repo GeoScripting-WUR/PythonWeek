@@ -865,37 +865,43 @@
 <div id="header">
 <h1 class="title">From tweets to maps using Python</h1>
 <h2 class="author">Arend Ligtenberg, Jan Verbesselt</h2>
-<h3 class="date">25 January, 2017</h3>
+<h3 class="date">30 November, 2017</h3>
 </div>
 <title>
-Week 3: Python for geo-scripting
+Python for Geo-Scripting
 </title>
 <div id="wrap">
 <div class="container">
 <div class="row row-offcanvas row-offcanvas-right">
 <div class="contents col-xs-12 col-md-10">
-<h1 id="wur-geoscripting-wur-logo"><a href="https://geoscripting-wur.github.io/">WUR Geoscripting</a> <img src="http://www.wageningenur.nl/upload/f9a0b5f2-15c5-4b84-9e14-20ef02f5e265_wur-logo.png" alt="WUR logo" /></h1>
-<h1 id="today-thursday-25012016">Today: Thursday 25/01/2016</h1>
-<p>As background knowledge it is assumed that you know what JSON is. If not have a look at (http://http://www.w3schools.com/js/js_json_intro.asp). Also aquaint yourself yourself with the datastructure of tweets. You can find it on (https://dev.twitter.com/overview/api/tweets). Try to find out for example where spatial references are made in a tweet . During the self-study also ask yourself question like</p>
+<h1 id="wur-geoscripting"><a href="https://geoscripting-wur.github.io/">WUR Geoscripting</a> <img src="http://www.wur.nl/upload/b43b7095-e452-482a-8969-fed9a50393a8_WUR_RGB_standard.png" alt="WUR logo" style="height: 35px;"/></h1>
+<h1 id="harvesting-tweets-with-python">Harvesting tweets with Python</h1>
+<p>As background knowledge it is assumed that you know what a JSON is. If not, have a look at <a href="https://www.w3schools.com/js/js_json_intro.asp">JSON Intro</a>. Also acquaint yourself yourself with the datastructure of tweets. You can find it on <a href="https://dev.twitter.com/overview/api/tweets">API Tweets</a>. Try to find out for example where spatial references are made in a tweet.</p>
 <ul>
-<li>8:30-12.15: Self-study by working on the two notebooks below. If you want to go beyond, have a look at: <a href="https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/blob/master/ipynb/Chapter%201%20-%20Mining%20Twitter.ipynb">Mining-the-Social-Web</a> and/or the <a href="http://nbviewer.jupyter.org/github/ptwobrussell/Mining-the-Social-Web-2nd-Edition/blob/master/ipynb/Chapter%209%20-%20Twitter%20Cookbook.ipynb">Twitter Cookbook</a></li>
+<li>8:30-12.15: Self-study by working on the two notebooks below.</li>
 <li>13:30-14:15: Feedback and presentation about social media as a source of spatial data</li>
 <li>14:15-17:00 Assignment</li>
 </ul>
 <h1 id="python-notebooks-for-the-self-study">Python notebooks for the self-study</h1>
-<p><a href="http://nbviewer.jupyter.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/ConnectingandharvestingtweetswithPython.ipynb">Connecting and harvesting Real-time tweets</a></p>
-<p><a href="http://nbviewer.jupyter.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/HarvestingRealTimeTweets.ipynb">Harvesting real time tweets</a></p>
-<h1 id="assignments">Assignments</h1>
-<p>Create a twitter harvesting application that harvest tweets (either real-time or stored), and create a spatial dataset en map from it. The application should be able to: collect tweets based on a thematic and/or spatial query.</p>
+<p><a href="http://nbviewer.jupyter.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/ConnectingandharvestingtweetswithPython.ipynb">Connecting and harvesting real-time tweets</a></p>
+<p><a href="http://nbviewer.jupyter.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/HarvestingRealTimeTweets.ipynb">Harvesting real-time tweets</a></p>
+<h1 id="assignment-14">Assignment 14</h1>
+<p>Create a twitter harvesting application that harvests tweets (either real-time or stored), and create a spatial dataset and map from it. The application should be able to: collect tweets based on a thematic and/or spatial query.</p>
 <p>Suggestions:</p>
 <ul>
 <li>Feed a spatial database with information tweeted real time from a certain location and plot it on a map.</li>
 <li>Create a map indicating where traffic jams, disruptions in the public transport or ... took place last week.</li>
-<li>Create a map indication the home countries of international tourist visiting Amsterdam (or Wageningen if you like)</li>
-<li>Go out with your smartphone (what else should you do during lunch), collect spatial information (for examples POIs on the campus) by tweeting from various locations using a specific hashtag (make sure location is enabled in your twitter account), harvest these tweets with an application, and create a map from it.</li>
+<li>Create a map indicating the home countries of international tourists visiting Amsterdam (or Wageningen if you like)</li>
+<li>Go out with your smartphone (what else should you do during lunch), collect spatial information (for examples POIs on the campus) by tweeting from various locations using a specific hashtag (make sure location is enabled on your twitter account), harvest these tweets with an application, and create a map from it.</li>
 <li>.... think of something else.</li>
 </ul>
-<p>Send in your application as a python script as well as a screenshot of the map you produced (through the script review centre: lesson 14)</p>
+<p>Send in your application as a python script as well as a screenshot of the map you produced.</p>
+<p>If you want to go beyond todays tutorials, have a look at some cookbooks and examples:</p>
+<ul>
+<li><a href="https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/blob/master/ipynb/Chapter%201%20-%20Mining%20Twitter.ipynb">Mining-the-Social-Web</a></li>
+<li><a href="http://nbviewer.jupyter.org/github/ptwobrussell/Mining-the-Social-Web-2nd-Edition/blob/master/ipynb/Chapter%209%20-%20Twitter%20Cookbook.ipynb">Twitter Cookbook</a></li>
+<li><a href="https://www.tweetping.net/">Example: real-time twitter activity map</a></li>
+</ul>
 </div>
 </div>
 </div>
@@ -909,7 +915,7 @@ Styled with <a href="https://github.com/jimhester/knitrBootstrap">knitrBootstrap
 </p>
 </div>
 </div>
-<link rel="stylesheet" id="theme" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/cosmo/bootstrap.min.css" media="screen"></link><link rel="stylesheet" id="highlight" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/default.min.css" media="screen"></link>
+<link rel="stylesheet" id="theme" href="https://netdna.bootstrapcdn.com/bootswatch/3.0.0/simplex/bootstrap.min.css" media="screen"></link><link rel="stylesheet" id="highlight" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3/styles/tomorrow-night-bright.min.css" media="screen"></link>
 </div>
 </body>
 </html>
