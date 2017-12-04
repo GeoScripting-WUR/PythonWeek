@@ -905,10 +905,10 @@ Week 3: Python for geo-scripting
 </ul>
 <h2 id="python-editors-and-ides">Python editors and IDEs</h2>
 <ul>
-<li>Most modern text editors do nice python highlighting, e.g. Sublime Text can be set up nicely for Python</li>
+<li>Most modern text editors do nice python highlighting, e.g. Sublime Text can be set up nicely for Python.</li>
 <li>Jupyter notebook or Ipython Notebook are good choices for short scripts. The notebooks allows you to have your source code, equations, visualizations, results and comments in one document! Jupyter Notebook is a continuation of Ipython Notebook. The name “Jupyter” was inspired by the leading open languages for science (that is, Julia, Python, and R) (<a href="https://www.datacamp.com/community/blog/ipython-jupyter">blog about history of Jupyter Notebook</a>). See here for a simple Jupyter <a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb">notebook example</a>. <a href="http://jupyter.org/">More info</a>.</li>
 <li>There are a number of proper Integrated Development Environments [IDE] for Python. An IDE is a software application that provides facilities for software development. Personally I have good experience with <a href="https://www.jetbrains.com/pycharm/">PyCharm</a>. For running on a server, <a href="https://github.com/yhat/rodeo/">rodeo</a> gives a similar interface as RStudio server.</li>
-<li>Spyder is nice a lightweight IDE and can be installed from the terminal (<code>sudo apt-get install spyder</code>)</li>
+<li>Spyder is nice a lightweight IDE and can be installed from the terminal (<code>sudo apt-get install spyder</code>).</li>
 </ul>
 <h2 id="python-package-management">Python package management</h2>
 <p>For Python, a set of tools co-exist for installing and managing packages. From most to least desirable, you should try to install packages by:</p>
@@ -919,6 +919,22 @@ Week 3: Python for geo-scripting
 </ul>
 <h3 id="conda-or-miniconda">Conda or MiniConda</h3>
 <p>Using Anaconda is very useful in projects since most of the times package version and dependencies are an issue. Anaconda, when installed comes already with a lot of packages such as <code>numpy</code> and <code>gdal</code>. Instead of the large version of Anaconda you can use the base version called MiniConda. MiniConda has the same features, but only installs the base package and requires manual installation for extra packages.</p>
+<h4 id="miniconda-installation">MiniConda installation</h4>
+<p>To install MiniConda on your Linux Virtual Machine please copy the following lines of code, line by line, in a new terminal window.</p>
+<div class="row">
+<button class="source bash toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> bash source
+</button>
+<pre style=""><code class="source bash">MINICONDA_VERSION="Miniconda3-latest-Linux-x86_64"
+pushd /tmp
+curl -O https://repo.continuum.io/miniconda/${MINICONDA_VERSION}.sh
+## This installation script will require user input, just use the default options (i.e. click enter)
+bash ${MINICONDA_VERSION}.sh
+rm ${MINICONDA_VERSION}.sh
+popd</code></pre>
+</div>
+<p>For installation instructions in other operating systems, please go to the <a href="https://conda.io/docs/user-guide/install/index.html">MiniConda installation page</a>.</p>
+<h4 id="usage">Usage</h4>
 The basic usage of Conda or MiniConda, after installed, is as follows:
 <div class="row">
 <button class="source bash toggle btn btn-xs btn-primary">
@@ -945,9 +961,9 @@ To list the available environments. Conda puts an asterisk (*) in front of the a
 <button class="source bash toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
 </button>
-<pre style=""><code class="source bash">% Linux, macOS
+<pre style=""><code class="source bash">## Linux, macOS
 source activate astrolab
-% Windows
+## Windows
 activate astrolab</code></pre>
 </div>
 To activate an environment. After this, the current environment is shown in (parentheses) or [brackets] in front of your prompt (<code>(astrolab)$</code>).
@@ -955,9 +971,9 @@ To activate an environment. After this, the current environment is shown in (par
 <button class="source bash toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
 </button>
-<pre style=""><code class="source bash">% Linux, macOS
+<pre style=""><code class="source bash">## Linux, macOS
 source deactivate
-% Windows
+## Windows
 deactivate</code></pre>
 </div>
 To deactivate the environment and go back to root.
@@ -992,9 +1008,9 @@ gdal-config --version</code></pre>
 <button class="output bash toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> bash output
 </button>
-<pre style=""><code class="output bash">## Python 2.7.12
-## Python 3.5.2
-## 2.2.1
+<pre style=""><code class="output bash">## Python 2.7.14
+## Python 3.6.3
+## 1.11.5
 </code></pre>
 </div>
 <ul>
@@ -1016,8 +1032,8 @@ print sys.version #parentheses necessary in python 3. </code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## 2.7.12 (default, Nov 19 2016, 06:48:10) 
-## [GCC 5.4.0 20160609]
+<pre style=""><code class="output python">## 2.7.10 (default, Jul 15 2017, 17:16:57) 
+## [GCC 4.2.1 Compatible Apple LLVM 9.0.0 (clang-900.0.31)]
 </code></pre>
 </div>
 To exit Python in the terminal:
@@ -1344,7 +1360,7 @@ print dir(math) #show names in math module</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## ['__doc__', '__name__', '__package__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'hypot', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']
+<pre style=""><code class="output python">## ['__doc__', '__file__', '__name__', '__package__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'hypot', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']
 </code></pre>
 </div>
 <ul>
@@ -1407,8 +1423,8 @@ print date.today()+delta</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## 2017-11-27
-## 2017-12-04
+<pre style=""><code class="output python">## 2017-12-04
+## 2017-12-11
 </code></pre>
 </div>
 <h3 id="file-access">File access</h3>

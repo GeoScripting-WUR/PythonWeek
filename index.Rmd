@@ -49,10 +49,10 @@ Have a look at this question on GIS StackExchange:
 - [Clipping raster with vector layer using gdal](https://gis.stackexchange.com/questions/16657/clipping-raster-with-vector-layer-using-gdal)
 
 ## Python editors and IDEs
-* Most modern text editors do nice python highlighting, e.g. Sublime Text can be set up nicely for Python
+* Most modern text editors do nice python highlighting, e.g. Sublime Text can be set up nicely for Python.
 * Jupyter notebook or Ipython Notebook are good choices for short scripts. The notebooks allows you to have your source code, equations, visualizations, results and comments in one document! Jupyter Notebook is a continuation of Ipython Notebook. The name “Jupyter” was inspired by the leading open languages for science (that is, Julia, Python, and R) ([blog about history of Jupyter Notebook](https://www.datacamp.com/community/blog/ipython-jupyter)). See here for a simple Jupyter [notebook example](http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb). [More info](http://jupyter.org/).
 * There are a number of proper Integrated Development Environments [IDE] for Python. An IDE is a software application that provides facilities for software development. Personally I have good experience with [PyCharm](https://www.jetbrains.com/pycharm/). For running on a server, [rodeo](https://github.com/yhat/rodeo/) gives a similar interface as RStudio server.
-* Spyder is nice a lightweight IDE and can be installed from the terminal (`sudo apt-get install spyder`)
+* Spyder is nice a lightweight IDE and can be installed from the terminal (`sudo apt-get install spyder`).
 
 ## Python package management
 For Python, a set of tools co-exist for installing and managing packages. From most to least desirable, you should try to install packages by:
@@ -65,6 +65,22 @@ For Python, a set of tools co-exist for installing and managing packages. From m
 ### Conda or MiniConda
 Using Anaconda is very useful in projects since most of the times package version and dependencies are an issue. Anaconda, when installed comes already with a lot of packages such as `numpy` and `gdal`. Instead of the large version of Anaconda you can use the base version called MiniConda. MiniConda has the same features, but only installs the base package and requires manual installation for extra packages.
 
+#### MiniConda installation
+To install MiniConda on your Linux Virtual Machine please copy the following lines of code, line by line, in a new terminal window.
+
+```{r, eval=FALSE, engine='bash'}
+MINICONDA_VERSION="Miniconda3-latest-Linux-x86_64"
+pushd /tmp
+curl -O https://repo.continuum.io/miniconda/${MINICONDA_VERSION}.sh
+## This installation script will require user input, just use the default options (i.e. click enter)
+bash ${MINICONDA_VERSION}.sh
+rm ${MINICONDA_VERSION}.sh
+popd
+```
+
+For installation instructions in other operating systems, please go to the [MiniConda installation page](https://conda.io/docs/user-guide/install/index.html).
+
+#### Usage
 The basic usage of Conda or MiniConda, after installed, is as follows:
 ```{r, eval=FALSE, engine='bash'}
 conda install numpy
@@ -79,16 +95,16 @@ conda info --envs
 ```
 To list the available environments. Conda puts an asterisk (*) in front of the active environment.
 ```{r, eval=FALSE, engine='bash'}
-% Linux, macOS
+## Linux, macOS
 source activate astrolab
-% Windows
+## Windows
 activate astrolab
 ```
 To activate an environment. After this, the current environment is shown in (parentheses) or [brackets] in front of your prompt (`(astrolab)$`).
 ```{r, eval=FALSE, engine='bash'}
-% Linux, macOS
+## Linux, macOS
 source deactivate
-% Windows
+## Windows
 deactivate
 ```
 To deactivate the environment and go back to root.
