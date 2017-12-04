@@ -934,6 +934,22 @@ rm ${MINICONDA_VERSION}.sh
 popd</code></pre>
 </div>
 <p>For installation instructions in other operating systems, please go to the <a href="https://conda.io/docs/user-guide/install/index.html">MiniConda installation page</a>.</p>
+<p>If you don't want Conda to be the default Python interperter in your system, you should say No in the last prompt. If you do that, every time you wish to use Conda you need to run the following line of code in each terminal window.</p>
+<div class="row">
+<button class="source bash toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> bash source
+</button>
+<pre style=""><code class="source bash">## Path in your VM
+export PATH=/home/WUR/YOUR_USER_NAME/miniconda3/bin:$PATH
+## e.g. export PATH=/home/WUR/almei006/miniconda3/bin:$PATH</code></pre>
+</div>
+<p>After MiniConda is installed you should install Spyder from Anaconda.</p>
+<div class="row">
+<button class="source bash toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> bash source
+</button>
+<pre style=""><code class="source bash">conda install -c anaconda spyder </code></pre>
+</div>
 <h4 id="usage">Usage</h4>
 The basic usage of Conda or MiniConda, after installed, is as follows:
 <div class="row">
