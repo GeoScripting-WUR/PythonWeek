@@ -62,72 +62,83 @@ For Python, a set of tools co-exist for installing and managing packages. From m
 * Using `pip` to manage packages and `virtualenv` to manage your environment. *pip* is a python package installer, that is pretty much standard nowadays. It is recommended to run it in a virtualenv to prevent conflicts, however, virtualenvs can be problematic when it comes to package dependencies. `virtualenv` can be used to keep separate sets of packages in its own directory tree. A demonstration of `pip` and `virtualenv` can be found here [here](http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/)
 
 
-### Conda or MiniConda
-Using Anaconda is very useful in projects since most of the times package version and dependencies are an issue. Anaconda, when installed comes already with a lot of packages such as `numpy` and `gdal`. Instead of the large version of Anaconda you can use the base version called MiniConda. MiniConda has the same features, but only installs the base package and requires manual installation for extra packages.
+### Anaconda or Miniconda
+Anaconda is a Python virtual environment and package manager that is very useful to automatically keep track of package versions and dependencies. Anaconda itself comes already preinstalled with a large number of packages such as `numpy` and `gdal`. Instead of using the whole Anaconda, you can instead use the base version called Miniconda. Miniconda has the same features, but only installs the base package and requires manual installation for extra packages.
 
-#### MiniConda installation
-To install MiniConda on your Linux Virtual Machine please copy the following lines of code, line by line, in a new terminal window.
+It is useful to learn how to use Conda, because it is an easy and cross-platform way of installing latest Python packages without affecting any Python installations that you already have on your system. In addition, Anaconda is required to set up `sen2cor`, the Sentinel-2 imagery atmospheric correction tool.
+
+#### Miniconda installation
+To install Miniconda in your Linux environment, we have prepared a short *Bash* script for you. Just run the following lines of code, line by line, in a new terminal window.
 
 ```{r, eval=FALSE, engine='bash'}
 MINICONDA_VERSION="Miniconda3-latest-Linux-x86_64"
 pushd /tmp
 curl -O https://repo.continuum.io/miniconda/${MINICONDA_VERSION}.sh
-## This installation script will require user input, just use the default options (i.e. click enter)
+## This installation script will require user input
 bash ${MINICONDA_VERSION}.sh
 rm ${MINICONDA_VERSION}.sh
 popd
 ```
 
-For installation instructions in other operating systems, please go to the [MiniConda installation page](https://conda.io/docs/user-guide/install/index.html).
-
-If you don't want Conda to be the default Python interperter in your system, you should say No in the last prompt. If you do that, every time you wish to use Conda you need to run the following line of code in each terminal window.
+When prompted, you can just use the default options (i.e. press Enter). However, if you don't want Conda to replace the default Python interpreter in your system, you should say `No` in the last prompt. In that case, every time you wish to use Conda you need to run the following line of code in each terminal window.
 
 ```{r, eval=FALSE, engine='bash'}
-## Path in your VM
-export PATH=/home/WUR/YOUR_USER_NAME/miniconda3/bin:$PATH
-## e.g. export PATH=/home/WUR/almei006/miniconda3/bin:$PATH
+# $HOME expands to your home directory
+export PATH=$HOME/miniconda3/bin:$PATH
 ```
 
-After MiniConda is installed you should install Spyder from Anaconda.
+For installation instructions in other operating systems, please go to the [Miniconda installation page](https://conda.io/docs/user-guide/install/index.html).
+
+After Miniconda is installed, you can install Spyder into the default Conda environment (by using the `anaconda` package channel):
 
 ```{r, eval=FALSE, engine='bash'}
-conda install -c anaconda spyder 
+conda install -c anaconda spyder
 ```
 
 #### Usage
-The basic usage of Conda or MiniConda, after installed, is as follows:
+The basic usage of Conda, after installed, is as follows:
+
 ```{r, eval=FALSE, engine='bash'}
 conda install numpy
 ```
-To install packages. Beware that you still have to include the packages in the created environments.
+
+This would install the `numpy` package. Note that this would install it into the default virtual environment. Conda is able to create any number of separate virtual environments, for example:
+
 ```{r, eval=FALSE, engine='bash'}
 conda create --name astrolab python=2.7 numpy
 ```
-To create a new environment called `astrolab` with Python 2.7 and including *numpy*.
+
+This would create a new environment called `astrolab` with Python 2.7 and `numpy` installed into it. To list the available environments:
+
 ```{r, eval=FALSE, engine='bash'}
 conda info --envs
 ```
-To list the available environments. Conda puts an asterisk (*) in front of the active environment.
+
+Conda puts an asterisk (*) in front of the active environment. To activate an environment:
+
 ```{r, eval=FALSE, engine='bash'}
 ## Linux, macOS
 source activate astrolab
 ## Windows
 activate astrolab
 ```
-To activate an environment. After this, the current environment is shown in (parentheses) or [brackets] in front of your prompt (`(astrolab)$`).
+
+After this, the current environment is shown in (parentheses) or [brackets] in front of your prompt (`(astrolab)$`). To deactivate the environment and go back to the default one:
+
 ```{r, eval=FALSE, engine='bash'}
 ## Linux, macOS
 source deactivate
 ## Windows
 deactivate
 ```
-To deactivate the environment and go back to root.
+
+To remove the environment `astrolab`:
+
 ```{r, eval=FALSE, engine='bash'}
 conda remove --name astrolab --all
 ```
-To remove the environment `astrolab`.
 
-You should beware that the activated environment is only valid for the shell in which you activated. For instance, if you close the shell window and open a new one you will have to activate it again. Additionaly, if you use `sudo` commands in a conda environment, it will return it to the root python and not the active environment.
+Note that the activated environment is only valid for the shell in which you activated it. For instance, if you close the shell window and open a new one you will have to activate it again. Additionally, if you use `sudo` commands to call Python, it will use the system's Python interpreter and not the active environment for security reasons. There should be no reason to call Python code in Conda with `sudo` rights in any case, since all packages are installed with your user permissions rather than root's.
 
 Some helpful utilities are:
 
@@ -152,20 +163,20 @@ gdal-config --version
 - Type the following to start Python 2.7:
 
 ```{r, eval=FALSE, engine='bash'}
-python2 # type this in the terminal to start the python interpreter
+python3 # type this in the terminal to start the python interpreter
 ```
 
 An example script to find out what the installed Python version is ([more info in question asked on stackoverflow](https://stackoverflow.com/questions/1093322/how-do-i-check-what-version-of-python-is-running-my-script))
 
 ```{r, engine='python'}
 import sys
-print sys.version #parentheses necessary in python 3. 
+print(sys.version)
 ```
 
 To exit Python in the terminal:
 ```{r, eval=FALSE, engine='python'}
 exit()
-or 
+# or 
 quit()
 ```
 
