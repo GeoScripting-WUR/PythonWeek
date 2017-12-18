@@ -906,7 +906,7 @@ Week 3: Python for geo-scripting
 <h2 id="python-editors-and-ides">Python editors and IDEs</h2>
 <ul>
 <li>Most modern text editors do nice python highlighting, e.g. Sublime Text can be set up nicely for Python.</li>
-<li>Jupyter notebook or Ipython Notebook are good choices for short scripts. The notebooks allows you to have your source code, equations, visualizations, results and comments in one document! Jupyter Notebook is a continuation of Ipython Notebook. The name “Jupyter” was inspired by the leading open languages for science (that is, Julia, Python, and R) (<a href="https://www.datacamp.com/community/blog/ipython-jupyter">blog about history of Jupyter Notebook</a>). See here for a simple Jupyter <a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb">notebook example</a>. <a href="http://jupyter.org/">More info</a>.</li>
+<li>Jupyter notebook or Ipython Notebook are good choices for short scripts. The notebooks allows you to have your source code, equations, visualizations, results and comments in one document! Jupyter Notebook is a continuation of Ipython Notebook. The name <U+FFFD><U+FFFD><U+FFFD>Jupyter<U+FFFD><U+FFFD><U+FFFD> was inspired by the leading open languages for science (that is, Julia, Python, and R) (<a href="https://www.datacamp.com/community/blog/ipython-jupyter">blog about history of Jupyter Notebook</a>). See here for a simple Jupyter <a href="http://nbviewer.ipython.org/github/GeoScripting-WUR/PythonWeek/blob/gh-pages/A%20simple%20notebook.ipynb">notebook example</a>. <a href="http://jupyter.org/">More info</a>.</li>
 <li>There are a number of proper Integrated Development Environments [IDE] for Python. An IDE is a software application that provides facilities for software development. Personally I have good experience with <a href="https://www.jetbrains.com/pycharm/">PyCharm</a>. For running on a server, <a href="https://github.com/yhat/rodeo/">rodeo</a> gives a similar interface as RStudio server.</li>
 <li>Spyder is nice a lightweight IDE and can be installed from the terminal (<code>sudo apt-get install spyder</code>).</li>
 </ul>
@@ -917,10 +917,11 @@ Week 3: Python for geo-scripting
 <li>Using <a href="https://conda.io/docs/user-guide/tasks/manage-pkgs.html">conda</a> to install packages and to keep separate sets of packages. With Python, often the dependencies and versions can differ from project to project. If you want to specifally use a combination of packages with certain versions and keep that package set saved in an environment, then conda has conda environments to save this set of packages. A conda environment is similar to a virtual environment, but different from a virtual machine. Conda is available for Windows, macOS and Linux.</li>
 <li>Using <code>pip</code> to manage packages and <code>virtualenv</code> to manage your environment. <em>pip</em> is a python package installer, that is pretty much standard nowadays. It is recommended to run it in a virtualenv to prevent conflicts, however, virtualenvs can be problematic when it comes to package dependencies. <code>virtualenv</code> can be used to keep separate sets of packages in its own directory tree. A demonstration of <code>pip</code> and <code>virtualenv</code> can be found here <a href="http://www.dabapps.com/blog/introduction-to-pip-and-virtualenv-python/">here</a></li>
 </ul>
-<h3 id="conda-or-miniconda">Conda or MiniConda</h3>
-<p>Using Anaconda is very useful in projects since most of the times package version and dependencies are an issue. Anaconda, when installed comes already with a lot of packages such as <code>numpy</code> and <code>gdal</code>. Instead of the large version of Anaconda you can use the base version called MiniConda. MiniConda has the same features, but only installs the base package and requires manual installation for extra packages.</p>
-<h4 id="miniconda-installation">MiniConda installation</h4>
-<p>To install MiniConda on your Linux Virtual Machine please copy the following lines of code, line by line, in a new terminal window.</p>
+<h3 id="anaconda-or-miniconda">Anaconda or Miniconda</h3>
+<p>Anaconda is a Python virtual environment and package manager that is very useful to automatically keep track of package versions and dependencies. Anaconda itself comes already preinstalled with a large number of packages such as <code>numpy</code> and <code>gdal</code>. Instead of using the whole Anaconda, you can instead use the base version called Miniconda. Miniconda has the same features, but only installs the base package and requires manual installation for extra packages.</p>
+<p>It is useful to learn how to use Conda, because it is an easy and cross-platform way of installing latest Python packages without affecting any Python installations that you already have on your system. In addition, Anaconda is required to set up <code>sen2cor</code>, the Sentinel-2 imagery atmospheric correction tool.</p>
+<h4 id="miniconda-installation">Miniconda installation</h4>
+<p>To install Miniconda in your Linux environment, we have prepared a short <em>Bash</em> script for you. Just run the following lines of code, line by line, in a new terminal window.</p>
 <div class="row">
 <button class="source bash toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
@@ -928,61 +929,61 @@ Week 3: Python for geo-scripting
 <pre style=""><code class="source bash">MINICONDA_VERSION="Miniconda3-latest-Linux-x86_64"
 pushd /tmp
 curl -O https://repo.continuum.io/miniconda/${MINICONDA_VERSION}.sh
-## This installation script will require user input, just use the default options (i.e. click enter)
+## This installation script will require user input
 bash ${MINICONDA_VERSION}.sh
 rm ${MINICONDA_VERSION}.sh
 popd</code></pre>
 </div>
-<p>For installation instructions in other operating systems, please go to the <a href="https://conda.io/docs/user-guide/install/index.html">MiniConda installation page</a>.</p>
-<p>If you don't want Conda to be the default Python interperter in your system, you should say No in the last prompt. If you do that, every time you wish to use Conda you need to run the following line of code in each terminal window.</p>
+<p>When prompted, you can just use the default options (i.e. press Enter). However, if you don't want Conda to replace the default Python interpreter in your system, you should say <code>No</code> in the last prompt. In that case, every time you wish to use Conda you need to run the following line of code in each terminal window.</p>
 <div class="row">
 <button class="source bash toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
 </button>
-<pre style=""><code class="source bash">## Path in your VM
-export PATH=/home/WUR/YOUR_USER_NAME/miniconda3/bin:$PATH
-## e.g. export PATH=/home/WUR/almei006/miniconda3/bin:$PATH</code></pre>
+<pre style=""><code class="source bash"># $HOME expands to your home directory
+export PATH=$HOME/miniconda3/bin:$PATH</code></pre>
 </div>
-<p>After MiniConda is installed you should install Spyder from Anaconda.</p>
-<div class="row">
-<button class="source bash toggle btn btn-xs btn-primary">
-<span class="glyphicon glyphicon-chevron-down"></span> bash source
-</button>
-<pre style=""><code class="source bash">conda install -c anaconda spyder </code></pre>
-</div>
+<p>For installation instructions in other operating systems, please go to the <a href="https://conda.io/docs/user-guide/install/index.html">Miniconda installation page</a>.</p>
 <h4 id="usage">Usage</h4>
-The basic usage of Conda or MiniConda, after installed, is as follows:
+<p>The basic usage of Conda, after installed, is as follows.</p>
+<p>To search for a package:</p>
 <div class="row">
 <button class="source bash toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
 </button>
-<pre style=""><code class="source bash">conda install numpy</code></pre>
+<pre style=""><code class="source bash">conda search spyder</code></pre>
 </div>
-To install packages. Beware that you still have to include the packages in the created environments.
+<p>This would give you a list of all packages that have &quot;spyder&quot; in the name and list all available versions.</p>
 <div class="row">
 <button class="source bash toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
 </button>
-<pre style=""><code class="source bash">conda create --name astrolab python=2.7 numpy</code></pre>
+<pre style=""><code class="source bash">conda install spyder</code></pre>
 </div>
-To create a new environment called <code>astrolab</code> with Python 2.7 and including <em>numpy</em>.
+<p>This would install the latest version of the <code>spyder</code> package (Python IDE). Note that this would install it into your user's root virtual environment (by default it is <code>$HOME/miniconda3</code>). Conda is able to create any number of isolated virtual environments, for example:</p>
+<div class="row">
+<button class="source bash toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> bash source
+</button>
+<pre style=""><code class="source bash">conda create --name geotest python=2.7 numpy</code></pre>
+</div>
+<p>This would create a new environment called <code>geotest</code> with Python 2.7 and <code>numpy</code> installed into it. To list the available environments:</p>
 <div class="row">
 <button class="source bash toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
 </button>
 <pre style=""><code class="source bash">conda info --envs</code></pre>
 </div>
-To list the available environments. Conda puts an asterisk (*) in front of the active environment.
+<p>Conda puts an asterisk (*) in front of the active environment. To activate an environment:</p>
 <div class="row">
 <button class="source bash toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
 </button>
 <pre style=""><code class="source bash">## Linux, macOS
-source activate astrolab
+source activate geotest
 ## Windows
-activate astrolab</code></pre>
+activate geotest</code></pre>
 </div>
-To activate an environment. After this, the current environment is shown in (parentheses) or [brackets] in front of your prompt (<code>(astrolab)$</code>).
+<p>After this, the current environment is shown in (parentheses) or [brackets] in front of your prompt (<code>(astrolab)$</code>). To deactivate the environment and go back to the default one:</p>
 <div class="row">
 <button class="source bash toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
@@ -992,15 +993,35 @@ source deactivate
 ## Windows
 deactivate</code></pre>
 </div>
-To deactivate the environment and go back to root.
+<p>To remove the environment <code>geotest</code>:</p>
 <div class="row">
 <button class="source bash toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
 </button>
-<pre style=""><code class="source bash">conda remove --name astrolab --all</code></pre>
+<pre style=""><code class="source bash">conda remove --name geotest --all</code></pre>
 </div>
-<p>To remove the environment <code>astrolab</code>.</p>
-<p>You should beware that the activated environment is only valid for the shell in which you activated. For instance, if you close the shell window and open a new one you will have to activate it again. Additionaly, if you use <code>sudo</code> commands in a conda environment, it will return it to the root python and not the active environment.</p>
+<p>Note that the activated environment is only valid for the shell in which you activated it. For instance, if you close the shell window and open a new one you will have to activate it again. Additionally, if you use <code>sudo</code> commands to call Python, it will use the system's Python interpreter and not the active environment for security reasons. There should be no reason to call Python code in Conda with <code>sudo</code> rights in any case, since all packages are installed with your user permissions rather than root's.</p>
+<p>In addition, as you saw before, Conda is able to install some non-Python packages that have Python bindings, such as Spyder and GDAL. This is useful for making sure your Python and binary versions match and do not interfere with the system-wide ones. However, since those packages are installed into a virtual environment, they will not be accessible from your system menu. Instead, to run e.g. Spyder from within a Conda environment called <code>ide</code>, you would need to do something like this:</p>
+<div class="row">
+<button class="source bash toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> bash source
+</button>
+<pre style=""><code class="source bash">source activate ide
+spyder</code></pre>
+</div>
+<p>It is useful to check whether the executable comes from the system or a virtual environment by using the <code>which</code> or <code>type</code> commands:</p>
+<div class="row">
+<button class="source bash toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> bash source
+</button>
+<pre style=""><code class="source bash">type gdalinfo</code></pre>
+<button class="output bash toggle btn btn-xs btn-success">
+<span class="glyphicon glyphicon-chevron-down"></span> bash output
+</button>
+<pre style=""><code class="output bash">## gdalinfo is /usr/bin/gdalinfo
+</code></pre>
+</div>
+<p>This shows that you would be running GDAL from the system rather than the Conda virtual environment, otherwise the path would include <code>miniconda</code> and the virtual environment name.</p>
 <p>Some helpful utilities are:</p>
 <ul>
 <li><code>conda list</code> to check which packages are installed in <code>root</code> or in the active environment;</li>
@@ -1024,9 +1045,9 @@ gdal-config --version</code></pre>
 <button class="output bash toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> bash output
 </button>
-<pre style=""><code class="output bash">## Python 2.7.14
+<pre style=""><code class="output bash">## Python 2.7.13
 ## Python 3.6.3
-## 1.11.5
+## 2.2.3
 </code></pre>
 </div>
 <ul>
@@ -1036,7 +1057,7 @@ gdal-config --version</code></pre>
 <button class="source bash toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
 </button>
-<pre style=""><code class="source bash">python2 # type this in the terminal to start the python interpreter</code></pre>
+<pre style=""><code class="source bash">python3 # type this in the terminal to start the python interpreter</code></pre>
 </div>
 <p>An example script to find out what the installed Python version is (<a href="https://stackoverflow.com/questions/1093322/how-do-i-check-what-version-of-python-is-running-my-script">more info in question asked on stackoverflow</a>)</p>
 <div class="row">
@@ -1044,12 +1065,11 @@ gdal-config --version</code></pre>
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
 <pre style=""><code class="source python">import sys
-print sys.version #parentheses necessary in python 3. </code></pre>
+print(sys.version)</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## 2.7.10 (default, Jul 15 2017, 17:16:57) 
-## [GCC 4.2.1 Compatible Apple LLVM 9.0.0 (clang-900.0.31)]
+<pre style=""><code class="output python">## 3.6.3 (default, Oct 11 2017, 14:49:33) [GCC]
 </code></pre>
 </div>
 To exit Python in the terminal:
@@ -1058,7 +1078,7 @@ To exit Python in the terminal:
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
 <pre style=""><code class="source python">exit()
-or 
+# or 
 quit()</code></pre>
 </div>
 <h2 id="running-python-in-jupyter-notebooks">Running Python in Jupyter Notebooks</h2>
@@ -1071,20 +1091,21 @@ quit()</code></pre>
 cd
 
 # Create conda environment
-conda create -n astrolab python=2.7 numpy ipython-notebook # astrolab is name of your conda environment
+conda create -n geoscripting numpy jupyter # geoscripting is name of your new conda environment
 
 # Activate conda environment
-source activate astrolab</code></pre>
+source activate geoscripting</code></pre>
 </div>
 <p>By creating your conda environment, you created a set of packages and a Python version to be used only in that specific conda environment. In your terminal you can see the name of your conda environment at the start of the command line before your user information. Now that we are working in our conda environment with all the necessary packages with correct versions, we can start with setting up our notebook.</p>
 <div class="row">
 <button class="source bash toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
 </button>
-<pre style=""><code class="source bash"># Start a Jupyter Notebook from terminal
+<pre style=""><code class="source bash"># Start a Jupyter Notebook from the terminal
 jupyter notebook</code></pre>
 </div>
-<p>If everything goes according to plan, Jupyter will pop up in your browser. You will see a menu with all files. Browse to your workspace, where you want to store your Python script. In the right top click on new folder (if you dont have folder/project structure yet) and/or click on python2 to create a Jupyter Notebook. Click on help and have a go at the <code>User Interface Tour</code>. Give your notebook a name.</p>
+<p>If everything goes according to plan, Jupyter will pop up in your browser. You will see a menu with all the files in your working directory. <strong>Note</strong>: the Jupyter notebook will only be able to see files that are accessible from the working directory in which from which you launch it! So keep track of the working directory in your terminal. A good practice is to start it in your project's directory.</p>
+<p>Once you are in the desired working directory, in the right top click on <em>New</em> <e2>&lt;86&gt;&lt;92&gt; <em>Folder</em> (if you don't have folder/project structure yet) and/or click on <em>Python 3</em> to create a Jupyter Notebook. Click on help and have a go at the <code>User Interface Tour</code>. Give your notebook a name.</p>
 <p>These are the basic functions you will need today:</p>
 <ul>
 <li><code>Save and checkpoint</code></li>
@@ -1092,7 +1113,7 @@ jupyter notebook</code></pre>
 <li><code>Run</code></li>
 <li><code>Code/Markdown/Heading</code></li>
 </ul>
-<p>Similar to RMarkdown, Jupyter Notebooks has code cells (called code) and text cells (called markdowns). Insert some extra cells and change the first cell from code to markdown. Enter some docmentation for your code (e.g. your teamname, exercise and date). Leave the other cells on code.</p>
+<p>Similar to RMarkdown, Jupyter Notebooks has code cells (called <em>Code</em>) and text cells (called <em>Markdown</em>). Insert some extra cells by clicking the + button and change the first cell from code to markdown. Enter some documentation for your code (e.g. your team name, exercise and date). Leave the other cells on code. To run code in a code cell, select it and press the <em>Run</em> button.</p>
 <h2 id="a-short-python-refresher">A short Python refresher</h2>
 <h3 id="finding-help">Finding help</h3>
 <p>Now we can try some coding. First we learn how to look for help while coding in Python. In the second cell type the code below and run it (ctrl + enter is shortcut for run cell).</p>
@@ -1102,7 +1123,7 @@ jupyter notebook</code></pre>
 </button>
 <pre style=""><code class="source python">import sys
 help(sys)
-print "-------------------------------------"
+print("-------------------------------------")
 help(1)</code></pre>
 </div>
 <p>See how the functions in the <code>sys</code> module got listed and how we got information how to work with integers. Sometimes you also need to use the internet to find information.</p>
@@ -1118,7 +1139,9 @@ help(1)</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## no Python documentation found for 'hamster'
+<pre style=""><code class="output python">## No Python documentation found for 'hamster'.
+## Use help() to get the interactive help utility.
+## Use help(str) for help on the str class.
 </code></pre>
 </div>
 <p>See also:</p>
@@ -1165,10 +1188,10 @@ buildingNumber = 101
 </div>
 <p>There is no need to say or define the datatype, <code>python</code> has a loose type variable declaration.</p>
 <p><em>If it walks like a duck, swims like a duck and quacks like a duck I call it a duck</em></p>
-<p>Python is basically a list of objects: List are organised with indexes. E.g.</p>
+<p>Python is basically a list of objects.</p>
 <h3 id="lists">Lists</h3>
 <p>Now we will have a go with lists.</p>
-<p>Tip!: Variables, functions and methods that you define in one of your Jupyter Notebook cells can be used in other cells too.</p>
+<p><strong>Tip</strong>: Variables, functions and methods that you define in one of your Jupyter Notebook cells can be used in other cells too.</p>
 Run this code in one cell:
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
@@ -1197,8 +1220,8 @@ Run this code in another cell. We will do some appending, inserting, extending a
 <pre style=""><code class="source python">campus.append("Atlas")
 campus.insert(1,"SoilMuseum")
 campus.extend(["Action", "Vitae", "Zodiac"])
-print campus
-print campus[::2]
+print(campus)
+print(campus[::2])
 ## list[start:end:step]</code></pre>
 </div>
 <p>See how the notebook remembered how you set the variable <code>campus</code>.</p>
@@ -1220,21 +1243,21 @@ campusDic = {101:'Gaia',
              107:'Radix',
              102:'Forum',
              104:'Altas'}
-print campusDic[102]</code></pre>
+print(campusDic[102])</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
 <pre style=""><code class="output python">## Forum
 </code></pre>
 </div>
-<p>Loops: watch out here with code indentation. Python uses indentation to define code blocks and not <code>{}</code> like other languages. <code>print building</code> has to be <em>indented</em> by 1 tab or 4 spaces ( <a href="https://stackoverflow.com/questions/119562/tabs-versus-spaces-in-python-programming">recommended</a> ).</p>
+<p>Loops: watch out here with code indentation. Python uses indentation to define code blocks and not <code>{}</code> like other languages. <code>print(building)</code> in the following code has to be <em>indented</em> by 1 tab or 4 spaces ( <a href="https://stackoverflow.com/questions/119562/tabs-versus-spaces-in-python-programming">recommended</a> ).</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
 <pre style=""><code class="source python">campus = ['Gaia','Lumen', 'Radix', 'Forum']
 for building in campus:
-    print building</code></pre>
+    print(building)</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
@@ -1252,7 +1275,7 @@ for building in campus:
 </button>
 <pre style=""><code class="source python">range(5)
 for number in range(5):
-    print number</code></pre>
+    print(number)</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
@@ -1270,9 +1293,9 @@ for number in range(5):
 </button>
 <pre style=""><code class="source python">x = 3
 if x < 3:
-    print "below 3"
+    print("below 3")
 else:
-    print "above 3"</code></pre>
+    print("above 3")</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
@@ -1285,13 +1308,13 @@ else:
 </button>
 <pre style=""><code class="source python">x = 3
 if x == 1:
-    print "it is one"
+    print("it is one")
 elif x==2:
-    print "it is two"
+    print("it is two")
 elif x==3:
-    print "it is three"
+    print("it is three")
 else: 
-    print "above 3"</code></pre>
+    print("above 3")</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
@@ -1305,7 +1328,7 @@ else:
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
 <pre style=""><code class="source python">def printPotato():
-    print "potato"
+    print("potato")
 
 printPotato()</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
@@ -1320,7 +1343,7 @@ printPotato()</code></pre>
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
 <pre style=""><code class="source python">def printHelloName(name):
-    print "Good morning " + name
+    print("Good morning " + name)
 
 printHelloName("Jan")</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
@@ -1338,7 +1361,7 @@ printHelloName("Jan")</code></pre>
     tmp = number*3
     return tmp, number
     
-print times3(4)
+print(times3(4))
 
 output, input = times3(4)
 print(output)
@@ -1372,11 +1395,11 @@ print(input)</code></pre>
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
 <pre style=""><code class="source python">import math
-print dir(math) #show names in math module</code></pre>
+print(dir(math)) #show names in math module</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## ['__doc__', '__file__', '__name__', '__package__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'hypot', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'modf', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'trunc']
+<pre style=""><code class="output python">## ['__doc__', '__file__', '__loader__', '__name__', '__package__', '__spec__', 'acos', 'acosh', 'asin', 'asinh', 'atan', 'atan2', 'atanh', 'ceil', 'copysign', 'cos', 'cosh', 'degrees', 'e', 'erf', 'erfc', 'exp', 'expm1', 'fabs', 'factorial', 'floor', 'fmod', 'frexp', 'fsum', 'gamma', 'gcd', 'hypot', 'inf', 'isclose', 'isfinite', 'isinf', 'isnan', 'ldexp', 'lgamma', 'log', 'log10', 'log1p', 'log2', 'modf', 'nan', 'pi', 'pow', 'radians', 'sin', 'sinh', 'sqrt', 'tan', 'tanh', 'tau', 'trunc']
 </code></pre>
 </div>
 <ul>
@@ -1390,19 +1413,19 @@ Basically there are three ways to load a module:
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
 <pre style=""><code class="source python">import math
-print math.pi
+print(math.pi)
 
 from math import pi
-print pi
+print(pi)
 
 import numpy as np
-print np.pi</code></pre>
+print(np.pi)</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## 3.14159265359
-## 3.14159265359
-## 3.14159265359
+<pre style=""><code class="output python">## 3.141592653589793
+## 3.141592653589793
+## 3.141592653589793
 </code></pre>
 </div>
 <blockquote>
@@ -1434,13 +1457,13 @@ glob.glob("*")</code></pre>
 </button>
 <pre style=""><code class="source python">from datetime import timedelta, date
 delta = timedelta(days=7)
-print date.today()
-print date.today()+delta</code></pre>
+print(date.today())
+print(date.today()+delta)</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
-<pre style=""><code class="output python">## 2017-12-04
-## 2017-12-11
+<pre style=""><code class="output python">## 2017-12-18
+## 2017-12-25
 </code></pre>
 </div>
 <h3 id="file-access">File access</h3>
@@ -1461,7 +1484,7 @@ fileObj.close()</code></pre>
 </button>
 <pre style=""><code class="source python">fileObj = open('test.txt','r')
 a = fileObj.read()
-print a
+print(a)
 fileObj.close()</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
@@ -1485,7 +1508,7 @@ fileObj.close()</code></pre>
 </button>
 <pre style=""><code class="output python">## Traceback (most recent call last):
 ##   File "<string>", line 1, in <module>
-## IOError: [Errno 2] No such file or directory: '/foo0'
+## FileNotFoundError: [Errno 2] No such file or directory: '/foo0'
 </code></pre>
 </div>
 <p>The file doesn't exist, so the script stops and outputs an ugly message.</p>
@@ -1498,13 +1521,13 @@ fileObj.close()</code></pre>
 try:
     open("foo")
 except IOError:
-    print "no file"
+    print("no file")
 
 ## we can be more precise:
 try:
     open("/foo")
 except IOError:
-    print "no file"</code></pre>
+    print("no file")</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
@@ -1519,10 +1542,10 @@ except IOError:
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
 </button>
 <pre style=""><code class="source bash">## Add Matplotlib and seaborn modules
-conda install --name astrolab matplotlib seaborn
+conda install --name geoscripting matplotlib seaborn
 # as conda install --name env_name pythonmodule pythonmodule</code></pre>
 </div>
-<p>We will make a graph with the <code>Seaborn</code> module and plot it with <code>Matplotlib</code>. Give it a try!</p>
+<p>We will make a graph with the <code>Seaborn</code> module and plot it with <code>Matplotlib</code>. Give it a try! (If you have just installed it, you might need to close the Jupyter notebook and reopen it.)</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1539,7 +1562,7 @@ sns.pairplot(df, kind = "reg", hue = "species")
 plt.show()</code></pre>
 </div>
 <p>Nice visualization huh! Good job.</p>
-Now make a map with <code>Folium</code>.
+<p>Now make a map with <code>Folium</code>. Note: Folium is very new and so is not in the main conda channel, so install it with <code>conda install folium -c conda-forge</code>.</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -1552,8 +1575,8 @@ map = folium.Map(location=SF_COORDINATES, tiles='Mapbox Control Room', zoom_star
 display(map)</code></pre>
 </div>
 <h3 id="exiting-the-jupyter-notebook">Exiting the Jupyter Notebook</h3>
-<p>Your Jupyter Notebook is automatically saved as a .ipynb (ipython notebook extension) on your computer, but you can also download it as a python script, pdf or html.</p>
-<p>By pressing ctrl + c in the terminal where the notebook is running, you cancel the running process. The terminal goes back to command line and you can exit the virtual environment by typing source deactivate.</p>
+<p>Your Jupyter Notebook is automatically saved as an .ipynb file (extension comes from the historic name &quot;IPython Notebook&quot;) on your computer, but you can also download it as a python script, pdf or html. You can also save it manually. To exit a notebook properly, use <em>File</em> <e2>&lt;86&gt;&lt;92&gt; <em>Close and Halt</em>.</p>
+<p>By pressing Ctrl + c in the terminal where Jupyter notebook server is running, you cancel the running process. The terminal goes back to command line and you can exit the virtual environment by typing <code>source deactivate</code>.</p>
 <div class="row">
 <button class="source bash toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> bash source

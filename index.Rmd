@@ -89,26 +89,28 @@ export PATH=$HOME/miniconda3/bin:$PATH
 
 For installation instructions in other operating systems, please go to the [Miniconda installation page](https://conda.io/docs/user-guide/install/index.html).
 
-After Miniconda is installed, you can install Spyder into the default Conda environment (by using the `anaconda` package channel):
-
-```{r, eval=FALSE, engine='bash'}
-conda install -c anaconda spyder
-```
-
 #### Usage
-The basic usage of Conda, after installed, is as follows:
+The basic usage of Conda, after installed, is as follows.
+
+To search for a package:
 
 ```{r, eval=FALSE, engine='bash'}
-conda install numpy
+conda search spyder
 ```
 
-This would install the `numpy` package. Note that this would install it into the default virtual environment. Conda is able to create any number of separate virtual environments, for example:
+This would give you a list of all packages that have "spyder" in the name and list all available versions.
 
 ```{r, eval=FALSE, engine='bash'}
-conda create --name astrolab python=2.7 numpy
+conda install spyder
 ```
 
-This would create a new environment called `astrolab` with Python 2.7 and `numpy` installed into it. To list the available environments:
+This would install the latest version of the `spyder` package (Python IDE). Note that this would install it into your user's root virtual environment (by default it is `$HOME/miniconda3`). Conda is able to create any number of isolated virtual environments, for example:
+
+```{r, eval=FALSE, engine='bash'}
+conda create --name geotest python=2.7 numpy
+```
+
+This would create a new environment called `geotest` with Python 2.7 and `numpy` installed into it. To list the available environments:
 
 ```{r, eval=FALSE, engine='bash'}
 conda info --envs
@@ -118,9 +120,9 @@ Conda puts an asterisk (*) in front of the active environment. To activate an en
 
 ```{r, eval=FALSE, engine='bash'}
 ## Linux, macOS
-source activate astrolab
+source activate geotest
 ## Windows
-activate astrolab
+activate geotest
 ```
 
 After this, the current environment is shown in (parentheses) or [brackets] in front of your prompt (`(astrolab)$`). To deactivate the environment and go back to the default one:
@@ -132,13 +134,28 @@ source deactivate
 deactivate
 ```
 
-To remove the environment `astrolab`:
+To remove the environment `geotest`:
 
 ```{r, eval=FALSE, engine='bash'}
-conda remove --name astrolab --all
+conda remove --name geotest --all
 ```
 
 Note that the activated environment is only valid for the shell in which you activated it. For instance, if you close the shell window and open a new one you will have to activate it again. Additionally, if you use `sudo` commands to call Python, it will use the system's Python interpreter and not the active environment for security reasons. There should be no reason to call Python code in Conda with `sudo` rights in any case, since all packages are installed with your user permissions rather than root's.
+
+In addition, as you saw before, Conda is able to install some non-Python packages that have Python bindings, such as Spyder and GDAL. This is useful for making sure your Python and binary versions match and do not interfere with the system-wide ones. However, since those packages are installed into a virtual environment, they will not be accessible from your system menu. Instead, to run e.g. Spyder from within a Conda environment called `ide`, you would need to do something like this:
+
+```{r, eval=FALSE, engine='bash'}
+source activate ide
+spyder
+```
+
+It is useful to check whether the executable comes from the system or a virtual environment by using the `which` or `type` commands:
+
+```{r, eval=TRUE, engine='bash'}
+type gdalinfo
+```
+
+This shows that you would be running GDAL from the system rather than the Conda virtual environment, otherwise the path would include `miniconda` and the virtual environment name.
 
 Some helpful utilities are:
 
@@ -168,13 +185,13 @@ python3 # type this in the terminal to start the python interpreter
 
 An example script to find out what the installed Python version is ([more info in question asked on stackoverflow](https://stackoverflow.com/questions/1093322/how-do-i-check-what-version-of-python-is-running-my-script))
 
-```{r, engine='python'}
+```{r, engine='python', engine.path='python3', engine.path='python3'}
 import sys
 print(sys.version)
 ```
 
 To exit Python in the terminal:
-```{r, eval=FALSE, engine='python'}
+```{r, eval=FALSE, engine='python', engine.path='python3', engine.path='python3'}
 exit()
 # or 
 quit()
@@ -189,20 +206,22 @@ You can program Python in your terminal, but more facilities are available to ma
 cd
 
 # Create conda environment
-conda create -n astrolab python=2.7 numpy ipython-notebook # astrolab is name of your conda environment
+conda create -n geoscripting numpy jupyter # geoscripting is name of your new conda environment
 
 # Activate conda environment
-source activate astrolab
+source activate geoscripting
 ```
 
 By creating your conda environment, you created a set of packages and a Python version to be used only in that specific conda environment. In your terminal you can see the name of your conda environment at the start of the command line before your user information. Now that we are working in our conda environment with all the necessary packages with correct versions, we can start with setting up our notebook.
 
 ```{r, eval=FALSE, engine='bash'}
-# Start a Jupyter Notebook from terminal
+# Start a Jupyter Notebook from the terminal
 jupyter notebook
 ```
 
-If everything goes according to plan, Jupyter will pop up in your browser. You will see a menu with all files. Browse to your workspace, where you want to store your Python script. In the right top click on new folder (if you dont have folder/project structure yet) and/or click on python2 to create a Jupyter Notebook. Click on help and have a go at the `User Interface Tour`. Give your notebook a name.
+If everything goes according to plan, Jupyter will pop up in your browser. You will see a menu with all the files in your working directory. **Note**: the Jupyter notebook will only be able to see files that are accessible from the working directory in which from which you launch it! So keep track of the working directory in your terminal. A good practice is to start it in your project's directory.
+
+Once you are in the desired working directory, in the right top click on *New* → *Folder* (if you don't have folder/project structure yet) and/or click on *Python 3* to create a Jupyter Notebook. Click on help and have a go at the `User Interface Tour`. Give your notebook a name.
 
 These are the basic functions you will need today:
 
@@ -211,7 +230,7 @@ These are the basic functions you will need today:
 - `Run`
 - `Code/Markdown/Heading`
 
-Similar to RMarkdown, Jupyter Notebooks has code cells (called code) and text cells (called markdowns). Insert some extra cells and change the first cell from code to markdown. Enter some docmentation for your code (e.g. your teamname, exercise and date). Leave the other cells on code. 
+Similar to RMarkdown, Jupyter Notebooks has code cells (called *Code*) and text cells (called *Markdown*). Insert some extra cells by clicking the + button and change the first cell from code to markdown. Enter some documentation for your code (e.g. your team name, exercise and date). Leave the other cells on code. To run code in a code cell, select it and press the *Run* button.
 
 ## A short Python refresher
 
@@ -219,10 +238,10 @@ Similar to RMarkdown, Jupyter Notebooks has code cells (called code) and text ce
 Now we can try some coding. First we learn how to look for help while coding in Python. In the second cell type the code below and run it (ctrl + enter is shortcut for run cell).
 
 
-```{r, engine='python', eval=FALSE}
+```{r, engine='python', engine.path='python3', eval=FALSE}
 import sys
 help(sys)
-print "-------------------------------------"
+print("-------------------------------------")
 help(1)
 ```
 
@@ -232,7 +251,7 @@ See how the functions in the `sys` module got listed and how we got information 
 
 Try out the following!!!
 
-```{r, engine='python'}
+```{r, engine='python', engine.path='python3'}
 help('hamster')
 ```
 
@@ -259,13 +278,13 @@ We continue working in Python.
 
 > **Question 2**: What is the difference between 10 and 10.0 when dealing with data types in Python?
 
-```{r, engine='python'}
+```{r, engine='python', engine.path='python3'}
 print(int(10.6))
 ```
 
 Variable is a storage location or symbolic name to a value e.g.:
 
-```{r, engine='python'}
+```{r, engine='python', engine.path='python3'}
 building = 'Gaia'
 buildingNumber = 101
 'Gaia'
@@ -277,21 +296,20 @@ There is no need to say or define the datatype, `python` has a loose type variab
 
 *If it walks like a duck, swims like a duck and quacks like a duck I call it a duck*
 
-Python is basically a list of objects:
-List are organised with indexes. E.g. 
+Python is basically a list of objects.
 
 ```{r setup, include=FALSE}
 library(knitr)
-opts_chunk$set(engine = 'python')
+opts_chunk$set(engine = 'python', engine.path='python3')
 ```
 
 ### Lists
 Now we will have a go with lists.
 
-Tip!: Variables, functions and methods that you define in one of your Jupyter Notebook cells can be used in other cells too.
+**Tip**: Variables, functions and methods that you define in one of your Jupyter Notebook cells can be used in other cells too.
 
 Run this code in one cell:
-```{r campus, engine='python'}
+```{r campus, engine='python', engine.path='python3'}
 campus = ['Gaia', 'Lumen', 'Radix', 'Forum']
 # how to can we print Forum?
 print(campus[3])
@@ -302,12 +320,12 @@ print(campus[0:3])
 ```
 
 Run this code in another cell. We will do some appending, inserting, extending and steps:
-```{r, engine='python', eval = FALSE}
+```{r, engine='python', engine.path='python3', eval = FALSE}
 campus.append("Atlas")
 campus.insert(1,"SoilMuseum")
 campus.extend(["Action", "Vitae", "Zodiac"])
-print campus
-print campus[::2]
+print(campus)
+print(campus[::2])
 ## list[start:end:step]
 ```
 
@@ -321,23 +339,23 @@ See how the notebook remembered how you set the variable `campus`.
 
 Let there be dictionaries... A dictionary is an unordered set of key:value pairs. Like in the dictionary, 'food':'voedsel'.
 
-```{r, engine='python'}
+```{r, engine='python', engine.path='python3'}
 # dictionary
 campusDic = {101:'Gaia',
              100:'Lumen',
              107:'Radix',
              102:'Forum',
              104:'Altas'}
-print campusDic[102]
+print(campusDic[102])
 ```
 
 Loops: watch out here with code indentation. Python uses indentation to define code blocks and not `{}` like other languages.
-`print building` has to be *indented* by 1 tab or 4 spaces ( [recommended](https://stackoverflow.com/questions/119562/tabs-versus-spaces-in-python-programming) ).
+`print(building)` in the following code has to be *indented* by 1 tab or 4 spaces ( [recommended](https://stackoverflow.com/questions/119562/tabs-versus-spaces-in-python-programming) ).
 
-```{r, engine='python'}
+```{r, engine='python', engine.path='python3'}
 campus = ['Gaia','Lumen', 'Radix', 'Forum']
 for building in campus:
-    print building
+    print(building)
 ```
 
 
@@ -345,63 +363,63 @@ Here, `building` is a variable that will contain any item in the campus list.
 
 Generic loops in Python have to interact over a sequence of objects e.g.
 
-```{r, engine='python'}
+```{r, engine='python', engine.path='python3'}
 range(5)
 for number in range(5):
-    print number
+    print(number)
 ```
 
 Object interaction and functional programming is an important part of Python programming and its tools are extensive.
 `if`/`else`:
 
-```{r, engine='python'}
+```{r, engine='python', engine.path='python3'}
 x = 3
 if x < 3:
-    print "below 3"
+    print("below 3")
 else:
-    print "above 3"
+    print("above 3")
 ```
 
-```{r, engine='python'}
+```{r, engine='python', engine.path='python3'}
 x = 3
 if x == 1:
-    print "it is one"
+    print("it is one")
 elif x==2:
-    print "it is two"
+    print("it is two")
 elif x==3:
-    print "it is three"
+    print("it is three")
 else: 
-    print "above 3"
+    print("above 3")
 ```
 
 ### Functions
 
 A function is a section of code that does something specific that you want to use multiple times without having to type the full function again but just call the function by its name.
 
-```{r, engine='python'}
+```{r, engine='python', engine.path='python3'}
 def printPotato():
-    print "potato"
+    print("potato")
 
 printPotato()
 ```
 
 Functions accept arguments and return variables e.g.:
 
-```{r, engine='python'}
+```{r, engine='python', engine.path='python3'}
 def printHelloName(name):
-    print "Good morning " + name
+    print("Good morning " + name)
 
 printHelloName("Jan")
 ```
 
 `return` is used to indicate what you want to obtain from the function, you can `return` multiple items and return can be used to assign output to variables outside of the function.
 
-```{r, engine='python'}
+```{r, engine='python', engine.path='python3'}
 def times3(number):
     tmp = number*3
     return tmp, number
     
-print times3(4)
+print(times3(4))
 
 output, input = times3(4)
 print(output)
@@ -412,21 +430,21 @@ print(input)
 
 Try this!
 
-```{r, engine='python', eval=FALSE}
+```{r, engine='python', engine.path='python3', eval=FALSE}
 import this
 ```
 
 This poem is called the Zen of Python and describes how Python should be used. It is an inside joke, but has some good practices to it. There are more best practice guides for Python [best of best practices guide in Python](https://gist.github.com/sloria/7001839).
 
-```{r, engine='python', eval=FALSE}
+```{r, engine='python', engine.path='python3', eval=FALSE}
 from __future__ import braces
 ```
 
 Another inside joke ... where your Python says that it will never delimit coding blocks by braces instead of indentation. Let's continue with more serious programming.
 
-```{r, engine='python'}
+```{r, engine='python', engine.path='python3'}
 import math
-print dir(math) #show names in math module
+print(dir(math)) #show names in math module
 ```
 
 - The best way to learn a module is by checking [documentation](https://docs.python.org/2/).
@@ -434,15 +452,15 @@ print dir(math) #show names in math module
 - A module contains code that can be used or excuted.
 
 Basically there are three ways to load a module:
-```{r, engine='python'}
+```{r, engine='python', engine.path='python3'}
 import math
-print math.pi
+print(math.pi)
 
 from math import pi
-print pi
+print(pi)
 
 import numpy as np
-print np.pi
+print(np.pi)
 ```
 
 > **Question 5**: Which is the best way to import modules?
@@ -460,16 +478,16 @@ print np.pi
 
 Some examples:
 
-```{r, eval=FALSE, engine='python'}
+```{r, eval=FALSE, engine='python', engine.path='python3'}
 import glob
 glob.glob("*")
 ```
 
-```{r,engine='python'}
+```{r,engine='python', engine.path='python3'}
 from datetime import timedelta, date
 delta = timedelta(days=7)
-print date.today()
-print date.today()+delta
+print(date.today())
+print(date.today()+delta)
 ```
 
 ### File access
@@ -478,7 +496,7 @@ File access is very simple for 99% of the cases.
 
 Write something to file:
 
-```{r, engine='python'}
+```{r, engine='python', engine.path='python3'}
 fileObj = open('test.txt','w')
 fileObj.write('some simple text')
 fileObj.close()
@@ -486,10 +504,10 @@ fileObj.close()
 
 And read something from a file:
 
-```{r, engine='python'}
+```{r, engine='python', engine.path='python3'}
 fileObj = open('test.txt','r')
 a = fileObj.read()
-print a
+print(a)
 fileObj.close()
 ```
 
@@ -501,7 +519,7 @@ Sometime problems occur... Errors detected during execution are called *exceptio
 
 Good code deals with exceptions:
 
-```{r, error=TRUE, engine='python'}
+```{r, error=TRUE, engine='python', engine.path='python3'}
 open("/foo0")
 ```
 
@@ -509,18 +527,18 @@ The file doesn't exist, so the script stops and outputs an ugly message.
 
 How to deal with this I/O error? Good programming!
 
-```{r, engine='python'}
+```{r, engine='python', engine.path='python3'}
 
 try:
     open("foo")
 except IOError:
-    print "no file"
+    print("no file")
 
 ## we can be more precise:
 try:
     open("/foo")
 except IOError:
-    print "no file"
+    print("no file")
 ```
 
 ### Visualization
@@ -529,13 +547,13 @@ Jupyter Notebooks can display output of your code, such as graphs, images and ma
 
 ```{r, engine='bash', eval=FALSE}
 ## Add Matplotlib and seaborn modules
-conda install --name astrolab matplotlib seaborn
+conda install --name geoscripting matplotlib seaborn
 # as conda install --name env_name pythonmodule pythonmodule
 ```
 
-We will make a graph with the `Seaborn` module and plot it with `Matplotlib`. Give it a try!
+We will make a graph with the `Seaborn` module and plot it with `Matplotlib`. Give it a try! (If you have just installed it, you might need to close the Jupyter notebook and reopen it.)
 
-```{r, engine='python', eval=FALSE}
+```{r, engine='python', engine.path='python3', eval=FALSE}
 # Load library
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -550,8 +568,9 @@ plt.show()
 
 Nice visualization huh! Good job.
 
-Now make a map with `Folium`. 
-```{r, engine='python', eval=FALSE}
+Now make a map with `Folium`. Note: Folium is very new and so is not in the main conda channel, so install it with `conda install folium -c conda-forge`.
+
+```{r, engine='python', engine.path='python3', eval=FALSE}
 import folium
 
 SF_COORDINATES = (51.9871868, 5.6593948)
@@ -561,9 +580,9 @@ display(map)
 ```
 
 ### Exiting the Jupyter Notebook
-Your Jupyter Notebook is automatically saved as a .ipynb (ipython notebook extension) on your computer, but you can also download it as a python script, pdf or html.
+Your Jupyter Notebook is automatically saved as an .ipynb file (extension comes from the historic name "IPython Notebook") on your computer, but you can also download it as a python script, pdf or html. You can also save it manually. To exit a notebook properly, use *File* → *Close and Halt*.
 
-By pressing ctrl + c in the terminal where the notebook is running, you cancel the running process. The terminal goes back to command line and you can exit the virtual environment by typing source deactivate.
+By pressing Ctrl + c in the terminal where Jupyter notebook server is running, you cancel the running process. The terminal goes back to command line and you can exit the virtual environment by typing `source deactivate`.
 
 ```{r, engine='bash', eval=FALSE}
 source deactivate
