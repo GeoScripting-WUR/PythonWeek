@@ -871,7 +871,7 @@ Week 3: Python for geo-scripting
 <div class="contents col-xs-12 col-md-10">
 <h1 id="wur-geoscripting-wur-logo"><a href="https://geoscripting-wur.github.io/">WUR Geoscripting</a> <img src="http://www.wageningenur.nl/upload/f9a0b5f2-15c5-4b84-9e14-20ef02f5e265_wur-logo.png" alt="WUR logo" /></h1>
 <h1 id="vector-data-handling-with-python">Vector data handling with Python</h1>
-<p><em>Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Dainius Masiliunas</em> - 30 November, 2017</p>
+<p><em>Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Dainius Masiliunas</em> - 11 January, 2018</p>
 <h2 id="gdalogr-using-python">GDAL/OGR using Python</h2>
 <p>By now you should know what the following abbreviations stand for, and what can you do with the software:</p>
 <ul>
@@ -951,12 +951,10 @@ spatialRef.ImportFromEPSG(4326)  # from EPSG - Lat/long</code></pre>
 <pre style=""><code class="source python">## lat/long definition
 source = osr.SpatialReference()
 source.ImportFromEPSG(4326)
-
 # http://spatialreference.org/ref/sr-org/6781/
 # http://spatialreference.org/ref/epsg/28992/
 target = osr.SpatialReference()
 target.ImportFromEPSG(28992)
-
 # transform from lat/long to Dutch coord. system
 transform = osr.CoordinateTransformation(source, target)
 point = ogr.CreateGeometryFromWkt("POINT (5.6660 51.9872)")
@@ -1015,7 +1013,6 @@ print os.getcwd()</code></pre>
 #from osgeo import ogr,osr
 #import os
 #os.chdir('./data')
-
 ## Is the ESRI Shapefile driver available?
 driverName = "ESRI Shapefile"
 drv = ogr.GetDriverByName( driverName )
@@ -1032,7 +1029,6 @@ else:
 <pre style=""><code class="source python">## Make name for file and layer
 fn = "points.shp"
 layername = "anewlayer"
-
 ## Create shape file
 ds = drv.CreateDataSource(fn)
 print ds.GetRefCount()</code></pre>
@@ -1045,7 +1041,6 @@ print ds.GetRefCount()</code></pre>
 <pre style=""><code class="source python"># Set spatial reference by importing a projection
 spatialReference = osr.SpatialReference()
 spatialReference.ImportFromProj4('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')
-
 # Optionally you could enter epsg code to define the crs
 # spatialReference.ImportFromEPSG(4326)</code></pre>
 </div>
@@ -1079,17 +1074,14 @@ print(layer.GetExtent())</code></pre>
 <pre style=""><code class="source python">## Create two point objects
 point1 = ogr.Geometry(ogr.wkbPoint)
 point2 = ogr.Geometry(ogr.wkbPoint)
-
 ## Add geometry
 # SetPoint(self, int point, double x, double y, double z = 0)
 point1.SetPoint(0,4.897070,52.377956) 
 point2.SetPoint(0,5.104480,52.092876)
-
 ## Feature is defined from properties of the layer, e.g:
 layerDefinition = layer.GetLayerDefn()
 feature1 = ogr.Feature(layerDefinition)
 feature2 = ogr.Feature(layerDefinition)
-
 ## Lets add the points to the feature
 feature1.SetGeometry(point1)
 feature2.SetGeometry(point2)</code></pre>
@@ -1103,7 +1095,6 @@ feature2.SetGeometry(point2)</code></pre>
 <pre style=""><code class="source python">## Lets store the features in a layer
 layer.CreateFeature(feature1)
 layer.CreateFeature(feature2)
-
 print "Extent of layer"
 print layer.GetExtent()</code></pre>
 </div>
@@ -1132,7 +1123,6 @@ print point2.ExportToKML()</code></pre>
 <pre style=""><code class="source python">## Buffering
 buffer = point2.Buffer(1,1)
 print buffer.Intersects(point1)
-
 ## More exports:
 buffer.ExportToGML()</code></pre>
 </div>
@@ -1164,30 +1154,24 @@ print aLayer.name()</code></pre>
 </button>
 <pre style=""><code class="source python"># Drv is the ESRI shapefile driver from above and fn the filename
 ds = drv.Open(fn, 1)
-
 ## Check layers and get the first layer
 layernr = ds.GetLayerCount()
 print layernr
 layer = ds.GetLayerByIndex(0)
 print layer
-
 ## Get number of features in shapefile layer
 features_number = layer.GetFeatureCount()
 print "number of features for this layer:", features_number
-
 ## Get the feature definition
 featureDefn = layer.GetLayerDefn()
-
 ## Create a new point
 point = ogr.Geometry(ogr.wkbPoint)
 point.SetPoint(0,5.6909725,50.8513682)
 print point
 ## Similarly point.AddPoint(2,1)
-
 ## Create a new feature
 feature = ogr.Feature(featureDefn)
 feature.SetGeometry(point)
-
 ## Lets store the feature in file
 layer.CreateFeature(feature)
 ds.Destroy()</code></pre>
@@ -1235,54 +1219,8 @@ map_osm.save('osm.html')</code></pre>
 <button class="source R toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> R source
 </button>
-<pre style=""><code class="source r">getwd()</code></pre>
-<button class="output R toggle btn btn-xs btn-success">
-<span class="glyphicon glyphicon-chevron-down"></span> R output
-</button>
-<pre style=""><code class="output r">## [1] "/home/WUR/swink019/Documents/Check/Pythonweek/PythonWeek"
-</code></pre>
-<button class="source R toggle btn btn-xs btn-primary">
-<span class="glyphicon glyphicon-chevron-down"></span> R source
-</button>
-<pre style=""><code class="source r">list.files()</code></pre>
-<button class="output R toggle btn btn-xs btn-success">
-<span class="glyphicon glyphicon-chevron-down"></span> R output
-</button>
-<pre style=""><code class="output r">##  [1] "A simple notebook.ipynb"                      
-##  [2] "Buffer example.ipynb"                         
-##  [3] "ConnectingandharvestingtweetswithPython.ipynb"
-##  [4] "custom.css"                                   
-##  [5] "figs"                                         
-##  [6] "HarvestingRealTimeTweets.ipynb"               
-##  [7] "HarvestingTwitterdata.pdf"                    
-##  [8] "index.html"                                   
-##  [9] "index.Rmd"                                    
-## [10] "knitrBootsrap_setup.R"                        
-## [11] "Matplotlib_basemap.ipynb"                     
-## [12] "OGR examples.ipynb"                           
-## [13] "osm.html"                                     
-## [14] "Plot Map.ipynb"                               
-## [15] "points.geojson"                               
-## [16] "points.html"                                  
-## [17] "presentationPythonWhyAndWhere"                
-## [18] "PythonTwitter.html"                           
-## [19] "PythonTwitter.Rmd"                            
-## [20] "PythonWeek.Rproj"                             
-## [21] "Raster data handling.ipynb"                   
-## [22] "RasterPython.html"                            
-## [23] "RasterPython.Rmd"                             
-## [24] "README.html"                                  
-## [25] "README.md"                                    
-## [26] "ReprojectingLatLongtoUTM.html"                
-## [27] "ReprojectingLatLongtoUTM.Rmd"                 
-## [28] "runningapythonscript.html"                    
-## [29] "runningapythonscript.Rmd"                     
-## [30] "Slides.html"                                  
-## [31] "Slides.Rmd"                                   
-## [32] "test.txt"                                     
-## [33] "VectorPython.html"                            
-## [34] "VectorPython.Rmd"
-</code></pre>
+<pre style=""><code class="source r">getwd()
+list.files()</code></pre>
 </div>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
@@ -1293,9 +1231,7 @@ import os
 pointsGeo=os.path.join("points.geojson")
 map_points = folium.Map(location=[52,5.7],tiles='Mapbox Bright', zoom_start=6)
 map_points.choropleth(geo_data=pointsGeo)
-map_points.save('points.html')
-
-</code></pre>
+map_points.save('points.html')</code></pre>
 </div>
 <p>
  
@@ -1341,9 +1277,8 @@ rm -v points*</code></pre>
 <li>Make a webmap of your buffer with leaflet</li>
 </ul>
 <p>Bonus: print the distance between the two points (Hint: <code>Distance()</code>)</p>
+<p>Upload your documented and well structured Ipython Notebook to a GitLab repository.</p>
 <p>For making nice maps see the following <a href="https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Plot%20Map.ipynb">python notebooks</a>.</p>
-<h2 id="deadline">Deadline</h2>
-<p>Upload your documented and well structured Ipython Notebook to a GitLab repository and send the link before 10:00.</p>
 <h1 id="more-information">More information</h1>
 <p>If you have time left:</p>
 <ul>

@@ -361,12 +361,12 @@ map_osm.save('osm.html')
 <p>&nbsp;</p> 
 <div  class="img-responsive center-block" align="center"><iframe src="osm.html" width="500" height="300" style="border: 0"></iframe></div>
 <p>&nbsp;</p>
-```{r}
+```{r, eval = FALSE}
 getwd()
 list.files()
 ```
 
-```{r, engine='python'}
+```{r, engine='python', eval = FALSE}
 import folium
 import os
 pointsGeo=os.path.join("points.geojson")
@@ -417,11 +417,9 @@ Create your own shapefile of two point locations (e.g. a location of the GAIA bu
 
 Bonus: print the distance between the two points (Hint: `Distance()`)
 
+Upload your documented and well structured Ipython Notebook to a GitLab repository.
+
 For making nice maps see the following [python notebooks](https://github.com/GeoScripting-WUR/PythonWeek/blob/gh-pages/Plot%20Map.ipynb).
-
-## Deadline
-
-Upload your documented and well structured Ipython Notebook to a GitLab repository and send the link before 10:00.
 
 # More information
 
