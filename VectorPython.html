@@ -871,7 +871,7 @@ Week 3: Python for geo-scripting
 <div class="contents col-xs-12 col-md-10">
 <h1 id="wur-geoscripting-wur-logo"><a href="https://geoscripting-wur.github.io/">WUR Geoscripting</a> <img src="http://www.wageningenur.nl/upload/f9a0b5f2-15c5-4b84-9e14-20ef02f5e265_wur-logo.png" alt="WUR logo" /></h1>
 <h1 id="vector-data-handling-with-python">Vector data handling with Python</h1>
-<p><em>Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Dainius Masiliunas</em> - 11 January, 2018</p>
+<p><em>Jan Verbesselt, Jorge Mendes de Jesus, Aldo Bergsma, Dainius Masiliunas</em> - 22 January, 2018</p>
 <h2 id="gdalogr-using-python">GDAL/OGR using Python</h2>
 <p>By now you should know what the following abbreviations stand for, and what can you do with the software:</p>
 <ul>
@@ -892,6 +892,13 @@ Week 3: Python for geo-scripting
 <li>Webservices such as Web Feature Service 1.0,1.1,2.0 (WFS output as GML)</li>
 </ul>
 <p><strong>OGR Data drivers:</strong> A driver is an object that knows how to interact with a certain data type (e.g. a shapefile). You need to know the right driver to read or write data. Some drivers might only be able to read content, but the majority can read and write.</p>
+Start a terminal and see if you can load osgeo in Python.
+<div class="row">
+<button class="source bash toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> bash source
+</button>
+<pre style=""><code class="source bash">python</code></pre>
+</div>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -910,8 +917,36 @@ From the terminal you can also type the following to obtain an overview of suppo
 ogrinfo --formats</code></pre>
 </div>
 <p><a href="http://www.gdal.org/ogr_formats.html">More info about the different OGR formats</a>.</p>
+<h2 id="setting-up-environment">Setting up environment</h2>
+<p>Before we continue with scripting, you need to setup your Python environment. In the previous Python lesson you learned about Conda and Jupyter Notebooks. We will use both again today. Check if you have made any conda environment named geoscripting.</p>
+<div class="row">
+<button class="source bash toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> bash source
+</button>
+<pre style=""><code class="source bash">## Display all your conda environments
+conda info --envs</code></pre>
+</div>
+<p>If you don't have a conda environment called 'geoscripting', create it first.</p>
+<div class="row">
+<button class="source bash toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> bash source
+</button>
+<pre style=""><code class="source bash">## Create conda environment called geoscripting
+conda create --name geoscripting python=3 numpy jupyter</code></pre>
+</div>
+<p>Then install todays modules in your conda environment and start your Jupyter Notebook.</p>
+<div class="row">
+<button class="source bash toggle btn btn-xs btn-primary">
+<span class="glyphicon glyphicon-chevron-down"></span> bash source
+</button>
+<pre style=""><code class="source bash">## Install gdal and folium
+conda install --name geoscripting --channel conda-forge gdal folium
+source activate geoscripting
+jupyter notebook</code></pre>
+</div>
+<p>Open a new Ipython Notebook in an appropriate location. Output of the Python scripts from Jupyter Notebook will be saved in the repository where the .ipynb is stored.</p>
 <h2 id="points">Points</h2>
-<p>What does &quot;WKT&quot; mean?</p>
+<p>Now we continue with the tutorial. Try the script below and find out what &quot;WKT&quot; means.</p>
 <div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
@@ -921,7 +956,7 @@ ogrinfo --formats</code></pre>
 wkt = "POINT (173914.00 441864.00)"
 pt = ogr.CreateGeometryFromWkt(wkt)
 print(pt)
-# print help(osgeo.ogr)</code></pre>
+# print(help(osgeo.ogr))</code></pre>
 <button class="output python toggle btn btn-xs btn-success">
 <span class="glyphicon glyphicon-chevron-down"></span> python output
 </button>
@@ -957,9 +992,9 @@ target = osr.SpatialReference()
 target.ImportFromEPSG(28992)
 # transform from lat/long to Dutch coord. system
 transform = osr.CoordinateTransformation(source, target)
-point = ogr.CreateGeometryFromWkt("POINT (5.6660 51.9872)")
+point = ogr.CreateGeometryFromWkt("POINT (5.6660 51.9872)") #ogr uses lon, lat
 point.Transform(transform)
-print point.ExportToWkt()</code></pre>
+print(point.ExportToWkt())</code></pre>
 </div>
 <p>Are you still keeping track of your data and coordinate system?</p>
 <blockquote>
@@ -985,17 +1020,7 @@ print point.ExportToWkt()</code></pre>
                 Geometry
                     Point</code></pre>
 </div>
-<p>Start a new Python script within the <code>Python</code> console of QGIS (recommended for today!). Open QGIS Desktop, go to plugins and start python console (or use short ctrl + alt + p).</p>
-You can set the working directory using:
-<div class="row">
-<button class="source python toggle btn btn-xs btn-primary">
-<span class="glyphicon glyphicon-chevron-down"></span> python source
-</button>
-<pre style=""><code class="source python">import os
-os.chdir('pathtoyourworkingdirectory')
-print os.getcwd()</code></pre>
-</div>
-<p>Now you can continue (you do not need to repeat the <code>import</code> if you have already done so!):</p>
+<p>Now we know how a file is made, you can continue to make a file:</p>
 <ul>
 <li>Set spatial reference</li>
 <li>Create shape file</li>
@@ -1009,17 +1034,13 @@ print os.getcwd()</code></pre>
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
-<pre style=""><code class="source python">## Loading the modules
-#from osgeo import ogr,osr
-#import os
-#os.chdir('./data')
-## Is the ESRI Shapefile driver available?
+<pre style=""><code class="source python">## Is the ESRI Shapefile driver available?
 driverName = "ESRI Shapefile"
-drv = ogr.GetDriverByName( driverName )
+drv = ogr.GetDriverByName(driverName)
 if drv is None:
-    print "%s driver not available.\n" % driverName
+    print("%s driver not available.\n" % driverName)
 else:
-    print  "%s driver IS available.\n" % driverName</code></pre>
+    print("%s driver IS available.\n" % driverName)</code></pre>
 </div>
 <p>After loading modules and setting the correct driver, we can create a new data source for a shapefile. Have a look that the layer does not exist in your data folder.</p>
 <div class="row">
@@ -1031,7 +1052,7 @@ fn = "points.shp"
 layername = "anewlayer"
 ## Create shape file
 ds = drv.CreateDataSource(fn)
-print ds.GetRefCount()</code></pre>
+print(ds.GetRefCount())</code></pre>
 </div>
 <p>We created the datasource, but didn't make the file yet. Let's continue to add information to the shapefile. First add a coordinate reference system (CRS) or spatial reference.</p>
 <div class="row">
@@ -1095,8 +1116,8 @@ feature2.SetGeometry(point2)</code></pre>
 <pre style=""><code class="source python">## Lets store the features in a layer
 layer.CreateFeature(feature1)
 layer.CreateFeature(feature2)
-print "Extent of layer"
-print layer.GetExtent()</code></pre>
+print("Extent of layer")
+print(layer.GetExtent())</code></pre>
 </div>
 <p>It has an extent now and it might seem we are finished now. We created geometry, features and a layer and assigned the <code>Esri Shapefile</code> driver to the layer. However the file still has to be saved. OGR doesn't have a Save() option. The shapefile is updated with the object structure when the script finished or when it is destroyed, if necessary SyncToDisk() maybe used.</p>
 <div class="row">
@@ -1112,8 +1133,8 @@ ds.Destroy()</code></pre>
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
 <pre style=""><code class="source python">## Export to other formats/representations:
-print "KML file export"
-print point2.ExportToKML()</code></pre>
+print("KML file export")
+print(point2.ExportToKML())</code></pre>
 </div>
 <p>Spatial operations are possible to. Buffer around the point and export the buffer to a GML file.</p>
 <div class="row">
@@ -1122,29 +1143,11 @@ print point2.ExportToKML()</code></pre>
 </button>
 <pre style=""><code class="source python">## Buffering
 buffer = point2.Buffer(1,1)
-print buffer.Intersects(point1)
+print(buffer.Intersects(point1))
 ## More exports:
 buffer.ExportToGML()</code></pre>
 </div>
 <p>More spatial methods are available from the OGR module. If you are interested have a look at the methods section of this <a href="http://www2.geog.ucl.ac.uk/~plewis/geogg122/_build/html/Chapter4_GDAL/OGR_Python.html">tutorial</a>.</p>
-<p>Let's open and visualize our files in QGIS. Files can even be opened from the <code>Python Console</code> in QGIS. Try the code below:</p>
-<div class="row">
-<button class="source python toggle btn btn-xs btn-primary">
-<span class="glyphicon glyphicon-chevron-down"></span> python source
-</button>
-<pre style=""><code class="source python">## Add a vector layer to the QGIS interface
-qgis.utils.iface.addVectorLayer(fn, layername, "ogr") 
-aLayer = qgis.utils.iface.activeLayer()
-print aLayer.name()</code></pre>
-</div>
-<p>The method <code>addVectorLayer</code> takes three arguments:</p>
-<ul>
-<li>the first argument is the path to the data source – the shapefile in our case</li>
-<li>the second argument is the basename – the name that the layer takes in the table of contents</li>
-<li>the third argument is the provider key. Basically, the function wants to know what driver will be used to read this data.</li>
-</ul>
-<p>Another example of how we can use the add vector layer method:</p>
-<p><code>qgis.utils.iface.addVectorLayer('/home/user/Git/Python/data/points.shp', 'anewlayer', &quot;ogr&quot;)</code></p>
 <p>For our purposes, “ogr” will be used most of the time with vector data. Other popular drivers besides ogr are postgres (for PostgreSQL databases), KML, GML, Esri Shapefile or GeoJSON. <a href="http://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/loadlayer.html">The python qgis cookbook</a> gives more information on the use of the method and available drivers.</p>
 <h2 id="modify-a-shape-file">Modify a shape file</h2>
 <p>Now let's try to add an extra point to the shape file:</p>
@@ -1156,18 +1159,18 @@ print aLayer.name()</code></pre>
 ds = drv.Open(fn, 1)
 ## Check layers and get the first layer
 layernr = ds.GetLayerCount()
-print layernr
+print(layernr)
 layer = ds.GetLayerByIndex(0)
-print layer
+print(layer)
 ## Get number of features in shapefile layer
 features_number = layer.GetFeatureCount()
-print "number of features for this layer:", features_number
+print("number of features for this layer:", features_number)
 ## Get the feature definition
 featureDefn = layer.GetLayerDefn()
 ## Create a new point
 point = ogr.Geometry(ogr.wkbPoint)
 point.SetPoint(0,5.6909725,50.8513682)
-print point
+print(point)
 ## Similarly point.AddPoint(2,1)
 ## Create a new feature
 feature = ogr.Feature(featureDefn)
@@ -1216,13 +1219,6 @@ map_osm.save('osm.html')</code></pre>
  
 </p>
 <div class="row">
-<button class="source R toggle btn btn-xs btn-primary">
-<span class="glyphicon glyphicon-chevron-down"></span> R source
-</button>
-<pre style=""><code class="source r">getwd()
-list.files()</code></pre>
-</div>
-<div class="row">
 <button class="source python toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> python source
 </button>
@@ -1243,9 +1239,9 @@ map_points.save('points.html')</code></pre>
 <p>
  
 </p>
-<p>Webtutorial about folium: <a href="http://pythonhow.com/web-mapping-with-python-and-folium">web-mapping-with-python-and-folium</a></p>
+<p>Webtutorial about folium: <a href="http://pythonhow.com/web-mapping-with-python-and-folium">web-mapping-with-python-and-folium</a> and <a href="http://folium.readthedocs.io/en/latest/quickstart.html">latest webmapping with folium</a>.</p>
 <h2 id="clean-up">Clean up</h2>
-<p>From the terminal you can remove the created &quot;points.shp&quot; and related files using:</p>
+From the terminal you can remove the created &quot;points.shp&quot; and related files using:
 <div class="row">
 <button class="source bash toggle btn btn-xs btn-primary">
 <span class="glyphicon glyphicon-chevron-down"></span> bash source
@@ -1268,13 +1264,13 @@ rm -v points*</code></pre>
 <li>Visualise a vector object using Python and Leaflet</li>
 </ol>
 <h1 id="assignment">Assignment</h1>
-<p>Create your own shapefile of two point locations (e.g. a location of the GAIA building in Wageningen) in RD_New, buffer one point and make a webmap in Python. Make a well structured IPython Notebook.</p>
+<p>Create your own shapefile of two point locations (e.g. a location of the GAIA building in Wageningen) in RD_New, buffer two points and make a webmap in Python. Make a well structured IPython Notebook.</p>
 <ul>
 <li>Create two points with coordinates from <a href="https://www.google.nl/maps/?hl=en">Google Maps</a> or use the two points from the <a href="https://geoscripting-wur.github.io/IntroToVector/">R vector tutorial</a>.</li>
 <li>Set the projection (Lat/Long, you should know now the EPSG) and reproject to the Dutch projection RD_New</li>
-<li>Create a buffer around the points of 100m</li>
-<li>Export the two point to shape file (that can be imported in QGIS)</li>
-<li>Make a webmap of your buffer with leaflet</li>
+<li>Create a buffer around the two points of 100m</li>
+<li>Export the two points to shape file (that can be imported in QGIS)</li>
+<li>Make a webmap of your buffer with leaflet (Hint: your buffer is a polygon)</li>
 </ul>
 <p>Bonus: print the distance between the two points (Hint: <code>Distance()</code>)</p>
 <p>Upload your documented and well structured Ipython Notebook to a GitLab repository.</p>

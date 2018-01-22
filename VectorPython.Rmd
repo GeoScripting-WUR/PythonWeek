@@ -42,7 +42,12 @@ OGR supports many different vector formats:
 **OGR Data drivers:** A driver is an object that knows how to interact with a certain data type (e.g. a shapefile).
 You need to know the right driver to read or write data. Some drivers might only be able to read content, but the majority can read and write.
 
-```{r, engine='python'}
+Start a terminal and see if you can load osgeo in Python.
+```{r, engine='bash', eval = FALSE}
+python
+```
+
+```{r, engine='python', eval = FALSE}
 try:
   from osgeo import ogr
 except:
@@ -57,9 +62,34 @@ ogrinfo --formats
 
 [More info about the different OGR formats](http://www.gdal.org/ogr_formats.html).
 
-## Points
+## Setting up environment
+Before we continue with scripting, you need to setup your Python environment. In the previous Python lesson you learned about Conda and Jupyter Notebooks. We will use both again today. Check if you have made any conda environment named geoscripting.
 
-What does "WKT" mean? 
+```{r, eval=FALSE,engine='bash'}
+## Display all your conda environments
+conda info --envs
+```
+
+If you don't have a conda environment called 'geoscripting', create it first.
+
+```{r, eval=FALSE,engine='bash'}
+## Create conda environment called geoscripting
+conda create --name geoscripting python=3 numpy jupyter
+```
+
+Then install todays modules in your conda environment and start your Jupyter Notebook.
+
+```{r, eval=FALSE,engine='bash'}
+## Install gdal and folium
+conda install --name geoscripting --channel conda-forge gdal folium
+source activate geoscripting
+jupyter notebook
+```
+
+Open a new Ipython Notebook in an appropriate location. Output of the Python scripts from Jupyter Notebook will be saved in the repository where the .ipynb is stored.
+
+## Points
+Now we continue with the tutorial. Try the script below and find out what "WKT" means. 
 
 ```{r, engine='python'}
 from osgeo import ogr
@@ -67,7 +97,7 @@ from osgeo import ogr
 wkt = "POINT (173914.00 441864.00)"
 pt = ogr.CreateGeometryFromWkt(wkt)
 print(pt)
-# print help(osgeo.ogr)
+# print(help(osgeo.ogr))
 ```
 
 WKT (Well Known Text) is a sort of markup language that describes spatial information in a clean text format, there is an equivalent in binary format (easier for computers to process and more efficient for data transfer).
@@ -104,9 +134,9 @@ target.ImportFromEPSG(28992)
 
 # transform from lat/long to Dutch coord. system
 transform = osr.CoordinateTransformation(source, target)
-point = ogr.CreateGeometryFromWkt("POINT (5.6660 51.9872)")
+point = ogr.CreateGeometryFromWkt("POINT (5.6660 51.9872)") #ogr uses lon, lat
 point.Transform(transform)
-print point.ExportToWkt()
+print(point.ExportToWkt())
 ```
 
 Are you still keeping track of your data and coordinate system? 
@@ -133,16 +163,7 @@ Driver
                     Point
 ```
 
-Start a new Python script within the `Python` console of QGIS (recommended for today!). Open QGIS Desktop, go to plugins and start python console (or use short ctrl + alt + p).
-
-You can set the working directory using:
-```{python, eval=FALSE}
-import os
-os.chdir('pathtoyourworkingdirectory')
-print os.getcwd()
-```
-
-Now you can continue (you do not need to repeat the `import ` if you have already done so!):
+Now we know how a file is made, you can continue to make a file:
 
 * Set spatial reference
 * Create shape file
@@ -153,18 +174,13 @@ Now you can continue (you do not need to repeat the `import ` if you have alread
 * Flush
 
 ```{r, engine = 'python', eval=FALSE}
-## Loading the modules
-#from osgeo import ogr,osr
-#import os
-#os.chdir('./data')
-
 ## Is the ESRI Shapefile driver available?
 driverName = "ESRI Shapefile"
-drv = ogr.GetDriverByName( driverName )
+drv = ogr.GetDriverByName(driverName)
 if drv is None:
-    print "%s driver not available.\n" % driverName
+    print("%s driver not available.\n" % driverName)
 else:
-    print  "%s driver IS available.\n" % driverName
+    print("%s driver IS available.\n" % driverName)
 ```
 
 After loading modules and setting the correct driver, we can create a new data source for a shapefile. Have a look that the layer does not exist in your data folder.
@@ -176,7 +192,7 @@ layername = "anewlayer"
 
 ## Create shape file
 ds = drv.CreateDataSource(fn)
-print ds.GetRefCount()
+print(ds.GetRefCount())
 ```
 
 We created the datasource, but didn't make the file yet. Let's continue to add information to the shapefile. First add a coordinate reference system (CRS) or spatial reference.
@@ -239,8 +255,8 @@ Now that we created features with geometry, we can store the features in the lay
 layer.CreateFeature(feature1)
 layer.CreateFeature(feature2)
 
-print "Extent of layer"
-print layer.GetExtent()
+print("Extent of layer")
+print(layer.GetExtent())
 ```
 
 It has an extent now and it might seem we are finished now. We created geometry, features and a layer and assigned the `Esri Shapefile` driver to the layer. However the file still has to be saved. OGR doesn't have a Save() option. The shapefile is updated with the object structure when the script finished or when it is destroyed, if necessary SyncToDisk() maybe used.
@@ -254,8 +270,8 @@ Okay nice. You created a shapefile in Python from scratch. This is just a start.
 
 ```{r, engine = 'python', eval=FALSE}
 ## Export to other formats/representations:
-print "KML file export"
-print point2.ExportToKML()
+print("KML file export")
+print(point2.ExportToKML())
 ```
 
 Spatial operations are possible to. Buffer around the point and export the buffer to a GML file.
@@ -263,32 +279,13 @@ Spatial operations are possible to. Buffer around the point and export the buffe
 ```{r, engine = 'python', eval=FALSE}
 ## Buffering
 buffer = point2.Buffer(1,1)
-print buffer.Intersects(point1)
+print(buffer.Intersects(point1))
 
 ## More exports:
 buffer.ExportToGML()
 ```
 
 More spatial methods are available from the OGR module. If you are interested have a look at the methods section of this [tutorial](http://www2.geog.ucl.ac.uk/~plewis/geogg122/_build/html/Chapter4_GDAL/OGR_Python.html).
-
-Let's open and visualize our files in QGIS. Files can even be opened from the `Python Console` in QGIS. Try the code below:
-
-```{r, engine='python', eval=FALSE}
-## Add a vector layer to the QGIS interface
-qgis.utils.iface.addVectorLayer(fn, layername, "ogr") 
-aLayer = qgis.utils.iface.activeLayer()
-print aLayer.name()
-```
-
-The method `addVectorLayer` takes three arguments:
-
-* the first argument is the path to the data source – the shapefile in our case
-* the second argument is the basename – the name that the layer takes in the table of contents
-* the third argument is the provider key. Basically, the function wants to know what driver will be used to read this data. 
-
-Another example of how we can use the add vector layer method:
-
-`qgis.utils.iface.addVectorLayer('/home/user/Git/Python/data/points.shp', 'anewlayer', "ogr")`
 
 For our purposes, “ogr” will be used most of the time with vector data. Other popular drivers besides ogr are postgres (for PostgreSQL databases), KML, GML, Esri Shapefile or GeoJSON. [The python qgis cookbook](http://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/loadlayer.html) gives more information on the use of the method and available drivers.
 
@@ -302,13 +299,13 @@ ds = drv.Open(fn, 1)
 
 ## Check layers and get the first layer
 layernr = ds.GetLayerCount()
-print layernr
+print(layernr)
 layer = ds.GetLayerByIndex(0)
-print layer
+print(layer)
 
 ## Get number of features in shapefile layer
 features_number = layer.GetFeatureCount()
-print "number of features for this layer:", features_number
+print("number of features for this layer:", features_number)
 
 ## Get the feature definition
 featureDefn = layer.GetLayerDefn()
@@ -316,7 +313,7 @@ featureDefn = layer.GetLayerDefn()
 ## Create a new point
 point = ogr.Geometry(ogr.wkbPoint)
 point.SetPoint(0,5.6909725,50.8513682)
-print point
+print(point)
 ## Similarly point.AddPoint(2,1)
 
 ## Create a new feature
@@ -361,10 +358,6 @@ map_osm.save('osm.html')
 <p>&nbsp;</p> 
 <div  class="img-responsive center-block" align="center"><iframe src="osm.html" width="500" height="300" style="border: 0"></iframe></div>
 <p>&nbsp;</p>
-```{r, eval = FALSE}
-getwd()
-list.files()
-```
 
 ```{r, engine='python', eval = FALSE}
 import folium
@@ -381,11 +374,11 @@ map_points.save('points.html')
 <p>&nbsp;</p>
 
 Webtutorial about folium: [web-mapping-with-python-and-folium](http://pythonhow.com/web-mapping-with-python-and-folium)
-
+ and [latest webmapping with folium](http://folium.readthedocs.io/en/latest/quickstart.html).
+ 
+ 
 ## Clean up
-
 From the terminal you can remove the created "points.shp" and related files using:
-
 ```{r, engine='bash', eval=FALSE}
 echo "in the terminal you can use the following bash commands to easily remove files"
 echo "list all the files starting with points*"
@@ -407,13 +400,13 @@ rm -v points*
 
 # Assignment
 
-Create your own shapefile of two point locations (e.g. a location of the GAIA building in Wageningen) in RD_New, buffer one point and make a webmap in Python. Make a well structured IPython Notebook.
+Create your own shapefile of two point locations (e.g. a location of the GAIA building in Wageningen) in RD_New, buffer two points and make a webmap in Python. Make a well structured IPython Notebook.
 
 - Create two points with coordinates from [Google Maps](https://www.google.nl/maps/?hl=en) or use the two points from the [R vector tutorial](https://geoscripting-wur.github.io/IntroToVector/).
 - Set the projection (Lat/Long, you should know now the EPSG) and reproject to the Dutch projection RD_New
-- Create a buffer around the points of 100m
-- Export the two point to shape file (that can be imported in QGIS)
-- Make a webmap of your buffer with leaflet
+- Create a buffer around the two points of 100m
+- Export the two points to shape file (that can be imported in QGIS)
+- Make a webmap of your buffer with leaflet (Hint: your buffer is a polygon)
 
 Bonus: print the distance between the two points (Hint: `Distance()`)
 
