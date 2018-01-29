@@ -49,6 +49,6 @@ If you want to go beyond todays tutorials, have a look at some cookbooks and exa
 * [Mining-the-Social-Web](https://github.com/ptwobrussell/Mining-the-Social-Web-2nd-Edition/blob/master/ipynb/Chapter%201%20-%20Mining%20Twitter.ipynb)
 * [Twitter Cookbook](http://nbviewer.jupyter.org/github/ptwobrussell/Mining-the-Social-Web-2nd-Edition/blob/master/ipynb/Chapter%209%20-%20Twitter%20Cookbook.ipynb)
 * [Example: real-time twitter activity map](https://www.tweetping.net/)
-
+* [Postgis Quickstart](https://live.osgeo.org/en/quickstart/postgis_quickstart.html)
 
 
